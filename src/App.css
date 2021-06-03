@@ -1,0 +1,8 @@
+.optionWrap {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  margin: 0 8px 0 0;
+}

@@ -1,0 +1,12 @@
+:root {
+ --text: #212121; 
+ --background: #fff;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--background);
+  font-size: 12px;
+  line-height: 22px;
+  width: 300px;
+}

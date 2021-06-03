@@ -1,0 +1,41 @@
+{
+  "name": "Reddit Toolkit",
+  "description": "Reddit Toolkit",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "permissions": ["storage", "declarativeNetRequest"],
+  "icons": {
+    "16": "icon_16.png",
+    "32": "icon_32.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon_16.png",
+      "32": "icon_32.png",
+      "48": "icon_48.png",
+      "128": "icon_128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": false,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "host_permissions": [
+    "*://reddit.com/*",
+    "*://www.reddit.com/*",
+    "*://np.reddit.com/*",
+    "*://amp.reddit.com/*",
+    "*://i.reddit.com/*"
+  ]
+}
