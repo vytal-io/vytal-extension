@@ -1,6 +1,5 @@
-.optionWrap {
-  display: flex;
-  align-items: center;
+.title {
+  font-weight: 600;
 }
 
 input {
