@@ -4,6 +4,17 @@ import './App.css';
 
 const App = () => {
   useEffect(() => {
+    // Make the request
+    fetch('http://ip-api.com/json')
+      .then((response) => response.json())
+      // Do something with the JSON data
+      .then((data) => {
+        console.log(data.query);
+        document.getElementById(
+          'ipAddress'
+        ).innerHTML += `IP address: ${data.query}`;
+      });
+
     document.getElementById(
       'screenSize'
     ).innerHTML += `Screen resolution: ${window.screen.width}x${window.screen.height}`;
@@ -28,6 +39,8 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="title">Connection</div>
+      <div className="item" id="ipAddress" />
       <div className="title">Hardware</div>
       <div className="item" id="screenSize" />
       <div className="item" id="batteryLevel" />
