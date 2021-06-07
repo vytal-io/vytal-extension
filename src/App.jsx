@@ -7,6 +7,29 @@ const updateDOM = (id, text) => {
   document.getElementById(id).innerHTML += text;
 };
 
+const getBrowser = (userAgent) => {
+  if (
+    (userAgent.indexOf('Opera') ||
+      userAgent.indexOf('OPR')) !== -1
+  ) {
+    return 'Opera';
+  } if (userAgent.indexOf('Edg') !== -1) {
+    return 'Edge';
+  } if (userAgent.indexOf('Chrome') !== -1) {
+    return 'Chrome';
+  } if (userAgent.indexOf('Safari') !== -1) {
+    return 'Safari';
+  } if (userAgent.indexOf('Firefox') !== -1) {
+    return 'Firefox';
+  } if (
+    userAgent.indexOf('MSIE') !== -1 ||
+    !!document.documentMode === true
+  ) {
+    return 'IE';
+  }
+  return 'unknown';
+};
+
 const App = () => {
   const [country, setCountry] = useState('US');
   const [flag, setFlag] = useState(false);
@@ -25,7 +48,7 @@ const App = () => {
         updateDOM('provider', data.isp);
       });
 
-    updateDOM('os', navigator.oscpu);
+    updateDOM('browser', getBrowser(navigator.userAgent));
 
     updateDOM('screenSize', `${window.screen.width}x${window.screen.height}`);
 
