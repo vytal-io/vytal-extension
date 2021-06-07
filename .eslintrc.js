@@ -4,10 +4,7 @@ module.exports = {
     es2021: true,
     webextensions: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
+  extends: ['plugin:react/recommended', 'airbnb'],
   plugins: ['react'],
   settings: {
     'import/resolver': {
@@ -34,5 +31,6 @@ module.exports = {
         jsx: 'never',
       },
     ],
+    'react/jsx-one-expression-per-line': 'off',
   },
 };

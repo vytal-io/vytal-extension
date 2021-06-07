@@ -2,6 +2,11 @@
   font-weight: 600;
 }
 
-input {
-  margin: 0 8px 0 0;
+.itemWrap {
+  display: flex;
+  align-items: center;
+}
+
+.flagWrap {
+  margin: 0 0 0 6px;
 }
