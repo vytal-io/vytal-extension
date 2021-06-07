@@ -38,6 +38,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "bowser": "^2.11.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-flagpack": "^0.1.1",
