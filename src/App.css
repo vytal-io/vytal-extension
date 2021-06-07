@@ -10,3 +10,7 @@
 .flagWrap {
   margin: 0 0 0 6px;
 }
+
+.loadingFlag {
+  display: none;
+}
