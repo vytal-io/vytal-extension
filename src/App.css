@@ -1,6 +1,22 @@
+:root {
+ --text: #212121; 
+ --background: #fff;
+   --scrollbar: #ccc;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--background);
+  font-size: 15px;
+  line-height: 22px;
+  width: 370px;
+  margin-right: 2px;
+}
+
 .title {
   font-weight: 600;
-  margin: 3px 0 0 0;
+  font-size: 16px;
+  margin: 6px 0 0 0;
 }
 
 table {
@@ -8,7 +24,15 @@ table {
 }
 
 tr {
-  margin: 3px 0;
+  margin: 8px 0;
+}
+
+td {
+  vertical-align: top;
+}
+
+.column-one {
+  width: 150px;
 }
 
 .itemWrap {
@@ -18,4 +42,21 @@ tr {
 
 .flagWrap {
   margin: 0 0 0 6px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 2px;
 }

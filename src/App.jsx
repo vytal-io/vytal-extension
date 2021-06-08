@@ -45,7 +45,7 @@ const App = () => {
 
     navigator.getBattery().then((battery) => {
       updateDOM('batteryLevel', `${Math.round(battery.level * 100)}%`);
-      updateDOM('batteryStatus', `${battery.charging ? '' : 'not'} charging`);
+      updateDOM('batteryStatus', battery.charging ? 'Charging' : 'Not charging');
     });
 
     updateDOM('memory', `${navigator.deviceMemory}GB`);
@@ -59,8 +59,7 @@ const App = () => {
   return (
     <div className="App">
       <table>
-        <col style="width:40%" />
-        <col style="width:60%" />
+        <col className="column-one" />
         <div className="title">Connection</div>
         <tr>
           <td>IP address:</td>
@@ -143,26 +142,26 @@ const App = () => {
         <tr>
           <td>Cookies enabled:</td>
           <td>
-            <div id="cookies" />
+            <div className="capitalize" id="cookies" />
           </td>
         </tr>
         <tr>
           <td>Java enabled:</td>
           <td>
-            <div id="java" />
+            <div className="capitalize" id="java" />
           </td>
         </tr>
         <tr>
           <td>DNT header enabled:</td>
           <td>
-            <div id="dnt" />
+            <div className="capitalize" id="dnt" />
           </td>
         </tr>
         <div className="title">Hardware</div>
         <tr>
           <td>Platform:</td>
           <td>
-            <div id="platform" />
+            <div className="capitalize" id="platform" />
           </td>
         </tr>
         <tr>

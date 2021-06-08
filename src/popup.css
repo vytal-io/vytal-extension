@@ -1,6 +1,7 @@
-:root {
+/* :root {
  --text: #212121; 
  --background: #fff;
+   --scrollbar: #ccc;
 }
 
 body {
@@ -8,5 +9,5 @@ body {
   background-color: var(--background);
   font-size: 15px;
   line-height: 22px;
-  width: 400px;
-}
+  width: 380px;
+} */
