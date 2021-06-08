@@ -2,6 +2,15 @@
   font-weight: 600;
 }
 
+table {
+  width: 100%;
+  margin: 0 0 6px 0;
+}
+
+tr {
+  margin: 3px 0;
+}
+
 .itemWrap {
   display: flex;
   align-items: center;

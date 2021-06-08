@@ -36,7 +36,8 @@ const App = () => {
     updateDOM('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
     updateDOM('cookies', navigator.cookieEnabled);
     updateDOM('java', navigator.javaEnabled());
-    updateDOM('plugins', navigator.plugins);
+    updateDOM('dnt', navigator.doNotTrack ? 'true' : 'false');
+    // updateDOM('plugins', navigator.plugins);
 
     updateDOM('platform', uaResult.platform.type);
     updateDOM('screenSize', `${window.screen.width}x${window.screen.height}`);
@@ -44,39 +45,69 @@ const App = () => {
 
     navigator.getBattery().then((battery) => {
       updateDOM('batteryLevel', `${Math.round(battery.level * 100)}%`);
-      updateDOM('batteryStatus', `${battery.charging ? '' : 'not '} charging`);
+      updateDOM('batteryStatus', `${battery.charging ? '' : 'not'} charging`);
     });
 
     updateDOM('memory', `${navigator.deviceMemory}GB`);
     updateDOM('cores', navigator.hardwareConcurrency);
+    const gl = document.createElement('canvas').getContext('webgl');
+    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+    updateDOM('vendor', gl.getParameter(ext.UNMASKED_VENDOR_WEBGL));
+    updateDOM('renderer', gl.getParameter(ext.UNMASKED_RENDERER_WEBGL));
   }, []);
 
   return (
     <div className="App">
       <div className="title">Connection</div>
-      <div className="item" id="ipAddress">
-        IP address:{' '}
-      </div>
-      <div className="itemWrap">
-        <div className="item" id="country">
-          Country:{' '}
-        </div>
-        <div className="flagWrap">
-          {flag === true && <Flag code={country} size="S" />}
-        </div>
-      </div>
-      <div className="item" id="region">
-        Region:{' '}
-      </div>
-      <div className="item" id="city">
-        City:{' '}
-      </div>
-      <div className="item" id="zip">
-        Zip:{' '}
-      </div>
-      <div className="item" id="provider">
-        Provider:{' '}
-      </div>
+      <table>
+        <tr>
+          <td>IP address:</td>
+          <td>
+            <div id="ipAddress" />
+          </td>
+          <td>?</td>
+        </tr>
+        <tr>
+          <td>Country:</td>
+          <td>
+            <div className="itemWrap">
+              <div id="country" />
+              <div className="flagWrap">
+                {flag === true && <Flag code={country} size="S" />}
+              </div>
+            </div>
+          </td>
+          <td>?</td>
+        </tr>
+        <tr>
+          <td>Region:</td>
+          <td>
+            <div id="region" />
+          </td>
+          <td>?</td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td>
+            <div id="city" />
+          </td>
+          <td>?</td>
+        </tr>
+        <tr>
+          <td>Zip:</td>
+          <td>
+            <div id="zip" />
+          </td>
+          <td>?</td>
+        </tr>
+        <tr>
+          <td>Provider:</td>
+          <td>
+            <div id="provider" />
+          </td>
+          <td>?</td>
+        </tr>
+      </table>
       <div className="title">Software</div>
       <div className="item" id="browser">
         Browser:{' '}
@@ -102,9 +133,12 @@ const App = () => {
       <div className="item" id="java">
         Java enabled:{' '}
       </div>
-      <div className="item" id="plugins">
-        Plugins:{' '}
+      <div className="item" id="dnt">
+        DNT header enabled:{' '}
       </div>
+      {/* <div className="item" id="plugins">
+        Plugins:{' '}
+      </div> */}
       <div className="title">Hardware</div>
       <div className="item" id="platform">
         Platform:{' '}
@@ -126,6 +160,12 @@ const App = () => {
       </div>
       <div className="item" id="cores">
         # of CPU cores:{' '}
+      </div>
+      <div className="item" id="vendor">
+        WebGL vendor:{' '}
+      </div>
+      <div className="item" id="renderer">
+        WebGL renderer:{' '}
       </div>
     </div>
   );
