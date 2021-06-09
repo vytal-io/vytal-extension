@@ -29,6 +29,8 @@ body {
 }
 
 .menu {
+  display: flex;
+  align-items: center;
   margin: 0 6px 0 0;
 }
 
@@ -44,6 +46,11 @@ table {
 
 tr {
   margin: 8px 0;
+}
+
+tr:hover {
+  color: var(--main-dark);
+  cursor: pointer;
 }
 
 td {
