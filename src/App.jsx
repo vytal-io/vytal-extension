@@ -35,10 +35,19 @@ const App = () => {
 
     updateDOM('language', navigator.language);
     updateDOM('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+    const date = new Date();
+    updateDOM('offset', date.getTimezoneOffset());
     updateDOM('cookies', navigator.cookieEnabled);
     updateDOM('java', navigator.javaEnabled());
     updateDOM('dnt', navigator.doNotTrack ? 'true' : 'false');
-    // updateDOM('plugins', navigator.plugins);
+
+    const pluginsLength = navigator.plugins.length;
+    let plugins = '';
+    for (let i = 0; i < pluginsLength; i++) {
+      if (i !== 0) plugins += ', ';
+      plugins += navigator.plugins[i].name;
+    }
+    updateDOM('plugins', plugins);
 
     updateDOM('platform', uaResult.platform.type);
     updateDOM('screenSize', `${window.screen.width}x${window.screen.height}`);
@@ -147,6 +156,12 @@ const App = () => {
           </td>
         </tr>
         <tr>
+          <td>Timezone offset:</td>
+          <td>
+            <div id="offset" />
+          </td>
+        </tr>
+        <tr>
           <td>Cookies enabled:</td>
           <td>
             <div className="capitalize" id="cookies" />
@@ -162,6 +177,12 @@ const App = () => {
           <td>DNT header enabled:</td>
           <td>
             <div className="capitalize" id="dnt" />
+          </td>
+        </tr>
+        <tr>
+          <td>Plugins:</td>
+          <td>
+            <div id="plugins" />
           </td>
         </tr>
         <div className="title">Hardware</div>
