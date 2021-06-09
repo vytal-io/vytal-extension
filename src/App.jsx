@@ -98,7 +98,7 @@ const App = () => {
           </td>
         </tr>
         <tr>
-          <td>Zip:</td>
+          <td>Zip code:</td>
           <td>
             <div id="zip" />
           </td>
