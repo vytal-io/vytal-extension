@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import Flag from 'react-flagpack';
+import { useEffect } from 'react';
 import * as Bowser from 'bowser';
 import './App.css';
 
@@ -9,15 +8,15 @@ const updateDOM = (id, text) => {
 };
 
 const App = () => {
-  const [country, setCountry] = useState('US');
-  const [flag, setFlag] = useState(false);
+  // const [country, setCountry] = useState('US');
+  // const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     fetch('http://ip-api.com/json')
       .then((response) => response.json())
       .then((data) => {
-        setCountry(data.countryCode);
-        setFlag(true);
+        // setCountry(data.countryCode);
+        // setFlag(true);
         updateDOM('ipAddress', data.query);
         updateDOM('country', data.country);
         updateDOM('region', data.regionName);
@@ -58,6 +57,10 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="header">
+        <div className="logoImage" />
+        <div className="menu">HEllo</div>
+      </div>
       <table>
         <col className="column-one" />
         <div className="title">Connection</div>
@@ -70,12 +73,7 @@ const App = () => {
         <tr>
           <td>Country:</td>
           <td>
-            <div className="itemWrap">
-              <div id="country" />
-              <div className="flagWrap">
-                {flag === true && <Flag code={country} size="S" />}
-              </div>
-            </div>
+            <div id="country" />
           </td>
         </tr>
         <tr>

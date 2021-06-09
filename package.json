@@ -41,7 +41,6 @@
     "bowser": "^2.11.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-flagpack": "^0.1.1",
     "react-hot-loader": "^4.13.0",
     "react-world-flags": "^1.4.0"
   }

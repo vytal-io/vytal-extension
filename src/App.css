@@ -1,7 +1,9 @@
 :root {
- --text: #212121; 
- --background: #fff;
-   --scrollbar: #ccc;
+  --main: #943EC5;
+  --main-dark: #8537B1;
+  --text: #212121;
+  --background: #fff;
+  --scrollbar: #ccc;
 }
 
 body {
@@ -11,6 +13,23 @@ body {
   line-height: 22px;
   width: 370px;
   margin-right: 2px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoImage {
+  background: url('logo.svg') no-repeat;
+  background-size: 133px 32px;
+  width: 133px;
+  height: 32px;
+}
+
+.menu {
+  margin: 0 6px 0 0;
 }
 
 .title {
