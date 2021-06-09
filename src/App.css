@@ -1,9 +1,9 @@
 :root {
   --main: #943EC5;
-  --main-dark: #8537B1;
   --text: #212121;
   --background: #fff;
   --scrollbar: #ccc;
+  --icon: #AAB7B8;
 }
 
 body {
@@ -13,6 +13,14 @@ body {
   line-height: 22px;
   width: 370px;
   margin-right: 2px;
+}
+
+a {
+  color: var(--icon);
+}
+
+a:hover {
+  color: var( --main);
 }
 
 .header {
@@ -31,6 +39,8 @@ body {
 .menu {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 52px;
   margin: 0 6px 0 0;
 }
 
@@ -49,7 +59,7 @@ tr {
 }
 
 tr:hover {
-  color: var(--main-dark);
+  color: var(--main);
   cursor: pointer;
 }
 

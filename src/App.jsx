@@ -62,8 +62,12 @@ const App = () => {
       <div className="header">
         <div className="logoImage" />
         <div className="menu">
-          <FontAwesomeIcon icon={faExternalLinkAlt} size="lg" color="#AAB7B8" />
-          <FontAwesomeIcon icon={faCog} size="lg" color="#AAB7B8" />
+          <a href="url" target="_blank">
+            <FontAwesomeIcon icon={faExternalLinkAlt} size="lg" />
+          </a>
+          <a href="url" target="_blank">
+            <FontAwesomeIcon icon={faCog} size="lg" />
+          </a>
         </div>
       </div>
       <table>
