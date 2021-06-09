@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import * as Bowser from 'bowser';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
 const updateDOM = (id, text) => {
@@ -59,7 +61,10 @@ const App = () => {
     <div className="App">
       <div className="header">
         <div className="logoImage" />
-        <div className="menu">HEllo</div>
+        <div className="menu">
+          {/* <FontAwesomeIcon icon={['fal', 'coffee']} /> */}
+          <FontAwesomeIcon icon={faCog} />
+        </div>
       </div>
       <table>
         <col className="column-one" />
