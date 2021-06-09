@@ -31,9 +31,9 @@ a:hover {
 
 .logoImage {
   background: url('logo.svg') no-repeat;
-  background-size: 133px 32px;
-  width: 133px;
-  height: 32px;
+  background-size: 100px 24px;
+  width: 100px;
+  height: 24px;
 }
 
 .menu {
