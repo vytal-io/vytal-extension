@@ -96,3 +96,7 @@ td {
   background: var(--scrollbar);
   border-radius: 2px;
 }
+
+.loadText {
+  text-align: center;
+}

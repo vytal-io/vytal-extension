@@ -10,15 +10,10 @@ const updateDOM = (id, text) => {
 };
 
 const App = () => {
-  // const [country, setCountry] = useState('US');
-  // const [flag, setFlag] = useState(false);
-
   useEffect(() => {
     fetch('http://ip-api.com/json')
       .then((response) => response.json())
       .then((data) => {
-        // setCountry(data.countryCode);
-        // setFlag(true);
         updateDOM('ipAddress', data.query);
         updateDOM('country', data.country);
         updateDOM('region', data.regionName);
@@ -60,6 +55,7 @@ const App = () => {
 
     updateDOM('memory', `${navigator.deviceMemory}GB`);
     updateDOM('cores', navigator.hardwareConcurrency);
+    updateDOM('maxTouch', navigator.maxTouchPoints);
     const gl = document.createElement('canvas').getContext('webgl');
     const ext = gl.getExtension('WEBGL_debug_renderer_info');
     updateDOM('vendor', gl.getParameter(ext.UNMASKED_VENDOR_WEBGL));
@@ -229,6 +225,12 @@ const App = () => {
           </td>
         </tr>
         <tr>
+          <td>Max touchpoints:</td>
+          <td>
+            <div id="maxTouch" />
+          </td>
+        </tr>
+        <tr>
           <td>WebGL vendor:</td>
           <td>
             <div id="vendor" />
@@ -241,9 +243,6 @@ const App = () => {
           </td>
         </tr>
       </table>
-      {/* <div className="item" id="plugins">
-        Plugins:{' '}
-      </div> */}
     </div>
   );
 };
