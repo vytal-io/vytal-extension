@@ -10,17 +10,6 @@ const updateDOM = (id, text) => {
 
 const App = () => {
   useEffect(() => {
-    fetch('http://ip-api.com/json')
-      .then((response) => response.json())
-      .then((data) => {
-        updateDOM('ipAddress', data.query);
-        updateDOM('country', data.country);
-        updateDOM('region', data.regionName);
-        updateDOM('city', data.city);
-        updateDOM('zip', data.zip);
-        updateDOM('provider', data.isp);
-      });
-
     const uaResult = Bowser.parse(navigator.userAgent);
     updateDOM('browser', uaResult.browser.name);
     updateDOM('browserVersion', uaResult.browser.version);
@@ -66,43 +55,6 @@ const App = () => {
       <Navbar />
       <table>
         <col className="column-one" />
-        <div className="title">Connection</div>
-        <tr>
-          <td>IP address:</td>
-          <td>
-            <div id="ipAddress" />
-          </td>
-        </tr>
-        <tr>
-          <td>Country:</td>
-          <td>
-            <div id="country" />
-          </td>
-        </tr>
-        <tr>
-          <td>Region:</td>
-          <td>
-            <div id="region" />
-          </td>
-        </tr>
-        <tr>
-          <td>City:</td>
-          <td>
-            <div id="city" />
-          </td>
-        </tr>
-        <tr>
-          <td>Zip code:</td>
-          <td>
-            <div id="zip" />
-          </td>
-        </tr>
-        <tr>
-          <td>Provider:</td>
-          <td>
-            <div id="provider" />
-          </td>
-        </tr>
         <div className="title">Software</div>
         <tr>
           <td>Browser:</td>
