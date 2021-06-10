@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import * as Bowser from 'bowser';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt, faCog } from '@fortawesome/free-solid-svg-icons';
+import Navbar from './Navbar';
 import './App.css';
 
 const updateDOM = (id, text) => {
@@ -64,17 +63,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="header">
-        <div className="logoImage" />
-        <div className="menu">
-          <a href="url" target="_blank">
-            <FontAwesomeIcon icon={faExternalLinkAlt} size="lg" />
-          </a>
-          <a href="url" target="_blank">
-            <FontAwesomeIcon icon={faCog} size="lg" />
-          </a>
-        </div>
-      </div>
+      <Navbar />
       <table>
         <col className="column-one" />
         <div className="title">Connection</div>

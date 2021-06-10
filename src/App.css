@@ -23,7 +23,7 @@ a:hover {
   color: var( --main);
 }
 
-.header {
+.navbar {
   width: 100%;
   display: flex;
   justify-content: space-between;
