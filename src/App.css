@@ -3,7 +3,9 @@
   --text: #212121;
   --background: #fff;
   --scrollbar: #ccc;
+  --navbar: #F7F9F9;
   --icon: #AAB7B8;
+  --border: #F0F3F4;
 }
 
 body {
@@ -11,8 +13,9 @@ body {
   background-color: var(--background);
   font-size: 13px;
   line-height: 22px;
-  width: 370px;
-  margin-right: 2px;
+  width: 350px;
+  margin: 0;
+  overflow: overlay
 }
 
 a {
@@ -25,8 +28,12 @@ a:hover {
 
 .navbar {
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  padding: 8px;
+  background-color: var(--navbar);
+  border-bottom: var(--border) solid 1px;
 }
 
 .logoImage {
@@ -41,7 +48,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   width: 52px;
-  margin: 0 6px 0 0;
+  margin: 0 8px 0 0; 
 }
 
 .title {
@@ -52,6 +59,8 @@ a:hover {
 
 table {
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 8px;
 }
 
 tr {
