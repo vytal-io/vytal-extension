@@ -1,5 +1,5 @@
 {
-  "name": "reddit-toolkit",
+  "name": "vytal",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -38,8 +38,13 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "bowser": "^2.11.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-hot-loader": "^4.13.0"
+    "react-hot-loader": "^4.13.0",
+    "react-world-flags": "^1.4.0"
   }
 }
