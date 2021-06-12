@@ -19,7 +19,6 @@ const Table = () => {
   const browserEngine = uaResult.engine.name;
   const os = `${uaResult.os.name} ${uaResult.os.versionName}`;
   const platform = uaResult.platform.type;
-
   const language = navigator.language;
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const date = new Date();
@@ -34,10 +33,10 @@ const Table = () => {
     if (i !== 0) pluginList += ', ';
     pluginList += navigator.plugins[i].name;
   }
+
   const plugins = pluginList;
   const screenSize = `${window.screen.width}x${window.screen.height}`;
   const color = window.screen.colorDepth;
-
   const memory = `${navigator.deviceMemory}GB`;
   const cores = navigator.hardwareConcurrency;
   const maxTouch = navigator.maxTouchPoints;
