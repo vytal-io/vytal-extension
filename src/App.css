@@ -80,19 +80,6 @@ td {
   width: 130px;
 }
 
-.itemWrap {
-  display: flex;
-  align-items: center;
-}
-
-.flagWrap {
-  margin: 0 0 0 6px;
-}
-
-.capitalize {
-  text-transform: capitalize;
-}
-
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -104,8 +91,4 @@ td {
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar);
   border-radius: 2px;
-}
-
-.loadText {
-  text-align: center;
 }
