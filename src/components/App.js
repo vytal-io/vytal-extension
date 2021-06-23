@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Navbar from './Navbar';
-import Table from './Table';
+import TableWrap from './TableWrap';
 import '../styles/App.css';
 
 const App = () => (
   <div className="App">
     <Navbar />
-    <Table />
+    <TableWrap />
   </div>
 );
 
