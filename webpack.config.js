@@ -4,32 +4,32 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 const config = {
   entry: {
-    popup: path.join(__dirname, "src/popup.jsx"),
+    popup: path.join(__dirname, 'src/components/popup.js'),
   },
-  output: { path: path.join(__dirname, "dist"), filename: "[name].js" },
+  output: { path: path.join(__dirname, 'dist'), filename: '[name].js' },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: "babel-loader",
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
         exclude: /\.module\.css$/,
       },
       {
         test: /\.ts(x)?$/,
-        loader: "ts-loader",
+        loader: 'ts-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               importLoaders: 1,
               modules: true,
@@ -40,15 +40,15 @@ const config = {
       },
       {
         test: /\.svg$/,
-        use: "file-loader",
+        use: 'file-loader',
       },
       {
         test: /\.png$/,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
-              mimetype: "image/png",
+              mimetype: 'image/png',
             },
           },
         ],
@@ -56,17 +56,17 @@ const config = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".tsx", ".ts"],
+    extensions: ['.js', '.jsx', '.tsx', '.ts'],
     alias: {
-      "react-dom": "@hot-loader/react-dom",
+      'react-dom': '@hot-loader/react-dom',
     },
   },
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
   },
   plugins: [
     new CopyPlugin({
-      patterns: [{ from: "public", to: "." }],
+      patterns: [{ from: 'public', to: '.' }],
     }),
   ],
 };

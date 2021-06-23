@@ -36,9 +36,7 @@ a:hover {
   border-bottom: var(--border) solid 1px;
 }
 
-.logoImage {
-  background: url('logo.svg') no-repeat;
-  background-size: 100%;
+.logo {
   width: 100px;
   height: 24px;
 }
