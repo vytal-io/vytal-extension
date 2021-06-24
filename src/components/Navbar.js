@@ -9,7 +9,7 @@ const Navbar = () => (
       <img src={Logo} alt="Vytal logo" />
     </div>
     <div className="menu">
-      <a href="url" target="_blank">
+      <a href="https://vytal.io" target="_blank" rel="noreferrer">
         <FontAwesomeIcon icon={faExternalLinkAlt} size="lg" />
       </a>
       <a href="url" target="_blank">
