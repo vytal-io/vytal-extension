@@ -153,7 +153,7 @@ const TableWrap = () => {
   ];
 
   return (
-    <div className="frontRight">
+    <div className="tableWrap">
       <Table title="Software" data={software} />
       <Table title="Hardware" data={hardware} />
     </div>

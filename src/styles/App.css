@@ -49,19 +49,24 @@ a:hover {
   margin: 0 8px 0 0; 
 }
 
-.title {
-  font-weight: 600;
-  font-size: 15px;
-  margin: 6px 0 0 0;
+.tableWrap {
+  padding: 8px;
 }
 
 table {
   width: 100%;
-  box-sizing: border-box;
-  padding: 0 8px;
+  border-spacing: 0 6px;
 }
 
-tr {
+th {
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+}
+
+tr:hover {
+  color: var(--main);
+  cursor: pointer;
 }
 
 tr:hover {
@@ -73,8 +78,8 @@ td {
   vertical-align: top;
 }
 
-.column-one {
-  width: 130px;
+td:first-child {
+  width: 150px;
 }
 
 ::-webkit-scrollbar {
