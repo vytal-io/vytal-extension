@@ -13,6 +13,17 @@ const sortArr = (arr) => {
   return list;
 };
 
+const sortPlugins = (data) => {
+  const length = data.length;
+
+  let list = '';
+  for (let i = 0; i < length; i++) {
+    if (i !== 0) list += ', ';
+    list += data[i].name;
+  }
+  return list;
+};
+
 const sendData = (data) => {
   fetch('http://localhost:8000/', {
     method: 'POST',
@@ -24,16 +35,6 @@ const sendData = (data) => {
 };
 
 const TableWrap = () => {
-  const uaResult = Bowser.parse(navigator.userAgent);
-  const date = new Date();
-  const pluginsLength = navigator.plugins.length;
-
-  let pluginList = '';
-  for (let i = 0; i < pluginsLength; i++) {
-    if (i !== 0) pluginList += ', ';
-    pluginList += navigator.plugins[i].name;
-  }
-
   const [batLevel, setBatLevel] = useState('');
   const [batStatus, setBatStatus] = useState('');
 
@@ -49,6 +50,8 @@ const TableWrap = () => {
     }
   }, []);
 
+  const uaResult = Bowser.parse(navigator.userAgent);
+  const date = new Date();
   const gl = document.createElement('canvas').getContext('webgl');
   const ext = gl.getExtension('WEBGL_debug_renderer_info');
 
@@ -136,7 +139,7 @@ const TableWrap = () => {
     {
       key: 'plugins',
       title: 'Plugins',
-      value: pluginList || 'N/A',
+      value: sortPlugins(navigator.plugins) || 'N/A',
     },
   ];
 
