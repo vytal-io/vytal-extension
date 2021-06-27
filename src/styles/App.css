@@ -18,11 +18,12 @@ body {
   overflow: overlay
 }
 
-a {
+.navIcon {
   color: var(--icon);
+  cursor: pointer;
 }
 
-a:hover {
+.navIcon:hover {
   color: var( --main);
 }
 
