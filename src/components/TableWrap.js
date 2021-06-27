@@ -24,7 +24,7 @@ const sortPlugins = (data) => {
   return list;
 };
 
-const sendData = (data) => {
+const fetchData = (data) => {
   fetch('http://localhost:8000/', {
     method: 'POST',
     headers: {
@@ -48,6 +48,12 @@ const TableWrap = () => {
       setBatLevel('N/A');
       setBatStatus('N/A');
     }
+
+    chrome.storage.sync.get('sendData', ({ sendData }) => {
+      if (!sendData) {
+        fetchData(software.concat(hardware));
+      }
+    });
   }, []);
 
   const uaResult = Bowser.parse(navigator.userAgent);
@@ -190,8 +196,6 @@ const TableWrap = () => {
       value: gl.getParameter(ext.UNMASKED_RENDERER_WEBGL),
     },
   ];
-
-  sendData(software.concat(hardware));
 
   return (
     <div className="tableWrap">

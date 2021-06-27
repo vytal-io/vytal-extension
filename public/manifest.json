@@ -3,7 +3,7 @@
   "description": "Vytal",
   "manifest_version": 3,
   "version": "1.0.0",
-  "permissions": [],
+  "permissions": ["storage"],
   "icons": {
     "16": "icon_16.png",
     "32": "icon_32.png",
