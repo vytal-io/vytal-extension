@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Bowser from 'bowser';
 import Table from './Table';
 
+// sorts array into comma separated list
 const sortArr = (arr) => {
   const arrLength = arr.length;
   let list = '';
@@ -13,6 +14,7 @@ const sortArr = (arr) => {
   return list;
 };
 
+// sorts plugins object into comma separated list
 const sortPlugins = (data) => {
   const length = data.length;
 
@@ -25,7 +27,7 @@ const sortPlugins = (data) => {
 };
 
 const fetchData = (data) => {
-  fetch('http://localhost:8000/', {
+  fetch('https://server.vytal.io/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -39,6 +41,7 @@ const TableWrap = () => {
   const [batStatus, setBatStatus] = useState('');
 
   useEffect(() => {
+    // waits for battery info to resolve and then updates
     if ('getBattery' in navigator) {
       navigator.getBattery().then((res) => {
         setBatLevel(`${Math.round(res.level * 100)}%`);
@@ -49,6 +52,7 @@ const TableWrap = () => {
       setBatStatus('N/A');
     }
 
+    // checks if user is okay with sending anonymous data
     chrome.storage.sync.get('sendData', ({ sendData }) => {
       if (!sendData) {
         fetchData(software.concat(hardware));
@@ -61,6 +65,7 @@ const TableWrap = () => {
   const gl = document.createElement('canvas').getContext('webgl');
   const ext = gl.getExtension('WEBGL_debug_renderer_info');
 
+  // Software table items
   const software = [
     {
       key: 'browser',
@@ -149,6 +154,7 @@ const TableWrap = () => {
     },
   ];
 
+  // Hardware table items
   const hardware = [
     {
       key: 'screenResolution',
