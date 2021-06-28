@@ -1,6 +1,6 @@
 # Vytal
 
-Vytal Shows You What Trackers See.
+Vytal is a browser extension that shows you what trackers see.
 
 Browsers reveal bits of identifiable information to websites. This data can be combined into a digital fingerprint which can be used to follow you around the web. Knowing what info is being revealed can help you obscure your fingerprint.
 
