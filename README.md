@@ -14,4 +14,4 @@ Download from Chrome Web Store:
 
 https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb
 
-![Screen Shot](https://github.com/z0ccc/Reddit-Wherever/blob/master/chrome_images/screenshot-1.jpg?raw=true)
+![Screen Shot](https://raw.githubusercontent.com/z0ccc/Vytal-extension/master/promo_images/screenshot-1.png)
