@@ -15,7 +15,7 @@ body {
   line-height: 22px;
   width: 400px;
   margin: 0;
-  overflow: overlay
+  overflow: overlay;
 }
 
 .navIcon {
