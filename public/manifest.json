@@ -1,6 +1,6 @@
 {
   "name": "Vytal",
-  "description": "Vytal",
+  "description": "An Extension To Show You What Trackers See",
   "manifest_version": 3,
   "version": "1.0.0",
   "permissions": ["storage"],
