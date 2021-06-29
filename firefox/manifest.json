@@ -1,0 +1,31 @@
+{
+  "name": "Vytal",
+  "description": "An Extension To Show You What Trackers See",
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "permissions": ["storage"],
+  "icons": {
+    "16": "icon_16.png",
+    "32": "icon_32.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon_16.png",
+      "32": "icon_32.png",
+      "48": "icon_48.png",
+      "128": "icon_128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "vytal@example.com"
+    }
+  }
+}

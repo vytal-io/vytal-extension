@@ -6,6 +6,8 @@
   --navbar: #FBFCFC;
   --icon: #AAB7B8;
   --border: #F0F3F4;
+  scrollbar-color: var(--scrollbar) !important;
+  scrollbar-width: thin !important;
 }
 
 body {
@@ -16,7 +18,10 @@ body {
   width: 400px;
   margin: 0;
   overflow: overlay;
+  overflow-x: hidden;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
+
 
 .navIcon {
   color: var(--icon);
@@ -94,4 +99,4 @@ td:first-child {
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar);
   border-radius: 2px;
-}
+} 
