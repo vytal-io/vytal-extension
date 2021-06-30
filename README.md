@@ -10,8 +10,12 @@ Only anonymous data will be collected to improve accuracy of the fingerprint ana
 
 Vytal contains no ads and signup is not required.
 
-Download from Chrome Web Store:
+Download for Chrome:
 
 https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb
+
+Download for Firefox:
+
+https://addons.mozilla.org/en-US/firefox/addon/vytal
 
 ![Screen Shot](https://raw.githubusercontent.com/z0ccc/Vytal-extension/master/promo_images/screenshot-1.png)
