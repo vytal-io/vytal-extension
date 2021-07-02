@@ -36,7 +36,7 @@ const fetchData = (data) => {
   });
 };
 
-const TableWrap = () => {
+const TableBox = () => {
   const [batLevel, setBatLevel] = useState('');
   const [batStatus, setBatStatus] = useState('');
 
@@ -204,11 +204,11 @@ const TableWrap = () => {
   ];
 
   return (
-    <div className="tableWrap">
+    <div className="tableBox">
       <Table title="Software" data={software} />
       <Table title="Hardware" data={hardware} />
     </div>
   );
 };
 
-export default TableWrap;
+export default TableBox;
