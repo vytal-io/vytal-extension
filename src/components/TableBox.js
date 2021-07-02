@@ -16,7 +16,7 @@ const sortArr = (arr) => {
 
 // sorts plugins object into comma separated list
 const sortPlugins = (data) => {
-  const length = data.length;
+  const { length } = data;
 
   let list = '';
   for (let i = 0; i < length; i++) {

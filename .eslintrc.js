@@ -22,7 +22,6 @@ module.exports = {
     'linebreak-style': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.js'] }],
     'jsx-a11y/label-has-associated-control': 'off',
-    'prefer-destructuring': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
