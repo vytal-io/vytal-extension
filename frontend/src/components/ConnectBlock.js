@@ -4,6 +4,7 @@ import Table from './Table';
 
 const ConnectBlock = () => {
   const [connectData, setConnectData] = useState('');
+  const [display, setDisplay] = useState('none');
 
   useEffect(() => {
     fetch('http://ip-api.com/json')
@@ -11,6 +12,7 @@ const ConnectBlock = () => {
       .then((data) => {
         setConnectData(data);
       });
+    setDisplay('block');
   }, []);
 
   const detectTor = () => {
@@ -57,7 +59,9 @@ const ConnectBlock = () => {
   return (
     <ScanBlock>
       <h1>Connection</h1>
-      <Table data={data} />
+      <div style={{ display }}>
+        <Table data={data} />
+      </div>
       <p>
         <b>Explanation:</b> JavaScript can be used to read various information
         about your software. This information can be used to create a

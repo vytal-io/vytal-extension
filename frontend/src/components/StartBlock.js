@@ -25,7 +25,7 @@ const StartBlock = ({ onScanClick }) => {
 
   const handleInputClick = async () => {
     document.getElementById('scanButton').value = 'Loading...';
-    await delay(2000);
+    await delay(100);
     startScan();
   };
 

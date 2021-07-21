@@ -7,12 +7,14 @@ import Table from './Table';
 const FingerprintBlock = () => {
   const [name, setName] = useState('');
   const [saved, setSaved] = useState('');
+  const [display, setDisplay] = useState('none');
 
   useEffect(() => {
     axios.get(`/api/fingerprint/?hash=${hash}`).then((response) => {
       if (response.data.length !== 0) {
         setName(response.data[response.data.length - 1].name);
       }
+      setDisplay('block');
     });
   }, []);
 
@@ -120,13 +122,15 @@ const FingerprintBlock = () => {
   return (
     <ScanBlock>
       <h1>Fingerprint</h1>
-      {name ? (
-        <Table data={tableData} />
-      ) : (
-        <div className="boxWrap">
-          <div className="hash">{hash}</div>
-        </div>
-      )}
+      <div style={{ display }}>
+        {name ? (
+          <Table data={tableData} />
+        ) : (
+          <div className="boxWrap">
+            <div className="hash">{hash}</div>
+          </div>
+        )}
+      </div>
       <p>
         <b>Explanation:</b> JavaScript can be used to read various information
         about your software. This information can be used to create a
