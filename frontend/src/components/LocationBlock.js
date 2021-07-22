@@ -53,15 +53,13 @@ const LocationBlock = () => {
   return (
     <ScanBlock>
       <h1>Location</h1>
-      <img src={mapUrl} alt="Map of current location" />
       <div style={{ display }}>
+        <img src={mapUrl} alt="Map of current location" />
         <Table data={data} />
-        <p>
-          <b>Explanation:</b> JavaScript can be used to read various information
-          about your software. This information can be used to create a
-          fingerprint.
-        </p>
       </div>
+      <p>
+        <b>Explanation:</b>
+      </p>
     </ScanBlock>
   );
 };

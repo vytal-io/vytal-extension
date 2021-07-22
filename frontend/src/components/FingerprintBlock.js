@@ -108,14 +108,14 @@ const FingerprintBlock = () => {
 
   const tableData = [
     {
-      key: 'hash',
-      title: 'Hash',
-      value: hash,
-    },
-    {
       key: 'name',
       title: 'Name',
       value: name,
+    },
+    {
+      key: 'hash',
+      title: 'Hash',
+      value: hash,
     },
   ];
 
@@ -132,9 +132,10 @@ const FingerprintBlock = () => {
         )}
       </div>
       <p>
-        <b>Explanation:</b> JavaScript can be used to read various information
-        about your software. This information can be used to create a
-        fingerprint.
+        <b>Explanation:</b> This fingerprint is a unique identifier that can be
+        used to follow you around the web. Even if you clear cookies, change
+        your ip or use private mode the fingerprint will stay the same. Enter
+        your name below and reload the page in private mode to test it out.
       </p>
       {saved ? (
         <p>Success! Re-scan browser.</p>
