@@ -63,8 +63,8 @@ const ConnectBlock = () => {
         <Table data={data} />
       </div>
       <p>
-        <b>Explanation:</b> JavaScript can be used to read various information
-        about your software. This information can be used to create a
+        <b>Explanation:</b> Your IP address reveals information about your
+        connection. Using a VPN or Tor will hide your connection info.
         fingerprint.
       </p>
     </ScanBlock>
