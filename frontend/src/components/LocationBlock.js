@@ -58,7 +58,8 @@ const LocationBlock = () => {
         <Table data={data} />
       </div>
       <p>
-        <b>Explanation:</b>
+        <b>Explanation:</b> Your IP address can be used to determine your
+        location. Using a VPN or Tor will hide your true location.
       </p>
     </ScanBlock>
   );
