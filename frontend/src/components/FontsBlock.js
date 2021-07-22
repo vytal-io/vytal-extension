@@ -49,9 +49,10 @@ const FontsBlock = () => {
       <h1>System Fonts</h1>
       <div className="fonts boxWrap" />
       <p>
-        <b>Explanation:</b> JavaScript can be used to read various information
-        about your hardware. This information can be used to create a
-        fingerprint.
+        <b>Explanation:</b> The fonts you have installed on your computer are
+        generally linked to operating systems, language and system age. Any
+        fonts that you have installed that aren&apos;t common for your system
+        can make you easily identifiable.
       </p>
     </ScanBlock>
   );

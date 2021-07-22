@@ -65,7 +65,6 @@ const ConnectBlock = () => {
       <p>
         <b>Explanation:</b> Your IP address reveals information about your
         connection. Using a VPN or Tor will hide your connection info.
-        fingerprint.
       </p>
     </ScanBlock>
   );
