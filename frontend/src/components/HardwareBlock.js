@@ -75,9 +75,8 @@ const HardwareBlock = () => {
       <h1>Hardware</h1>
       <Table data={data} />
       <p>
-        <b>Explanation:</b> JavaScript can be used to read various information
-        about your hardware. This information can be used to create a
-        fingerprint.
+        <b>Explanation:</b> JavaScript can be used to find information about
+        your hardware. This information can be used to create a fingerprint.
       </p>
     </ScanBlock>
   );

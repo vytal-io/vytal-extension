@@ -28,9 +28,9 @@ const FiltersBlock = () => {
       <h1>Content Filters</h1>
       <Table data={data} />
       <p>
-        <b>Explanation:</b> JavaScript can be used to read various information
-        about your hardware. This information can be used to create a
-        fingerprint.
+        <b>Explanation:</b> Although content filters like adblock can protect
+        you against certain methods of tracking, it can also be used as another
+        identification metric.
       </p>
     </ScanBlock>
   );
