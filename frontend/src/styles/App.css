@@ -30,6 +30,7 @@
   align-items: center;
   justify-content: center;
   flex: 1 0 auto;
+  margin: 0 18px;
 }
 
 .centerBlockInner {
@@ -176,7 +177,7 @@ input[type='text'] {
   border-radius: 6px;
   padding: 6px;
   margin: 0 6px 0 0;
-  width: 30%;
+  width: 200px;
   outline: none;
 }
 
@@ -191,4 +192,48 @@ input[type='text'] {
 
 #saveButton:hover {
   background-color: var(--border);
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    font-size: 14px;
+  }
+
+  .contentBlock {
+    padding: 18px;
+    margin: 0 0 18px 0;
+  }
+
+  .centerBlockInner {
+    width: 650px;
+    margin: 12px 0 0 0;
+  }
+
+  .logo {
+    width: 185px;
+    margin: 0 0 12px 0;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  h2 {
+    margin: 0 0 3px 0;
+    font-size: 15px;
+  }
+
+  .contentIcon {
+    flex: none;
+    margin: 0 18px 0 0;
+    width: 28px !important;
+  }
+
+  td:first-child {
+    width: 70px;
+  }
+
+  .boxWrap {
+    padding: 8px;
+  }
 }

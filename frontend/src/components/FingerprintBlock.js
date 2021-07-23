@@ -132,9 +132,9 @@ const FingerprintBlock = () => {
         )}
       </div>
       <p>
-        <b>Explanation:</b> This fingerprint is a unique identifier that can be
+        <b>Explanation:</b> This is a unique identifier that can be
         used to follow you around the web. Even if you clear cookies, change
-        your IP or use private mode the fingerprint will stay the same. Enter
+        your IP or use private mode the hash will stay the same. Enter
         your name below and reload the page in private mode to test it out.
       </p>
       {saved ? (

@@ -1,11 +1,11 @@
 import { ReactComponent as WifiIcon } from '../images/wifi.svg';
 import { ReactComponent as BrowserIcon } from '../images/browser.svg';
-import { ReactComponent as DesktopIcon } from '../images/desktop.svg';
+import { ReactComponent as FingerprintIcon } from '../images/fingerprint.svg';
 
 const Icons = {
   wifi: <WifiIcon />,
   browser: <BrowserIcon />,
-  desktop: <DesktopIcon />,
+  fingerprint: <FingerprintIcon />,
 };
 
 const ContentList = ({ items }) => (

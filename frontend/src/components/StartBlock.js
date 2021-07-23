@@ -4,18 +4,18 @@ import ScanBlock from './ScanBlock';
 
 const contentItems = [
   {
-    title: 'Hardware',
-    icon: 'desktop',
-    body: 'Browsers reveal bits of identifiable information. This data can be combined into a digital fingerprint which can be used to follow you around the web.',
-  },
-  {
-    title: 'Software',
-    icon: 'browser',
+    title: 'Fingerprint',
+    icon: 'fingerprint',
     body: 'Browsers reveal bits of identifiable information. This data can be combined into a digital fingerprint which can be used to follow you around the web.',
   },
   {
     title: 'Connection',
     icon: 'wifi',
+    body: 'Browsers reveal bits of identifiable information. This data can be combined into a digital fingerprint which can be used to follow you around the web.',
+  },
+  {
+    title: 'Software',
+    icon: 'browser',
     body: 'Browsers reveal bits of identifiable information. This data can be combined into a digital fingerprint which can be used to follow you around the web.',
   },
 ];
@@ -27,6 +27,7 @@ const StartBlock = ({ onScanClick }) => {
     document.getElementById('scanButton').value = 'Loading...';
     await delay(100);
     startScan();
+    window.scrollTo(0, 0);
   };
 
   const startScan = useCallback(() => {
@@ -37,10 +38,9 @@ const StartBlock = ({ onScanClick }) => {
     <ScanBlock>
       <h2>About</h2>
       <div className="contentBody">
-        With the Vytal Browser Privacy Check, you can determine which traces you
-        or your browser leave while surfing. Our test is intended to raise
-        awareness of which data can be used by websites and advertisers to
-        create a profile of you or to track your activities online.
+        Vytal shows you what traces your browser leaves behind while surfing the
+        web. This scan allows you to understand how easy it is to identify and
+        track your browser even while using private mode.
       </div>
       <ContentList items={contentItems} />
       <input
