@@ -176,7 +176,6 @@ input[type='text'] {
   border: 1px solid var(--grey);
   border-radius: 6px;
   padding: 6px;
-  margin: 0 6px 0 0;
   width: 200px;
   outline: none;
 }
@@ -188,6 +187,7 @@ input[type='text'] {
   background-color: transparent;
   cursor: pointer;
   color: var(--text);
+  margin: 0 0 0 6px;
 }
 
 #saveButton:hover {
@@ -235,5 +235,9 @@ input[type='text'] {
 
   .boxWrap {
     padding: 8px;
+  }
+
+  input[type='text'] {
+    width: calc(100% - 65px)
   }
 }
