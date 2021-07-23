@@ -68,7 +68,7 @@ const HardwareBlock = () => {
     },
     {
       key: 'userAgent',
-      title: 'User Agent',
+      title: 'User agent',
       value: navigator.userAgent || 'N/A',
     },
     {

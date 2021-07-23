@@ -143,11 +143,13 @@ tr:hover {
 td {
   vertical-align: top;
   padding: 12px;
+  word-break: break-all;
 }
 
 td:first-child {
   width: 180px;
   font-weight: 500;
+  word-break: normal;
 }
 
 p {
