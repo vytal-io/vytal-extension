@@ -81,13 +81,13 @@
 
 h1 {
   margin: 0 0 12px 0;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 19px;
 }
 
 h2 {
   margin: 0 0 4px 0;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 17px;
 }
 
@@ -148,12 +148,16 @@ td {
 
 td:first-child {
   width: 180px;
-  font-weight: 500;
+  font-weight: 600;
   word-break: normal;
 }
 
 p {
   margin: 12px 0 0 0;
+}
+
+b {
+    font-weight: 600;
 }
 
 img {
@@ -167,7 +171,7 @@ img {
 
 .hash {
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 form {

@@ -11,8 +11,8 @@ const ConnectBlock = () => {
       .then((response) => response.json())
       .then((data) => {
         setConnectData(data);
+        setDisplay('block');
       });
-    setDisplay('block');
   }, []);
 
   const detectTor = () => {
@@ -32,22 +32,22 @@ const ConnectBlock = () => {
     {
       key: 'ipAddress',
       title: 'IP address',
-      value: connectData.query,
+      value: connectData.query || 'N/A',
     },
     {
       key: 'isp',
       title: 'ISP',
-      value: connectData.isp,
+      value: connectData.isp || 'N/A',
     },
     {
       key: 'org',
       title: 'Organization',
-      value: connectData.org,
+      value: connectData.org || 'N/A',
     },
     {
       key: 'asn',
       title: 'ASN',
-      value: connectData.as,
+      value: connectData.as || 'N/A',
     },
     {
       key: 'tor',

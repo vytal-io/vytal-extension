@@ -11,8 +11,8 @@ const LocationBlock = () => {
       .then((response) => response.json())
       .then((data) => {
         setLocationData(data);
+        setDisplay('block');
       });
-    setDisplay('block');
   }, []);
 
   const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${locationData.lat},${locationData.lon}&markers=color:red%7Clabel:%7C${locationData.lat},${locationData.lon}&size=500x200&zoom=10&key=AIzaSyB-YN-X8PGBSPd7NOaQu4csVhgJUnF3ZGk`;

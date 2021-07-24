@@ -4,17 +4,17 @@ import HardwareBlock from './HardwareBlock';
 import SoftwareBlock from './SoftwareBlock';
 import ConnectBlock from './ConnectBlock';
 import FiltersBlock from './FiltersBlock';
-import FontsBlock from './FontsBlock';
+// import FontsBlock from './FontsBlock';
 
 const ScanBlocks = () => (
   <div>
     <FingerprintBlock />
+    <FiltersBlock />
     <LocationBlock />
     <ConnectBlock />
-    <HardwareBlock />
     <SoftwareBlock />
-    <FiltersBlock />
-    <FontsBlock />
+    <HardwareBlock />
+    {/* <FontsBlock /> */}
   </div>
 );
 

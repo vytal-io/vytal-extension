@@ -11,7 +11,7 @@ const FontsBlock = () => {
     const height = [];
     const span = document.createElement('span');
 
-    span.innerHTML = 'AaBbCcWwLl:/!@';
+    span.innerHTML = 'AaBbCcWwLl:/!@的下ㅏㅎ平片';
     span.style.fontSize = '100px';
 
     for (let i = 0; i < famLen; i++) {
