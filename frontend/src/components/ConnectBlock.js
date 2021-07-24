@@ -65,7 +65,7 @@ const ConnectBlock = () => {
       {display === 1 && <Table data={data} />}
       {display === 0 && (
         <div className="boxWrap">
-          Unable to load data. Adblock or content filter may have blocked data from loading.
+          Unable to fetch info. Adblock or content filter may have prevented data from loading.
         </div>
       )}
       <p>

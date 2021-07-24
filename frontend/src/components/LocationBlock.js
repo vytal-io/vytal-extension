@@ -4,14 +4,17 @@ import Table from './Table';
 
 const LocationBlock = () => {
   const [locationData, setLocationData] = useState('');
-  const [display, setDisplay] = useState('none');
+  const [display, setDisplay] = useState('');
 
   useEffect(() => {
     fetch('http://ip-api.com/json')
       .then((response) => response.json())
       .then((data) => {
         setLocationData(data);
-        setDisplay('block');
+        setDisplay(1);
+      })
+      .catch(() => {
+        setDisplay(0);
       });
   }, []);
 
@@ -53,10 +56,18 @@ const LocationBlock = () => {
   return (
     <ScanBlock>
       <h1>Location</h1>
-      <div style={{ display }}>
-        <img src={mapUrl} alt="Map of current location" />
-        <Table data={data} />
-      </div>
+      {display === 1 && (
+        <>
+          <img src={mapUrl} alt="Map of current location" />
+          <Table data={data} />
+        </>
+      )}
+      {display === 0 && (
+        <div className="boxWrap">
+          Unable to fetch info. Adblock or content filter may have prevented
+          data from loading.
+        </div>
+      )}
       <p>
         <b>Explanation:</b> Your IP address can be used to determine your
         location. Using a VPN or Tor will hide your true location.

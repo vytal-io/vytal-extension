@@ -7,15 +7,15 @@ import FiltersBlock from './FiltersBlock';
 // import FontsBlock from './FontsBlock';
 
 const ScanBlocks = () => (
-  <div>
-    <ConnectBlock />
+  <>
     <FingerprintBlock />
-    <FiltersBlock />
     <LocationBlock />
+    <ConnectBlock />
+    <FiltersBlock />
     <SoftwareBlock />
     <HardwareBlock />
     {/* <FontsBlock /> */}
-  </div>
+  </>
 );
 
 export default ScanBlocks;
