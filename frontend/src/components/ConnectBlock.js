@@ -4,14 +4,17 @@ import Table from './Table';
 
 const ConnectBlock = () => {
   const [connectData, setConnectData] = useState('');
-  const [display, setDisplay] = useState('none');
+  const [display, setDisplay] = useState('');
 
   useEffect(() => {
     fetch('http://ip-api.com/json')
       .then((response) => response.json())
       .then((data) => {
         setConnectData(data);
-        setDisplay('block');
+        setDisplay(1);
+      })
+      .catch(() => {
+        setDisplay(0);
       });
   }, []);
 
@@ -32,22 +35,22 @@ const ConnectBlock = () => {
     {
       key: 'ipAddress',
       title: 'IP address',
-      value: connectData.query || 'N/A',
+      value: connectData.query,
     },
     {
       key: 'isp',
       title: 'ISP',
-      value: connectData.isp || 'N/A',
+      value: connectData.isp,
     },
     {
       key: 'org',
       title: 'Organization',
-      value: connectData.org || 'N/A',
+      value: connectData.org,
     },
     {
       key: 'asn',
       title: 'ASN',
-      value: connectData.as || 'N/A',
+      value: connectData.as,
     },
     {
       key: 'tor',
@@ -59,9 +62,12 @@ const ConnectBlock = () => {
   return (
     <ScanBlock>
       <h1>Connection</h1>
-      <div style={{ display }}>
-        <Table data={data} />
-      </div>
+      {display === 1 && <Table data={data} />}
+      {display === 0 && (
+        <div className="boxWrap">
+          Unable to load data. Adblock or content filter may have blocked data from loading.
+        </div>
+      )}
       <p>
         <b>Explanation:</b> Your IP address reveals information about your
         connection. Using a VPN or Tor will hide your connection info.

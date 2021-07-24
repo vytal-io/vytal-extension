@@ -8,10 +8,10 @@ import FiltersBlock from './FiltersBlock';
 
 const ScanBlocks = () => (
   <div>
+    <ConnectBlock />
     <FingerprintBlock />
     <FiltersBlock />
     <LocationBlock />
-    <ConnectBlock />
     <SoftwareBlock />
     <HardwareBlock />
     {/* <FontsBlock /> */}
