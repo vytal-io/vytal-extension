@@ -164,7 +164,7 @@ p {
 }
 
 b {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 img {
@@ -208,6 +208,13 @@ input[type='text'] {
 }
 
 @media screen and (max-width: 500px) {
+  .github {
+    width: 24px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
   body {
     font-size: 14px;
   }
@@ -251,6 +258,6 @@ input[type='text'] {
   }
 
   input[type='text'] {
-    width: calc(100% - 65px)
+    width: calc(100% - 65px);
   }
 }
