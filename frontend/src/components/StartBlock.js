@@ -11,25 +11,16 @@ const contentItems = [
   {
     title: 'Connection',
     icon: 'wifi',
-    body: 'Browsers reveal bits of identifiable information. This data can be combined into a digital fingerprint which can be used to follow you around the web.',
+    body: 'Websites are able to access your IP address when you connect to their server. Your IP address exposes information about your connection and location.',
   },
   {
-    title: 'Software',
+    title: 'System Info',
     icon: 'browser',
-    body: 'Browsers reveal bits of identifiable information. This data can be combined into a digital fingerprint which can be used to follow you around the web.',
+    body: 'JavaScript can be used to find data about your computer\'s software and hardware. This information can be used to create a fingerprint.',
   },
 ];
 
 const StartBlock = ({ onScanClick }) => {
-  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-
-  const handleInputClick = async () => {
-    document.getElementById('scanButton').value = 'Loading...';
-    await delay(100);
-    startScan();
-    window.scrollTo(0, 0);
-  };
-
   const startScan = useCallback(() => {
     onScanClick(true);
   }, [onScanClick]);
@@ -45,7 +36,7 @@ const StartBlock = ({ onScanClick }) => {
       <ContentList items={contentItems} />
       <input
         type="submit"
-        onClick={handleInputClick}
+        onClick={startScan}
         id="scanButton"
         value="Scan Browser"
       />
