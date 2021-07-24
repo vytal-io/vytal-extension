@@ -25,6 +25,13 @@
   );
 }
 
+.github {
+  width: 36px;
+  position: fixed;
+  top: 12px;
+  right: 12px;
+}
+
 .centerBlockOuter {
   display: flex;
   align-items: center;
