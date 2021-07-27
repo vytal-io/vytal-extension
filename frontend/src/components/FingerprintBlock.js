@@ -10,7 +10,7 @@ const FingerprintBlock = () => {
   const [display, setDisplay] = useState('none');
 
   useEffect(() => {
-    axios.get(`/api/fingerprint/?hash=${hash}`).then((response) => {
+    axios.get(`/fingerprint/?hash=${hash}`).then((response) => {
       if (response.data.length !== 0) {
         setName(response.data[response.data.length - 1].name);
       }
@@ -20,7 +20,7 @@ const FingerprintBlock = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
-    axios.post('/api/fingerprint/', {
+    axios.post('/fingerprint/', {
       name: e.target[0].value,
       hash,
     });
