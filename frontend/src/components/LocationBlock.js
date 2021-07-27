@@ -7,7 +7,7 @@ const LocationBlock = () => {
   const [display, setDisplay] = useState('');
 
   useEffect(() => {
-    fetch('http://ip-api.com/json')
+    fetch('https://api.vytal.io/ip/')
       .then((response) => response.json())
       .then((data) => {
         setLocationData(data);
