@@ -10,17 +10,19 @@ const FingerprintBlock = () => {
   const [display, setDisplay] = useState('none');
 
   useEffect(() => {
-    axios.get(`/fingerprint/?hash=${hash}`).then((response) => {
-      if (response.data.length !== 0) {
-        setName(response.data[response.data.length - 1].name);
-      }
-      setDisplay('block');
-    });
+    axios
+      .get(`http://localhost:8000/fingerprint/?hash=${hash}`)
+      .then((response) => {
+        if (response.data.length !== 0) {
+          setName(response.data[response.data.length - 1].name);
+        }
+        setDisplay('block');
+      });
   }, []);
 
   const handleSave = (e) => {
     e.preventDefault();
-    axios.post('/fingerprint/', {
+    axios.post('http://localhost:8000/fingerprint/', {
       name: e.target[0].value,
       hash,
     });
