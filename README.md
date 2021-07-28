@@ -5,3 +5,5 @@ Vytal shows you what traces your browser leaves behind while surfing the web. Th
 This application is built with a react frontend and a django backend.
 
 Vytal contains no ads and signup is not required.
+
+Check it out at https://vytal.io
