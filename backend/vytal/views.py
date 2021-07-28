@@ -19,6 +19,6 @@ class FingerprintView(viewsets.ModelViewSet):
 
 def IPView(request):
     ip = get_client_ip(request)
-    with urllib.request.urlopen("http://ip-api.com/json/" + ip[0]) as url:
+    with urllib.request.urlopen("https://pro.ip-api.com/json/" + ip[0] + "?key=98U6i1Sr4HluY00") as url:
         data = json.loads(url.read().decode())
         return JsonResponse(data)
