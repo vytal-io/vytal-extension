@@ -57,7 +57,7 @@ const HardwareBlock = () => {
     {
       key: 'maxTouchpoints',
       title: 'Max touchpoints',
-      value: navigator.maxTouchPoints,
+      value: navigator.maxTouchPoints || 0,
     },
     {
       key: 'webGLVendor',

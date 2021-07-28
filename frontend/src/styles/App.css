@@ -52,10 +52,8 @@
 }
 
 .logo {
-  display: flex;
   width: 270px;
-  height: auto;
-  margin: 0 0 18px 0;
+  margin: 0 0 14px 0;
 }
 
 .contentBlock {
@@ -231,7 +229,7 @@ input[type='text'] {
 
   .logo {
     width: 185px;
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
   }
 
   h1 {

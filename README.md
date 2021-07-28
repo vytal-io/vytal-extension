@@ -1,11 +1,7 @@
 # Vytal
 
-Vytal is a browser extension that shows you what trackers see.
+Vytal shows you what traces your browser leaves behind while surfing the web. This scan allows you to understand how easy it is to identify and track your browser even while using private mode.
 
-Browsers reveal bits of identifiable information to websites. This data can be combined into a digital fingerprint which can be used to follow you around the web. Knowing what info is being revealed can help you obscure your fingerprint.
-
-This extension provides data on multiple different ways you are tracked around the web. Such as information on your software settings like browser version and language. As well as hardware specifications like screen resolution and device memory.
-
-Only anonymous data will be collected to improve accuracy of the fingerprint analysis. The extension settings allow this to be turned off so once the extension popup is closed all the data is deleted with it. This ensures complete user privacy.
+This application is built with a react frontend and a django backend.
 
 Vytal contains no ads and signup is not required.
