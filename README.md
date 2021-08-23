@@ -7,3 +7,19 @@ This application is built with a react frontend and a django backend.
 Vytal contains no ads and signup is not required.
 
 Check it out at https://vytal.io
+
+# Dev
+
+Backend setup:
+
+```
+cd backend
+python manage.py runserver
+```
+
+Frontend setup:
+
+```
+cd frontend
+yarn run start
+```
