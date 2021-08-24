@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
 import {
