@@ -22,6 +22,9 @@ module.exports = {
     'linebreak-style': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.js'] }],
     'jsx-a11y/label-has-associated-control': 'off',
+    'one-var': 'off',
+    'one-var-declaration-per-line': 'off',
+    'object-curly-newline': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -33,6 +36,6 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
-    'no-bitwise': 'off'
+    'no-bitwise': 'off',
   },
 };

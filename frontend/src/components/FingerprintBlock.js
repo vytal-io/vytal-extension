@@ -1,8 +1,8 @@
-import md5 from 'crypto-js/md5';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
+import { getHash } from './main';
 
 const FingerprintBlock = () => {
   const [name, setName] = useState('');
@@ -106,7 +106,7 @@ const FingerprintBlock = () => {
     },
   ];
 
-  const hash = md5(JSON.stringify(fingerprintData)).toString();
+  const hash = getHash(fingerprintData);
 
   const tableData = [
     {
