@@ -10,14 +10,14 @@ Check it out at https://vytal.io
 
 # Dev
 
-Backend setup:
+Backend Django setup:
 
 ```
 cd backend
 python manage.py runserver
 ```
 
-Frontend setup:
+Frontend React setup:
 
 ```
 cd frontend

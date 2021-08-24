@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import ContentList from './ContentList';
 import ScanBlock from './ScanBlock';
 
@@ -16,32 +15,26 @@ const contentItems = [
   {
     title: 'System Info',
     icon: 'browser',
-    body: 'JavaScript can be used to find data about your computer\'s software and hardware. This information can be used to create a fingerprint.',
+    body: "JavaScript can be used to find data about your computer's software and hardware. This information can be used to create a fingerprint.",
   },
 ];
 
-const StartBlock = ({ onScanClick }) => {
-  const startScan = useCallback(() => {
-    onScanClick(true);
-  }, [onScanClick]);
-
-  return (
-    <ScanBlock>
-      <h2>About</h2>
-      <div className="contentBody">
-        Vytal shows you what traces your browser leaves behind while surfing the
-        web. This scan allows you to understand how easy it is to identify and
-        track your browser even while using private mode.
-      </div>
-      <ContentList items={contentItems} />
-      <input
-        type="submit"
-        onClick={startScan}
-        id="scanButton"
-        value="Scan Browser"
-      />
-    </ScanBlock>
-  );
-};
+const StartBlock = ({ setScan }) => (
+  <ScanBlock>
+    <h2>About</h2>
+    <div className="contentBody">
+      Vytal shows you what traces your browser leaves behind while surfing the
+      web. This scan allows you to understand how easy it is to identify and
+      track your browser even while using private mode.
+    </div>
+    <ContentList items={contentItems} />
+    <input
+      type="submit"
+      onClick={() => setScan(true)}
+      id="scanButton"
+      value="Scan Browser"
+    />
+  </ScanBlock>
+);
 
 export default StartBlock;

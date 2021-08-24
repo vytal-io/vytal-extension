@@ -9,11 +9,7 @@ const MainColumn = () => {
     <div className="centerBlockOuter">
       <div className="centerBlockInner">
         <Logo />
-        {scan ? (
-          <ScanBlocks />
-        ) : (
-          <StartBlock scan={scan} onScanClick={setScan} />
-        )}
+        {scan ? <ScanBlocks /> : <StartBlock scan={scan} setScan={setScan} />}
       </div>
     </div>
   );

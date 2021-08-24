@@ -11,7 +11,7 @@ const FingerprintBlock = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/fingerprint/?hash=${hash}`)
+      .get(`https://api.vytal.io/fingerprint/?hash=${hash}`)
       .then((response) => {
         if (response.data.length !== 0) {
           setName(response.data[response.data.length - 1].name);
@@ -22,7 +22,7 @@ const FingerprintBlock = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/fingerprint/', {
+    axios.post('https://api.vytal.io/fingerprint/', {
       name: e.target[0].value,
       hash,
     });
@@ -134,10 +134,10 @@ const FingerprintBlock = () => {
         )}
       </div>
       <p>
-        <b>Explanation:</b> This is a unique identifier that can be
-        used to follow you around the web. Even if you clear cookies, change
-        your IP or use private mode the hash will stay the same. Enter
-        your name below and reload the page in private mode to test it out.
+        <b>Explanation:</b> This is a unique identifier that can be used to
+        follow you around the web. Even if you clear cookies, change your IP or
+        use private mode the hash will stay the same. Enter your name below and
+        reload the page in private mode to test it out.
       </p>
       {saved ? (
         <p>Success! Re-scan browser.</p>
