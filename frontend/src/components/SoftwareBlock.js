@@ -2,7 +2,7 @@ import ScanBlock from './ScanBlock';
 import Table from './Table';
 import { getSoftware } from './main';
 
-const HardwareBlock = () => (
+const SoftwareBlock = () => (
   <ScanBlock>
     <h1>Software</h1>
     <Table data={getSoftware()} />
@@ -13,4 +13,4 @@ const HardwareBlock = () => (
   </ScanBlock>
 );
 
-export default HardwareBlock;
+export default SoftwareBlock;

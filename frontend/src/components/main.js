@@ -1,5 +1,6 @@
 import md5 from 'crypto-js/md5';
 import Bowser from 'bowser';
+import axios from 'axios';
 
 const getHardware = () => {
   const data = [
@@ -192,67 +193,50 @@ const sortPlugins = (data) => {
   return list;
 };
 
-// const getFingerprint = () => {
-//   const data = [
-//     {
-//       key: 'name',
-//       title: 'Name',
-//       value: name,
-//     },
-//     {
-//       key: 'hash',
-//       title: 'Hash',
-//       value: hash,
-//     },
-//   ];
-//   return data;
-
-// const data = [
-// {
-//   key: 'platform',
-//   value: navigator.platform,
-// },
-// {
-//   key: 'userAgent',
-//   value: navigator.userAgent,
-// },
-// {
-//   key: 'preferredLanguage',
-//   value: navigator.language,
-// },
-// {
-//   key: 'languages',
-//   title: 'Languages',
-//   value: navigator.languages,
-// },
-// {
-//   key: 'timezone',
-//   value: Intl.DateTimeFormat().resolvedOptions().timeZone || 'N/A',
-// },
-// {
-//   key: 'cookiesEnabled',
-//   value: navigator.cookieEnabled,
-// },
-// {
-//   key: 'javaEnabled',
-//   value: navigator.javaEnabled(),
-// },
-// {
-//   key: 'dntHeader',
-//   value: navigator.doNotTrack,
-// },
-// {
-//   key: 'automatedBrowser',
-//   value: navigator.webdriver,
-// },
-// {
-//   key: 'plugins',
-//   value: navigator.plugins,
-// },
-// ];
-//   return data;
-// };
+const getFingerprint = (name, hash) => {
+  const data = [
+    {
+      key: 'name',
+      title: 'Name',
+      value: name,
+    },
+    {
+      key: 'hash',
+      title: 'Hash',
+      value: hash,
+    },
+  ];
+  return data;
+};
 
 const getHash = (data) => md5(JSON.stringify(data)).toString();
 
-export { getHash, getSoftware, getHardware, getWebGL, getBattery };
+const getName = (hash, setName) => {
+  axios
+    .get(`https://api.vytal.io/fingerprint/?hash=${hash}`)
+    .then((response) => {
+      if (response.data.length !== 0) {
+        setName(response.data[response.data.length - 1].name);
+      }
+    });
+};
+
+const handleSave = (e, hash, setSaved) => {
+  e.preventDefault();
+  axios.post('https://api.vytal.io/fingerprint/', {
+    name: e.target[0].value,
+    hash,
+  });
+  setSaved(true);
+};
+
+export {
+  getSoftware,
+  getHardware,
+  getWebGL,
+  getBattery,
+  getFingerprint,
+  getHash,
+  getName,
+  handleSave,
+};
