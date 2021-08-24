@@ -2,6 +2,54 @@ import md5 from 'crypto-js/md5';
 import Bowser from 'bowser';
 import axios from 'axios';
 
+export {
+  getLocation,
+  getSoftware,
+  getHardware,
+  getWebGL,
+  getBattery,
+  getFingerprint,
+  getHash,
+  getName,
+  handleSave,
+};
+
+const getLocation = (locationData) => {
+  const data = [
+    {
+      key: 'country',
+      title: 'Country',
+      value: locationData.country,
+    },
+    {
+      key: 'regionName',
+      title: 'Region',
+      value: locationData.regionName,
+    },
+    {
+      key: 'lat',
+      title: 'City',
+      value: locationData.city,
+    },
+    {
+      key: 'zip',
+      title: 'Zip code',
+      value: locationData.zip,
+    },
+    {
+      key: 'lat',
+      title: 'Latitude',
+      value: locationData.lat,
+    },
+    {
+      key: 'lon',
+      title: 'Longitude',
+      value: locationData.lon,
+    },
+  ];
+  return data;
+};
+
 const getHardware = () => {
   const data = [
     {
@@ -228,15 +276,4 @@ const handleSave = (e, hash, setSaved) => {
     hash,
   });
   setSaved(true);
-};
-
-export {
-  getSoftware,
-  getHardware,
-  getWebGL,
-  getBattery,
-  getFingerprint,
-  getHash,
-  getName,
-  handleSave,
 };
