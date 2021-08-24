@@ -1,9 +1,6 @@
-/* eslint-disable import/prefer-default-export */
 import md5 from 'crypto-js/md5';
+import Bowser from 'bowser';
 
-const getHash = (data) => md5(JSON.stringify(data)).toString();
-
-// Hardware table items
 const getHardware = () => {
   const data = [
     {
@@ -79,4 +76,183 @@ const getWebGL = () => {
   return data;
 };
 
-export { getHash, getHardware, getWebGL, getBattery };
+const getSoftware = () => {
+  const uaResult = Bowser.parse(navigator.userAgent);
+  const date = new Date();
+  const data = [
+    {
+      key: 'browser',
+      title: 'Browser',
+      value: uaResult.browser.name,
+    },
+    {
+      key: 'browserVersion',
+      title: 'Browser version',
+      value: uaResult.browser.version,
+    },
+    {
+      key: 'browserEngine',
+      title: 'Browser engine',
+      value: uaResult.browser.engine || 'N/A',
+    },
+    {
+      key: 'os',
+      title: 'OS',
+      value: `${uaResult.os.name} ${uaResult.os.versionName}`,
+    },
+    {
+      key: 'osVersion',
+      title: 'OS version',
+      value: uaResult.os.version,
+    },
+    {
+      key: 'platform',
+      title: 'Platform',
+      value: navigator.platform,
+    },
+    {
+      key: 'systemType',
+      title: 'System type',
+      value: uaResult.platform.type,
+    },
+    {
+      key: 'userAgent',
+      title: 'User agent',
+      value: navigator.userAgent || 'N/A',
+    },
+    {
+      key: 'preferredLanguage',
+      title: 'Preferred language',
+      value: navigator.language || 'N/A',
+    },
+    {
+      key: 'languages',
+      title: 'Languages',
+      value: sortArr(navigator.languages) || 'N/A',
+    },
+    {
+      key: 'timezone',
+      title: 'Timezone',
+      value: Intl.DateTimeFormat().resolvedOptions().timeZone || 'N/A',
+    },
+    {
+      key: 'timezoneOffset',
+      title: 'Timezone offset',
+      value: date.getTimezoneOffset() || 'N/A',
+    },
+    {
+      key: 'cookiesEnabled',
+      title: 'Cookies enabled',
+      value: navigator.cookieEnabled ? 'True' : 'False',
+    },
+    {
+      key: 'javaEnabled',
+      title: 'Java enabled',
+      value: navigator.javaEnabled() ? 'True' : 'False',
+    },
+    {
+      key: 'dntHeader',
+      title: 'DNT header enabled',
+      value: navigator.doNotTrack ? 'True' : 'False',
+    },
+    {
+      key: 'automatedBrowser',
+      title: 'Automated browser',
+      value: navigator.webdriver ? 'True' : 'False',
+    },
+    {
+      key: 'plugins',
+      title: 'Plugins',
+      value: sortPlugins(navigator.plugins) || 'N/A',
+    },
+  ];
+  return data;
+};
+
+// sorts array into comma separated list
+const sortArr = (arr) => {
+  const arrLength = arr.length;
+  let list = '';
+  for (let i = 0; i < arrLength; i++) {
+    if (i !== 0) list += ', ';
+    list += arr[i];
+  }
+  return list;
+};
+
+// sorts plugins object into comma separated list
+const sortPlugins = (data) => {
+  const { length } = data;
+
+  let list = '';
+  for (let i = 0; i < length; i++) {
+    if (i !== 0) list += ', ';
+    list += data[i].name;
+  }
+  return list;
+};
+
+// const getFingerprint = () => {
+//   const data = [
+//     {
+//       key: 'name',
+//       title: 'Name',
+//       value: name,
+//     },
+//     {
+//       key: 'hash',
+//       title: 'Hash',
+//       value: hash,
+//     },
+//   ];
+//   return data;
+
+// const data = [
+// {
+//   key: 'platform',
+//   value: navigator.platform,
+// },
+// {
+//   key: 'userAgent',
+//   value: navigator.userAgent,
+// },
+// {
+//   key: 'preferredLanguage',
+//   value: navigator.language,
+// },
+// {
+//   key: 'languages',
+//   title: 'Languages',
+//   value: navigator.languages,
+// },
+// {
+//   key: 'timezone',
+//   value: Intl.DateTimeFormat().resolvedOptions().timeZone || 'N/A',
+// },
+// {
+//   key: 'cookiesEnabled',
+//   value: navigator.cookieEnabled,
+// },
+// {
+//   key: 'javaEnabled',
+//   value: navigator.javaEnabled(),
+// },
+// {
+//   key: 'dntHeader',
+//   value: navigator.doNotTrack,
+// },
+// {
+//   key: 'automatedBrowser',
+//   value: navigator.webdriver,
+// },
+// {
+//   key: 'plugins',
+//   value: navigator.plugins,
+// },
+// ];
+//   return data;
+// };
+
+const getHash = (data) => md5(JSON.stringify(data)).toString();
+
+export { getHash, getSoftware, getHardware, getWebGL, getBattery };

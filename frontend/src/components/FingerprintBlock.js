@@ -1,15 +1,19 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { getHash } from './main';
+import { getHash, getHardware, getWebGL, getBattery } from './main';
 
 const FingerprintBlock = () => {
+  const [data, setData] = useState([]);
   const [name, setName] = useState('');
   const [saved, setSaved] = useState('');
   const [display, setDisplay] = useState('none');
 
   useEffect(() => {
+    setData([...getHardware(), ...getWebGL()]);
+
     axios
       .get(`https://api.vytal.io/fingerprint/?hash=${hash}`)
       .then((response) => {
@@ -29,84 +33,7 @@ const FingerprintBlock = () => {
     setSaved(true);
   };
 
-  const gl = document.createElement('canvas').getContext('webgl');
-  const ext = gl.getExtension('WEBGL_debug_renderer_info');
-
-  const fingerprintData = [
-    {
-      key: 'screenResolution',
-      value: `${window.screen.width}x${window.screen.height}`,
-    },
-    {
-      key: 'colorResolution',
-      value: window.screen.colorDepth,
-    },
-    {
-      key: 'deviceMemory',
-      value: navigator.deviceMemory ? `${navigator.deviceMemory}GB` : 'N/A',
-    },
-    {
-      key: 'cpuCores',
-      value: navigator.hardwareConcurrency || 'N/A',
-    },
-    {
-      key: 'maxTouchpoints',
-      value: navigator.maxTouchPoints,
-    },
-    {
-      key: 'webGLVendor',
-      title: 'WebGL vendor',
-      value: gl.getParameter(ext.UNMASKED_VENDOR_WEBGL),
-    },
-    {
-      key: 'webglRenderer',
-      title: 'WebGL renderer',
-      value: gl.getParameter(ext.UNMASKED_RENDERER_WEBGL),
-    },
-    {
-      key: 'platform',
-      value: navigator.platform,
-    },
-    {
-      key: 'userAgent',
-      value: navigator.userAgent,
-    },
-    {
-      key: 'preferredLanguage',
-      value: navigator.language,
-    },
-    {
-      key: 'languages',
-      title: 'Languages',
-      value: navigator.languages,
-    },
-    {
-      key: 'timezone',
-      value: Intl.DateTimeFormat().resolvedOptions().timeZone || 'N/A',
-    },
-    {
-      key: 'cookiesEnabled',
-      value: navigator.cookieEnabled,
-    },
-    {
-      key: 'javaEnabled',
-      value: navigator.javaEnabled(),
-    },
-    {
-      key: 'dntHeader',
-      value: navigator.doNotTrack,
-    },
-    {
-      key: 'automatedBrowser',
-      value: navigator.webdriver,
-    },
-    {
-      key: 'plugins',
-      value: navigator.plugins,
-    },
-  ];
-
-  const hash = getHash(fingerprintData);
+  const hash = getHash(data);
 
   const tableData = [
     {
