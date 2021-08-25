@@ -6,8 +6,7 @@ from django.http import JsonResponse
 from ipware import get_client_ip
 import urllib.request
 import json
-
-# Create your views here.
+from secret_settings import *
 
 
 class FingerprintView(viewsets.ModelViewSet):
@@ -19,6 +18,6 @@ class FingerprintView(viewsets.ModelViewSet):
 
 def IPView(request):
     ip = get_client_ip(request)
-    with urllib.request.urlopen("https://pro.ip-api.com/json/" + ip[0] + "?key=98U6i1Sr4HluY00") as url:
+    with urllib.request.urlopen("https://pro.ip-api.com/json/" + ip[0] + "?key=" + API_KEY) as url:
         data = json.loads(url.read().decode())
         return JsonResponse(data)
