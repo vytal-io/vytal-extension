@@ -174,11 +174,11 @@ const getSoftware = () => {
       title: 'Preferred language',
       value: navigator.language || 'N/A',
     },
-    {
-      key: 'languages',
-      title: 'Languages',
-      value: sortArr(navigator.languages) || 'N/A',
-    },
+    // {
+    //   key: 'languages',
+    //   title: 'Languages',
+    //   value: sortArr(navigator.languages) || 'N/A',
+    // },
     {
       key: 'timezone',
       title: 'Timezone',
@@ -219,15 +219,15 @@ const getSoftware = () => {
 };
 
 // sorts array into comma separated list
-const sortArr = (arr) => {
-  const arrLength = arr.length;
-  let list = '';
-  for (let i = 0; i < arrLength; i++) {
-    if (i !== 0) list += ', ';
-    list += arr[i];
-  }
-  return list;
-};
+// const sortArr = (arr) => {
+//   const arrLength = arr.length;
+//   let list = '';
+//   for (let i = 0; i < arrLength; i++) {
+//     if (i !== 0) list += ', ';
+//     list += arr[i];
+//   }
+//   return list;
+// };
 
 // sorts plugins object into comma separated list
 const sortPlugins = (data) => {
