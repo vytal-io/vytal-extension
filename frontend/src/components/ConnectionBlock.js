@@ -1,63 +1,23 @@
 import { useState, useEffect } from 'react';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
+import { getConnection } from './main';
 
 const ConnectionBlock = () => {
-  const [connectData, setConnectData] = useState('');
+  const [data, setData] = useState('');
   const [display, setDisplay] = useState('');
 
   useEffect(() => {
     fetch('https://api.vytal.io/ip/')
       .then((response) => response.json())
-      .then((data) => {
-        setConnectData(data);
+      .then((json) => {
+        setData(getConnection(json));
         setDisplay(1);
       })
       .catch(() => {
         setDisplay(0);
       });
   }, []);
-
-  const detectTor = () => {
-    const date = new Date();
-    if (
-      navigator.plugins.length === 0 &&
-      date.getTimezoneOffset() === 0 &&
-      window.outerWidth === window.screen.availWidth &&
-      window.outerHeight === window.screen.availHeight
-    ) {
-      return true;
-    }
-    return false;
-  };
-
-  const data = [
-    {
-      key: 'ipAddress',
-      title: 'IP address',
-      value: connectData.query,
-    },
-    {
-      key: 'isp',
-      title: 'ISP',
-      value: connectData.isp,
-    },
-    {
-      key: 'org',
-      title: 'Organization',
-      value: connectData.org,
-    },
-    {
-      key: 'asn',
-      title: 'ASN',
-      value: connectData.as,
-    },
-    {
-      key: 'tor',
-      title: 'Tor browser detected',
-      value: detectTor() ? 'True' : 'False',
-    },
-  ];
 
   return (
     <ScanBlock>

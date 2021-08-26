@@ -4,6 +4,8 @@ import axios from 'axios';
 
 export {
   getLocation,
+  getConnection,
+  detectTor,
   getSoftware,
   getHardware,
   getWebGL,
@@ -14,40 +16,84 @@ export {
   handleSave,
 };
 
-const getLocation = (locationData) => {
+const getLocation = (json) => {
   const data = [
     {
       key: 'country',
       title: 'Country',
-      value: locationData.country,
+      value: json.country,
     },
     {
       key: 'regionName',
       title: 'Region',
-      value: locationData.regionName,
+      value: json.regionName,
     },
     {
       key: 'lat',
       title: 'City',
-      value: locationData.city,
+      value: json.city,
     },
     {
       key: 'zip',
       title: 'Zip code',
-      value: locationData.zip,
+      value: json.zip,
     },
     {
       key: 'lat',
       title: 'Latitude',
-      value: locationData.lat,
+      value: json.lat,
     },
     {
       key: 'lon',
       title: 'Longitude',
-      value: locationData.lon,
+      value: json.lon,
     },
   ];
   return data;
+};
+
+const getConnection = (json) => {
+  const data = [
+    {
+      key: 'ipAddress',
+      title: 'IP address',
+      value: json.query,
+    },
+    {
+      key: 'isp',
+      title: 'ISP',
+      value: json.isp,
+    },
+    {
+      key: 'org',
+      title: 'Organization',
+      value: json.org,
+    },
+    {
+      key: 'asn',
+      title: 'ASN',
+      value: json.as,
+    },
+    {
+      key: 'tor',
+      title: 'Tor browser detected',
+      value: detectTor() ? 'True' : 'False',
+    },
+  ];
+  return data;
+};
+
+const detectTor = () => {
+  const date = new Date();
+  if (
+    navigator.plugins.length === 0 &&
+    date.getTimezoneOffset() === 0 &&
+    window.outerWidth === window.screen.availWidth &&
+    window.outerHeight === window.screen.availHeight
+  ) {
+    return true;
+  }
+  return false;
 };
 
 const getHardware = () => {
