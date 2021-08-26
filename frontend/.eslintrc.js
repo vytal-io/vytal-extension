@@ -25,6 +25,7 @@ module.exports = {
     'one-var': 'off',
     'one-var-declaration-per-line': 'off',
     'object-curly-newline': 'off',
+    'implicit-arrow-linebreak': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

@@ -3,7 +3,9 @@ import Bowser from 'bowser';
 import axios from 'axios';
 
 export {
+  fetchAPI,
   getLocation,
+  getMap,
   getConnection,
   detectTor,
   getSoftware,
@@ -14,6 +16,18 @@ export {
   getHash,
   getName,
   handleSave,
+};
+
+const fetchAPI = (setData, setDisplay) => {
+  fetch('https://api.vytal.io/ip/')
+    .then((response) => response.json())
+    .then((json) => {
+      setData(json);
+      setDisplay(1);
+    })
+    .catch(() => {
+      setDisplay(0);
+    });
 };
 
 const getLocation = (json) => {
@@ -51,6 +65,9 @@ const getLocation = (json) => {
   ];
   return data;
 };
+
+const getMap = (data) =>
+  `https://maps.googleapis.com/maps/api/staticmap?center=${data.lat},${data.lon}&markers=color:red%7Clabel:%7C${data.lat},${data.lon}&size=500x200&zoom=10&key=AIzaSyB-YN-X8PGBSPd7NOaQu4csVhgJUnF3ZGk`;
 
 const getConnection = (json) => {
   const data = [

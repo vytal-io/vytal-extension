@@ -1,28 +1,20 @@
 import { useState, useEffect } from 'react';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { getConnection } from './main';
+import { fetchAPI, getConnection } from './main';
 
 const ConnectionBlock = () => {
   const [data, setData] = useState('');
   const [display, setDisplay] = useState('');
 
   useEffect(() => {
-    fetch('https://api.vytal.io/ip/')
-      .then((response) => response.json())
-      .then((json) => {
-        setData(getConnection(json));
-        setDisplay(1);
-      })
-      .catch(() => {
-        setDisplay(0);
-      });
+    fetchAPI(setData, setDisplay);
   }, []);
 
   return (
     <ScanBlock>
       <h1>Connection</h1>
-      {display === 1 && <Table data={data} />}
+      {display === 1 && <Table data={getConnection(data)} />}
       {display === 0 && (
         <div className="boxWrap">
           Unable to fetch info. Adblock or content filter may have prevented
