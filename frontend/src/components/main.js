@@ -322,13 +322,14 @@ const getFingerprint = (name, hash) => {
 
 const getHash = (data) => md5(JSON.stringify(data)).toString();
 
-const getName = (hash, setName) => {
+const getName = (hash, setName, setLoad) => {
   axios
     .get(`https://api.vytal.io/fingerprint/?hash=${hash}`)
     .then((response) => {
       if (response.data.length !== 0) {
         setName(response.data[response.data.length - 1].name);
       }
+      setLoad(true);
     });
 };
 

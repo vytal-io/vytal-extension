@@ -13,18 +13,23 @@ import {
 
 const FingerprintBlock = () => {
   const [name, setName] = useState('');
+  const [load, setLoad] = useState(false);
   const [saved, setSaved] = useState('');
   const hash = getHash([...getHardware(), ...getWebGL(), ...getSoftware()]);
-  getName(hash, setName);
+  getName(hash, setName, setLoad);
   return (
     <ScanBlock>
       <h1>Fingerprint</h1>
-      {name ? (
-        <Table data={getFingerprint(name, hash)} />
-      ) : (
-        <div className="boxWrap">
-          <div className="hash">{hash}</div>
-        </div>
+      {load && (
+        <>
+          {name ? (
+            <Table data={getFingerprint(name, hash)} />
+          ) : (
+            <div className="boxWrap">
+              <div className="hash">{hash}</div>
+            </div>
+          )}
+        </>
       )}
       <p>
         <b>Explanation:</b> This is a unique identifier that can be used to
