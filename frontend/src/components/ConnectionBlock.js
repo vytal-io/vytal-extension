@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
 
-const ConnectBlock = () => {
+const ConnectionBlock = () => {
   const [connectData, setConnectData] = useState('');
   const [display, setDisplay] = useState('');
 
@@ -65,7 +65,8 @@ const ConnectBlock = () => {
       {display === 1 && <Table data={data} />}
       {display === 0 && (
         <div className="boxWrap">
-          Unable to fetch info. Adblock or content filter may have prevented data from loading.
+          Unable to fetch info. Adblock or content filter may have prevented
+          data from loading.
         </div>
       )}
       <p>
@@ -76,4 +77,4 @@ const ConnectBlock = () => {
   );
 };
 
-export default ConnectBlock;
+export default ConnectionBlock;
