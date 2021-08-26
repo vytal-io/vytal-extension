@@ -177,12 +177,12 @@ const getWebGL = () => {
     {
       key: 'webGLVendor',
       title: 'WebGL vendor',
-      value: gl.getParameter(ext.UNMASKED_VENDOR_WEBGL),
+      value: ext ? gl.getParameter(ext.UNMASKED_VENDOR_WEBGL) : 'N/A',
     },
     {
       key: 'webglRenderer',
       title: 'WebGL renderer',
-      value: gl.getParameter(ext.UNMASKED_RENDERER_WEBGL),
+      value: ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : 'N/A',
     },
   ];
   return data;
