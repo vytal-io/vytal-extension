@@ -8,7 +8,7 @@ Vytal contains no ads and signup is not required.
 
 Check it out at https://vytal.io
 
-![Video of Vytal](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/vytal_video.webp)
+<!-- ![Video of Vytal](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/vytal_video.webp) -->
 
 # Dev
 
