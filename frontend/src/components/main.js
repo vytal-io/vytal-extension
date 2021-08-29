@@ -172,7 +172,13 @@ const getBattery = async () => {
 
 const getWebGL = () => {
   const gl = document.createElement('canvas').getContext('webgl');
-  const ext = gl.getExtension('WEBGL_debug_renderer_info');
+  let ext;
+  if (gl) {
+    ext = gl.getExtension('WEBGL_debug_renderer_info');
+  } else {
+    ext = null;
+  }
+
   const data = [
     {
       key: 'webGLVendor',
