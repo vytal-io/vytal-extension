@@ -17,7 +17,7 @@ const NavigatorBlock = () => {
 
   return (
     <ScanBlock>
-      <h1>Hardware</h1>
+      <h1>Navigator</h1>
       <NewTable data={getNavigator()} />
       <p>
         <b>Explanation:</b> JavaScript can be used to find information about

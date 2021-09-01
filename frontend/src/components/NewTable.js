@@ -1,12 +1,14 @@
+import { checkUndefinedProperties } from './navigator';
+
 const Table = ({ data }) => (
   <div className="tableWrap">
     <table>
       {data.map((item) => (
-        <tbody key={item.title}>
+        <tbody key={item.key}>
           <tr>
             <td>{item.title}</td>
             <td>{item.value}</td>
-            <td>{item.test}</td>
+            <td>{checkUndefinedProperties(item)}</td>
           </tr>
         </tbody>
       ))}
