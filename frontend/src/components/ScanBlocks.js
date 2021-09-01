@@ -1,3 +1,4 @@
+import NavigatorBlock from './NavigatorBlock';
 import FingerprintBlock from './FingerprintBlock';
 import LocationBlock from './LocationBlock';
 import HardwareBlock from './HardwareBlock';
@@ -8,6 +9,7 @@ import FiltersBlock from './FiltersBlock';
 
 const ScanBlocks = () => (
   <>
+    <NavigatorBlock />
     <FingerprintBlock />
     <LocationBlock />
     <ConnectionBlock />
