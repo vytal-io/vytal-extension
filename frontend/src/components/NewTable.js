@@ -1,3 +1,4 @@
+import parse from 'html-react-parser';
 import { checkUndefinedProperties } from './navigator';
 
 const Table = ({ data }) => (
@@ -8,7 +9,7 @@ const Table = ({ data }) => (
           <tr>
             <td>{item.title}</td>
             <td>{item.value}</td>
-            <td>{checkUndefinedProperties(item)}</td>
+            <td>{parse(checkUndefinedProperties(item))}</td>
           </tr>
         </tbody>
       ))}

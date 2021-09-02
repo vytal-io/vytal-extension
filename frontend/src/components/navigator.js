@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 export { getNavigator, checkUndefinedProperties };
 
 const getNavigator = () => {
@@ -5,7 +6,7 @@ const getNavigator = () => {
     {
       key: 'deviceMemory',
       title: 'Device memory',
-      value: navigator.deviceMemory ? `${navigator.deviceMemory}GB` : 'N/A',
+      value: navigator.deviceMemory || 'N/A',
     },
     {
       key: 'hardwareConcurrency',
@@ -133,9 +134,33 @@ const checkUndefinedProperties = (obj) => {
   ) {
     list.push('Failed descriptor.value undefined');
   }
-  // console.log(obj.prototype.constructor.name);
-  // if (obj.prototype.constructor.name === 'Number') {
-  //   list.push('Failed constructor name');
+  try {
+    // eslint-disable-next-line no-unused-vars
+    const check = Navigator.prototype[obj.key];
+    list.push('Failed Navigator.prototype');
+  } catch (err) {
+    // eslint-disable-next-line no-unused-vars
+    const check = '';
+  }
+  // let frame = document.getElementById('testFrame');
+  // if (!frame) {
+  //   frame = document.createElement('iframe');
+  //   frame.setAttribute('id', 'testFrame');
+  //   document.body.appendChild(frame);
   // }
-  return list;
+  // console.log(navigator.hardwareConcurrency);
+  let w;
+  if (typeof Worker !== 'undefined') {
+    if (typeof w === 'undefined') {
+      w = new Worker('/worker.js');
+    }
+    w.onmessage = (event) => {
+      console.log(event);
+    };
+  } else {
+    document.getElementById('result').innerHTML =
+      'Sorry! No Web Worker support.';
+  }
+
+  return list.toString().split(',').join('<br />');
 };
