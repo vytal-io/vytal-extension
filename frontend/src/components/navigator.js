@@ -1,42 +1,42 @@
 /* eslint-disable dot-notation */
-export { getNavigator, checkUndefinedProperties };
+export { getNavigator, checkUndefinedProperties, checkWebWorker };
 
 const getNavigator = () => {
   const data = [
     {
       key: 'deviceMemory',
       title: 'Device memory',
-      value: navigator.deviceMemory || 'N/A',
+      value: navigator.deviceMemory,
     },
     {
       key: 'hardwareConcurrency',
       title: 'Hardware Concurrency',
-      value: navigator.hardwareConcurrency || 'N/A',
+      value: navigator.hardwareConcurrency,
     },
     {
       key: 'maxTouchPoints',
       title: 'Max touchpoints',
-      value: navigator.maxTouchPoints || 'N/A',
+      value: navigator.maxTouchPoints,
     },
     {
       key: 'platform',
       title: 'Platform',
-      value: navigator.platform || 'N/A',
+      value: navigator.platform,
     },
     {
       key: 'userAgent',
       title: 'User agent',
-      value: navigator.userAgent || 'N/A',
+      value: navigator.userAgent,
     },
     {
       key: 'language',
       title: 'Language',
-      value: navigator.language || 'N/A',
+      value: navigator.language,
     },
     {
       key: 'languages',
       title: 'Languages',
-      value: navigator.languages || 'N/A',
+      value: navigator.languages,
     },
     {
       key: 'cookieEnabled',
@@ -56,30 +56,30 @@ const getNavigator = () => {
     {
       key: 'plugins',
       title: 'Plugins',
-      value: sortPlugins(navigator.plugins) || 'N/A',
+      value: sortPlugins(navigator.plugins),
     },
     // {
     //   key: 'connection',
     //   title: 'Connection',
-    //   value: JSON.stringify(navigator.connection) || 'N/A',
+    //   value: JSON.stringify(navigator.connection),
     //       prototype: Navigator.prototype.hardwareConcurrency,
     // },
     // {
     //   key: 'geolocation',
     //   title: 'Geolocation',
-    //   value: navigator.geolocation || 'N/A',
+    //   value: navigator.geolocation,
     //       prototype: Navigator.prototype.hardwareConcurrency,
     // },
     // {
     //   key: 'hid',
     //   title: 'Hid',
-    //   value: navigator.hid || 'N/A',
+    //   value: navigator.hid,
     //       prototype: Navigator.prototype.hardwareConcurrency,
     // },
     // {
     //   key: 'keyboard',
     //   title: 'Keyboard',
-    //   value: navigator.keyboard || 'N/A',
+    //   value: navigator.keyboard,
     //       prototype: Navigator.prototype.hardwareConcurrency,
     // },
     {
@@ -90,22 +90,17 @@ const getNavigator = () => {
     {
       key: 'vendor',
       title: 'Vendor',
-      value: navigator.vendor || 'N/A',
+      value: navigator.vendor,
     },
     {
       key: 'appVersion',
       title: 'App version',
-      value: navigator.appVersion || 'N/A',
+      value: navigator.appVersion,
     },
     {
       key: 'productSub',
       title: 'Product sub',
-      value: navigator.productSub || 'N/A',
-    },
-    {
-      key: 'vendorSub',
-      title: 'Vendor sub',
-      value: navigator.vendorSub || 'N/A',
+      value: navigator.productSub,
     },
   ];
   return data;
@@ -149,18 +144,23 @@ const checkUndefinedProperties = (obj) => {
   //   document.body.appendChild(frame);
   // }
   // console.log(navigator.hardwareConcurrency);
-  let w;
-  if (typeof Worker !== 'undefined') {
-    if (typeof w === 'undefined') {
-      w = new Worker('/worker.js');
-    }
-    w.onmessage = (event) => {
-      console.log(event);
-    };
-  } else {
-    document.getElementById('result').innerHTML =
-      'Sorry! No Web Worker support.';
-  }
 
   return list.toString().split(',').join('<br />');
+};
+
+const checkWebWorker = (obj, setWorkerData) => {
+  let w;
+  if (typeof w === 'undefined') {
+    w = new Worker('/worker.js');
+  }
+  w.postMessage(obj.key);
+  w.onmessage = (event) => {
+    if (
+      event.data !== undefined &&
+      event.data.toString() !== navigator[obj.key].toString()
+    ) {
+      console.log(event.data, navigator[obj.key]);
+      setWorkerData('Did not match web worker');
+    }
+  };
 };

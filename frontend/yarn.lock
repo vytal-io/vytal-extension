@@ -9134,6 +9134,11 @@ react-tsparticles@^1.28.0:
     tslib "^2.2.0"
     tsparticles "^1.28.0"
 
+react-webworker@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-webworker/-/react-webworker-2.1.0.tgz#6bfe5d74d3f3e5bae89f316b8760b3e8cc551420"
+  integrity sha512-Rl0LeJa7zAQHAZ5KpyWQ/7aHcdy6AKJcJI7UIGlFo2e2sJw7u87hg4ck1cWb70DO0PrW0NwNZrMCgTi23g09JQ==
+
 react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
