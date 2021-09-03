@@ -1,11 +1,11 @@
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { getNavigator } from './navigator';
+import { getScreen } from './navigator';
 
-const NavigatorBlock = () => (
+const ScreenBlock = () => (
   <ScanBlock>
-    <h1>Navigator</h1>
-    <Table type="navigator" data={getNavigator()} />
+    <h1>Screen</h1>
+    <Table type="screen" data={getScreen()} />
     <p>
       <b>Explanation:</b> JavaScript can be used to find information about your
       hardware. This information can be used to create a fingerprint.
@@ -13,4 +13,4 @@ const NavigatorBlock = () => (
   </ScanBlock>
 );
 
-export default NavigatorBlock;
+export default ScreenBlock;

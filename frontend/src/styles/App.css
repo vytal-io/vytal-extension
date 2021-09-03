@@ -3,6 +3,9 @@
   --grey: #9fa6b2;
   --text: #4b5563;
   --border: #ddd;
+  --issueBackground: #f8d7da;
+  --issueBorder: #f5c6cb;
+  --issueText: #721c24;
 }
 
 .App {
@@ -148,7 +151,6 @@ tr:hover {
 td {
   vertical-align: top;
   padding: 12px;
-  word-break: break-all;
 }
 
 td:first-child {
@@ -203,6 +205,12 @@ input[type='text'] {
 
 #saveButton:hover {
   background-color: var(--border);
+}
+
+.issue {
+  background-color: var(--issueBackground);
+  color: var(--issueText);
+  border: 1px solid var(--issueBorder);
 }
 
 @media screen and (max-width: 500px) {

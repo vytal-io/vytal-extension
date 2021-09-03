@@ -1,5 +1,11 @@
 /* eslint-disable dot-notation */
-export { getNavigator, checkUndefinedProperties, checkWebWorker };
+export {
+  getNavigator,
+  checkNavigatorProperties,
+  checkWebWorker,
+  getScreen,
+  checkScreenProperties,
+};
 
 const getNavigator = () => {
   const data = [
@@ -7,100 +13,85 @@ const getNavigator = () => {
       key: 'deviceMemory',
       title: 'Device memory',
       value: navigator.deviceMemory,
+      issues: checkNavigatorProperties('deviceMemory'),
     },
     {
       key: 'hardwareConcurrency',
       title: 'Hardware Concurrency',
       value: navigator.hardwareConcurrency,
+      issues: checkNavigatorProperties('hardwareConcurrency'),
     },
     {
       key: 'maxTouchPoints',
       title: 'Max touchpoints',
       value: navigator.maxTouchPoints,
+      issues: checkNavigatorProperties('maxTouchPoints'),
     },
     {
       key: 'platform',
       title: 'Platform',
       value: navigator.platform,
+      issues: checkNavigatorProperties('platform'),
     },
     {
       key: 'userAgent',
       title: 'User agent',
       value: navigator.userAgent,
+      issues: checkNavigatorProperties('userAgent'),
     },
     {
       key: 'language',
       title: 'Language',
-      value: navigator.language,
+      value: navigator.userAgent,
+      issues: checkNavigatorProperties('userAgent'),
     },
     {
       key: 'languages',
       title: 'Languages',
       value: navigator.languages,
+      issues: checkNavigatorProperties('languages'),
     },
     {
       key: 'cookieEnabled',
       title: 'Cookies enabled',
       value: navigator.cookieEnabled ? 'True' : 'False',
+      issues: checkNavigatorProperties('cookieEnabled'),
     },
     {
       key: 'doNotTrack',
       title: 'Do not track header',
       value: navigator.doNotTrack ? 'True' : 'False',
+      issues: checkNavigatorProperties('doNotTrack'),
     },
     {
       key: 'webdriver',
       title: 'Webdriver',
       value: navigator.webdriver ? 'True' : 'False',
+      issues: checkNavigatorProperties('webdriver'),
     },
     {
       key: 'plugins',
       title: 'Plugins',
       value: sortPlugins(navigator.plugins),
-    },
-    // {
-    //   key: 'connection',
-    //   title: 'Connection',
-    //   value: JSON.stringify(navigator.connection),
-    //       prototype: Navigator.prototype.hardwareConcurrency,
-    // },
-    // {
-    //   key: 'geolocation',
-    //   title: 'Geolocation',
-    //   value: navigator.geolocation,
-    //       prototype: Navigator.prototype.hardwareConcurrency,
-    // },
-    // {
-    //   key: 'hid',
-    //   title: 'Hid',
-    //   value: navigator.hid,
-    //       prototype: Navigator.prototype.hardwareConcurrency,
-    // },
-    // {
-    //   key: 'keyboard',
-    //   title: 'Keyboard',
-    //   value: navigator.keyboard,
-    //       prototype: Navigator.prototype.hardwareConcurrency,
-    // },
-    {
-      key: 'onLine',
-      title: 'Online',
-      value: navigator.onLine ? 'True' : 'False',
+      issues: checkNavigatorProperties('plugins'),
     },
     {
       key: 'vendor',
       title: 'Vendor',
       value: navigator.vendor,
+      issues: checkNavigatorProperties('vendor'),
     },
     {
       key: 'appVersion',
       title: 'App version',
       value: navigator.appVersion,
+      issues: checkNavigatorProperties('appVersion'),
     },
     {
       key: 'productSub',
       title: 'Product sub',
       value: navigator.productSub,
+      issues: checkNavigatorProperties('productSub'),
     },
   ];
   return data;
@@ -118,33 +109,25 @@ const sortPlugins = (data) => {
   return list;
 };
 
-const checkUndefinedProperties = (obj) => {
+const checkNavigatorProperties = (key) => {
   const list = [];
-  if (Object.getOwnPropertyDescriptor(navigator, obj.key) !== undefined) {
+  if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
     list.push('Failed undefined properties');
   }
   if (
-    Object.getOwnPropertyDescriptor(Navigator.prototype, obj.key).value !==
+    Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
     undefined
   ) {
     list.push('Failed descriptor.value undefined');
   }
   try {
     // eslint-disable-next-line no-unused-vars
-    const check = Navigator.prototype[obj.key];
+    const check = Navigator.prototype[key];
     list.push('Failed Navigator.prototype');
   } catch (err) {
     // eslint-disable-next-line no-unused-vars
     const check = '';
   }
-  // let frame = document.getElementById('testFrame');
-  // if (!frame) {
-  //   frame = document.createElement('iframe');
-  //   frame.setAttribute('id', 'testFrame');
-  //   document.body.appendChild(frame);
-  // }
-  // console.log(navigator.hardwareConcurrency);
-
   return list.toString().split(',').join('<br />');
 };
 
@@ -159,8 +142,81 @@ const checkWebWorker = (obj, setWorkerData) => {
       event.data !== undefined &&
       event.data.toString() !== navigator[obj.key].toString()
     ) {
-      console.log(event.data, navigator[obj.key]);
-      setWorkerData('Did not match web worker');
+      setWorkerData('<br />Did not match web worker');
     }
   };
+};
+
+const getScreen = () => {
+  const data = [
+    {
+      key: 'width',
+      title: 'Width',
+      value: window.screen.width,
+      issues: checkScreenProperties('width'),
+    },
+    // {
+    //   key: 'outerWidth',
+    //   title: 'Outer width',
+    //   value: window.outerWidth,
+    // },
+    {
+      key: 'availWidth',
+      title: 'Avail width',
+      value: window.screen.availWidth,
+      issues: checkScreenProperties('availWidth'),
+    },
+    {
+      key: 'height',
+      title: 'Height',
+      value: window.screen.height,
+      issues: checkScreenProperties('height'),
+    },
+    // {
+    //   key: 'outerHeight',
+    //   title: 'Outer height',
+    //   value: window.outerHeight,
+    // },
+    {
+      key: 'availHeight',
+      title: 'Avail height',
+      value: window.screen.availHeight,
+      issues: checkScreenProperties('availHeight'),
+    },
+    {
+      key: 'pixelDepth',
+      title: 'Pixel depth',
+      value: window.screen.pixelDepth,
+      issues: checkScreenProperties('pixelDepth'),
+    },
+    {
+      key: 'colorDepth',
+      title: 'Color depth',
+      value: window.screen.colorDepth,
+      issues: checkScreenProperties('colorDepth'),
+    },
+  ];
+  return data;
+};
+
+const checkScreenProperties = (key) => {
+  const list = [];
+  if (Object.getOwnPropertyDescriptor(window.screen, key) !== undefined) {
+    list.push('Failed undefined properties');
+  }
+  if (
+    Object.getOwnPropertyDescriptor(Screen.prototype, key).value !== undefined
+  ) {
+    list.push('Failed descriptor.value undefined');
+  }
+  try {
+    // eslint-disable-next-line no-unused-vars
+    const check = Screen.prototype[key];
+    list.push('Failed Navigator.prototype');
+  } catch (err) {
+    // eslint-disable-next-line no-unused-vars
+    const check = '';
+  }
+
+  return list.toString().split(',').join('<br />');
 };
