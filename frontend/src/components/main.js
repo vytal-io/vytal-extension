@@ -7,95 +7,120 @@ export {
   checkScreenProperties,
 };
 
-const getNavigator = () => {
-  const data = [
-    {
-      key: 'deviceMemory',
-      title: 'Device memory',
-      value: navigator.deviceMemory,
-      issues: checkNavigatorProperties('deviceMemory'),
-    },
-    {
-      key: 'hardwareConcurrency',
-      title: 'Hardware Concurrency',
-      value: navigator.hardwareConcurrency,
-      issues: checkNavigatorProperties('hardwareConcurrency'),
-    },
-    {
-      key: 'maxTouchPoints',
-      title: 'Max touchpoints',
-      value: navigator.maxTouchPoints,
-      issues: checkNavigatorProperties('maxTouchPoints'),
-    },
-    {
-      key: 'platform',
-      title: 'Platform',
-      value: navigator.platform,
-      issues: checkNavigatorProperties('platform'),
-    },
-    {
-      key: 'userAgent',
-      title: 'User agent',
-      value: navigator.userAgent,
-      issues: checkNavigatorProperties('userAgent'),
-    },
-    {
-      key: 'language',
-      title: 'Language',
-      value: navigator.userAgent,
-      issues: checkNavigatorProperties('userAgent'),
-    },
-    {
-      key: 'languages',
-      title: 'Languages',
-      value: navigator.languages,
-      issues: checkNavigatorProperties('languages'),
-    },
-    {
-      key: 'cookieEnabled',
-      title: 'Cookies enabled',
-      value: navigator.cookieEnabled ? 'True' : 'False',
-      issues: checkNavigatorProperties('cookieEnabled'),
-    },
-    {
-      key: 'doNotTrack',
-      title: 'Do not track header',
-      value: navigator.doNotTrack ? 'True' : 'False',
-      issues: checkNavigatorProperties('doNotTrack'),
-    },
-    {
-      key: 'webdriver',
-      title: 'Webdriver',
-      value: navigator.webdriver ? 'True' : 'False',
-      issues: checkNavigatorProperties('webdriver'),
-    },
-    {
-      key: 'plugins',
-      title: 'Plugins',
-      value: sortPlugins(navigator.plugins),
-      issues: checkNavigatorProperties('plugins'),
-    },
-    {
-      key: 'vendor',
-      title: 'Vendor',
-      value: navigator.vendor,
-      issues: checkNavigatorProperties('vendor'),
-    },
-    {
-      key: 'appVersion',
-      title: 'App version',
-      value: navigator.appVersion,
-      issues: checkNavigatorProperties('appVersion'),
-    },
-    {
-      key: 'productSub',
-      title: 'Product sub',
-      value: navigator.productSub,
-      issues: checkNavigatorProperties('productSub'),
-    },
-  ];
-  return data;
-};
+const getDeviceMemory = () => ({
+  key: 'deviceMemory',
+  title: 'Device memory',
+  value: navigator.deviceMemory,
+  issues: checkNavigatorProperties('deviceMemory'),
+});
+
+const getHardwareConcurrency = () => ({
+  key: 'hardwareConcurrency',
+  title: 'Hardware Concurrency',
+  value: navigator.hardwareConcurrency,
+  issues: checkNavigatorProperties('hardwareConcurrency'),
+});
+
+const getMaxTouchPoints = () => ({
+  key: 'maxTouchPoints',
+  title: 'Max touchpoints',
+  value: navigator.maxTouchPoints,
+  issues: checkNavigatorProperties('maxTouchPoints'),
+});
+
+const getPlatform = () => ({
+  key: 'platform',
+  title: 'Platform',
+  value: navigator.platform,
+  issues: checkNavigatorProperties('platform'),
+});
+
+const getUserAgent = () => ({
+  key: 'userAgent',
+  title: 'User agent',
+  value: navigator.userAgent,
+  issues: checkNavigatorProperties('userAgent'),
+});
+
+const getLanguage = () => ({
+  key: 'userAgent',
+  title: 'User agent',
+  value: navigator.userAgent,
+  issues: checkNavigatorProperties('userAgent'),
+});
+
+const getLanguages = () => ({
+  key: 'languages',
+  title: 'Languages',
+  value: navigator.languages,
+  issues: checkNavigatorProperties('languages'),
+});
+
+const getCookieEnabled = () => ({
+  key: 'cookieEnabled',
+  title: 'Cookies enabled',
+  value: navigator.cookieEnabled ? 'True' : 'False',
+  issues: checkNavigatorProperties('cookieEnabled'),
+});
+
+const getDoNotTrack = () => ({
+  key: 'doNotTrack',
+  title: 'Do not track header',
+  value: navigator.doNotTrack ? 'True' : 'False',
+  issues: checkNavigatorProperties('doNotTrack'),
+});
+
+const getWebDriver = () => ({
+  key: 'webdriver',
+  title: 'Webdriver',
+  value: navigator.webdriver ? 'True' : 'False',
+  issues: checkNavigatorProperties('webdriver'),
+});
+
+const getPlugins = () => ({
+  key: 'plugins',
+  title: 'Plugins',
+  value: sortPlugins(navigator.plugins),
+  issues: checkNavigatorProperties('plugins'),
+});
+
+const getVendor = () => ({
+  key: 'vendor',
+  title: 'Vendor',
+  value: navigator.vendor,
+  issues: checkNavigatorProperties('vendor'),
+});
+
+const getAppVersion = () => ({
+  key: 'vendor',
+  title: 'Vendor',
+  value: navigator.vendor,
+  issues: checkNavigatorProperties('vendor'),
+});
+
+const getProductSub = () => ({
+  key: 'productSub',
+  title: 'Product sub',
+  value: navigator.productSub,
+  issues: checkNavigatorProperties('productSub'),
+});
+
+const getNavigator = () => [
+  getDeviceMemory(),
+  getHardwareConcurrency(),
+  getMaxTouchPoints(),
+  getPlatform(),
+  getUserAgent(),
+  getLanguage(),
+  getLanguages(),
+  getCookieEnabled(),
+  getDoNotTrack(),
+  getWebDriver(),
+  getPlugins(),
+  getVendor(),
+  getAppVersion(),
+  getProductSub(),
+];
 
 // sorts plugins object into comma separated list
 const sortPlugins = (data) => {
