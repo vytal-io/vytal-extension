@@ -43,10 +43,10 @@ const getUserAgent = () => ({
 });
 
 const getLanguage = () => ({
-  key: 'userAgent',
-  title: 'User agent',
-  value: navigator.userAgent,
-  issues: checkNavigatorProperties('userAgent'),
+  key: 'language',
+  title: 'Language',
+  value: navigator.language,
+  issues: checkNavigatorProperties('language'),
 });
 
 const getLanguages = () => ({
@@ -92,10 +92,10 @@ const getVendor = () => ({
 });
 
 const getAppVersion = () => ({
-  key: 'vendor',
-  title: 'Vendor',
-  value: navigator.vendor,
-  issues: checkNavigatorProperties('vendor'),
+  key: 'appVersion',
+  title: 'App Version',
+  value: navigator.appVersion,
+  issues: checkNavigatorProperties('appVersion'),
 });
 
 const getProductSub = () => ({
@@ -103,6 +103,62 @@ const getProductSub = () => ({
   title: 'Product sub',
   value: navigator.productSub,
   issues: checkNavigatorProperties('productSub'),
+});
+
+const getWidth = () => ({
+  key: 'width',
+  title: 'Width',
+  value: window.screen.width,
+  issues: checkScreenProperties('width'),
+});
+
+const getOuterWidth = () => ({
+  key: 'outerWidth',
+  title: 'Outer width',
+  value: window.outerWidth,
+  issues: '',
+});
+
+const getAvailWidth = () => ({
+  key: 'availWidth',
+  title: 'Avail width',
+  value: window.screen.availWidth,
+  issues: checkScreenProperties('availWidth'),
+});
+
+const getHeight = () => ({
+  key: 'height',
+  title: 'Height',
+  value: window.screen.height,
+  issues: checkScreenProperties('height'),
+});
+
+const getOuterHeight = () => ({
+  key: 'outerHeight',
+  title: 'Outer height',
+  value: window.outerHeight,
+  issues: '',
+});
+
+const getAvailHeight = () => ({
+  key: 'availHeight',
+  title: 'Avail height',
+  value: window.screen.availHeight,
+  issues: checkScreenProperties('availHeight'),
+});
+
+const getPixelDepth = () => ({
+  key: 'pixelDepth',
+  title: 'Pixel depth',
+  value: window.screen.pixelDepth,
+  issues: checkScreenProperties('pixelDepth'),
+});
+
+const getColorDepth = () => ({
+  key: 'colorDepth',
+  title: 'Color depth',
+  value: window.screen.colorDepth,
+  issues: checkScreenProperties('colorDepth'),
 });
 
 const getNavigator = () => [
@@ -120,6 +176,17 @@ const getNavigator = () => [
   getVendor(),
   getAppVersion(),
   getProductSub(),
+];
+
+const getScreen = () => [
+  getWidth(),
+  getAvailWidth(),
+  getOuterWidth(),
+  getHeight(),
+  getAvailHeight(),
+  getOuterHeight(),
+  getPixelDepth(),
+  getColorDepth(),
 ];
 
 // sorts plugins object into comma separated list
@@ -154,58 +221,6 @@ const checkNavigatorProperties = (key) => {
     const check = '';
   }
   return list.toString().split(',').join('<br />');
-};
-
-const getScreen = () => {
-  const data = [
-    {
-      key: 'width',
-      title: 'Width',
-      value: window.screen.width,
-      issues: checkScreenProperties('width'),
-    },
-    // {
-    //   key: 'outerWidth',
-    //   title: 'Outer width',
-    //   value: window.outerWidth,
-    // },
-    {
-      key: 'availWidth',
-      title: 'Avail width',
-      value: window.screen.availWidth,
-      issues: checkScreenProperties('availWidth'),
-    },
-    {
-      key: 'height',
-      title: 'Height',
-      value: window.screen.height,
-      issues: checkScreenProperties('height'),
-    },
-    // {
-    //   key: 'outerHeight',
-    //   title: 'Outer height',
-    //   value: window.outerHeight,
-    // },
-    {
-      key: 'availHeight',
-      title: 'Avail height',
-      value: window.screen.availHeight,
-      issues: checkScreenProperties('availHeight'),
-    },
-    {
-      key: 'pixelDepth',
-      title: 'Pixel depth',
-      value: window.screen.pixelDepth,
-      issues: checkScreenProperties('pixelDepth'),
-    },
-    {
-      key: 'colorDepth',
-      title: 'Color depth',
-      value: window.screen.colorDepth,
-      issues: checkScreenProperties('colorDepth'),
-    },
-  ];
-  return data;
 };
 
 const checkScreenProperties = (key) => {
