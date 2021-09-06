@@ -5,7 +5,7 @@ import {
   checkNavigatorProperties,
   checkWebWorker,
   checkScreenProperties,
-} from './navigator';
+} from './main';
 
 const TableRow = ({ item }) => {
   const [workerData, setWorkerData] = useState('');
@@ -15,7 +15,7 @@ const TableRow = ({ item }) => {
     if (item.issues !== '' || workerData !== '') {
       setIssues(true);
     }
-    checkWebWorker(item, setWorkerData);
+    checkWebWorker(item.key, setWorkerData);
   }, []);
 
   useEffect(() => {
@@ -28,11 +28,10 @@ const TableRow = ({ item }) => {
     <tr className={issues ? 'issue' : ''}>
       <td>{item.title}</td>
       <td>{item.value}</td>
-      <td>{parse(item.issues || '')}</td>
-      {/* <td> */}
-      {/* <>{parse(properties)}</> */}
-      {/* <>{parse(workerData)}</> */}
-      {/* </td> */}
+      <td>
+        {parse(item.issues || '')}
+        {parse(workerData)}
+      </td>
     </tr>
   );
 };

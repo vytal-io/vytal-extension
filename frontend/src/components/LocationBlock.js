@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { fetchAPI, getLocation, getMap } from './main';
+import { fetchAPI, getLocation, getMap } from './mainOld';
 
 const LocationBlock = () => {
   const [data, setData] = useState([]);

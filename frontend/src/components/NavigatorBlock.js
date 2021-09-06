@@ -1,6 +1,6 @@
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { getNavigator } from './navigator';
+import { getNavigator } from './main';
 
 const NavigatorBlock = () => (
   <ScanBlock>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { fetchAPI, getConnection } from './main';
+import { fetchAPI, getConnection } from './mainOld';
 
 const ConnectionBlock = () => {
   const [data, setData] = useState('');

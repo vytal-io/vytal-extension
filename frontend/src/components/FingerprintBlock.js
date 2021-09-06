@@ -9,7 +9,7 @@ import {
   getHash,
   getName,
   handleSave,
-} from './main';
+} from './mainOld';
 
 const FingerprintBlock = () => {
   const [name, setName] = useState('');

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { getHardware, getWebGL, getBattery } from './main';
+import { getHardware, getWebGL, getBattery } from './mainOld';
 
 const HardwareBlock = () => {
   const [data, setData] = useState([]);

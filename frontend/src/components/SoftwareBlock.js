@@ -1,6 +1,6 @@
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { getSoftware } from './main';
+import { getSoftware } from './mainOld';
 
 const SoftwareBlock = () => (
   <ScanBlock>

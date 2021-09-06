@@ -1,6 +1,6 @@
 import ScanBlock from './ScanBlock';
 import Table from './Table';
-import { getScreen } from './navigator';
+import { getScreen } from './main';
 
 const ScreenBlock = () => (
   <ScanBlock>
