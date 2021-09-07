@@ -12,7 +12,7 @@ import FiltersBlock from './FiltersBlock';
 const ScanBlocks = () => (
   <>
     <ScreenBlock />
-    <NavigatorBlock />
+    {/* <NavigatorBlock /> */}
     {/* <LocationBlock />
     <ConnectionBlock /> */}
     {/* <FingerprintBlock />

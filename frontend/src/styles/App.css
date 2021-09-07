@@ -213,6 +213,10 @@ input[type='text'] {
   border: 1px solid var(--issueBorder);
 }
 
+.newline {
+  display: block;
+}
+
 @media screen and (max-width: 500px) {
   .github {
     width: 24px;

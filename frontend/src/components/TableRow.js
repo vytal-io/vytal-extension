@@ -29,7 +29,9 @@ const TableRow = ({ item }) => {
       <td>{item.title}</td>
       <td>{item.value}</td>
       <td>
-        {parse(item.issues || '')}
+        {item.issues.map((ele) => (
+          <div className="newline">{ele}</div>
+        ))}
         {parse(workerData)}
       </td>
     </tr>
