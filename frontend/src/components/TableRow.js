@@ -12,7 +12,7 @@ const TableRow = ({ item }) => {
   const [issues, setIssues] = useState(false);
 
   useEffect(() => {
-    if (item.issues !== '' || workerData !== '') {
+    if (item.issues.filter(Boolean).length !== 0) {
       setIssues(true);
     }
     checkWebWorker(item.key, setWorkerData);
@@ -29,10 +29,12 @@ const TableRow = ({ item }) => {
       <td>{item.title}</td>
       <td>{item.value}</td>
       <td>
-        {item.issues.map((ele) => (
-          <div className="newline">{ele}</div>
+        {item.issues.map((ele, index) => (
+          <div className="newline" key={index}>
+            {ele}
+          </div>
         ))}
-        {parse(workerData)}
+        <div className="newline">{workerData}</div>
       </td>
     </tr>
   );

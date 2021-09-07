@@ -12,98 +12,154 @@ const getDeviceMemory = () => ({
   key: 'deviceMemory',
   title: 'Device memory',
   value: navigator.deviceMemory,
-  issues: checkNavigatorProperties('deviceMemory'),
+  issues: [
+    checkNavigatorProperties('deviceMemory'),
+    checkNavigatorValue('deviceMemory'),
+    checkNavigatorPrototype('deviceMemory'),
+  ],
 });
 
 const getHardwareConcurrency = () => ({
   key: 'hardwareConcurrency',
   title: 'Hardware Concurrency',
   value: navigator.hardwareConcurrency,
-  issues: checkNavigatorProperties('hardwareConcurrency'),
+  issues: [
+    checkNavigatorProperties('hardwareConcurrency'),
+    checkNavigatorValue('hardwareConcurrency'),
+    checkNavigatorPrototype('hardwareConcurrency'),
+  ],
 });
 
 const getMaxTouchPoints = () => ({
   key: 'maxTouchPoints',
   title: 'Max touchpoints',
   value: navigator.maxTouchPoints,
-  issues: checkNavigatorProperties('maxTouchPoints'),
+  issues: [
+    checkNavigatorProperties('maxTouchPoints'),
+    checkNavigatorValue('maxTouchPoints'),
+    checkNavigatorPrototype('maxTouchPoints'),
+  ],
 });
 
 const getPlatform = () => ({
   key: 'platform',
   title: 'Platform',
   value: navigator.platform,
-  issues: checkNavigatorProperties('platform'),
+  issues: [
+    checkNavigatorProperties('platform'),
+    checkNavigatorValue('platform'),
+    checkNavigatorPrototype('platform'),
+  ],
 });
 
 const getUserAgent = () => ({
   key: 'userAgent',
   title: 'User agent',
   value: navigator.userAgent,
-  issues: checkNavigatorProperties('userAgent'),
+  issues: [
+    checkNavigatorProperties('userAgent'),
+    checkNavigatorValue('userAgent'),
+    checkNavigatorPrototype('userAgent'),
+  ],
 });
 
 const getLanguage = () => ({
   key: 'language',
   title: 'Language',
   value: navigator.language,
-  issues: checkNavigatorProperties('language'),
+  issues: [
+    checkNavigatorProperties('language'),
+    checkNavigatorValue('language'),
+    checkNavigatorPrototype('language'),
+  ],
 });
 
 const getLanguages = () => ({
   key: 'languages',
   title: 'Languages',
   value: navigator.languages,
-  issues: checkNavigatorProperties('languages'),
+  issues: [
+    checkNavigatorProperties('languages'),
+    checkNavigatorValue('languages'),
+    checkNavigatorPrototype('languages'),
+  ],
 });
 
 const getCookieEnabled = () => ({
   key: 'cookieEnabled',
   title: 'Cookies enabled',
   value: navigator.cookieEnabled ? 'True' : 'False',
-  issues: checkNavigatorProperties('cookieEnabled'),
+  issues: [
+    checkNavigatorProperties('cookieEnabled'),
+    checkNavigatorValue('cookieEnabled'),
+    checkNavigatorPrototype('cookieEnabled'),
+  ],
 });
 
 const getDoNotTrack = () => ({
   key: 'doNotTrack',
   title: 'Do not track header',
   value: navigator.doNotTrack ? 'True' : 'False',
-  issues: checkNavigatorProperties('doNotTrack'),
+  issues: [
+    checkNavigatorProperties('doNotTrack'),
+    checkNavigatorValue('doNotTrack'),
+    checkNavigatorPrototype('doNotTrack'),
+  ],
 });
 
 const getWebDriver = () => ({
   key: 'webdriver',
   title: 'Webdriver',
   value: navigator.webdriver ? 'True' : 'False',
-  issues: checkNavigatorProperties('webdriver'),
+  issues: [
+    checkNavigatorProperties('webdriver'),
+    checkNavigatorValue('webdriver'),
+    checkNavigatorPrototype('webdriver'),
+  ],
 });
 
 const getPlugins = () => ({
   key: 'plugins',
   title: 'Plugins',
   value: sortPlugins(navigator.plugins),
-  issues: checkNavigatorProperties('plugins'),
+  issues: [
+    checkNavigatorProperties('plugins'),
+    checkNavigatorValue('plugins'),
+    checkNavigatorPrototype('plugins'),
+  ],
 });
 
 const getVendor = () => ({
   key: 'vendor',
   title: 'Vendor',
   value: navigator.vendor,
-  issues: checkNavigatorProperties('vendor'),
+  issues: [
+    checkNavigatorProperties('vendor'),
+    checkNavigatorValue('vendor'),
+    checkNavigatorPrototype('vendor'),
+  ],
 });
 
 const getAppVersion = () => ({
   key: 'appVersion',
   title: 'App Version',
   value: navigator.appVersion,
-  issues: checkNavigatorProperties('appVersion'),
+  issues: [
+    checkNavigatorProperties('appVersion'),
+    checkNavigatorValue('appVersion'),
+    checkNavigatorPrototype('appVersion'),
+  ],
 });
 
 const getProductSub = () => ({
   key: 'productSub',
   title: 'Product sub',
   value: navigator.productSub,
-  issues: checkNavigatorProperties('productSub'),
+  issues: [
+    checkNavigatorProperties('productSub'),
+    checkNavigatorValue('productSub'),
+    checkNavigatorPrototype('productSub'),
+  ],
 });
 
 const getWidth = () => ({
@@ -123,21 +179,30 @@ const getOuterWidth = () => ({
   title: 'Outer width',
   value: window.outerWidth,
   // issues: checkWindowProperties('outerWidth'),
-  issues: '',
+  issues: [],
 });
 
 const getAvailWidth = () => ({
   key: 'availWidth',
   title: 'Avail width',
   value: window.screen.availWidth,
-  issues: checkScreenProperties('availWidth') + checkWidth(),
+  issues: [
+    checkScreenProperties('availWidth'),
+    checkScreenValue('availWidth'),
+    checkScreenPrototype('availWidth'),
+    checkWidth(),
+  ],
 });
 
 const getHeight = () => ({
   key: 'height',
   title: 'Height',
   value: window.screen.height,
-  issues: checkScreenProperties('height'),
+  issues: [
+    checkScreenProperties('height'),
+    checkScreenValue('height'),
+    checkScreenPrototype('height'),
+  ],
 });
 
 const getOuterHeight = () => ({
@@ -145,28 +210,41 @@ const getOuterHeight = () => ({
   title: 'Outer height',
   value: window.outerHeight,
   // issues: checkWindowProperties('outerHeight'),
-  issues: '',
+  issues: [],
 });
 
 const getAvailHeight = () => ({
   key: 'availHeight',
   title: 'Avail height',
   value: window.screen.availHeight,
-  issues: checkScreenProperties('availHeight'),
+  issues: [
+    checkScreenProperties('availHeight'),
+    checkScreenValue('availHeight'),
+    checkScreenPrototype('availHeight'),
+    checkHeight(),
+  ],
 });
 
 const getPixelDepth = () => ({
   key: 'pixelDepth',
   title: 'Pixel depth',
   value: window.screen.pixelDepth,
-  issues: checkScreenProperties('pixelDepth'),
+  issues: [
+    checkScreenProperties('pixelDepth'),
+    checkScreenValue('pixelDepth'),
+    checkScreenPrototype('pixelDepth'),
+  ],
 });
 
 const getColorDepth = () => ({
   key: 'colorDepth',
   title: 'Color depth',
   value: window.screen.colorDepth,
-  issues: checkScreenProperties('colorDepth'),
+  issues: [
+    checkScreenProperties('colorDepth'),
+    checkScreenValue('colorDepth'),
+    checkScreenPrototype('colorDepth'),
+  ],
 });
 
 const getNavigator = () => [
@@ -188,13 +266,13 @@ const getNavigator = () => [
 
 const getScreen = () => [
   getWidth(),
-  // getAvailWidth(),
-  // getOuterWidth(),
-  // getHeight(),
-  // getAvailHeight(),
-  // getOuterHeight(),
-  // getPixelDepth(),
-  // getColorDepth(),
+  getAvailWidth(),
+  getOuterWidth(),
+  getHeight(),
+  getAvailHeight(),
+  getOuterHeight(),
+  getPixelDepth(),
+  getColorDepth(),
 ];
 
 // sorts plugins object into comma separated list
@@ -210,48 +288,33 @@ const sortPlugins = (data) => {
 };
 
 const checkNavigatorProperties = (key) => {
-  const list = [];
   if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
-    list.push('Failed undefined properties');
+    return 'Failed undefined properties';
   }
+  return null;
+};
+
+const checkNavigatorValue = (key) => {
   if (
     Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
     undefined
   ) {
-    list.push('Failed descriptor.value undefined');
+    return 'Failed descriptor.value undefined';
   }
+  return null;
+};
+
+const checkNavigatorPrototype = (key) => {
   try {
     // eslint-disable-next-line no-unused-vars
     const check = Navigator.prototype[key];
-    list.push('Failed Navigator.prototype');
+    return 'Failed Navigator.prototype';
   } catch (err) {
     // eslint-disable-next-line no-unused-vars
     const check = '';
   }
-  return list.toString().split(',').join('<br />');
+  return null;
 };
-
-// const checkScreenProperties = (key) => {
-//   const list = [];
-//   if (Object.getOwnPropertyDescriptor(window.screen, key) !== undefined) {
-//     list.push('Failed undefined properties');
-//   }
-//   if (
-//     Object.getOwnPropertyDescriptor(Screen.prototype, key).value !== undefined
-//   ) {
-//     list.push('Failed descriptor.value undefined');
-//   }
-//   try {
-//     // eslint-disable-next-line no-unused-vars
-//     const check = Screen.prototype[key];
-//     list.push('Failed Navigator.prototype');
-//   } catch (err) {
-//     // eslint-disable-next-line no-unused-vars
-//     const check = '';
-//   }
-
-//   return list.toString().split(',').join('<br />');
-// };
 
 const checkScreenProperties = (key) => {
   if (Object.getOwnPropertyDescriptor(window.screen, key) !== undefined) {
@@ -304,7 +367,14 @@ const checkWidth = () => {
   if (window.screen.availWidth > window.screen.width) {
     return 'Avail width is wider then width';
   }
-  return '';
+  return null;
+};
+
+const checkHeight = () => {
+  if (window.screen.availHeight > window.screen.height) {
+    return 'Avail height is wider then height';
+  }
+  return null;
 };
 
 const checkWebWorker = (key, setWorkerData) => {
@@ -318,9 +388,7 @@ const checkWebWorker = (key, setWorkerData) => {
       event.data !== undefined &&
       event.data.toString() !== navigator[key].toString()
     ) {
-      setWorkerData(
-        `<br />Did not match web worker (${event.data.toString()})`
-      );
+      setWorkerData(`Did not match web worker (${event.data.toString()})`);
     }
   };
 };
