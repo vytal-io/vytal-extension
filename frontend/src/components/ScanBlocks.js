@@ -13,6 +13,8 @@ const ScanBlocks = () => (
   <>
     <ScreenBlock />
     <NavigatorBlock />
+    {/* <LocationBlock />
+    <ConnectionBlock /> */}
     {/* <FingerprintBlock />
     <LocationBlock />
     <ConnectionBlock />

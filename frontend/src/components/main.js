@@ -109,7 +109,7 @@ const getWidth = () => ({
   key: 'width',
   title: 'Width',
   value: window.screen.width,
-  issues: checkScreenProperties('width'),
+  issues: checkScreenProperties('width') + checkWidth(),
 });
 
 const getOuterWidth = () => ({
@@ -124,7 +124,7 @@ const getAvailWidth = () => ({
   key: 'availWidth',
   title: 'Avail width',
   value: window.screen.availWidth,
-  issues: checkScreenProperties('availWidth'),
+  issues: checkScreenProperties('availWidth') + checkWidth(),
 });
 
 const getHeight = () => ({
@@ -265,6 +265,13 @@ const checkScreenProperties = (key) => {
 
 //   return list.toString().split(',').join('<br />');
 // };
+
+const checkWidth = () => {
+  if (window.screen.availWidth > window.screen.width) {
+    return '<br />Avail width is wider then width';
+  }
+  return '';
+};
 
 const checkWebWorker = (key, setWorkerData) => {
   let w;
