@@ -34,7 +34,9 @@ const TableRow = ({ item }) => {
             {ele}
           </div>
         ))}
-        <div className="newline">{workerData}</div>
+        <div className="newline">
+          {workerData && <>{`Did not match web worker (${workerData})`}</>}
+        </div>
       </td>
     </tr>
   );

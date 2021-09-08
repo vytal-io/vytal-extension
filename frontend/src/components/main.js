@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable dot-notation */
+// import Bowser from 'bowser';
+
 export {
   getNavigator,
   checkNavigatorProperties,
   checkWebWorker,
   getScreen,
   checkScreenProperties,
+  getBrowser,
 };
 
 const getDeviceMemory = () => ({
@@ -344,25 +347,6 @@ const checkScreenPrototype = (key) => {
   return null;
 };
 
-// const checkWindowProperties = (key) => {
-//   const list = [];
-//   if (
-//     Object.getOwnPropertyDescriptor(Window.prototype, key).value !== undefined
-//   ) {
-//     list.push('Failed descriptor.value undefined');
-//   }
-//   // try {
-//   //   // eslint-disable-next-line no-unused-vars
-//   //   const check = Window.prototype[key];
-//   //   list.push('Failed Navigator.prototype');
-//   // } catch (err) {
-//   //   // eslint-disable-next-line no-unused-vars
-//   //   const check = '';
-//   // }
-
-//   return list.toString().split(',').join('<br />');
-// };
-
 const checkWidth = () => {
   if (window.screen.availWidth > window.screen.width) {
     return 'Avail width is wider then width';
@@ -388,7 +372,14 @@ const checkWebWorker = (key, setWorkerData) => {
       event.data !== undefined &&
       event.data.toString() !== navigator[key].toString()
     ) {
-      setWorkerData(`Did not match web worker (${event.data.toString()})`);
+      setWorkerData(event.data.toString());
     }
   };
+};
+
+const getBrowser = (userAgent) => {
+  if (navigator.brave) {
+    return 'Brave';
+  }
+  return userAgent;
 };
