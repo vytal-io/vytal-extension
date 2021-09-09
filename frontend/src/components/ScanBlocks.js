@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import DataBlock from './DataBlock';
+import PredictionBlock from './PredictionBlock';
 import NavigatorBlock from './NavigatorBlock';
 import ScreenBlock from './ScreenBlock';
 import FingerprintBlock from './FingerprintBlock';
@@ -12,7 +12,7 @@ import FiltersBlock from './FiltersBlock';
 
 const ScanBlocks = () => (
   <>
-    <DataBlock />
+    <PredictionBlock />
     <ScreenBlock />
     <NavigatorBlock />
     {/* <LocationBlock />

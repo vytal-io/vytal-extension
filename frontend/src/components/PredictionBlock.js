@@ -10,7 +10,7 @@ import {
   getBrowser,
 } from './main';
 
-const NavigatorBlock = () => {
+const PredictionBlock = () => {
   const [firstRender, setfirstRender] = useState(true);
   const [workerData, setWorkerData] = useState('');
   const [userAgent, setUserAgent] = useState();
@@ -32,7 +32,12 @@ const NavigatorBlock = () => {
       <h1>Data</h1>
       {userAgent && (
         <div className="boxWrap">
-          {getBrowser(userAgent.browser.name)} {userAgent.browser.version}
+          <div className="newline">
+            {getBrowser(userAgent.browser.name)} {userAgent.browser.version}
+          </div>
+          <div className="newline">
+            {userAgent.os.name} {userAgent.os.versionName}
+          </div>
         </div>
       )}
       <p>
@@ -43,4 +48,4 @@ const NavigatorBlock = () => {
   );
 };
 
-export default NavigatorBlock;
+export default PredictionBlock;
