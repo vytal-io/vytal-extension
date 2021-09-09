@@ -7,10 +7,10 @@ import {
   checkNavigatorProperties,
   checkWebWorker,
   checkScreenProperties,
-  getBrowser,
+  getUserAgentData,
 } from './main';
 
-const PredictionBlock = () => {
+const OtherBlock = () => {
   const [firstRender, setfirstRender] = useState(true);
   const [workerData, setWorkerData] = useState('');
   const [userAgent, setUserAgent] = useState();
@@ -29,12 +29,13 @@ const PredictionBlock = () => {
 
   return (
     <ScanBlock>
-      <h1>Data</h1>
+      <h1>Other</h1>
       {userAgent && (
         <div className="boxWrap">
-          <div className="newline">
+          {/* <Table type="screen" data={getUserAgentData()} /> */}
+          {/* <div className="newline">
             {getBrowser(userAgent.browser.name)} {userAgent.browser.version}
-          </div>
+          </div> */}
           <div className="newline">
             {userAgent.os.name} {userAgent.os.versionName}
           </div>
@@ -48,4 +49,4 @@ const PredictionBlock = () => {
   );
 };
 
-export default PredictionBlock;
+export default OtherBlock;

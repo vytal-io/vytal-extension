@@ -29,14 +29,20 @@ const TableRow = ({ item }) => {
       <td>{item.title}</td>
       <td>{item.value}</td>
       <td>
-        {item.issues.map((ele, index) => (
-          <div className="newline" key={index}>
-            {ele}
-          </div>
-        ))}
-        <div className="newline">
-          {workerData && <>{`Did not match web worker (${workerData})`}</>}
-        </div>
+        {issues ? (
+          <>
+            {item.issues.map((ele, index) => (
+              <div className="newline" key={index}>
+                {ele}
+              </div>
+            ))}
+            <div className="newline">
+              {workerData && <>{`Did not match web worker (${workerData})`}</>}
+            </div>
+          </>
+        ) : (
+          'No issues'
+        )}
       </td>
     </tr>
   );

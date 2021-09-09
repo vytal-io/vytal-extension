@@ -9,6 +9,7 @@ export {
   getScreen,
   checkScreenProperties,
   getBrowser,
+  getUserAgentData,
 };
 
 const getDeviceMemory = () => ({
@@ -277,6 +278,8 @@ const getScreen = () => [
   getPixelDepth(),
   getColorDepth(),
 ];
+
+const getUserAgentData = () => [getBrowser()];
 
 // sorts plugins object into comma separated list
 const sortPlugins = (data) => {
