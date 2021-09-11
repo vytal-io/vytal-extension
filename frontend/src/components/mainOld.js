@@ -7,7 +7,6 @@ export {
   getLocation,
   getMap,
   getConnection,
-  detectTor,
   getSoftware,
   getHardware,
   getWebGL,
@@ -91,26 +90,8 @@ const getConnection = (json) => {
       title: 'ASN',
       value: json.as,
     },
-    {
-      key: 'tor',
-      title: 'Tor browser detected',
-      value: detectTor() ? 'True' : 'False',
-    },
   ];
   return data;
-};
-
-const detectTor = () => {
-  const date = new Date();
-  if (
-    navigator.plugins.length === 0 &&
-    date.getTimezoneOffset() === 0 &&
-    window.outerWidth === window.screen.availWidth &&
-    window.outerHeight === window.screen.availHeight
-  ) {
-    return true;
-  }
-  return false;
 };
 
 const getHardware = () => {
