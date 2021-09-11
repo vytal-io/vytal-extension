@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import Bowser from 'bowser';
@@ -7,30 +8,47 @@ import {
   checkNavigatorProperties,
   checkWebWorker,
   checkScreenProperties,
-  getOther,
+  detectTor,
 } from './main';
 
 const OtherBlock = () => {
-  const [firstRender, setfirstRender] = useState(true);
-  const [workerData, setWorkerData] = useState('');
-  const [userAgent, setUserAgent] = useState();
+  const [adBlockDetected, setAdBlockDetected] = useState(false);
 
   useEffect(() => {
-    checkWebWorker('userAgent', setWorkerData);
+    fetch('https://www3.doubleclick.net', {
+      method: 'HEAD',
+      mode: 'no-cors',
+      cache: 'no-store',
+    }).catch(() => {
+      setAdBlockDetected(true);
+    });
   }, []);
-
-  useEffect(() => {
-    if (!workerData) {
-      setUserAgent(Bowser.parse(navigator.userAgent));
-    } else {
-      setUserAgent(Bowser.parse(workerData));
-    }
-  }, [workerData]);
 
   return (
     <ScanBlock>
       <h1>Other</h1>
-      <Table type="screen" data={getOther()} />
+      <div className="tableWrap">
+        <table>
+          <tbody>
+            <tr>
+              <td>Brave browser</td>
+              <td>{navigator.brave ? 'True' : 'False'}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Tor Browser</td>
+              <td>{detectTor() ? 'True' : 'False'}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Adblock</td>
+              <td>{adBlockDetected ? 'True' : 'False'}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <p>
         <b>Explanation:</b> JavaScript can be used to find information about
         your hardware. This information can be used to create a fingerprint.
@@ -38,5 +56,4 @@ const OtherBlock = () => {
     </ScanBlock>
   );
 };
-
 export default OtherBlock;

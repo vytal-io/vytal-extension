@@ -8,7 +8,7 @@ export {
   checkWebWorker,
   getScreen,
   checkScreenProperties,
-  getOther,
+  detectTor,
 };
 
 const getDeviceMemory = () => ({
@@ -278,13 +278,6 @@ const getScreen = () => [
   getColorDepth(),
 ];
 
-const getBrave = () => ({
-  key: 'brave',
-  title: 'Brave browser',
-  value: navigator.brave ? 'True' : 'False',
-  issues: [],
-});
-
 const detectTor = () => {
   const date = new Date();
   if (
@@ -298,14 +291,28 @@ const detectTor = () => {
   return false;
 };
 
-const getTor = () => ({
-  key: 'tor',
-  title: 'Tor browser',
-  value: detectTor() ? 'True' : 'False',
-  issues: [],
-});
+// const getTor = () => ({
+//   key: 'tor',
+//   title: 'Tor browser',
+//   value: detectTor() ? 'True' : 'False',
+//   issues: [],
+// });
 
-const getOther = () => [getBrave(), getTor()];
+// const getAdblock = () => ({
+//   key: 'adblock',
+//   title: 'Adblock',
+//   value: Promise.resolve(detectAdblock()),
+//   issues: [],
+// });
+
+// const detectAdblock = () =>
+//   fetch('https://www3.doubleclick.net', {
+//     method: 'HEAD',
+//     mode: 'no-cors',
+//     cache: 'no-store',
+//   });
+
+// const getOther = () => [getBrave(), getTor(), getAdblock()];
 
 // sorts plugins object into comma separated list
 const sortPlugins = (data) => {
