@@ -1,18 +1,13 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
-import Bowser from 'bowser';
 import ScanBlock from './ScanBlock';
-import Table from './Table';
-import {
-  checkNavigatorProperties,
-  checkWebWorker,
-  checkScreenProperties,
-  detectTor,
-} from './main';
+import { detectTor } from './main';
 
 const OtherBlock = () => {
   const [adBlockDetected, setAdBlockDetected] = useState(false);
+  const [batteryLevel, setBatteryLevel] = useState();
+  const [batteryStatus, setBatteryStatus] = useState();
 
   useEffect(() => {
     fetch('https://www3.doubleclick.net', {
@@ -21,6 +16,11 @@ const OtherBlock = () => {
       cache: 'no-store',
     }).catch(() => {
       setAdBlockDetected(true);
+    });
+
+    navigator.getBattery().then((res) => {
+      setBatteryLevel(`${Math.round(res.level * 100)}%`);
+      setBatteryStatus(res.charging ? 'Charging' : 'Not charging');
     });
   }, []);
 
@@ -45,6 +45,18 @@ const OtherBlock = () => {
             <tr>
               <td>Adblock</td>
               <td>{adBlockDetected ? 'True' : 'False'}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Battery level</td>
+              <td>{batteryLevel}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Battery status</td>
+              <td>{batteryStatus}</td>
             </tr>
           </tbody>
         </table>
