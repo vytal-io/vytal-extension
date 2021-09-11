@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import parse from 'html-react-parser';
 import { useState, useEffect } from 'react';
-import Issues from './TableRow';
+import TableRow from './TableRow';
 
 const Table = ({ data }) => {
   const [workerData, setWorkerData] = useState();
@@ -11,7 +11,7 @@ const Table = ({ data }) => {
       <table>
         {data.map((item) => (
           <tbody key={item.key}>
-            <Issues item={item} />
+            <TableRow item={item} />
           </tbody>
         ))}
       </table>

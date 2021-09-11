@@ -279,7 +279,24 @@ const getScreen = () => [
   getColorDepth(),
 ];
 
-const getUserAgentData = () => [getBrowser()];
+const getUserAgentData = (userAgent) => {
+  // getBrowser();
+  console.log(userAgent);
+};
+
+// const getBrowser = (userAgent) => {
+//   if (navigator.brave) {
+//     return 'Brave';
+//   }
+//   return userAgent;
+// };
+
+const getBrowser = () => ({
+  key: 'Browser',
+  title: 'Color depth',
+  value: window.screen.colorDepth,
+  issues: [],
+});
 
 // sorts plugins object into comma separated list
 const sortPlugins = (data) => {
@@ -380,9 +397,9 @@ const checkWebWorker = (key, setWorkerData) => {
   };
 };
 
-const getBrowser = (userAgent) => {
-  if (navigator.brave) {
-    return 'Brave';
-  }
-  return userAgent;
-};
+// const getBrowser = (userAgent) => {
+//   if (navigator.brave) {
+//     return 'Brave';
+//   }
+//   return userAgent;
+// };
