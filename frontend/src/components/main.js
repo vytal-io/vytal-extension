@@ -8,8 +8,7 @@ export {
   checkWebWorker,
   getScreen,
   checkScreenProperties,
-  getBrowser,
-  getUserAgentData,
+  getOther,
 };
 
 const getDeviceMemory = () => ({
@@ -279,24 +278,34 @@ const getScreen = () => [
   getColorDepth(),
 ];
 
-const getUserAgentData = (userAgent) => {
-  // getBrowser();
-  console.log(userAgent);
-};
-
-// const getBrowser = (userAgent) => {
-//   if (navigator.brave) {
-//     return 'Brave';
-//   }
-//   return userAgent;
-// };
-
-const getBrowser = () => ({
-  key: 'Browser',
-  title: 'Color depth',
-  value: window.screen.colorDepth,
+const getBrave = () => ({
+  key: 'brave',
+  title: 'Brave browser',
+  value: navigator.brave ? 'True' : 'False',
   issues: [],
 });
+
+const detectTor = () => {
+  const date = new Date();
+  if (
+    navigator.plugins.length === 0 &&
+    date.getTimezoneOffset() === 0 &&
+    window.outerWidth === window.screen.availWidth &&
+    window.outerHeight === window.screen.availHeight
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const getTor = () => ({
+  key: 'tor',
+  title: 'Tor browser',
+  value: detectTor() ? 'True' : 'False',
+  issues: [],
+});
+
+const getOther = () => [getBrave(), getTor()];
 
 // sorts plugins object into comma separated list
 const sortPlugins = (data) => {
@@ -396,10 +405,3 @@ const checkWebWorker = (key, setWorkerData) => {
     }
   };
 };
-
-// const getBrowser = (userAgent) => {
-//   if (navigator.brave) {
-//     return 'Brave';
-//   }
-//   return userAgent;
-// };

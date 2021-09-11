@@ -13,8 +13,8 @@ import FiltersBlock from './FiltersBlock';
 
 const ScanBlocks = () => (
   <>
-    <UserAgentBlock />
     <OtherBlock />
+    <UserAgentBlock />
     <ScreenBlock />
     <NavigatorBlock />
     <LocationBlock />

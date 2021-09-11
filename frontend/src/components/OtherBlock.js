@@ -7,7 +7,7 @@ import {
   checkNavigatorProperties,
   checkWebWorker,
   checkScreenProperties,
-  getUserAgentData,
+  getOther,
 } from './main';
 
 const OtherBlock = () => {
@@ -30,17 +30,7 @@ const OtherBlock = () => {
   return (
     <ScanBlock>
       <h1>Other</h1>
-      {userAgent && (
-        <div className="boxWrap">
-          {/* <Table type="screen" data={getUserAgentData()} /> */}
-          {/* <div className="newline">
-            {getBrowser(userAgent.browser.name)} {userAgent.browser.version}
-          </div> */}
-          <div className="newline">
-            {userAgent.os.name} {userAgent.os.versionName}
-          </div>
-        </div>
-      )}
+      <Table type="screen" data={getOther()} />
       <p>
         <b>Explanation:</b> JavaScript can be used to find information about
         your hardware. This information can be used to create a fingerprint.
