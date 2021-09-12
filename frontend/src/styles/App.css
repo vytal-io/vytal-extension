@@ -44,7 +44,7 @@
 }
 
 .centerBlockInner {
-  width: 800px;
+  width: 650px;
   margin: 24px 0 0 0;
 }
 
@@ -144,12 +144,8 @@ tbody:not(:last-child) {
   border-bottom: 1px solid var(--border);
 }
 
-tr:hover {
-  color: var(--main);
-}
-
 td {
-  vertical-align: top;
+  /* vertical-align: top; */
   padding: 12px;
 }
 
@@ -157,6 +153,17 @@ td:first-child {
   width: 180px;
   font-weight: 600;
   word-break: normal;
+}
+
+td:nth-child(3) {
+  width: 40px;
+  font-weight: 600;
+  word-break: normal;
+}
+
+.circleButton {
+  display: flex;
+  width: 20px;
 }
 
 p {

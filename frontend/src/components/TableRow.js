@@ -6,6 +6,8 @@ import {
   checkWebWorker,
   checkScreenProperties,
 } from './main';
+import { ReactComponent as XCircle } from '../images/xCircle.svg';
+import { ReactComponent as CheckCircle } from '../images/checkCircle.svg';
 
 const TableRow = ({ item }) => {
   const [workerData, setWorkerData] = useState('');
@@ -30,18 +32,19 @@ const TableRow = ({ item }) => {
       <td>{item.value}</td>
       <td>
         {issues ? (
-          <>
-            {item.issues.map((ele, index) => (
-              <div className="newline" key={index}>
-                {ele}
-              </div>
-            ))}
-            <div className="newline">
-              {workerData && <>{`Did not match web worker (${workerData})`}</>}
-            </div>
-          </>
+          <XCircle className="circleButton" />
         ) : (
-          'No issues'
+          // <>
+          //   {item.issues.map((ele, index) => (
+          //     <div className="newline" key={index}>
+          //       {ele}
+          //     </div>
+          //   ))}
+          //   <div className="newline">
+          //     {workerData && <>{`Did not match web worker (${workerData})`}</>}
+          //   </div>
+          // </>
+          <CheckCircle className="circleButton" />
         )}
       </td>
     </tr>
