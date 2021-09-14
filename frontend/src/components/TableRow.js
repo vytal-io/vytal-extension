@@ -28,7 +28,7 @@ const TableRow = ({ item }) => {
 
   return (
     <tr className={issues ? 'issue' : ''}>
-      <td>{item.title}</td>
+      <td>{item.key}</td>
       <td>{item.value}</td>
       <td>
         {issues ? (

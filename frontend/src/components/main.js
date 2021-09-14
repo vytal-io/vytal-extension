@@ -286,13 +286,6 @@ const getScreen = () => [
 //   issues: [],
 // });
 
-const getCalendar = () => ({
-  key: 'calendar',
-  title: 'Calendar',
-  value: Intl.DateTimeFormat().resolvedOptions().calendar,
-  issues: [],
-});
-
 const getTimezone = () => ({
   key: 'timezone',
   title: 'Timezone',
@@ -300,14 +293,21 @@ const getTimezone = () => ({
   issues: [],
 });
 
-// const getTimezoneOffset = () => ({
-//   key: 'timezoneOffset',
-//   title: 'Timezone offset',
-//   value: new Date().getTimezoneOffset(),
-//   issues: [],
-// });
+const getHourCycle = () => ({
+  key: 'hourCycle',
+  title: 'Hour cycle',
+  value: Intl.DateTimeFormat().resolvedOptions().hourCycle,
+  issues: [],
+});
 
-const getIntl = () => [getCalendar(), getTimezone()];
+const getCalendar = () => ({
+  key: 'calendar',
+  title: 'Calendar',
+  value: Intl.DateTimeFormat().resolvedOptions().calendar,
+  issues: [],
+});
+
+const getIntl = () => [getTimezone(), getHourCycle(), getCalendar()];
 
 const detectTor = () => {
   const date = new Date();
@@ -321,6 +321,13 @@ const detectTor = () => {
   }
   return false;
 };
+
+// const getTimezoneOffset = () => ({
+//   key: 'timezoneOffset',
+//   title: 'Timezone offset',
+//   value: new Date().getTimezoneOffset(),
+//   issues: [],
+// });
 
 // const getTor = () => ({
 //   key: 'tor',

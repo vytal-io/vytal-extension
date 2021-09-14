@@ -49,6 +49,12 @@ const OtherBlock = () => {
           </tbody>
           <tbody>
             <tr>
+              <td>Timezone offset</td>
+              <td>{new Date().getTimezoneOffset()}</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
               <td>Battery level</td>
               <td>{batteryLevel}</td>
             </tr>
