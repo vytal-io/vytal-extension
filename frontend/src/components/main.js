@@ -9,7 +9,7 @@ export {
   getScreen,
   checkScreenProperties,
   detectTor,
-  getDate,
+  getIntl,
 };
 
 const getDeviceMemory = () => ({
@@ -279,12 +279,12 @@ const getScreen = () => [
   getColorDepth(),
 ];
 
-const getDateNow = () => ({
-  key: 'date',
-  title: 'Date',
-  value: Date.now(),
-  issues: [],
-});
+// const getDateNow = () => ({
+//   key: 'date',
+//   title: 'Date',
+//   value: Date.now(),
+//   issues: [],
+// });
 
 const getCalendar = () => ({
   key: 'calendar',
@@ -300,14 +300,14 @@ const getTimezone = () => ({
   issues: [],
 });
 
-const getTimezoneOffset = () => ({
-  key: 'timezoneOffset',
-  title: 'Timezone offset',
-  value: new Date().getTimezoneOffset(),
-  issues: [],
-});
+// const getTimezoneOffset = () => ({
+//   key: 'timezoneOffset',
+//   title: 'Timezone offset',
+//   value: new Date().getTimezoneOffset(),
+//   issues: [],
+// });
 
-const getDate = () => [getCalendar(), getTimezone(), getTimezoneOffset()];
+const getIntl = () => [getCalendar(), getTimezone()];
 
 const detectTor = () => {
   const date = new Date();
