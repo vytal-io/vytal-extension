@@ -145,8 +145,11 @@ tbody:not(:last-child) {
 }
 
 td {
-  /* vertical-align: top; */
   padding: 12px;
+}
+
+td:first-letter {
+  text-transform: uppercase;
 }
 
 td:first-child {
