@@ -7,8 +7,8 @@ import {
   checkNavigatorProperties,
   checkWebWorker,
   checkScreenProperties,
-  getUserAgentData,
 } from './main';
+import { ReactComponent as CheckCircle } from '../images/checkCircle.svg';
 
 const UserAgentBlock = () => {
   const [firstRender, setfirstRender] = useState(true);
@@ -37,12 +37,18 @@ const UserAgentBlock = () => {
               <tr>
                 <td>Browser</td>
                 <td>{userAgent.browser.name}</td>
+                <td>
+                  <CheckCircle className="circleButton" />
+                </td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td>Browser version</td>
                 <td>{userAgent.browser.version}</td>
+                <td>
+                  <CheckCircle className="circleButton" />
+                </td>
               </tr>
             </tbody>
             <tbody>
@@ -51,12 +57,18 @@ const UserAgentBlock = () => {
                 <td>
                   {userAgent.os.name} {userAgent.os.versionName}
                 </td>
+                <td>
+                  <CheckCircle className="circleButton" />
+                </td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td>OS version</td>
                 <td>{userAgent.os.version}</td>
+                <td>
+                  <CheckCircle className="circleButton" />
+                </td>
               </tr>
             </tbody>
             <tbody>
@@ -65,12 +77,18 @@ const UserAgentBlock = () => {
                 <td>
                   {userAgent.engine.name} {userAgent.engine.version}
                 </td>
+                <td>
+                  <CheckCircle className="circleButton" />
+                </td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td>Platform type</td>
                 <td>{userAgent.platform.type}</td>
+                <td>
+                  <CheckCircle className="circleButton" />
+                </td>
               </tr>
             </tbody>
           </table>

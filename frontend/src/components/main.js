@@ -9,6 +9,7 @@ export {
   getScreen,
   checkScreenProperties,
   detectTor,
+  getDate,
 };
 
 const getDeviceMemory = () => ({
@@ -277,6 +278,36 @@ const getScreen = () => [
   getPixelDepth(),
   getColorDepth(),
 ];
+
+const getDateNow = () => ({
+  key: 'date',
+  title: 'Date',
+  value: Date.now(),
+  issues: [],
+});
+
+const getCalendar = () => ({
+  key: 'calendar',
+  title: 'Calendar',
+  value: Intl.DateTimeFormat().resolvedOptions().calendar,
+  issues: [],
+});
+
+const getTimezone = () => ({
+  key: 'timezone',
+  title: 'Timezone',
+  value: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  issues: [],
+});
+
+const getTimezoneOffset = () => ({
+  key: 'timezoneOffset',
+  title: 'Timezone offset',
+  value: new Date().getTimezoneOffset(),
+  issues: [],
+});
+
+const getDate = () => [getCalendar(), getTimezone(), getTimezoneOffset()];
 
 const detectTor = () => {
   const date = new Date();
