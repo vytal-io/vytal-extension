@@ -148,7 +148,7 @@ td {
   padding: 12px;
 }
 
-td:first-letter {
+td:nth-child(2):first-letter {
   text-transform: uppercase;
 }
 
