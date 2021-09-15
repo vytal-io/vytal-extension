@@ -4,6 +4,7 @@
   --text: #4b5563;
   --border: #ddd;
   --issueBackground: #f8d7da;
+  --issueHover: #f4c1c6;
   --issueBorder: #f5c6cb;
   --issueText: #721c24;
 }
@@ -221,6 +222,11 @@ input[type='text'] {
   background-color: var(--issueBackground);
   color: var(--issueText);
   border: 1px solid var(--issueBorder);
+  cursor: pointer;
+}
+
+.issue:hover {
+  background-color: var(--issueHover);
 }
 
 .newline {

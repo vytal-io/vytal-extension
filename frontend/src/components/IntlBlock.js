@@ -8,7 +8,9 @@ import { ReactComponent as CheckCircle } from '../images/checkCircle.svg';
 const DateBlock = () => (
   <ScanBlock>
     <h1>Intl</h1>
-    <div className="tableWrap">
+    <Table type="navigator" data={getIntl()} />
+
+    {/* <div className="tableWrap">
       <table>
         {Object.entries(Intl.DateTimeFormat().resolvedOptions()).map((item) => (
           <tbody key={item[0]}>
@@ -22,7 +24,7 @@ const DateBlock = () => (
           </tbody>
         ))}
       </table>
-    </div>
+    </div> */}
     <p>
       <b>Explanation:</b> JavaScript can be used to find information about your
       hardware. This information can be used to create a fingerprint.

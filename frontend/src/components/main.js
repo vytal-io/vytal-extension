@@ -14,7 +14,6 @@ export {
 
 const getDeviceMemory = () => ({
   key: 'deviceMemory',
-  title: 'Device memory',
   value: navigator.deviceMemory,
   issues: [
     checkNavigatorProperties('deviceMemory'),
@@ -25,7 +24,6 @@ const getDeviceMemory = () => ({
 
 const getHardwareConcurrency = () => ({
   key: 'hardwareConcurrency',
-  title: 'Hardware Concurrency',
   value: navigator.hardwareConcurrency,
   issues: [
     checkNavigatorProperties('hardwareConcurrency'),
@@ -36,7 +34,6 @@ const getHardwareConcurrency = () => ({
 
 const getMaxTouchPoints = () => ({
   key: 'maxTouchPoints',
-  title: 'Max touchpoints',
   value: navigator.maxTouchPoints,
   issues: [
     checkNavigatorProperties('maxTouchPoints'),
@@ -47,7 +44,6 @@ const getMaxTouchPoints = () => ({
 
 const getPlatform = () => ({
   key: 'platform',
-  title: 'Platform',
   value: navigator.platform,
   issues: [
     checkNavigatorProperties('platform'),
@@ -58,7 +54,6 @@ const getPlatform = () => ({
 
 const getUserAgent = () => ({
   key: 'userAgent',
-  title: 'User agent',
   value: navigator.userAgent,
   issues: [
     checkNavigatorProperties('userAgent'),
@@ -69,7 +64,6 @@ const getUserAgent = () => ({
 
 const getLanguage = () => ({
   key: 'language',
-  title: 'Language',
   value: navigator.language,
   issues: [
     checkNavigatorProperties('language'),
@@ -80,7 +74,6 @@ const getLanguage = () => ({
 
 const getLanguages = () => ({
   key: 'languages',
-  title: 'Languages',
   value: navigator.languages,
   issues: [
     checkNavigatorProperties('languages'),
@@ -91,7 +84,6 @@ const getLanguages = () => ({
 
 const getCookieEnabled = () => ({
   key: 'cookieEnabled',
-  title: 'Cookies enabled',
   value: navigator.cookieEnabled ? 'True' : 'False',
   issues: [
     checkNavigatorProperties('cookieEnabled'),
@@ -102,7 +94,6 @@ const getCookieEnabled = () => ({
 
 const getDoNotTrack = () => ({
   key: 'doNotTrack',
-  title: 'Do not track header',
   value: navigator.doNotTrack ? 'True' : 'False',
   issues: [
     checkNavigatorProperties('doNotTrack'),
@@ -113,7 +104,6 @@ const getDoNotTrack = () => ({
 
 const getWebDriver = () => ({
   key: 'webdriver',
-  title: 'Webdriver',
   value: navigator.webdriver ? 'True' : 'False',
   issues: [
     checkNavigatorProperties('webdriver'),
@@ -124,7 +114,6 @@ const getWebDriver = () => ({
 
 const getPlugins = () => ({
   key: 'plugins',
-  title: 'Plugins',
   value: sortPlugins(navigator.plugins),
   issues: [
     checkNavigatorProperties('plugins'),
@@ -135,7 +124,6 @@ const getPlugins = () => ({
 
 const getVendor = () => ({
   key: 'vendor',
-  title: 'Vendor',
   value: navigator.vendor,
   issues: [
     checkNavigatorProperties('vendor'),
@@ -146,7 +134,6 @@ const getVendor = () => ({
 
 const getAppVersion = () => ({
   key: 'appVersion',
-  title: 'App Version',
   value: navigator.appVersion,
   issues: [
     checkNavigatorProperties('appVersion'),
@@ -157,7 +144,6 @@ const getAppVersion = () => ({
 
 const getProductSub = () => ({
   key: 'productSub',
-  title: 'Product sub',
   value: navigator.productSub,
   issues: [
     checkNavigatorProperties('productSub'),
@@ -168,7 +154,6 @@ const getProductSub = () => ({
 
 const getWidth = () => ({
   key: 'width',
-  title: 'Width',
   value: window.screen.width,
   issues: [
     checkScreenProperties('width'),
@@ -180,7 +165,6 @@ const getWidth = () => ({
 
 const getOuterWidth = () => ({
   key: 'outerWidth',
-  title: 'Outer width',
   value: window.outerWidth,
   // issues: checkWindowProperties('outerWidth'),
   issues: [],
@@ -188,7 +172,6 @@ const getOuterWidth = () => ({
 
 const getAvailWidth = () => ({
   key: 'availWidth',
-  title: 'Avail width',
   value: window.screen.availWidth,
   issues: [
     checkScreenProperties('availWidth'),
@@ -200,7 +183,6 @@ const getAvailWidth = () => ({
 
 const getHeight = () => ({
   key: 'height',
-  title: 'Height',
   value: window.screen.height,
   issues: [
     checkScreenProperties('height'),
@@ -211,7 +193,6 @@ const getHeight = () => ({
 
 const getOuterHeight = () => ({
   key: 'outerHeight',
-  title: 'Outer height',
   value: window.outerHeight,
   // issues: checkWindowProperties('outerHeight'),
   issues: [],
@@ -219,7 +200,6 @@ const getOuterHeight = () => ({
 
 const getAvailHeight = () => ({
   key: 'availHeight',
-  title: 'Avail height',
   value: window.screen.availHeight,
   issues: [
     checkScreenProperties('availHeight'),
@@ -231,7 +211,6 @@ const getAvailHeight = () => ({
 
 const getPixelDepth = () => ({
   key: 'pixelDepth',
-  title: 'Pixel depth',
   value: window.screen.pixelDepth,
   issues: [
     checkScreenProperties('pixelDepth'),
@@ -242,7 +221,6 @@ const getPixelDepth = () => ({
 
 const getColorDepth = () => ({
   key: 'colorDepth',
-  title: 'Color depth',
   value: window.screen.colorDepth,
   issues: [
     checkScreenProperties('colorDepth'),
@@ -286,28 +264,31 @@ const getScreen = () => [
 //   issues: [],
 // });
 
+const getLocale = () => ({
+  key: 'locale',
+  value: Intl.DateTimeFormat().resolvedOptions().locale,
+  issues: [],
+});
+
 const getTimezone = () => ({
   key: 'timezone',
-  title: 'Timezone',
   value: Intl.DateTimeFormat().resolvedOptions().timeZone,
   issues: [],
 });
 
-const getHourCycle = () => ({
-  key: 'hourCycle',
-  title: 'Hour cycle',
-  value: Intl.DateTimeFormat().resolvedOptions().hourCycle,
-  issues: [],
-});
+// const getHourCycle = () => ({
+//   key: 'hourCycle',
+//   value: Intl.DateTimeFormat().resolvedOptions().hourCycle,
+//   issues: [],
+// });
 
-const getCalendar = () => ({
-  key: 'calendar',
-  title: 'Calendar',
-  value: Intl.DateTimeFormat().resolvedOptions().calendar,
-  issues: [],
-});
+// const getCalendar = () => ({
+//   key: 'calendar',
+//   value: Intl.DateTimeFormat().resolvedOptions().calendar,
+//   issues: [],
+// });
 
-const getIntl = () => [getTimezone(), getHourCycle(), getCalendar()];
+const getIntl = () => [getLocale(), getTimezone()];
 
 const detectTor = () => {
   const date = new Date();

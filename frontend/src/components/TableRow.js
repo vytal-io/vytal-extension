@@ -31,17 +31,15 @@ const TableRow = ({ item }) => {
   const [issues, setIssues] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
+  const openModal = () => {
     if (issues) setIsOpen(true);
-  }
+  };
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
+  const afterOpenModal = () => {};
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
-  }
+  };
 
   useEffect(() => {
     if (item.issues.filter(Boolean).length !== 0) {
