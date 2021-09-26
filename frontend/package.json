@@ -17,7 +17,6 @@
     "react-dom": "^17.0.2",
     "react-modal": "^3.14.3",
     "react-scripts": "4.0.3",
-    "react-tsparticles": "^1.28.0",
     "react-webworker": "^2.1.0",
     "tslib": "^2.2.0"
   },
