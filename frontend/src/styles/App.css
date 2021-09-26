@@ -36,28 +36,25 @@
   right: 12px;
 }
 
-.centerBlockOuter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1 0 auto;
-  margin: 0 18px;
-}
-
-.centerBlockInner {
-  width: 650px;
-  margin: 24px 0 0 0;
-}
-
 .logoWrap {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 13px 0;
 }
 
 .logo {
   width: 270px;
-  margin: 0 0 14px 0;
+}
+
+.centerBlockOuter {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.centerBlockInner {
+  width: 450px;
 }
 
 .contentBlock {

@@ -14,14 +14,18 @@ import FiltersBlock from './FiltersBlock';
 
 const ScanBlocks = () => (
   <>
-    <IntlBlock />
-    <FingerprintBlock />
-    <LocationBlock />
-    <ConnectionBlock />
-    <NavigatorBlock />
-    <UserAgentBlock />
-    <ScreenBlock />
-    <OtherBlock />
+    <div className="centerBlockInner">
+      <IntlBlock />
+      <FingerprintBlock />
+      <NavigatorBlock />
+      <UserAgentBlock />
+    </div>
+    <div className="centerBlockInner">
+      <LocationBlock />
+      <ConnectionBlock />
+      <ScreenBlock />
+      <OtherBlock />
+    </div>
     {/* <FingerprintBlock />
     <LocationBlock />
     <ConnectionBlock />
