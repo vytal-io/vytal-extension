@@ -1,17 +1,12 @@
-import { useState } from 'react';
 import Logo from './Logo';
-import StartBlock from './StartBlock';
 import ScanBlocks from './ScanBlocks';
 
-const MainColumn = () => {
-  const [scan, setScan] = useState(false);
-  return (
-    <div className="centerBlockOuter">
-      <div className="centerBlockInner">
-        <Logo />
-        {scan ? <ScanBlocks /> : <StartBlock setScan={setScan} />}
-      </div>
+const MainColumn = () => (
+  <div className="centerBlockOuter">
+    <div className="centerBlockInner">
+      <Logo />
+      <ScanBlocks />
     </div>
-  );
-};
+  </div>
+);
 export default MainColumn;
