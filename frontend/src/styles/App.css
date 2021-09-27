@@ -29,8 +29,7 @@
   z-index: -1;
 }
 
-.github {
-  width: 36px;
+.gitHubButton {
   position: fixed;
   top: 12px;
   right: 12px;
@@ -40,11 +39,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 13px 0;
+  margin: 20px 0;
 }
 
 .logo {
-  width: 270px;
+  width: 250px;
 }
 
 .centerBlockOuter {
@@ -54,7 +53,7 @@
 }
 
 .centerBlockInner {
-  width: 450px;
+  width: 500px;
 }
 
 .contentBlock {

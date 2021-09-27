@@ -15,10 +15,10 @@ import FiltersBlock from './FiltersBlock';
 const ScanBlocks = () => (
   <>
     <div className="centerBlockInner">
-      <IntlBlock />
       <FingerprintBlock />
       <NavigatorBlock />
       <UserAgentBlock />
+      <IntlBlock />
     </div>
     <div className="centerBlockInner">
       <LocationBlock />
