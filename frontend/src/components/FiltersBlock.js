@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ScanBlock from './ScanBlock';
+import ScanBlock from './Block';
 import Table from './Table';
 
 const FiltersBlock = () => {

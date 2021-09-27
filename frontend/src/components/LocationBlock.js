@@ -1,4 +1,4 @@
-import ScanBlock from './ScanBlock';
+import ScanBlock from './Block';
 import Table from './Table';
 import { getMap, getLocation } from '../utils/conenction';
 

@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
-import ScanBlock from './ScanBlock';
+import ScanBlock from './Block';
 import { detectTor } from './main';
 
 const OtherBlock = () => {

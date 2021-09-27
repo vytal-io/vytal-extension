@@ -62,7 +62,6 @@ const getLocation = (data, workerData) => {
 
 // Returns object with location data
 const getConnection = (data) => {
-  console.log(data);
   const isProxy = checkProxy(data.proxy);
   return [
     {

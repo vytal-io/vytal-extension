@@ -3,6 +3,11 @@ const data = {
   timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   timezoneOffset: new Date().getTimezoneOffset(),
   date: new Date().toString(),
+  deviceMemory: navigator.deviceMemory,
+  hardwareConcurrency: navigator.hardwareConcurrency,
+  platform: navigator.platform,
+  userAgent: navigator.userAgent,
+  appVersion: navigator.appVersion,
   language: navigator.language,
   languages: navigator.languages,
 };

@@ -29,9 +29,9 @@ const ScanBlocks = () => {
       {connectionData ? (
         <>
           <div className="centerBlockInner">
-            {/* <FingerprintBlock />
-            <NavigatorBlock />
-            <UserAgentBlock />
+            {/* <FingerprintBlock /> */}
+            <NavigatorBlock workerData={workerData} />
+            {/* <UserAgentBlock />
             <IntlBlock /> */}
           </div>
           <div className="centerBlockInner">
@@ -43,8 +43,8 @@ const ScanBlocks = () => {
               workerData={workerData}
               connectionData={connectionData}
             />
-            {/* <ScreenBlock />
-            <OtherBlock /> */}
+            <ScreenBlock />
+            {/* <OtherBlock /> */}
           </div>
         </>
       ) : (
