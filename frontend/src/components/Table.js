@@ -1,22 +1,15 @@
-/* eslint-disable no-unused-vars */
-import parse from 'html-react-parser';
-import { useState, useEffect } from 'react';
 import TableRow from './TableRow';
 
-const Table = ({ data }) => {
-  const [workerData, setWorkerData] = useState();
-
-  return (
-    <div className="tableWrap">
-      <table>
-        {data.map((item) => (
-          <tbody key={item.key}>
-            <TableRow item={item} />
-          </tbody>
-        ))}
-      </table>
-    </div>
-  );
-};
+const Table = ({ data }) => (
+  <div className="tableWrap">
+    <table>
+      {data.map((item) => (
+        <tbody key={item.key} title={item.code}>
+          <TableRow item={item} />
+        </tbody>
+      ))}
+    </table>
+  </div>
+);
 
 export default Table;

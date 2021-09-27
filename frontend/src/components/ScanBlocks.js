@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { useState, useEffect } from 'react';
 import UserAgentBlock from './UserAgentBlock';
 import IntlBlock from './IntlBlock';
 import OtherBlock from './OtherBlock';
@@ -11,29 +12,48 @@ import SoftwareBlock from './SoftwareBlock';
 import ConnectionBlock from './ConnectionBlock';
 import FiltersBlock from './FiltersBlock';
 // import FontsBlock from './FontsBlock';
+import { fetchAPI, getWebWorker } from '../utils/common';
 
-const ScanBlocks = () => (
-  <>
-    <div className="centerBlockInner">
-      <FingerprintBlock />
-      <NavigatorBlock />
-      <UserAgentBlock />
-      <IntlBlock />
-    </div>
-    <div className="centerBlockInner">
-      <LocationBlock />
-      <ConnectionBlock />
-      <ScreenBlock />
-      <OtherBlock />
-    </div>
-    {/* <FingerprintBlock />
-    <LocationBlock />
-    <ConnectionBlock />
-    <FiltersBlock />
-    <SoftwareBlock />
-    <HardwareBlock /> */}
-    {/* <FontsBlock /> */}
-  </>
-);
+const ScanBlocks = () => {
+  const [workerData, setWorkerData] = useState();
+  const [connectionData, setConnectionData] = useState('');
+
+  useEffect(() => {
+    getWebWorker().onmessage = (event) => {
+      setWorkerData(event.data);
+      fetchAPI(setConnectionData);
+    };
+  }, []);
+  return (
+    <>
+      {connectionData ? (
+        <>
+          <div className="centerBlockInner">
+            {/* <FingerprintBlock />
+            <NavigatorBlock />
+            <UserAgentBlock />
+            <IntlBlock /> */}
+          </div>
+          <div className="centerBlockInner">
+            <LocationBlock
+              workerData={workerData}
+              connectionData={connectionData}
+            />
+            <ConnectionBlock
+              workerData={workerData}
+              connectionData={connectionData}
+            />
+            {/* <ScreenBlock />
+            <OtherBlock /> */}
+          </div>
+        </>
+      ) : (
+        <div className="contentBlock">
+          <center>Loading...</center>
+        </div>
+      )}
+    </>
+  );
+};
 
 export default ScanBlocks;

@@ -1,32 +1,16 @@
-import { useState, useEffect } from 'react';
 import ScanBlock from './ScanBlock';
-import Table from './OldTable';
-import { fetchAPI, getConnection } from './mainOld';
+import Table from './Table';
+import { getConnection } from '../utils/conenction';
 
-const ConnectionBlock = () => {
-  const [data, setData] = useState('');
-  const [display, setDisplay] = useState('');
+const LocationBlock = ({ connectionData }) => (
+  <ScanBlock>
+    <h1>Connection</h1>
+    <Table data={getConnection(connectionData)} />
+    <p>
+      <b>Explanation:</b> Your IP address reveals information about your
+      connection. Using a VPN or Tor will hide your connection info.
+    </p>
+  </ScanBlock>
+);
 
-  useEffect(() => {
-    fetchAPI(setData, setDisplay);
-  }, []);
-
-  return (
-    <ScanBlock>
-      <h1>Connection</h1>
-      {display === 1 && <Table data={getConnection(data)} />}
-      {display === 0 && (
-        <div className="boxWrap">
-          Unable to fetch info. Adblock or content filter may have prevented
-          data from loading.
-        </div>
-      )}
-      <p>
-        <b>Explanation:</b> Your IP address reveals information about your
-        connection. Using a VPN or Tor will hide your connection info.
-      </p>
-    </ScanBlock>
-  );
-};
-
-export default ConnectionBlock;
+export default LocationBlock;

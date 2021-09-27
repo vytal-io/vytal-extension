@@ -1,19 +1,10 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/jsx-indent-props */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-unused-vars */
-import parse from 'html-react-parser';
-import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import {
-  checkNavigatorProperties,
-  checkWebWorker,
-  checkScreenProperties,
-} from './main';
+import { useState } from 'react';
 import { ReactComponent as XCircle } from '../images/xCircle.svg';
 import { ReactComponent as CheckCircle } from '../images/checkCircle.svg';
+import { ReactComponent as X } from '../images/x.svg';
 
-const customStyles = {
+const modalStyles = {
   content: {
     top: '50%',
     left: '50%',
@@ -21,74 +12,53 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    padding: '18px',
+    border: '1px solid var(--border)',
+    borderRadius: '6px',
   },
 };
 
 Modal.setAppElement('#root');
 
 const TableRow = ({ item }) => {
-  const [workerData, setWorkerData] = useState('');
-  const [issues, setIssues] = useState(false);
+  const issues = item.issues.filter(Boolean).length !== 0;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
     if (issues) setIsOpen(true);
   };
 
-  const afterOpenModal = () => {};
-
   const closeModal = () => {
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    if (item.issues.filter(Boolean).length !== 0) {
-      setIssues(true);
-    }
-    checkWebWorker(item.key, setWorkerData);
-  }, []);
-
-  useEffect(() => {
-    if (workerData !== '') {
-      setIssues(true);
-    }
-  }, [workerData]);
-
   return (
-    <>
-      <tr className={issues ? 'issue' : ''} onClick={openModal}>
-        <td>{item.key}</td>
-        <td>{item.value}</td>
-        <td>
-          {issues ? (
-            <>
-              <XCircle className="circleButton" />
-            </>
-          ) : (
-            <CheckCircle className="circleButton" />
-          )}
-        </td>
-      </tr>
+    <tr>
+      <td>{item.key}</td>
+      <td>{item.value}</td>
+      <td>
+        {issues ? (
+          <XCircle className="circleButton issueButton" onClick={openModal} />
+        ) : (
+          <CheckCircle className="circleButton" />
+        )}
+      </td>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
+        style={modalStyles}
+        contentLabel="Issues Modal"
       >
-        <button onClick={closeModal}>close</button>
-        <>
-          {item.issues.map((ele, index) => (
-            <div className="newline" key={index}>
-              {ele}
-            </div>
+        <div className="modalHeader">
+          <div className="modalTitle">{item.key} issues</div>
+          <X className="closeButton" onClick={closeModal} />
+        </div>
+        <ul>
+          {item.issues.filter(Boolean).map((ele, index) => (
+            <li key={index}>{ele}</li>
           ))}
-          <div className="newline">
-            {workerData && <>{`Did not match web worker (${workerData})`}</>}
-          </div>
-        </>
+        </ul>
       </Modal>
-    </>
+    </tr>
   );
 };
 
