@@ -29,7 +29,7 @@ const Blocks = () => {
       {connectionData ? (
         <>
           <div className="centerBlockInner">
-            {/* <FingerprintBlock /> */}
+            <FingerprintBlock workerData={workerData} />
             <NavigatorBlock workerData={workerData} />
             <UserAgentBlock workerAgent={workerData.userAgent} />
             <IntlBlock workerData={workerData} />

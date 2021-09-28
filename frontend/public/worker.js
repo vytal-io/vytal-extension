@@ -2,7 +2,6 @@ const data = {
   locale: Intl.DateTimeFormat().resolvedOptions().locale,
   timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   timezoneOffset: new Date().getTimezoneOffset(),
-  date: new Date().toString(),
   deviceMemory: navigator.deviceMemory,
   hardwareConcurrency: navigator.hardwareConcurrency,
   platform: navigator.platform,

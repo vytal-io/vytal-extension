@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { checkWebWorker } from './common';
 
 const detectTor = () => {
@@ -22,54 +21,45 @@ const checkDatePrototype = () => {
 };
 
 // Returns object with location data
-const getOther = (battery, adBlock, workerData) => {
-  const workerAgentParsed = 1;
-  return [
-    {
-      key: 'Brave browser',
-      value: navigator.brave ? 'True' : 'False',
-      issues: [checkWebWorker],
-    },
-    {
-      key: 'Tor browser',
-      value: detectTor() ? 'True' : 'False',
-      issues: [],
-    },
-    {
-      key: 'Adblock',
-      value: adBlock ? 'True' : 'False',
-      issues: [],
-    },
-    {
-      key: 'Date',
-      value: new Date().toString(),
-      issues: [
-        checkDatePrototype(),
-        checkWebWorker(new Date().toString(), workerData.date),
-      ],
-    },
-    {
-      key: 'Timezone offset',
-      value: new Date().getTimezoneOffset(),
-      issues: [
-        checkDatePrototype(),
-        checkWebWorker(
-          new Date().getTimezoneOffset(),
-          workerData.timezoneOffset
-        ),
-      ],
-    },
-    {
-      key: 'Battery level',
-      value: `${Math.round(battery.level * 100)}%`,
-      issues: [],
-    },
-    {
-      key: 'Battery status',
-      value: battery.charging ? 'Charging' : 'Not charging',
-      issues: [],
-    },
-  ];
-};
+const getOther = (battery, adBlock, workerData) => [
+  {
+    key: 'Brave browser',
+    value: navigator.brave ? 'True' : 'False',
+    issues: [checkWebWorker],
+  },
+  {
+    key: 'Tor browser',
+    value: detectTor() ? 'True' : 'False',
+    issues: [],
+  },
+  {
+    key: 'Adblock',
+    value: adBlock ? 'True' : 'False',
+    issues: [],
+  },
+  {
+    key: 'Date',
+    value: new Date().toString(),
+    issues: [checkDatePrototype()],
+  },
+  {
+    key: 'Timezone offset',
+    value: new Date().getTimezoneOffset(),
+    issues: [
+      checkDatePrototype(),
+      checkWebWorker(new Date().getTimezoneOffset(), workerData.timezoneOffset),
+    ],
+  },
+  {
+    key: 'Battery level',
+    value: `${Math.round(battery.level * 100)}%`,
+    issues: [],
+  },
+  {
+    key: 'Battery status',
+    value: battery.charging ? 'Charging' : 'Not charging',
+    issues: [],
+  },
+];
 
 export default getOther;
