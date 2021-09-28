@@ -146,12 +146,14 @@ td {
   padding: 12px;
 }
 
-td:nth-child(2):first-letter {
-  text-transform: uppercase;
+td:first-child {
+  width: 150px;
+  font-weight: 600;
+  word-break: normal;
 }
 
-td:first-child {
-  width: 180px;
+.fingerprintTable td:first-child {
+  width: 80px;
   font-weight: 600;
   word-break: normal;
 }
