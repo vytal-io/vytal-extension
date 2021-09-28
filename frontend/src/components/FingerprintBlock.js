@@ -1,19 +1,40 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Block from './Block';
 import Table from './Table';
-import getHash from '../utils/fingerprint';
+import {
+  getSignature,
+  postSignature,
+  getHash,
+  getFingerprint,
+} from '../utils/fingerprint';
 
 const FingerprintBlock = ({ workerData }) => {
   const [signature, setSignature] = useState();
+
+  useEffect(() => {
+    if (signature) {
+      postSignature(hash, signature);
+    } else {
+      console.log(signature);
+
+      getSignature(hash, setSignature);
+    }
+  }, [signature]);
 
   const hash = getHash(workerData);
   return (
     <Block>
       <h1>Fingerprint</h1>
-      <div className="boxWrap">
-        <div className="hash">{hash}</div>
-      </div>
+      <>
+        {signature ? (
+          <Table data={getFingerprint(signature, hash)} />
+        ) : (
+          <div className="boxWrap">
+            <div className="hash">{hash}</div>
+          </div>
+        )}
+      </>
       <p>
         <b>Explanation:</b> This is a unique identifier that can be used to
         follow you around the web. Even if you clear cookies, change your IP or
@@ -21,7 +42,7 @@ const FingerprintBlock = ({ workerData }) => {
         reload the page in private mode to test it out.
       </p>
       {signature ? (
-        <p>Success! Reload browser.</p>
+        <p>Success! Reload page.</p>
       ) : (
         <form onSubmit={(e) => setSignature(e.target[0].value)}>
           <input
