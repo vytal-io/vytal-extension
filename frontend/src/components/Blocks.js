@@ -32,7 +32,7 @@ const Blocks = () => {
             {/* <FingerprintBlock /> */}
             <NavigatorBlock workerData={workerData} />
             <UserAgentBlock workerAgent={workerData.userAgent} />
-            {/* <IntlBlock /> */}
+            <IntlBlock workerData={workerData} />
           </div>
           <div className="centerBlockInner">
             <LocationBlock
