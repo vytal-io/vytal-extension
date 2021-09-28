@@ -44,7 +44,7 @@ const Blocks = () => {
               connectionData={connectionData}
             />
             <ScreenBlock />
-            <OtherBlock />
+            <OtherBlock workerData={workerData} />
           </div>
         </>
       ) : (

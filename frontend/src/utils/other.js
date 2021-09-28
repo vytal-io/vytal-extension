@@ -22,13 +22,13 @@ const checkDatePrototype = () => {
 };
 
 // Returns object with location data
-const getOther = (battery, adBlock) => {
+const getOther = (battery, adBlock, workerData) => {
   const workerAgentParsed = 1;
   return [
     {
       key: 'Brave browser',
       value: navigator.brave ? 'True' : 'False',
-      issues: [],
+      issues: [checkWebWorker],
     },
     {
       key: 'Tor browser',
@@ -43,12 +43,21 @@ const getOther = (battery, adBlock) => {
     {
       key: 'Date',
       value: new Date().toString(),
-      issues: [checkDatePrototype()],
+      issues: [
+        checkDatePrototype(),
+        checkWebWorker(new Date().toString(), workerData.date),
+      ],
     },
     {
       key: 'Timezone offset',
       value: new Date().getTimezoneOffset(),
-      issues: [checkDatePrototype()],
+      issues: [
+        checkDatePrototype(),
+        checkWebWorker(
+          new Date().getTimezoneOffset(),
+          workerData.timezoneOffset
+        ),
+      ],
     },
     {
       key: 'Battery level',

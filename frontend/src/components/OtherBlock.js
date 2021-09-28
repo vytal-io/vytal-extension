@@ -5,7 +5,7 @@ import Block from './Block';
 import Table from './Table';
 import getOther from '../utils/other';
 
-const OtherBlock = ({ workerAgent }) => {
+const OtherBlock = ({ workerData }) => {
   const [adBlock, setAdBlock] = useState();
   const [battery, setBattery] = useState();
 
@@ -30,7 +30,7 @@ const OtherBlock = ({ workerAgent }) => {
     <Block>
       <h1>Other</h1>
       {battery && adBlock !== undefined && (
-        <Table data={getOther(battery, adBlock)} />
+        <Table data={getOther(battery, adBlock, workerData)} />
       )}
       <p>
         <b>Explanation:</b> JavaScript can be used to find information about
