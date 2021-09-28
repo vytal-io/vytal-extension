@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
-import ScanBlock from './Block';
+import Block from './Block';
 import Table from './Table';
 import { getIntl } from './main';
 import { ReactComponent as CheckCircle } from '../images/checkCircle.svg';
 
 const DateBlock = () => (
-  <ScanBlock>
+  <Block>
     <h1>Intl</h1>
     <Table type="navigator" data={getIntl()} />
 
@@ -29,7 +29,7 @@ const DateBlock = () => (
       <b>Explanation:</b> JavaScript can be used to find information about your
       hardware. This information can be used to create a fingerprint.
     </p>
-  </ScanBlock>
+  </Block>
 );
 
 export default DateBlock;

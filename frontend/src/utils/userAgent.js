@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/prefer-default-export */
-
 import Bowser from 'bowser';
 import { checkWebWorker } from './common';
 
@@ -14,7 +11,6 @@ const getUserAgentData = (key, userAgent, workerAgent) => ({
 const getUserAgent = (workerAgent) => {
   const userAgentParsed = Bowser.parse(navigator.userAgent);
   const workerAgentParsed = Bowser.parse(workerAgent);
-  console.log(userAgentParsed, workerAgentParsed);
   return [
     getUserAgentData(
       'Browser',

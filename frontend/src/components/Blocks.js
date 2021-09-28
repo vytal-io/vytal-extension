@@ -14,7 +14,7 @@ import FiltersBlock from './FiltersBlock';
 // import FontsBlock from './FontsBlock';
 import { fetchAPI, getWebWorker } from '../utils/common';
 
-const ScanBlocks = () => {
+const Blocks = () => {
   const [workerData, setWorkerData] = useState();
   const [connectionData, setConnectionData] = useState('');
 
@@ -44,7 +44,7 @@ const ScanBlocks = () => {
               connectionData={connectionData}
             />
             <ScreenBlock />
-            {/* <OtherBlock /> */}
+            <OtherBlock />
           </div>
         </>
       ) : (
@@ -56,4 +56,4 @@ const ScanBlocks = () => {
   );
 };
 
-export default ScanBlocks;
+export default Blocks;

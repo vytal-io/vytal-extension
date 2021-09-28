@@ -1,5 +1,5 @@
 import ContentList from './ContentList';
-import ScanBlock from './ScanBlock';
+import Block from './Block';
 
 const contentItems = [
   {
@@ -20,7 +20,7 @@ const contentItems = [
 ];
 
 const StartBlock = ({ setScan }) => (
-  <ScanBlock>
+  <Block>
     <h2>About</h2>
     <div className="contentBody">
       Vytal shows you what traces your browser leaves behind while surfing the
@@ -34,7 +34,7 @@ const StartBlock = ({ setScan }) => (
       id="scanButton"
       value="Scan Browser"
     />
-  </ScanBlock>
+  </Block>
 );
 
 export default StartBlock;

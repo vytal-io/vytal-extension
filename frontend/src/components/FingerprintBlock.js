@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ScanBlock from './Block';
+import Block from './Block';
 import Table from './Table';
 import {
   getHardware,
@@ -18,7 +18,7 @@ const FingerprintBlock = () => {
   const hash = getHash([...getHardware(), ...getWebGL(), ...getSoftware()]);
   getName(hash, setName, setLoad);
   return (
-    <ScanBlock>
+    <Block>
       <h1>Fingerprint</h1>
       {load && (
         <>
@@ -49,7 +49,7 @@ const FingerprintBlock = () => {
           <input type="submit" id="saveButton" value="Save" maxLength="100" />
         </form>
       )}
-    </ScanBlock>
+    </Block>
   );
 };
 

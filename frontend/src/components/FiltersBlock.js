@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ScanBlock from './Block';
+import Block from './Block';
 import Table from './Table';
 
 const FiltersBlock = () => {
@@ -24,7 +24,7 @@ const FiltersBlock = () => {
   ];
 
   return (
-    <ScanBlock>
+    <Block>
       <h1>Content Filters</h1>
       <Table data={data} />
       <p>
@@ -32,7 +32,7 @@ const FiltersBlock = () => {
         you against certain methods of tracking, it can also be used as another
         identification metric.
       </p>
-    </ScanBlock>
+    </Block>
   );
 };
 

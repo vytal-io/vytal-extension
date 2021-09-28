@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import ScanBlock from './ScanBlock';
+import Block from './Block';
 import fontList from '../fontList.json';
 
 const FontsBlock = () => {
@@ -45,7 +45,7 @@ const FontsBlock = () => {
   }, []);
 
   return (
-    <ScanBlock>
+    <Block>
       <h1>System Fonts</h1>
       <div className="fonts boxWrap" />
       <p>
@@ -54,7 +54,7 @@ const FontsBlock = () => {
         fonts that you have installed that aren&apos;t common for your system
         can make you easily identifiable.
       </p>
-    </ScanBlock>
+    </Block>
   );
 };
 
