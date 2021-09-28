@@ -1,6 +1,6 @@
 import ScanBlock from './Block';
 import Table from './Table';
-import { getMap, getLocation } from '../utils/conenction';
+import { getMap, getLocation } from '../utils/connection';
 
 const LocationBlock = ({ connectionData, workerData }) => (
   <ScanBlock>

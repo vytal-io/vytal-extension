@@ -31,8 +31,8 @@ const ScanBlocks = () => {
           <div className="centerBlockInner">
             {/* <FingerprintBlock /> */}
             <NavigatorBlock workerData={workerData} />
-            {/* <UserAgentBlock />
-            <IntlBlock /> */}
+            <UserAgentBlock workerAgent={workerData.userAgent} />
+            {/* <IntlBlock /> */}
           </div>
           <div className="centerBlockInner">
             <LocationBlock

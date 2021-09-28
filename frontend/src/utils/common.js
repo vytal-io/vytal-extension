@@ -10,7 +10,7 @@ const fetchAPI = (setData) => {
 };
 
 const checkWebWorker = (key, worker) => {
-  if (key.toString() !== worker.toString()) {
+  if (`${key}` !== `${worker}`) {
     return `Did not match web worker (${worker})`;
   }
   return null;
