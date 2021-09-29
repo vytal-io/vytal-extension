@@ -83,7 +83,7 @@ const getLanguage = (key, worker) => ({
   ],
 });
 
-const getLanguages = (key, worker) => ({
+const getLanguages = (key) => ({
   key: 'Languages',
   code: `navigator.${key}`,
   value: navigator[key],
@@ -91,7 +91,6 @@ const getLanguages = (key, worker) => ({
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
     checkNavigatorPrototype(key),
-    checkWebWorker(navigator[key], worker),
   ],
 });
 
@@ -199,7 +198,7 @@ const getNavigator = (workerData) => [
   getUserAgent('userAgent', workerData.userAgent),
   getAppVersion('appVersion', workerData.appVersion),
   getLanguage('language', workerData.language),
-  getLanguages('languages', workerData.languages),
+  getLanguages('languages'),
   getCookieEnabled('cookieEnabled'),
   getDoNotTrack('doNotTrack'),
   getWebDriver('webdriver'),
