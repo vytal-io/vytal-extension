@@ -8,7 +8,16 @@ const LocationBlock = ({ connectionData }) => (
     <Table data={getConnection(connectionData)} />
     <p>
       <b>Explanation:</b> Your IP address reveals information about your
-      connection. Using a VPN or Tor will hide your connection info.
+      connection.{' '}
+      <a
+        className="link"
+        target="_blank"
+        rel="noreferrer"
+        alt="Read more about ip connection"
+        href="https://en.wikipedia.org/wiki/IP_address"
+      >
+        Read more
+      </a>
     </p>
   </Block>
 );

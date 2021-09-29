@@ -7,8 +7,16 @@ const ScreenBlock = () => (
     <h1>Screen</h1>
     <Table data={getScreen()} />
     <p>
-      <b>Explanation:</b> JavaScript can be used to find information about your
-      hardware. This information can be used to create a fingerprint.
+      <b>Explanation:</b> The Screen interface exposes info about your computer.{' '}
+      <a
+        className="link"
+        target="_blank"
+        rel="noreferrer"
+        alt="Read more about screen"
+        href="https://developer.mozilla.org/en-US/docs/Web/API/Screen"
+      >
+        Read more
+      </a>
     </p>
   </Block>
 );

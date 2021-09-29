@@ -4,9 +4,8 @@
   --text: #4b5563;
   --border: #ddd;
   --issueBackground: #f8d7da;
-  --issueHover: #f4c1c6;
-  --issueBorder: #f5c6cb;
   --issueText: #721c24;
+  --link: #943ec5;
 }
 
 body {
@@ -66,6 +65,15 @@ img {
   box-sizing: border-box;
   display: block;
   margin: 0 0 12px 0;
+}
+
+.link {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 500px) {

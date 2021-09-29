@@ -8,7 +8,16 @@ const NavigatorBlock = ({ workerData }) => (
     <Table data={getNavigator(workerData)} />
     <p>
       <b>Explanation:</b> The Navigator interface exposes info about your
-      computer.
+      computer.{' '}
+      <a
+        className="link"
+        target="_blank"
+        rel="noreferrer"
+        alt="Read more about navigator"
+        href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator"
+      >
+        Read more
+      </a>
     </p>
   </Block>
 );

@@ -35,10 +35,6 @@ const OtherBlock = ({ workerData }) => {
       {battery && adBlock !== undefined && (
         <Table data={getOther(battery, adBlock, workerData)} />
       )}
-      <p>
-        <b>Explanation:</b> JavaScript can be used to find information about
-        your hardware. This information can be used to create a fingerprint.
-      </p>
     </Block>
   );
 };

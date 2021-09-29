@@ -9,7 +9,16 @@ const LocationBlock = ({ connectionData, workerData }) => (
     <Table data={getLocation(connectionData, workerData)} />
     <p>
       <b>Explanation:</b> Your IP address can be used to determine your
-      location. Using a VPN or Tor will hide your true location.
+      location.{' '}
+      <a
+        className="link"
+        target="_blank"
+        rel="noreferrer"
+        alt="Read more about ip location"
+        href="https://en.wikipedia.org/wiki/IP_address"
+      >
+        Read more
+      </a>
     </p>
   </Block>
 );
