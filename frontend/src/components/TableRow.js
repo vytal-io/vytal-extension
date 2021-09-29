@@ -36,7 +36,7 @@ const TableRow = ({ item }) => {
     <>
       <tr className={issues ? 'issue' : ''} onClick={openModal}>
         <td>{item.key}</td>
-        <td>{item.value}</td>
+        <td>{item.value || 'N/A'}</td>
         <td>
           {issues ? (
             <XCircle className="circleButton" />

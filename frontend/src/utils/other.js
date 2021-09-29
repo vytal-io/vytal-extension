@@ -22,12 +22,8 @@ const checkDatePrototype = () => {
 
 // Returns object with location data
 const getOther = (battery, adBlock, workerData) => {
-  console.log(battery);
   let batteryLevel, batteryStatus;
-  if (battery === 'N/A') {
-    batteryLevel = 'N/A';
-    batteryStatus = 'N/A';
-  } else {
+  if (battery !== 'N/A') {
     batteryLevel = `${Math.round(battery.level * 100)}%`;
     batteryStatus = battery.charging ? 'Charging' : 'Not charging';
   }
