@@ -35,7 +35,7 @@ const FingerprintBlock = ({ workerData }) => {
         </>
       )}
       <p>
-        <b>Explanation:</b> This hash is calculated from your device data. Even
+        <b>Explanation:</b> This hash is generated from your device data. Even
         if you clear cookies, change your IP or use private mode the hash will
         stay the same. Enter a signature and turn on a VPN to test it out.
       </p>
