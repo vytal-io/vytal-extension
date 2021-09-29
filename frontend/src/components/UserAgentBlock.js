@@ -7,8 +7,17 @@ const UserAgentBlock = ({ workerAgent }) => (
     <h1>User Agent</h1>
     <Table data={getUserAgent(workerAgent)} />
     <p>
-      <b>Explanation:</b> JavaScript can be used to find information about your
-      hardware. This information can be used to create a fingerprint.
+      <b>Explanation:</b> Your user agent can be parsed to determine information
+      about your browser or operating system.{' '}
+      <a
+        className="link"
+        target="_blank"
+        rel="noreferrer"
+        alt="Read more about user agent"
+        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent"
+      >
+        Read more
+      </a>
     </p>
   </Block>
 );

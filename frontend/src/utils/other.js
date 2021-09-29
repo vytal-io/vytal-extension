@@ -30,6 +30,7 @@ const getOther = (battery, adBlock, workerData) => {
   return [
     {
       key: 'Brave browser',
+      code: 'navigator.brave',
       value: navigator.brave ? 'True' : 'False',
       issues: [],
     },
@@ -45,11 +46,13 @@ const getOther = (battery, adBlock, workerData) => {
     },
     {
       key: 'Date',
+      code: 'new Date().toString()',
       value: new Date().toString(),
       issues: [checkDatePrototype()],
     },
     {
       key: 'Timezone offset',
+      code: 'new Date().getTimezoneOffset()',
       value: new Date().getTimezoneOffset(),
       issues: [
         checkDatePrototype(),

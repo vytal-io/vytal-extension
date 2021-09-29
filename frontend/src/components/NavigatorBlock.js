@@ -7,8 +7,8 @@ const NavigatorBlock = ({ workerData }) => (
     <h1>Navigator</h1>
     <Table data={getNavigator(workerData)} />
     <p>
-      <b>Explanation:</b> JavaScript can be used to find information about your
-      hardware. This information can be used to create a fingerprint.
+      <b>Explanation:</b> The Navigator interface exposes info about your
+      computer.
     </p>
   </Block>
 );

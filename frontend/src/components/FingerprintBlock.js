@@ -35,10 +35,9 @@ const FingerprintBlock = ({ workerData }) => {
         </>
       )}
       <p>
-        <b>Explanation:</b> This is a unique identifier that can be used to
-        follow you around the web. Even if you clear cookies, change your IP or
-        use private mode the hash will stay the same. Enter your name below and
-        reload the page in private mode to test it out.
+        <b>Explanation:</b> This hash is calculated from your device data. Even
+        if you clear cookies, change your IP or use private mode the hash will
+        stay the same. Enter a signature and turn on a VPN to test it out.
       </p>
       <form onSubmit={(e) => postSignature(hash, e.target[0].value)}>
         <input

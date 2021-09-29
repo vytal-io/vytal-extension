@@ -1,6 +1,7 @@
-const getWidth = () => ({
-  key: 'width',
-  value: window.screen.width,
+const getWidth = (key) => ({
+  key: 'Width',
+  code: `window.screen.${key}`,
+  value: window.screen[key],
   issues: [
     checkScreenProperties('width'),
     checkScreenValue('width'),
@@ -9,16 +10,10 @@ const getWidth = () => ({
   ],
 });
 
-const getOuterWidth = () => ({
-  key: 'outerWidth',
-  value: window.outerWidth,
-  // issues: checkWindowProperties('outerWidth'),
-  issues: [],
-});
-
-const getAvailWidth = () => ({
-  key: 'availWidth',
-  value: window.screen.availWidth,
+const getAvailWidth = (key) => ({
+  key: 'Avail width',
+  code: `window.screen.${key}`,
+  value: window.screen[key],
   issues: [
     checkScreenProperties('availWidth'),
     checkScreenValue('availWidth'),
@@ -27,9 +22,17 @@ const getAvailWidth = () => ({
   ],
 });
 
-const getHeight = () => ({
-  key: 'height',
-  value: window.screen.height,
+const getOuterWidth = (key) => ({
+  key: 'Outer width',
+  code: `window.${key}`,
+  value: window[key],
+  issues: [],
+});
+
+const getHeight = (key) => ({
+  key: 'Height',
+  code: `window.screen.${key}`,
+  value: window.screen[key],
   issues: [
     checkScreenProperties('height'),
     checkScreenValue('height'),
@@ -37,16 +40,10 @@ const getHeight = () => ({
   ],
 });
 
-const getOuterHeight = () => ({
-  key: 'outerHeight',
-  value: window.outerHeight,
-  // issues: checkWindowProperties('outerHeight'),
-  issues: [],
-});
-
-const getAvailHeight = () => ({
-  key: 'availHeight',
-  value: window.screen.availHeight,
+const getAvailHeight = (key) => ({
+  key: 'Avail height',
+  code: `window.screen.${key}`,
+  value: window.screen[key],
   issues: [
     checkScreenProperties('availHeight'),
     checkScreenValue('availHeight'),
@@ -55,9 +52,17 @@ const getAvailHeight = () => ({
   ],
 });
 
-const getPixelDepth = () => ({
-  key: 'pixelDepth',
-  value: window.screen.pixelDepth,
+const getOuterHeight = (key) => ({
+  key: 'Outer height',
+  code: `window.${key}`,
+  value: window[key],
+  issues: [],
+});
+
+const getPixelDepth = (key) => ({
+  key: 'Pixel depth',
+  code: `window.screen.${key}`,
+  value: window.screen[key],
   issues: [
     checkScreenProperties('pixelDepth'),
     checkScreenValue('pixelDepth'),
@@ -65,9 +70,10 @@ const getPixelDepth = () => ({
   ],
 });
 
-const getColorDepth = () => ({
-  key: 'colorDepth',
-  value: window.screen.colorDepth,
+const getColorDepth = (key) => ({
+  key: 'Color depth',
+  code: `window.screen.${key}`,
+  value: window.screen[key],
   issues: [
     checkScreenProperties('colorDepth'),
     checkScreenValue('colorDepth'),
@@ -118,14 +124,14 @@ const checkScreenProperties = (key) => {
 };
 
 const getScreen = () => [
-  getWidth(),
-  getAvailWidth(),
-  getOuterWidth(),
-  getHeight(),
-  getAvailHeight(),
-  getOuterHeight(),
-  getPixelDepth(),
-  getColorDepth(),
+  getWidth('width'),
+  getAvailWidth('availWidth'),
+  getOuterWidth('outerWidth'),
+  getHeight('height'),
+  getAvailHeight('availHeight'),
+  getOuterHeight('outerHeight'),
+  getPixelDepth('pixelDepth'),
+  getColorDepth('colorDepth'),
 ];
 
 export default getScreen;
