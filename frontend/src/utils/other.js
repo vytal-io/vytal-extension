@@ -25,7 +25,7 @@ const getOther = (battery, adBlock, workerData) => [
   {
     key: 'Brave browser',
     value: navigator.brave ? 'True' : 'False',
-    issues: [checkWebWorker],
+    issues: [],
   },
   {
     key: 'Tor browser',
