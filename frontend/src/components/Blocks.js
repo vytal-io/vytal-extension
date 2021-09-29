@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import UserAgentBlock from './UserAgentBlock';
 import IntlBlock from './IntlBlock';
@@ -7,10 +6,7 @@ import NavigatorBlock from './NavigatorBlock';
 import ScreenBlock from './ScreenBlock';
 import FingerprintBlock from './FingerprintBlock';
 import LocationBlock from './LocationBlock';
-import HardwareBlock from './HardwareBlock';
-import SoftwareBlock from './SoftwareBlock';
 import ConnectionBlock from './ConnectionBlock';
-import FiltersBlock from './FiltersBlock';
 // import FontsBlock from './FontsBlock';
 import { fetchAPI, getWebWorker } from '../utils/common';
 
