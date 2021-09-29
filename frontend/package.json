@@ -1,4 +1,5 @@
 {
+  "homepage": "https://z0ccc.github.io/Vytal",
   "name": "vytal",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +13,7 @@
     "bowser": "^2.11.0",
     "crypto-js": "^4.0.0",
     "emailjs-com": "^3.1.0",
+    "gh-pages": "^3.2.3",
     "html-react-parser": "^1.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -25,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -19,7 +19,7 @@ const checkWebWorker = (key, worker) => {
 const getWebWorker = () => {
   let w;
   if (typeof w === 'undefined') {
-    w = new Worker('worker.js');
+    w = new Worker('/Vytal/worker.js');
   }
   return w;
 };
