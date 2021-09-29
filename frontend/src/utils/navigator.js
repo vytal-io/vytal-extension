@@ -157,11 +157,11 @@ const checkNavigatorProperties = (key) => {
 };
 
 const checkNavigatorValue = (key) => {
-  if (
-    Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
-    undefined
-  ) {
-    return 'Failed descriptor.value undefined';
+  try {
+    // eslint-disable-next-line no-unused-vars
+    const { value } = Object.getOwnPropertyDescriptor(Navigator.prototype, key);
+  } catch (err) {
+    return 'Failed Navigator.prototype';
   }
   return null;
 };

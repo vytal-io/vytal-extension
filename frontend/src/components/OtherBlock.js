@@ -20,9 +20,13 @@ const OtherBlock = ({ workerData }) => {
       .catch(() => {
         setAdBlock(true);
       });
-    navigator.getBattery().then((res) => {
-      setBattery(res);
-    });
+    if ('getBattery' in navigator) {
+      navigator.getBattery().then((res) => {
+        setBattery(res);
+      });
+    } else {
+      setBattery('N/A');
+    }
   }, []);
 
   return (
