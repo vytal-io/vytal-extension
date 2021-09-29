@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Vytal/static/css/main.a3a91e41.chunk.css",
+    "main.js": "/Vytal/static/js/main.e7786c78.chunk.js",
+    "main.js.map": "/Vytal/static/js/main.e7786c78.chunk.js.map",
+    "runtime-main.js": "/Vytal/static/js/runtime-main.caafc12e.js",
+    "runtime-main.js.map": "/Vytal/static/js/runtime-main.caafc12e.js.map",
+    "static/js/2.d7a24d9f.chunk.js": "/Vytal/static/js/2.d7a24d9f.chunk.js",
+    "static/js/2.d7a24d9f.chunk.js.map": "/Vytal/static/js/2.d7a24d9f.chunk.js.map",
+    "index.html": "/Vytal/index.html",
+    "static/css/main.a3a91e41.chunk.css.map": "/Vytal/static/css/main.a3a91e41.chunk.css.map",
+    "static/js/2.d7a24d9f.chunk.js.LICENSE.txt": "/Vytal/static/js/2.d7a24d9f.chunk.js.LICENSE.txt",
+    "static/media/checkCircle.7ccef9af.svg": "/Vytal/static/media/checkCircle.7ccef9af.svg",
+    "static/media/logo.6b260e90.svg": "/Vytal/static/media/logo.6b260e90.svg",
+    "static/media/x.32a6a29f.svg": "/Vytal/static/media/x.32a6a29f.svg",
+    "static/media/xCircle.660de620.svg": "/Vytal/static/media/xCircle.660de620.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.caafc12e.js",
+    "static/js/2.d7a24d9f.chunk.js",
+    "static/css/main.a3a91e41.chunk.css",
+    "static/js/main.e7786c78.chunk.js"
+  ]
+}
