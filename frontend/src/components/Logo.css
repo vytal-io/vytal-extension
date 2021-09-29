@@ -5,14 +5,13 @@
 }
 
 .logo {
-  margin: 20px 0;
+  margin: 20px 0 16px 0;
   width: 250px;
-  display: flex;
 }
 
 @media screen and (max-width: 500px) {
   .logo {
     width: 160px;
-    margin: 12px 0;
+    margin: 12px 0 8px 0;
   }
 }

@@ -38,7 +38,9 @@ input[type='text'] {
   padding: 6px;
   width: 200px;
   outline: none;
+  -webkit-appearance: none;
 }
+
 @media screen and (max-width: 500px) {
   .boxWrap {
     padding: 8px;
