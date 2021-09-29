@@ -8,7 +8,6 @@ const data = {
   userAgent: navigator.userAgent,
   appVersion: navigator.appVersion,
   language: navigator.language,
-  languages: navigator.languages,
 };
 
 postMessage(data);
