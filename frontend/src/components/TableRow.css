@@ -44,6 +44,7 @@ td:nth-child(3) {
   display: flex;
   width: 12px;
   cursor: pointer;
+  margin: 0 0 0 12px;
 }
 
 .closeButton:hover {
@@ -61,7 +62,7 @@ ul {
   }
 
   td:first-child {
-    width: 70px;
+    width: 75px;
   }
 
   td:nth-child(3) {
