@@ -1,7 +1,8 @@
 import { checkWebWorker } from './common';
 
 const getDeviceMemory = (key, worker) => ({
-  key,
+  key: 'Device memory',
+  code: `navigator.${key}`,
   value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
@@ -12,8 +13,9 @@ const getDeviceMemory = (key, worker) => ({
 });
 
 const getHardwareConcurrency = (key, worker) => ({
-  key,
-  value: navigator.hardwareConcurrency,
+  key: 'Hardware concurrency',
+  code: `navigator.${key}`,
+  value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -23,8 +25,9 @@ const getHardwareConcurrency = (key, worker) => ({
 });
 
 const getMaxTouchPoints = (key) => ({
-  key,
-  value: navigator.maxTouchPoints,
+  key: 'Max touch points',
+  code: `navigator.${key}`,
+  value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -33,8 +36,9 @@ const getMaxTouchPoints = (key) => ({
 });
 
 const getPlatform = (key, worker) => ({
-  key,
-  value: navigator.platform,
+  key: 'Platform',
+  code: `navigator.${key}`,
+  value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -44,8 +48,9 @@ const getPlatform = (key, worker) => ({
 });
 
 const getUserAgent = (key, worker) => ({
-  key,
-  value: navigator.userAgent,
+  key: 'User agent',
+  code: `navigator.${key}`,
+  value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -55,8 +60,9 @@ const getUserAgent = (key, worker) => ({
 });
 
 const getAppVersion = (key, worker) => ({
-  key,
-  value: navigator.appVersion,
+  key: 'App version',
+  code: `navigator.${key}`,
+  value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -66,8 +72,9 @@ const getAppVersion = (key, worker) => ({
 });
 
 const getLanguage = (key, worker) => ({
-  key,
-  value: navigator.language,
+  key: 'Language',
+  code: `navigator.${key}`,
+  value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -77,8 +84,9 @@ const getLanguage = (key, worker) => ({
 });
 
 const getLanguages = (key, worker) => ({
-  key,
-  value: navigator.languages,
+  key: 'Languages',
+  code: `navigator.${key}`,
+  value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -88,8 +96,9 @@ const getLanguages = (key, worker) => ({
 });
 
 const getCookieEnabled = (key) => ({
-  key,
-  value: navigator.cookieEnabled ? 'True' : 'False',
+  key: 'Cookie enabled',
+  code: `navigator.${key}`,
+  value: navigator[key] ? 'True' : 'False',
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -98,8 +107,9 @@ const getCookieEnabled = (key) => ({
 });
 
 const getDoNotTrack = (key) => ({
-  key,
-  value: navigator.doNotTrack ? 'True' : 'False',
+  key: 'Do not track',
+  code: `navigator.${key}`,
+  value: navigator[key] ? 'True' : 'False',
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -108,8 +118,9 @@ const getDoNotTrack = (key) => ({
 });
 
 const getWebDriver = (key) => ({
-  key,
-  value: navigator.webdriver ? 'True' : 'False',
+  key: 'Web driver',
+  code: `navigator.${key}`,
+  value: navigator[key] ? 'True' : 'False',
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -118,8 +129,9 @@ const getWebDriver = (key) => ({
 });
 
 const getPlugins = (key) => ({
-  key,
-  value: sortPlugins(navigator.plugins),
+  key: 'Plugins',
+  code: `navigator.${key}`,
+  value: sortPlugins(navigator[key]),
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -128,8 +140,9 @@ const getPlugins = (key) => ({
 });
 
 const getVendor = (key) => ({
-  key,
-  value: navigator.vendor,
+  key: 'Vendor',
+  code: `navigator.${key}`,
+  value: navigator[key],
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),

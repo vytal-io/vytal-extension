@@ -1,5 +1,6 @@
 td {
   padding: 12px;
+  word-break: break-all;
 }
 
 td:first-child {
@@ -11,7 +12,6 @@ td:first-child {
 td:nth-child(3) {
   width: 40px;
   font-weight: 600;
-  word-break: normal;
 }
 
 .circleButton {
@@ -53,4 +53,20 @@ td:nth-child(3) {
 ul {
   padding-left: 20px;
   margin: 0px;
+}
+
+@media screen and (max-width: 500px) {
+  td {
+    padding: 8px;
+  }
+
+  td:first-child {
+    width: 70px;
+  }
+
+  td:nth-child(3) {
+    width: 20px;
+    font-weight: 600;
+    word-break: normal;
+  }
 }

@@ -1,7 +1,6 @@
 .fingerprintTable td:first-child {
   width: 80px;
   font-weight: 600;
-  word-break: normal;
 }
 
 .boxWrap {
@@ -39,4 +38,13 @@ input[type='text'] {
   padding: 6px;
   width: 200px;
   outline: none;
+}
+@media screen and (max-width: 500px) {
+  .boxWrap {
+    padding: 8px;
+  }
+
+  input[type='text'] {
+    width: calc(100% - 70px);
+  }
 }

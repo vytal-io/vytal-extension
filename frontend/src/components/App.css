@@ -69,30 +69,8 @@ img {
 }
 
 @media screen and (max-width: 500px) {
-  .github {
-    width: 24px;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-  }
-
   body {
     font-size: 14px;
-  }
-
-  .contentBlock {
-    padding: 18px;
-    margin: 0 0 18px 0;
-  }
-
-  .centerBlockInner {
-    width: 650px;
-    margin: 12px 0 0 0;
-  }
-
-  .logo {
-    width: 185px;
-    margin: 0 0 8px 0;
   }
 
   h1 {
@@ -102,23 +80,5 @@ img {
   h2 {
     margin: 0 0 3px 0;
     font-size: 15px;
-  }
-
-  .contentIcon {
-    flex: none;
-    margin: 0 18px 0 0;
-    width: 28px !important;
-  }
-
-  td:first-child {
-    width: 70px;
-  }
-
-  .boxWrap {
-    padding: 8px;
-  }
-
-  input[type='text'] {
-    width: calc(100% - 65px);
   }
 }
