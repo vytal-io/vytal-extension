@@ -1,29 +1,32 @@
-import { useState } from 'react';
-import ScanBlock from './ScanBlock';
+import './FingerprintBlock.css';
+import { useState, useEffect } from 'react';
+import Block from './Block';
 import Table from './Table';
 import {
-  getHardware,
-  getWebGL,
-  getSoftware,
-  getFingerprint,
+  getSignature,
+  postSignature,
   getHash,
-  getName,
-  handleSave,
-} from './main';
+  getFingerprint,
+} from '../utils/fingerprint';
 
-const FingerprintBlock = () => {
-  const [name, setName] = useState('');
-  const [load, setLoad] = useState(false);
-  const [saved, setSaved] = useState('');
-  const hash = getHash([...getHardware(), ...getWebGL(), ...getSoftware()]);
-  getName(hash, setName, setLoad);
+const FingerprintBlock = ({ workerData }) => {
+  const [signature, setSignature] = useState();
+  const [load, setload] = useState(false);
+  const hash = getHash(workerData);
+
+  useEffect(() => {
+    getSignature(hash, setSignature, setload);
+  }, []);
+
   return (
-    <ScanBlock>
+    <Block>
       <h1>Fingerprint</h1>
       {load && (
         <>
-          {name ? (
-            <Table data={getFingerprint(name, hash)} />
+          {signature !== undefined ? (
+            <div className="fingerprintTable">
+              <Table data={getFingerprint(signature, hash)} />
+            </div>
           ) : (
             <div className="boxWrap">
               <div className="hash">{hash}</div>
@@ -32,24 +35,25 @@ const FingerprintBlock = () => {
         </>
       )}
       <p>
-        <b>Explanation:</b> This is a unique identifier that can be used to
-        follow you around the web. Even if you clear cookies, change your IP or
-        use private mode the hash will stay the same. Enter your name below and
-        reload the page in private mode to test it out.
+        <b>Explanation:</b> This hash is calculated from your device data. Even
+        if you clear cookies, change your IP or use private mode the hash will
+        stay the same. Enter a signature and turn on a VPN to test it out.
       </p>
-      {saved ? (
-        <p>Success! Re-scan browser.</p>
-      ) : (
-        <form
-          onSubmit={(e) => {
-            handleSave(e, hash, setSaved);
-          }}
-        >
-          <input type="text" id="name" name="name" placeholder="Enter name" />
-          <input type="submit" id="saveButton" value="Save" maxLength="100" />
-        </form>
-      )}
-    </ScanBlock>
+      <form onSubmit={(e) => postSignature(hash, e.target[0].value)}>
+        <input
+          type="text"
+          id="signature"
+          name="signature"
+          placeholder="Enter signature"
+        />
+        <input
+          type="submit"
+          className="saveButton"
+          value="Save"
+          maxLength="100"
+        />
+      </form>
+    </Block>
   );
 };
 

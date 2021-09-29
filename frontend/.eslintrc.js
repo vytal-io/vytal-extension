@@ -38,5 +38,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'no-bitwise': 'off',
+    'react/no-array-index-key': 'off',
+    'dot-notation': 'off',
   },
 };

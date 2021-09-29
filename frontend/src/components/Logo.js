@@ -1,3 +1,4 @@
+import './Logo.css';
 import { ReactComponent as LogoImg } from '../images/logo.svg';
 
 const Logo = () => (
