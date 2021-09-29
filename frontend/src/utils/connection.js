@@ -75,7 +75,7 @@ const getConnection = (data) => {
       issues: [isProxy],
     },
     {
-      key: 'Organization',
+      key: 'Org',
       value: data.org,
       issues: [isProxy],
     },

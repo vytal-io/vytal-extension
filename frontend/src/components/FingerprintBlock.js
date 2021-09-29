@@ -39,7 +39,7 @@ const FingerprintBlock = ({ workerData }) => {
         if you clear cookies, change your IP or use private mode the hash will
         stay the same. Enter a signature and turn on a VPN to test it out.
       </p>
-      <form onSubmit={(e) => postSignature(hash, e.target[0].value)}>
+      <form onSubmit={(e) => postSignature(hash, e, setSignature)}>
         <input
           type="text"
           id="signature"

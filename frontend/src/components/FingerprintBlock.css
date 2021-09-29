@@ -26,6 +26,7 @@ form {
   cursor: pointer;
   color: var(--text);
   margin: 0 0 0 6px;
+  -webkit-appearance: none;
 }
 
 .saveButton:hover {

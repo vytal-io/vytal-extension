@@ -14,11 +14,13 @@ const getSignature = (hash, setSignature, setload) => {
     });
 };
 
-const postSignature = (hash, signature) => {
+const postSignature = (hash, e, setSignature) => {
+  e.preventDefault();
   axios.post('https://api.vytal.io/fingerprint/', {
-    name: signature,
+    name: e.target[0].value,
     hash,
   });
+  setSignature(e.target[0].value);
 };
 
 const getHash = (data) => md5(JSON.stringify(data)).toString();
