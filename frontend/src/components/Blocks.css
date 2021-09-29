@@ -29,10 +29,19 @@
   }
 
   .contentBlock {
-    min-width: 0;
     padding: 18px;
+    margin: 0 0 12px 0;
+    min-width: 400px;
+  }
+
+  .loadBlock {
+    margin: 0 12px;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .contentBlock {
+    width: 100%;
+    min-width: 0;
+  }
 }

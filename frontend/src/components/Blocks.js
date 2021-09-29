@@ -37,7 +37,7 @@ const Blocks = () => {
           </div>
         </>
       ) : (
-        <div className="contentBlock">
+        <div className="contentBlock loadBlock">
           <center>Loading...</center>
         </div>
       )}
