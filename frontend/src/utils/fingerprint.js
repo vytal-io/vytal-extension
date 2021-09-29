@@ -3,16 +3,14 @@ import md5 from 'crypto-js/md5';
 
 export { getSignature, postSignature, getHash, getFingerprint };
 
-const getSignature = (hash, setSignature) => {
-  console.log('1');
+const getSignature = (hash, setSignature, setload) => {
   axios
     .get(`https://api.vytal.io/fingerprint/?hash=${hash}`)
     .then((response) => {
-      console.log(response.data[response.data.length - 1]);
-
       if (response.data.length !== 0) {
         setSignature(response.data[response.data.length - 1].name);
       }
+      setload(true);
     });
 };
 
