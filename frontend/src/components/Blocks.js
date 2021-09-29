@@ -1,12 +1,6 @@
 import { useState, useEffect } from 'react';
-import UserAgentBlock from './UserAgentBlock';
-import IntlBlock from './IntlBlock';
-import OtherBlock from './OtherBlock';
-import NavigatorBlock from './NavigatorBlock';
-import ScreenBlock from './ScreenBlock';
-import FingerprintBlock from './FingerprintBlock';
-import LocationBlock from './LocationBlock';
-import ConnectionBlock from './ConnectionBlock';
+import BlocksOne from './BlocksOne';
+import BlocksTwo from './BlocksTwo';
 // import FontsBlock from './FontsBlock';
 import { fetchAPI, getWebWorker } from '../utils/common';
 import './Blocks.css';
@@ -26,22 +20,20 @@ const Blocks = () => {
       {connectionData ? (
         <>
           <div className="centerBlockInner">
-            <FingerprintBlock workerData={workerData} />
-            <NavigatorBlock workerData={workerData} />
-            <UserAgentBlock workerAgent={workerData.userAgent} />
-            <IntlBlock workerData={workerData} />
+            <BlocksOne workerData={workerData} />
           </div>
           <div className="centerBlockInner">
-            <LocationBlock
+            <BlocksTwo
               workerData={workerData}
               connectionData={connectionData}
             />
-            <ConnectionBlock
+          </div>
+          <div className="centerBlockMobile">
+            <BlocksOne workerData={workerData} />
+            <BlocksTwo
               workerData={workerData}
               connectionData={connectionData}
             />
-            <ScreenBlock />
-            <OtherBlock workerData={workerData} />
           </div>
         </>
       ) : (

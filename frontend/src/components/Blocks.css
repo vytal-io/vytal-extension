@@ -2,6 +2,10 @@
   width: 500px;
 }
 
+.centerBlockMobile {
+  display: none;
+}
+
 .contentBlock {
   color: var(--text);
   background-color: #fff;
@@ -13,9 +17,13 @@
   min-width: 500px;
 }
 
-@media screen and (max-width: 500px) {
-  .contentBlock {
-    padding: 18px;
-    margin: 0 0 18px 0;
+@media screen and (max-width: 1200px) {
+  .centerBlockInner {
+    display: none;
+  }
+
+  .centerBlockMobile {
+    display: block;
+    max-width: 600px;
   }
 }
