@@ -1,3 +1,4 @@
+import './TableRow.css';
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { ReactComponent as XCircle } from '../images/xCircle.svg';
@@ -32,16 +33,18 @@ const TableRow = ({ item }) => {
     setIsOpen(false);
   };
   return (
-    <tr>
-      <td>{item.key}</td>
-      <td>{item.value}</td>
-      <td>
-        {issues ? (
-          <XCircle className="circleButton issueButton" onClick={openModal} />
-        ) : (
-          <CheckCircle className="circleButton" />
-        )}
-      </td>
+    <>
+      <tr className={issues ? 'issue' : ''} onClick={openModal}>
+        <td>{item.key}</td>
+        <td>{item.value}</td>
+        <td>
+          {issues ? (
+            <XCircle className="circleButton" />
+          ) : (
+            <CheckCircle className="circleButton" />
+          )}
+        </td>
+      </tr>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -58,7 +61,7 @@ const TableRow = ({ item }) => {
           ))}
         </ul>
       </Modal>
-    </tr>
+    </>
   );
 };
 

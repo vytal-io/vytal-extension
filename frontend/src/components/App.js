@@ -1,6 +1,6 @@
 import Github from './Github';
 import MainColumn from './MainColumn';
-import '../styles/App.css';
+import './App.css';
 
 const App = () => (
   <div className="App">

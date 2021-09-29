@@ -1,0 +1,20 @@
+.centerBlockInner {
+  width: 500px;
+}
+
+.contentBlock {
+  color: var(--text);
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin: 0 0 24px 0;
+}
+
+@media screen and (max-width: 500px) {
+  .contentBlock {
+    padding: 18px;
+    margin: 0 0 18px 0;
+  }
+}

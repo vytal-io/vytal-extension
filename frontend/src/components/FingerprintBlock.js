@@ -1,3 +1,4 @@
+import './FingerprintBlock.css';
 import { useState, useEffect } from 'react';
 import Block from './Block';
 import Table from './Table';
@@ -42,11 +43,16 @@ const FingerprintBlock = ({ workerData }) => {
       <form onSubmit={(e) => postSignature(hash, e.target[0].value)}>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="signature"
+          name="signature"
           placeholder="Enter signature"
         />
-        <input type="submit" id="saveButton" value="Save" maxLength="100" />
+        <input
+          type="submit"
+          className="saveButton"
+          value="Save"
+          maxLength="100"
+        />
       </form>
     </Block>
   );

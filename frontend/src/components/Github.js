@@ -1,3 +1,4 @@
+import './GitHub.css';
 import GitHubButton from 'react-github-btn';
 
 const Github = () => (

@@ -9,6 +9,7 @@ import LocationBlock from './LocationBlock';
 import ConnectionBlock from './ConnectionBlock';
 // import FontsBlock from './FontsBlock';
 import { fetchAPI, getWebWorker } from '../utils/common';
+import './Blocks.css';
 
 const Blocks = () => {
   const [workerData, setWorkerData] = useState();

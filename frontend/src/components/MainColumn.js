@@ -1,3 +1,4 @@
+import './MainColumn.css';
 import Logo from './Logo';
 import Blocks from './Blocks';
 

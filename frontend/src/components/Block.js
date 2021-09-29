@@ -1,9 +1,5 @@
 const ContentBlock = ({ children }) => (
-  <div className="contentBlock">
-    <div className="contentItem">
-      <div className="contentText">{children}</div>
-    </div>
-  </div>
+  <div className="contentBlock">{children}</div>
 );
 
 export default ContentBlock;

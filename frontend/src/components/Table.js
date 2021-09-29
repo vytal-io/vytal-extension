@@ -1,3 +1,4 @@
+import './Table.css';
 import TableRow from './TableRow';
 
 const Table = ({ data }) => (

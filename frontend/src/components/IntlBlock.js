@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Block from './Block';
 import Table from './Table';
 import getIntl from '../utils/intl';

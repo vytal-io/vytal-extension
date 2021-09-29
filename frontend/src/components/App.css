@@ -1,0 +1,124 @@
+:root {
+  --main: #943ec5;
+  --grey: #9fa6b2;
+  --text: #4b5563;
+  --border: #ddd;
+  --issueBackground: #f8d7da;
+  --issueHover: #f4c1c6;
+  --issueBorder: #f5c6cb;
+  --issueText: #721c24;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: var(--grey);
+  background: linear-gradient(
+    165deg,
+    rgba(87, 35, 117, 1) 0%,
+    rgba(148, 62, 197, 1) 55%,
+    rgba(211, 176, 231, 1) 100%
+  );
+  z-index: -1;
+}
+
+h1 {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  font-size: 19px;
+}
+
+h2 {
+  margin: 0 0 4px 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+p {
+  margin: 12px 0 0 0;
+}
+
+b {
+  font-weight: 600;
+}
+
+img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+  display: block;
+  margin: 0 0 12px 0;
+}
+
+@media screen and (max-width: 500px) {
+  .github {
+    width: 24px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .contentBlock {
+    padding: 18px;
+    margin: 0 0 18px 0;
+  }
+
+  .centerBlockInner {
+    width: 650px;
+    margin: 12px 0 0 0;
+  }
+
+  .logo {
+    width: 185px;
+    margin: 0 0 8px 0;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  h2 {
+    margin: 0 0 3px 0;
+    font-size: 15px;
+  }
+
+  .contentIcon {
+    flex: none;
+    margin: 0 18px 0 0;
+    width: 28px !important;
+  }
+
+  td:first-child {
+    width: 70px;
+  }
+
+  .boxWrap {
+    padding: 8px;
+  }
+
+  input[type='text'] {
+    width: calc(100% - 65px);
+  }
+}

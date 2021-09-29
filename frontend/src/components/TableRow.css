@@ -1,0 +1,56 @@
+td {
+  padding: 12px;
+}
+
+td:first-child {
+  width: 150px;
+  font-weight: 600;
+  word-break: normal;
+}
+
+td:nth-child(3) {
+  width: 40px;
+  font-weight: 600;
+  word-break: normal;
+}
+
+.circleButton {
+  display: flex;
+  width: 20px;
+}
+
+.issue {
+  cursor: pointer;
+}
+
+.issue:hover {
+  background-color: var(--issueBackground);
+  color: var(--issueText);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 6px 0;
+}
+
+.modalTitle {
+  font-weight: 600;
+}
+
+.closeButton {
+  fill: var(--border);
+  display: flex;
+  width: 12px;
+  cursor: pointer;
+  margin: -12px 0 0 0;
+}
+
+.closeButton:hover {
+  fill: var(--grey);
+}
+
+ul {
+  padding-left: 20px;
+  margin: 0px;
+}
