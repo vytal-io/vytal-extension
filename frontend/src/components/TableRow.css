@@ -32,6 +32,7 @@ td:nth-child(3) {
   display: flex;
   justify-content: space-between;
   margin: 0 0 6px 0;
+  height: 20px;
 }
 
 .modalTitle {
@@ -43,7 +44,6 @@ td:nth-child(3) {
   display: flex;
   width: 12px;
   cursor: pointer;
-  margin: -12px 0 0 0;
 }
 
 .closeButton:hover {
