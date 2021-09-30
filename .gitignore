@@ -2,6 +2,8 @@ env/
 
 .vscode/
 
+./frontend/App.test.js
+
 # backened #
 
 /backend/secret_settings.py
