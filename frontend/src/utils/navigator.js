@@ -86,7 +86,7 @@ const getLanguage = (key, worker) => ({
 const getLanguages = (key) => ({
   key: 'Languages',
   code: `navigator.${key}`,
-  value: navigator[key],
+  value: sortArr(navigator[key]),
   issues: [
     checkNavigatorProperties(key),
     checkNavigatorValue(key),
@@ -148,6 +148,17 @@ const getVendor = (key) => ({
     checkNavigatorPrototype(key),
   ],
 });
+
+// sorts array into comma separated list
+const sortArr = (arr) => {
+  const arrLength = arr.length;
+  let list = '';
+  for (let i = 0; i < arrLength; i++) {
+    if (i !== 0) list += ', ';
+    list += arr[i];
+  }
+  return list;
+};
 
 // sorts plugins object into comma separated list
 const sortPlugins = (data) => {
