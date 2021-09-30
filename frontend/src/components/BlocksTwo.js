@@ -3,12 +3,12 @@ import ScreenBlock from './ScreenBlock';
 import LocationBlock from './LocationBlock';
 import ConnectionBlock from './ConnectionBlock';
 
-const BlocksTwo = ({ workerData, connectionData }) => (
+const BlocksTwo = () => (
   <>
-    <LocationBlock workerData={workerData} connectionData={connectionData} />
-    <ConnectionBlock workerData={workerData} connectionData={connectionData} />
+    <LocationBlock />
+    <ConnectionBlock />
     <ScreenBlock />
-    <OtherBlock workerData={workerData} />
+    <OtherBlock />
   </>
 );
 

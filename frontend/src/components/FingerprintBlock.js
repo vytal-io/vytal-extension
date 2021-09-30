@@ -1,5 +1,6 @@
 import './FingerprintBlock.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import DataContext from './Context';
 import Block from './Block';
 import Table from './Table';
 import {
@@ -9,9 +10,10 @@ import {
   getFingerprint,
 } from '../utils/fingerprint';
 
-const FingerprintBlock = ({ workerData }) => {
+const FingerprintBlock = () => {
   const [signature, setSignature] = useState();
   const [load, setload] = useState(false);
+  const { workerData } = useContext(DataContext);
   const hash = getHash(workerData);
 
   useEffect(() => {

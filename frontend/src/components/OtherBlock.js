@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useContext } from 'react';
+import DataContext from './Context';
 import Block from './Block';
 import Table from './Table';
 import getOther from '../utils/other';
 
-const OtherBlock = ({ workerData }) => {
+const OtherBlock = () => {
   const [adBlock, setAdBlock] = useState();
   const [battery, setBattery] = useState();
+  const { workerData } = useContext(DataContext);
 
   useEffect(() => {
     fetch('https://www3.doubleclick.net', {

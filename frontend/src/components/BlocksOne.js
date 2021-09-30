@@ -3,12 +3,12 @@ import IntlBlock from './IntlBlock';
 import NavigatorBlock from './NavigatorBlock';
 import FingerprintBlock from './FingerprintBlock';
 
-const BlocksOne = ({ workerData }) => (
+const BlocksOne = () => (
   <>
-    <FingerprintBlock workerData={workerData} />
-    <NavigatorBlock workerData={workerData} />
-    <UserAgentBlock workerAgent={workerData.userAgent} />
-    <IntlBlock workerData={workerData} />
+    <FingerprintBlock />
+    <NavigatorBlock />
+    <UserAgentBlock />
+    <IntlBlock />
   </>
 );
 
