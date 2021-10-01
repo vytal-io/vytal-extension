@@ -37,9 +37,10 @@ const FingerprintBlock = () => {
         </>
       )}
       <p>
-        <b>Explanation:</b> This hash is generated from your device data. Even
-        if you clear cookies, change your IP or use private mode the hash will
-        stay the same. Enter a signature and turn on a VPN to test it out.
+        <b>Explanation:</b> A device fingerprint will be generated from your
+        data in the form of a hash. You can sign your hash and clear cookies,
+        change your IP or use private mode and reload the page to see if your
+        signature remains the same.
       </p>
       <form onSubmit={(e) => postSignature(hash, e, setSignature)}>
         <input
