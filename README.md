@@ -16,24 +16,15 @@ The data used to create device fingerprints can be spoofed or tampered with to o
 
 If data tampering is detected then a red circle with an ‘x’ will be displayed next to the data value. If the legitimate value cannot be identified the data will be discarded and not used in creating the fingerprint. Clicking on the table row of the tampered value will bring up a dialog box showing the detected issues.
 
-## Tampering Issues
+## Types of Tampering
 
 ### Failed Navigator.prototype
 
-```
-Navigator.prototype.[type]
-```
-
-Returns value if the object was tampered with.
-Otherwise returns an error.
+`Navigator.prototype.[type]` returns value if the data object was tampered with. Otherwise returns an error.
 
 ### Failed undefined properties
 
-```
-Object.getOwnPropertyDescriptor(navigator, [type])
-```
-
-Returns an object if the object was tampered with. Otherwise returns ‘undefined’.
+`Object.getOwnPropertyDescriptor(navigator, [type])` returns an object if the data object was tampered with. Otherwise returns ‘undefined’.
 
 ### Did not match web worker (\_\_\_)
 
