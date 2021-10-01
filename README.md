@@ -4,9 +4,9 @@ Check it out here: https://vytal.io.
 
 ## About
 
-Vytal shows you what traces your browser leaves behind while surfing the web. This scan allows you to understand how easy it is to identify and track your browser even while using private mode.
+Vytal shows you what traces your browser leaves behind while surfing the web. This scan allows you to understand how easy it is to identify and track your browser even while using a VPN or private mode.
 
-A hash will be generated from your device data. Even if you clear cookies, change your IP or use private mode the hash will stay the same. You can enter a signature and turn on a VPN or private mode to test it out.
+A device fingerprint will be generated as a hash from your data. You can sign your hash by entering and saving a signature. You can clear cookies, change your IP or use private mode and reload the page to see if your signature remains the same.
 
 Vytal contains no ads and signup is not required.
 
