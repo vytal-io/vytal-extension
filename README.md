@@ -6,15 +6,15 @@ Check it out here: https://vytal.io.
 
 Vytal shows you what traces your browser leaves behind while surfing the web. This scan allows you to understand how easy it is to identify and track your browser even while using a VPN or private mode.
 
-A device fingerprint will be generated as a hash from your data. You can sign your hash by entering and saving a signature. You can clear cookies, change your IP or use private mode and reload the page to see if your signature remains the same.
+A device fingerprint will be generated from your data in the form of a hash. You can sign your hash by entering and saving a signature. You can clear cookies, change your IP or use private mode and reload the page to see if your signature remains the same.
 
 Vytal contains no ads and signup is not required.
 
 ## Data Tampering
 
-The data used to create device fingerprints can be spoofed or tampered with to obscure the true fingerprint. There are a variety of methods used to do this including VPNs, browser extensions and built in browser options.
+The data used to create device fingerprints can be spoofed or tampered with to prevent tracking. There are a variety of methods used to do this including VPNs, browser extensions and built in browser options. Some methods of data tampering can be detected.
 
-If data tampering is detected then a red circle with an ‘x’ will be displayed next to the data value. If the legitimate value cannot be identified the data will be discarded and not used in creating the fingerprint. Clicking on the table row of the tampered value will bring up a dialog box showing the detected issues.
+If data tampering is detected then a red circle with an ‘x’ will be displayed next to the data value. If the legitimate value cannot be identified then the data will be discarded and will not be used to generate a fingerprint. Clicking on the table row of the tampered value will bring up a dialog box showing the types of tampering.
 
 ## Types of Tampering
 
