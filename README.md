@@ -60,7 +60,7 @@ Happens when the height width is greater than the normal height (which is imposs
 
 ## Dev
 
-This application is built with a react frontend and a django backend.
+This application uses a React frontend and a Django backend that communicates using the Django REST framework.
 
 Backend Django setup:
 
