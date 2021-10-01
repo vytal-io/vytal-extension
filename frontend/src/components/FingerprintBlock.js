@@ -38,9 +38,9 @@ const FingerprintBlock = () => {
       )}
       <p>
         <b>Explanation:</b> A device fingerprint will be generated from your
-        data in the form of a hash. You can sign your hash and clear cookies,
-        change your IP or use private mode and reload the page to see if your
-        signature remains the same.
+        data in the form of a hash. Sign your hash, change your IP or use
+        private mode and reload the page to see if your signature remains the
+        same.
       </p>
       <form onSubmit={(e) => postSignature(hash, e, setSignature)}>
         <input
