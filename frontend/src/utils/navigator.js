@@ -184,7 +184,7 @@ const checkNavigatorValue = (key) => {
     // eslint-disable-next-line no-unused-vars
     const { value } = Object.getOwnPropertyDescriptor(Navigator.prototype, key);
   } catch (err) {
-    return 'Failed Navigator value';
+    return 'Failed Navigator property value';
   }
   return null;
 };

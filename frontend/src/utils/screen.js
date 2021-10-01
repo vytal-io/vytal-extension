@@ -94,7 +94,7 @@ const checkScreenPrototype = (key) => {
   try {
     // eslint-disable-next-line no-unused-vars
     const check = Screen.prototype[key];
-    return 'Failed Navigator.prototype';
+    return 'Failed Screen.prototype';
   } catch (err) {
     // eslint-disable-next-line no-unused-vars
     const check = '';
@@ -104,14 +104,14 @@ const checkScreenPrototype = (key) => {
 
 const checkWidth = () => {
   if (window.screen.availWidth > window.screen.width) {
-    return 'Avail width is wider then width';
+    return 'Avail width is greater than width';
   }
   return null;
 };
 
 const checkHeight = () => {
   if (window.screen.availHeight > window.screen.height) {
-    return 'Avail height is wider then height';
+    return 'Avail height is greater than height';
   }
   return null;
 };

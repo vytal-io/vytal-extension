@@ -20,15 +20,43 @@ If data tampering is detected then a red circle with an ‘x’ will be displaye
 
 ### Failed Navigator.prototype
 
-`Navigator.prototype.[type]` returns value if the data object was tampered with. Otherwise returns an error.
+`Navigator.prototype[DataType]` returns a value if the data object was tampered with. Otherwise returns an error.
 
 ### Failed undefined properties
 
-`Object.getOwnPropertyDescriptor(navigator, [type])` returns an object if the data object was tampered with. Otherwise returns ‘undefined’.
+`Object.getOwnPropertyDescriptor(navigator, [DataType])` returns an object if the data object was tampered with. Otherwise returns ‘undefined’.
+
+### Failed Navigator property value
+
+`Object.getOwnPropertyDescriptor(Navigator.prototype, [DataType]).value` returns an error if the data object was tampered with. Otherwise returns ‘undefined’.
 
 ### Did not match web worker (\_\_\_)
 
-Value does not match the value found in the web worker [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers). The web worker value is in the brackets.
+Value does not match the value found in a [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers). The web worker value is in the brackets.
+
+### Location data doesn't match system data
+
+Occurs when the location data from ip address does not match your location data from your system (such as your timezone).
+
+### VPN/proxy has been detected
+
+Your ip address is known to be used by proxies or VPNs.
+
+### Failed Date.prototype.setDate.toString()
+
+`Failed Date.prototype.setDate.toString()` returns 'function setDate() { [native code] }' if the data object was NOT tampered with.
+
+### Failed Screen.prototype
+
+`Screen.prototype[DataType]` returns a value if the data object was tampered with. Otherwise returns an error.
+
+### Avail width is greater than width
+
+Happens when the avail width is greater than the normal width (which is impossible).
+
+### Avail height is greater than height
+
+Happens when the height width is greater than the normal height (which is impossible).
 
 ## Dev
 
