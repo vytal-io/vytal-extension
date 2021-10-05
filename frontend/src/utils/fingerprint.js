@@ -1,8 +1,6 @@
 import axios from 'axios';
 import md5 from 'crypto-js/md5';
 
-export { getSignature, postSignature, getHash, getFingerprint };
-
 const getSignature = (hash, setSignature, setload) => {
   axios
     .get(`https://api.vytal.io/fingerprint/?hash=${hash}`)
@@ -37,3 +35,5 @@ const getFingerprint = (signature, hash) => [
     issues: [],
   },
 ];
+
+export { getSignature, postSignature, getHash, getFingerprint };
