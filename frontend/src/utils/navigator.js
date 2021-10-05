@@ -1,153 +1,192 @@
 import { checkWebWorker } from './common';
 
-const getDeviceMemory = (key, worker) => ({
-  key: 'Device memory',
-  code: `navigator.${key}`,
-  value: navigator[key],
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-    checkWebWorker(navigator[key], worker),
-  ],
-});
+const getDeviceMemory = (worker) => {
+  const name = 'deviceMemory';
+  return {
+    key: 'Device memory',
+    code: `navigator.${name}`,
+    value: navigator[name],
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+      checkWebWorker(navigator[name], worker),
+    ],
+  };
+};
 
-const getHardwareConcurrency = (key, worker) => ({
-  key: 'Hardware concurrency',
-  code: `navigator.${key}`,
-  value: navigator[key],
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-    checkWebWorker(navigator[key], worker),
-  ],
-});
+const getHardwareConcurrency = (worker) => {
+  const name = 'hardwareConcurrency';
+  return {
+    key: 'Hardware concurrency',
+    code: `navigator.${name}`,
+    value: navigator[name],
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+      checkWebWorker(navigator[name], worker),
+    ],
+  };
+};
 
-const getMaxTouchPoints = (key) => ({
-  key: 'Max touch points',
-  code: `navigator.${key}`,
-  value: navigator[key],
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-  ],
-});
+const getMaxTouchPoints = () => {
+  const name = 'maxTouchPoints';
+  return {
+    key: 'Max touch points',
+    code: `navigator.${name}`,
+    value: navigator[name],
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+    ],
+  };
+};
 
-const getPlatform = (key, worker) => ({
-  key: 'Platform',
-  code: `navigator.${key}`,
-  value: navigator[key],
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-    checkWebWorker(navigator[key], worker),
-  ],
-});
+const getPlatform = (worker) => {
+  const name = 'platform';
+  return {
+    key: 'Platform',
+    code: `navigator.${name}`,
+    value: navigator[name],
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+      checkWebWorker(navigator[name], worker),
+    ],
+  };
+};
 
-const getUserAgent = (key, worker) => ({
-  key: 'User agent',
-  code: `navigator.${key}`,
-  value: navigator[key],
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-    checkWebWorker(navigator[key], worker),
-  ],
-});
+const getUserAgent = (worker) => {
+  const name = 'userAgent';
+  return {
+    key: 'User agent',
+    code: `navigator.${name}`,
+    value: navigator[name],
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+      checkWebWorker(navigator[name], worker),
+    ],
+  };
+};
 
-const getAppVersion = (key, worker) => ({
-  key: 'App version',
-  code: `navigator.${key}`,
-  value: navigator[key],
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-    checkWebWorker(navigator[key], worker),
-  ],
-});
+const getAppVersion = (worker) => {
+  const name = 'appVersion';
+  return {
+    key: 'App version',
+    code: `navigator.${name}`,
+    value: navigator[name],
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+      checkWebWorker(navigator[name], worker),
+    ],
+  };
+};
 
-const getLanguage = (key, worker) => ({
-  key: 'Language',
-  code: `navigator.${key}`,
-  value: navigator[key],
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-    checkWebWorker(navigator[key], worker),
-  ],
-});
+const getLanguage = (worker) => {
+  const name = 'language';
+  return {
+    key: 'Language',
+    code: `navigator.${name}`,
+    value: navigator[name],
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+      checkWebWorker(navigator[name], worker),
+    ],
+  };
+};
 
-const getLanguages = (key) => ({
-  key: 'Languages',
-  code: `navigator.${key}`,
-  value: sortArr(navigator[key]),
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-  ],
-});
+const getLanguages = () => {
+  const name = 'languages';
+  return {
+    key: 'Languages',
+    code: `navigator.${name}`,
+    value: sortArr(navigator[name]),
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+    ],
+  };
+};
 
-const getCookieEnabled = (key) => ({
-  key: 'Cookie enabled',
-  code: `navigator.${key}`,
-  value: navigator[key] ? 'True' : 'False',
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-  ],
-});
+const getCookieEnabled = () => {
+  const name = 'cookieEnabled';
+  return {
+    key: 'Cookie enabled',
+    code: `navigator.${name}`,
+    value: navigator[name] ? 'True' : 'False',
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+    ],
+  };
+};
 
-const getDoNotTrack = (key) => ({
-  key: 'Do not track',
-  code: `navigator.${key}`,
-  value: navigator[key] ? 'True' : 'False',
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-  ],
-});
+const getDoNotTrack = () => {
+  const name = 'doNotTrack';
+  return {
+    key: 'Do not track',
+    code: `navigator.${name}`,
+    value: navigator[name] ? 'True' : 'False',
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+    ],
+  };
+};
 
-const getWebDriver = (key) => ({
-  key: 'Web driver',
-  code: `navigator.${key}`,
-  value: navigator[key] ? 'True' : 'False',
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-  ],
-});
+const getWebDriver = () => {
+  const name = 'webdriver';
+  return {
+    key: 'Web driver',
+    code: `navigator.${name}`,
+    value: navigator[name] ? 'True' : 'False',
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+    ],
+  };
+};
 
-const getPlugins = (key) => ({
-  key: 'Plugins',
-  code: `navigator.${key}`,
-  value: sortPlugins(navigator[key]),
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-  ],
-});
+const getPlugins = () => {
+  const name = 'plugins';
+  return {
+    key: 'Plugins',
+    code: `navigator.${name}`,
+    value: sortPlugins(navigator[name]),
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+    ],
+  };
+};
 
-const getVendor = (key) => ({
-  key: 'Vendor',
-  code: `navigator.${key}`,
-  value: navigator[key],
-  issues: [
-    checkNavigatorProperties(key),
-    checkNavigatorValue(key),
-    checkNavigatorPrototype(key),
-  ],
-});
+const getVendor = () => {
+  const name = 'vendor';
+  return {
+    key: 'Vendor',
+    code: `navigator.${name}`,
+    value: navigator[name],
+    issues: [
+      checkNavigatorProperties(name),
+      checkNavigatorValue(name),
+      checkNavigatorPrototype(name),
+    ],
+  };
+};
 
 // sorts array into comma separated list
 const sortArr = (arr) => {
@@ -172,27 +211,30 @@ const sortPlugins = (data) => {
   return list;
 };
 
-const checkNavigatorProperties = (key) => {
-  if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
+const checkNavigatorProperties = (name) => {
+  if (Object.getOwnPropertyDescriptor(navigator, name) !== undefined) {
     return 'Failed undefined properties';
   }
   return null;
 };
 
-const checkNavigatorValue = (key) => {
+const checkNavigatorValue = (name) => {
   try {
     // eslint-disable-next-line no-unused-vars
-    const { value } = Object.getOwnPropertyDescriptor(Navigator.prototype, key);
+    const { value } = Object.getOwnPropertyDescriptor(
+      Navigator.prototype,
+      name
+    );
   } catch (err) {
     return 'Failed Navigator property value';
   }
   return null;
 };
 
-const checkNavigatorPrototype = (key) => {
+const checkNavigatorPrototype = (name) => {
   try {
     // eslint-disable-next-line no-unused-vars
-    const check = Navigator.prototype[key];
+    const check = Navigator.prototype[name];
     return 'Failed Navigator.prototype';
   } catch (err) {
     // eslint-disable-next-line no-unused-vars
@@ -202,19 +244,19 @@ const checkNavigatorPrototype = (key) => {
 };
 
 const getNavigator = (workerData) => [
-  getDeviceMemory('deviceMemory', workerData.deviceMemory),
-  getHardwareConcurrency('hardwareConcurrency', workerData.hardwareConcurrency),
-  getMaxTouchPoints('maxTouchPoints'),
-  getPlatform('platform', workerData.platform),
-  getUserAgent('userAgent', workerData.userAgent),
-  getAppVersion('appVersion', workerData.appVersion),
-  getLanguage('language', workerData.language),
-  getLanguages('languages'),
-  getCookieEnabled('cookieEnabled'),
-  getDoNotTrack('doNotTrack'),
-  getWebDriver('webdriver'),
-  getPlugins('plugins'),
-  getVendor('vendor'),
+  getDeviceMemory(workerData.deviceMemory),
+  getHardwareConcurrency(workerData.hardwareConcurrency),
+  getMaxTouchPoints(),
+  getPlatform(workerData.platform),
+  getUserAgent(workerData.userAgent),
+  getAppVersion(workerData.appVersion),
+  getLanguage(workerData.language),
+  getLanguages(),
+  getCookieEnabled(),
+  getDoNotTrack(),
+  getWebDriver(),
+  getPlugins(),
+  getVendor(),
 ];
 
 export default getNavigator;
