@@ -1,5 +1,3 @@
-export { getMap, getConnection, getLocation };
-
 const getMap = (data) =>
   `https://maps.googleapis.com/maps/api/staticmap?center=${data.lat},${data.lon}&markers=color:red%7Clabel:%7C${data.lat},${data.lon}&size=500x200&zoom=10&key=AIzaSyB-YN-X8PGBSPd7NOaQu4csVhgJUnF3ZGk`;
 
@@ -86,3 +84,5 @@ const getConnection = (data) => {
     },
   ];
 };
+
+export { getMap, getConnection, getLocation };

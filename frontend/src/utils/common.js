@@ -1,5 +1,3 @@
-export { fetchAPI, checkWebWorker, getWebWorker };
-
 // Gets location values
 const fetchAPI = (setData) => {
   fetch('https://api.vytal.io/ip/')
@@ -23,3 +21,5 @@ const getWebWorker = () => {
   }
   return w;
 };
+
+export { fetchAPI, checkWebWorker, getWebWorker };
