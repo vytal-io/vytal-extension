@@ -36,11 +36,12 @@ const FontsBlock = () => {
     }
 
     let fontStr = '';
-    fontList.forEach((item) => {
+    for (var i=0; i < fontList.length; i++) {
+      var item = fontList[i];
       if (detect(item.font)) {
-        fontStr += `${item.font}, `;
+        fontStr += `${item.font}`
       }
-    });
+    }
     fontsEl.textContent = fontStr.slice(0, -2);
   }, []);
 
