@@ -1,11 +1,14 @@
+import countryLocales from './countryLocales';
+
 const attachTab = (tabId, ipData) => {
   chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
     if (!chrome.runtime.lastError) {
-      // chrome.debugger.sendCommand(
-      //   { tabId: tabId },
-      //   'Emulation.setLocaleOverride',
-      //   { locale: 'zh-Hans-CN' }
-      // );
+
+      chrome.debugger.sendCommand(
+        { tabId: tabId },
+        'Emulation.setLocaleOverride',
+        { locale: countryLocales[ipData.countryCode].locale }
+      );
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
