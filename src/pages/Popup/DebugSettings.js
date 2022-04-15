@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 const detachDebugger = () => {
   chrome.debugger.getTargets((tabs) => {
-    console.log(tabs)
     for (const tab in tabs) {
       if (tabs[tab].attached && tabs[tab].tabId) {
         chrome.debugger.detach({ tabId: tabs[tab].tabId })
@@ -12,12 +11,11 @@ const detachDebugger = () => {
 }
 
 const DebugSettings = ({ type, ip }) => {
-  const [value, setValue] = useState()
+  const [value, setValue] = useState('')
   const [matchIP, setMatchIP] = useState(false)
   const matchIPStorage = `${type}MatchIP`
 
   useEffect(() => {
-    console.log('fsffdsfsd')
     chrome.storage.sync.get([type, matchIPStorage], (result) => {
       setMatchIP(result[matchIPStorage])
 
@@ -29,6 +27,14 @@ const DebugSettings = ({ type, ip }) => {
       }
     })
   }, [ip, matchIPStorage, type])
+
+  const toggleMatchIP = () => {
+    chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
+
+    if (!matchIP) setValue(ip[type])
+
+    setMatchIP(!matchIP)
+  }
 
   return (
     <div
@@ -44,19 +50,19 @@ const DebugSettings = ({ type, ip }) => {
           value={value}
           // onChange={() => setMatchIP(!matchIP)}
           style={{
-            width: '100px',
+            width: '120px',
             margin: '0 5px 0 0',
           }}
         />
         {type}
       </label>
       <label>
-        Match IP
         <input
           type="checkbox"
           checked={matchIP}
-          onChange={() => setMatchIP(!matchIP)}
+          onChange={() => toggleMatchIP()}
         />
+        Match IP
       </label>
     </div>
   )
