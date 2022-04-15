@@ -1,33 +1,28 @@
 import countryLocales from './countryLocales'
 
 const attachTab = (tabId, ipData) => {
-  console.log(1)
   chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
-    console.log(2, chrome.runtime.lastError)
-
     if (!chrome.runtime.lastError) {
-      console.log(3)
+      // chrome.debugger.sendCommand(
+      //   { tabId: tabId },
+      //   'Emulation.clearGeolocationOverride'
+      // )
+
+      // chrome.debugger.sendCommand(
+      //   { tabId: tabId },
+      //   'Emulation.clearIdleOverride'
+      // )
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
-        'Emulation.clearGeolocationOverride'
-      )
-
-      chrome.debugger.sendCommand(
-        { tabId: tabId },
-        'Emulation.clearIdleOverride'
+        'Emulation.setTimezoneOverride',
+        { timezoneId: ipData.timezone }
       )
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
         'Emulation.setLocaleOverride',
         { locale: countryLocales[ipData.countryCode].locale }
-      )
-
-      chrome.debugger.sendCommand(
-        { tabId: tabId },
-        'Emulation.setTimezoneOverride',
-        { timezoneId: ipData.timezone }
       )
 
       chrome.debugger.sendCommand(
@@ -56,7 +51,6 @@ const attachTab = (tabId, ipData) => {
 
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
   chrome.storage.sync.get(['ipData'], (result) => {
-    console.log(result.ipData)
     attachTab(tabId, result.ipData)
   })
 })
