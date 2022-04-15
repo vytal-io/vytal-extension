@@ -12,9 +12,6 @@
   "icons": {
     "128": "icon-128.png"
   },
-  "chrome_url_overrides": {
-    "newtab": "newtab.html"
-  },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*", "<all_urls>"],
