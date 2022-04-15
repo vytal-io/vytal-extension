@@ -1,19 +1,20 @@
-import React from 'react';
-import './Popup.css';
-
-const getIP = () => fetch('http://ip-api.com/json/')
-.then((response) => response.json())
-.then((ipData) => {
-  chrome.storage.sync.set({ ipData });
-});
-
+import React from 'react'
+import Navbar from './Navbar'
+import IpSettings from './ipSettings'
 
 const Popup = () => {
   return (
     <div className="App">
-      <button type="button" onClick={() => getIP()}>Click Me!</button>
+      <Navbar />
+      <div
+        style={{
+          padding: '10px',
+        }}
+      >
+        <IpSettings />
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Popup;
+export default Popup

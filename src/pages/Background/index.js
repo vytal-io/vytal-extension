@@ -1,34 +1,34 @@
-import countryLocales from './countryLocales';
+import countryLocales from './countryLocales'
 
 const attachTab = (tabId, ipData) => {
-  console.log(1);
+  console.log(1)
   chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
-    console.log(2, chrome.runtime.lastError);
+    console.log(2, chrome.runtime.lastError)
 
     if (!chrome.runtime.lastError) {
-      console.log(3);
+      console.log(3)
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
         'Emulation.clearGeolocationOverride'
-      );
+      )
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
         'Emulation.clearIdleOverride'
-      );
+      )
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
         'Emulation.setLocaleOverride',
         { locale: countryLocales[ipData.countryCode].locale }
-      );
+      )
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
         'Emulation.setTimezoneOverride',
         { timezoneId: ipData.timezone }
-      );
+      )
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
@@ -38,7 +38,7 @@ const attachTab = (tabId, ipData) => {
           longitude: ipData.lon,
           accuracy: 1,
         }
-      );
+      )
 
       chrome.debugger.sendCommand(
         { tabId: tabId },
@@ -49,25 +49,29 @@ const attachTab = (tabId, ipData) => {
         }
         // { acceptLanguage: "en-CA" },
         // { platform: "WebTV OS" }
-      );
+      )
     }
-  });
-};
+  })
+}
 
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
-  // chrome.debugger.getTargets((tabs) => {
-  //   let tab = tabs.find((obj) => {
-  //     return obj.tabId === tabId;
-  //   });
+  chrome.storage.sync.get(['ipData'], (result) => {
+    console.log(result.ipData)
+    attachTab(tabId, result.ipData)
+  })
+})
 
-  //   if (!tab.attached) {
-      chrome.storage.sync.get(['ipData'], (result) => {
-        console.log(result.ipData)
-        attachTab(tabId, result.ipData);
-      });
-  //   }
-  // });
-});
+// const attachTabs = (ipData) => {
+//   chrome.debugger.getTargets((tabs) => {
+//     console.log(tabs);
+//     for (const tab in tabs) {
+//       if (!tabs[tab].attached && tabs[tab].tabId) {
+//           console.log('------------');
+//           attachTab(tabs[tab].tabId, ipData);
+//       }
+//     }
+//   });
+// };
 
 // fetch('http://ip-api.com/json/')
 // .then((response) => response.json())
