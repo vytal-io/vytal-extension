@@ -15,25 +15,48 @@ const DebugSettings = ({ type, ip }) => {
   const [matchIP, setMatchIP] = useState(false)
   const matchIPStorage = `${type}MatchIP`
 
+  // useEffect(() => {
+  //   console.log(value, matchIP)
+  // }, [value, matchIP])
+
   useEffect(() => {
     chrome.storage.sync.get([type, matchIPStorage], (result) => {
-      setMatchIP(result[matchIPStorage])
+      console.log(1, result)
 
-      if (result[matchIPStorage] && !result[type]) {
+      // result[matchIPStorage] && setMatchIP(result[matchIPStorage])
+
+      if (result[matchIPStorage]) {
         setValue(ip[type])
         chrome.storage.sync.set({ [type]: ip[type] })
-      } else {
-        setValue(result[type])
+        // if (!result[type]) {
+        //   console.log(2, result)
+
+        //   setValue(ip[type])
+        //   chrome.storage.sync.set({ [type]: ip[type] })
+        // } else {
+        //   console.log(3, result[type])
+        //   chrome.storage.sync.set({ [type]: ip[type] })
+
+        //   result[type] && setValue(ip[type])
+        // }
       }
     })
   }, [ip, matchIPStorage, type])
 
   const toggleMatchIP = () => {
     chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
-
-    if (!matchIP) setValue(ip[type])
-
+    !matchIP && setValue(ip[type])
     setMatchIP(!matchIP)
+  }
+
+  const changeTextValue = (e) => {
+    console.log(e.target.value)
+    chrome.storage.sync.set({ [type]: e.target.value })
+    setValue(e.target.value)
+    if (matchIP) {
+      chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
+      setMatchIP(!matchIP)
+    }
   }
 
   return (
@@ -48,7 +71,7 @@ const DebugSettings = ({ type, ip }) => {
         <input
           type="text"
           value={value}
-          // onChange={() => setMatchIP(!matchIP)}
+          onChange={(e) => changeTextValue(e)}
           style={{
             width: '120px',
             margin: '0 5px 0 0',

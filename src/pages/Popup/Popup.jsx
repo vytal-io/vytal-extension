@@ -12,7 +12,7 @@ const getIP = () =>
     })
 
 const Popup = () => {
-  const [ip, setIP] = useState()
+  const [ip, setIP] = useState('')
 
   useEffect(() => {
     chrome.storage.sync.get(['ipData'], (result) => {
