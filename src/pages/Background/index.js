@@ -1,6 +1,5 @@
 import countryLocales from '../../utils/countryLocales'
 
-
 const attachTab = (tabId, ipData) => {
   chrome.storage.sync.get(
     [
@@ -11,6 +10,8 @@ const attachTab = (tabId, ipData) => {
       'latitudeMatchIP',
       'lon',
       'longitudeMatchIP',
+      'locale',
+      'localeMatchIP',
     ],
     (result) => {
       chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
@@ -38,7 +39,11 @@ const attachTab = (tabId, ipData) => {
           chrome.debugger.sendCommand(
             { tabId: tabId },
             'Emulation.setLocaleOverride',
-            { locale: countryLocales[result.ipData.countryCode].locale }
+            {
+              locale: result.localeMatchIP
+                ? countryLocales[result.ipData.countryCode].locale
+                : result.locale,
+            }
           )
 
           const latitude = result.latMatchIP
@@ -47,8 +52,6 @@ const attachTab = (tabId, ipData) => {
           const longitude = result.lonMatchIP
             ? result.ipData.lon
             : parseFloat(result.lon)
-
-          console.log(latitude, longitude)
 
           chrome.debugger.sendCommand(
             { tabId: tabId },
