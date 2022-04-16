@@ -1,58 +1,82 @@
 import countryLocales from './countryLocales'
 
 const attachTab = (tabId, ipData) => {
-  chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
-    if (!chrome.runtime.lastError) {
-      // chrome.debugger.sendCommand(
-      //   { tabId: tabId },
-      //   'Emulation.clearGeolocationOverride'
-      // )
+  chrome.storage.sync.get(
+    [
+      'ipData',
+      'timezone',
+      'timezoneMatchIP',
+      'lat',
+      'latitudeMatchIP',
+      'lon',
+      'longitudeMatchIP',
+    ],
+    (result) => {
+      chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
+        if (!chrome.runtime.lastError) {
+          // chrome.debugger.sendCommand(
+          //   { tabId: tabId },
+          //   'Emulation.clearGeolocationOverride'
+          // )
 
-      // chrome.debugger.sendCommand(
-      //   { tabId: tabId },
-      //   'Emulation.clearIdleOverride'
-      // )
+          // chrome.debugger.sendCommand(
+          //   { tabId: tabId },
+          //   'Emulation.clearIdleOverride'
+          // )
 
-      chrome.debugger.sendCommand(
-        { tabId: tabId },
-        'Emulation.setTimezoneOverride',
-        { timezoneId: ipData.timezone }
-      )
+          chrome.debugger.sendCommand(
+            { tabId: tabId },
+            'Emulation.setTimezoneOverride',
+            {
+              timezoneId: result.timezoneMatchIP
+                ? result.ipData.timezone
+                : result.timezone,
+            }
+          )
 
-      chrome.debugger.sendCommand(
-        { tabId: tabId },
-        'Emulation.setLocaleOverride',
-        { locale: countryLocales[ipData.countryCode].locale }
-      )
+          chrome.debugger.sendCommand(
+            { tabId: tabId },
+            'Emulation.setLocaleOverride',
+            { locale: countryLocales[result.ipData.countryCode].locale }
+          )
 
-      chrome.debugger.sendCommand(
-        { tabId: tabId },
-        'Emulation.setGeolocationOverride',
-        {
-          latitude: ipData.lat,
-          longitude: ipData.lon,
-          accuracy: 1,
+          const latitude = result.latMatchIP
+            ? result.ipData.lat
+            : parseFloat(result.lat)
+          const longitude = result.lonMatchIP
+            ? result.ipData.lon
+            : parseFloat(result.lon)
+
+          console.log(latitude, longitude)
+
+          chrome.debugger.sendCommand(
+            { tabId: tabId },
+            'Emulation.setGeolocationOverride',
+            {
+              latitude,
+              longitude,
+              accuracy: 1,
+            }
+          )
+
+          chrome.debugger.sendCommand(
+            { tabId: tabId },
+            'Emulation.setUserAgentOverride',
+            {
+              userAgent:
+                'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.69',
+            }
+            // { acceptLanguage: "en-CA" },
+            // { platform: "WebTV OS" }
+          )
         }
-      )
-
-      chrome.debugger.sendCommand(
-        { tabId: tabId },
-        'Emulation.setUserAgentOverride',
-        {
-          userAgent:
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.69',
-        }
-        // { acceptLanguage: "en-CA" },
-        // { platform: "WebTV OS" }
-      )
+      })
     }
-  })
+  )
 }
 
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
-  chrome.storage.sync.get(['ipData'], (result) => {
-    attachTab(tabId, result.ipData)
-  })
+  attachTab(tabId)
 })
 
 // const attachTabs = (ipData) => {

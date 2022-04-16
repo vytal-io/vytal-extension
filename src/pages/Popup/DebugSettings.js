@@ -23,7 +23,7 @@ const DebugSettings = ({ type, ip }) => {
     chrome.storage.sync.get([type, matchIPStorage], (result) => {
       console.log(1, result)
 
-      // result[matchIPStorage] && setMatchIP(result[matchIPStorage])
+      setMatchIP(result[matchIPStorage])
 
       if (result[matchIPStorage]) {
         setValue(ip[type])
@@ -50,7 +50,6 @@ const DebugSettings = ({ type, ip }) => {
   }
 
   const changeTextValue = (e) => {
-    console.log(e.target.value)
     chrome.storage.sync.set({ [type]: e.target.value })
     setValue(e.target.value)
     if (matchIP) {
