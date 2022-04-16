@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import countryLocales from '../../utils/countryLocales'
 
 const detachDebugger = () => {
   chrome.debugger.getTargets((tabs) => {
@@ -10,46 +11,39 @@ const detachDebugger = () => {
   })
 }
 
-const DebugSettings = ({ type, title, ip }) => {
+const LocaleSettings = ({ ip }) => {
   const [value, setValue] = useState('')
   const [matchIP, setMatchIP] = useState(false)
-  const matchIPStorage = `${type}MatchIP`
+  const locale = useRef(null)
 
   useEffect(() => {
-    chrome.storage.sync.get([type, matchIPStorage], (result) => {
-      setMatchIP(result[matchIPStorage])
+    if (ip) {
+      locale.current = countryLocales[ip.countryCode].locale
 
-      if (result[matchIPStorage]) {
-        setValue(ip[type])
-        chrome.storage.sync.set({ [type]: ip[type] })
-        // if (!result[type]) {
-        //   console.log(2, result)
+      chrome.storage.sync.get(['locale', 'localeMathIP'], (result) => {
+        setMatchIP(result.localeMathIP)
 
-        //   setValue(ip[type])
-        //   chrome.storage.sync.set({ [type]: ip[type] })
-        // } else {
-        //   console.log(3, result[type])
-        //   chrome.storage.sync.set({ [type]: ip[type] })
-
-        //   result[type] && setValue(ip[type])
-        // }
-      } else {
-        setValue(result[type])
-      }
-    })
-  }, [ip, matchIPStorage, type])
+        if (result.localeMathIP) {
+          setValue(locale.current)
+          chrome.storage.sync.set({ locale: locale.current })
+        } else {
+          setValue(result.locale)
+        }
+      })
+    }
+  }, [ip])
 
   const toggleMatchIP = () => {
-    chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
-    !matchIP && setValue(ip[type])
+    chrome.storage.sync.set({ localeMathIP: !matchIP })
+    !matchIP && setValue(locale.current)
     setMatchIP(!matchIP)
   }
 
   const changeTextValue = (e) => {
-    chrome.storage.sync.set({ [type]: e.target.value })
+    chrome.storage.sync.set({ locale: e.target.value })
     setValue(e.target.value)
     if (matchIP) {
-      chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
+      chrome.storage.sync.set({ localeMathIP: !matchIP })
       setMatchIP(!matchIP)
     }
   }
@@ -72,7 +66,7 @@ const DebugSettings = ({ type, title, ip }) => {
             margin: '0 5px 0 0',
           }}
         />
-        {title}
+        Locale
       </label>
       <label>
         <input
@@ -86,4 +80,4 @@ const DebugSettings = ({ type, title, ip }) => {
   )
 }
 
-export default DebugSettings
+export default LocaleSettings
