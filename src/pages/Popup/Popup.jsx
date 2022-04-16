@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import IpSettings from './IpSettings'
 import DebugSettings from './DebugSettings'
+import LocaleSettings from './LocaleSettings'
 
 const getIP = () =>
   fetch('http://ip-api.com/json/')
@@ -29,13 +30,14 @@ const Popup = () => {
       <Navbar />
       <div
         style={{
-          padding: '10px',
+          padding: '12px',
         }}
       >
         <IpSettings ip={ip} getIP={getIP} setIP={setIP} />
-        <DebugSettings type="timezone" ip={ip} />
-        <DebugSettings type="lat" ip={ip} />
-        <DebugSettings type="lon" ip={ip} />
+        <DebugSettings type="timezone" title="Timezone" ip={ip} />
+        <DebugSettings type="lat" title="Latitude" ip={ip} />
+        <DebugSettings type="lon" title="Longitude" ip={ip} />
+        <LocaleSettings ip={ip} />
       </div>
     </div>
   )

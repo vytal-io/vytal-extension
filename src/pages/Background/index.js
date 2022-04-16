@@ -1,4 +1,5 @@
-import countryLocales from './countryLocales'
+import countryLocales from '../../utils/countryLocales'
+
 
 const attachTab = (tabId, ipData) => {
   chrome.storage.sync.get(
