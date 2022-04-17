@@ -21,23 +21,17 @@ const LocaleSettings = ({ ip }) => {
       locale.current = countryLocales[ip.countryCode].locale
 
       chrome.storage.sync.get(['locale', 'localeMathIP'], (result) => {
-        setMatchIP(result.localeMathIP)
+        result.localeMathIP && setMatchIP(result.localeMathIP)
 
         if (result.localeMathIP) {
           setValue(locale.current)
           chrome.storage.sync.set({ locale: locale.current })
-        } else {
+        } else if (result.locale) {
           setValue(result.locale)
         }
       })
     }
   }, [ip])
-
-  const toggleMatchIP = () => {
-    chrome.storage.sync.set({ localeMathIP: !matchIP })
-    !matchIP && setValue(locale.current)
-    setMatchIP(!matchIP)
-  }
 
   const changeTextValue = (e) => {
     chrome.storage.sync.set({ locale: e.target.value })
@@ -46,6 +40,12 @@ const LocaleSettings = ({ ip }) => {
       chrome.storage.sync.set({ localeMathIP: !matchIP })
       setMatchIP(!matchIP)
     }
+  }
+
+  const toggleMatchIP = (e) => {
+    chrome.storage.sync.set({ localeMathIP: !matchIP })
+    !matchIP && setValue(locale.current)
+    setMatchIP(e.target.value)
   }
 
   return (
@@ -60,7 +60,7 @@ const LocaleSettings = ({ ip }) => {
         <input
           type="text"
           value={value}
-          onChange={(e) => changeTextValue(e)}
+          onChange={changeTextValue}
           style={{
             width: '120px',
             margin: '0 5px 0 0',
@@ -69,11 +69,7 @@ const LocaleSettings = ({ ip }) => {
         Locale
       </label>
       <label>
-        <input
-          type="checkbox"
-          checked={matchIP}
-          onChange={() => toggleMatchIP()}
-        />
+        <input type="checkbox" checked={matchIP} onChange={toggleMatchIP} />
         Match IP
       </label>
     </div>
