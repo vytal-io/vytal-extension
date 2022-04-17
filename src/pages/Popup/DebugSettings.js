@@ -16,34 +16,19 @@ const DebugSettings = ({ type, title, ip }) => {
   const matchIPStorage = `${type}MatchIP`
 
   useEffect(() => {
-    chrome.storage.sync.get([type, matchIPStorage], (result) => {
-      setMatchIP(result[matchIPStorage])
+    if (ip) {
+      chrome.storage.sync.get([type, matchIPStorage], (result) => {
+        result[matchIPStorage] && setMatchIP(result[matchIPStorage])
 
-      if (result[matchIPStorage]) {
-        setValue(ip[type])
-        chrome.storage.sync.set({ [type]: ip[type] })
-        // if (!result[type]) {
-        //   console.log(2, result)
-
-        //   setValue(ip[type])
-        //   chrome.storage.sync.set({ [type]: ip[type] })
-        // } else {
-        //   console.log(3, result[type])
-        //   chrome.storage.sync.set({ [type]: ip[type] })
-
-        //   result[type] && setValue(ip[type])
-        // }
-      } else {
-        setValue(result[type])
-      }
-    })
+        if (result[matchIPStorage]) {
+          setValue(ip[type])
+          chrome.storage.sync.set({ [type]: ip[type] })
+        } else if (result[type]) {
+          setValue(result[type])
+        }
+      })
+    }
   }, [ip, matchIPStorage, type])
-
-  const toggleMatchIP = () => {
-    chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
-    !matchIP && setValue(ip[type])
-    setMatchIP(!matchIP)
-  }
 
   const changeTextValue = (e) => {
     chrome.storage.sync.set({ [type]: e.target.value })
@@ -52,6 +37,12 @@ const DebugSettings = ({ type, title, ip }) => {
       chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
       setMatchIP(!matchIP)
     }
+  }
+
+  const toggleMatchIP = (e) => {
+    chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
+    !matchIP && setValue(ip[type])
+    setMatchIP(e.target.checked)
   }
 
   return (
@@ -66,7 +57,7 @@ const DebugSettings = ({ type, title, ip }) => {
         <input
           type="text"
           value={value}
-          onChange={(e) => changeTextValue(e)}
+          onChange={changeTextValue}
           style={{
             width: '120px',
             margin: '0 5px 0 0',
@@ -75,11 +66,7 @@ const DebugSettings = ({ type, title, ip }) => {
         {title}
       </label>
       <label>
-        <input
-          type="checkbox"
-          checked={matchIP}
-          onChange={() => toggleMatchIP()}
-        />
+        <input type="checkbox" checked={matchIP} onChange={toggleMatchIP} />
         Match IP
       </label>
     </div>
