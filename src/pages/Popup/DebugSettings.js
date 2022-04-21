@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-const detachDebugger = () => {
-  chrome.debugger.getTargets((tabs) => {
-    for (const tab in tabs) {
-      if (tabs[tab].attached && tabs[tab].tabId) {
-        chrome.debugger.detach({ tabId: tabs[tab].tabId })
-      }
-    }
-  })
-}
-
 const DebugSettings = ({ type, title, ip }) => {
   const [value, setValue] = useState('')
   const [matchIP, setMatchIP] = useState(false)

@@ -12,6 +12,7 @@ const attachTab = (tabId, ipData) => {
       'longitudeMatchIP',
       'locale',
       'localeMatchIP',
+      'userAgent',
     ],
     (result) => {
       chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
@@ -36,6 +37,17 @@ const attachTab = (tabId, ipData) => {
             }
           )
 
+          console.log(
+            result.localeMatchIP,
+            countryLocales[result.ipData.countryCode].locale,
+            result.locale
+          )
+          console.log(
+            result.localeMatchIP
+              ? countryLocales[result.ipData.countryCode].locale
+              : result.locale
+          )
+
           chrome.debugger.sendCommand(
             { tabId: tabId },
             'Emulation.setLocaleOverride',
@@ -53,6 +65,12 @@ const attachTab = (tabId, ipData) => {
             ? result.ipData.lon
             : parseFloat(result.lon)
 
+          console.log(
+            result.latMatchIP,
+            result.ipData.lat,
+            parseFloat(result.lat)
+          )
+
           chrome.debugger.sendCommand(
             { tabId: tabId },
             'Emulation.setGeolocationOverride',
@@ -63,16 +81,18 @@ const attachTab = (tabId, ipData) => {
             }
           )
 
-          chrome.debugger.sendCommand(
-            { tabId: tabId },
-            'Emulation.setUserAgentOverride',
-            {
-              userAgent:
-                'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.69',
-            }
-            // { acceptLanguage: "en-CA" },
-            // { platform: "WebTV OS" }
-          )
+          if (result.userAgent) {
+            chrome.debugger.sendCommand(
+              { tabId: tabId },
+              'Emulation.setUserAgentOverride',
+              {
+                userAgent: result.userAgent,
+              }
+              // { acceptLanguage: "en-CA" },
+              // { platform: "WebTV OS" }
+            )
+            // 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.69',
+          }
         }
       })
     }
