@@ -1,16 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import countryLocales from '../../utils/countryLocales'
 
-const detachDebugger = () => {
-  chrome.debugger.getTargets((tabs) => {
-    for (const tab in tabs) {
-      if (tabs[tab].attached && tabs[tab].tabId) {
-        chrome.debugger.detach({ tabId: tabs[tab].tabId })
-      }
-    }
-  })
-}
-
 const LocaleSettings = ({ ip }) => {
   const [value, setValue] = useState('')
   const [matchIP, setMatchIP] = useState(false)
@@ -20,10 +10,10 @@ const LocaleSettings = ({ ip }) => {
     if (ip) {
       locale.current = countryLocales[ip.countryCode].locale
 
-      chrome.storage.sync.get(['locale', 'localeMathIP'], (result) => {
-        result.localeMathIP && setMatchIP(result.localeMathIP)
+      chrome.storage.sync.get(['locale', 'localeMatchIP'], (result) => {
+        result.localeMatchIP && setMatchIP(result.localeMatchIP)
 
-        if (result.localeMathIP) {
+        if (result.localeMatchIP) {
           setValue(locale.current)
           chrome.storage.sync.set({ locale: locale.current })
         } else if (result.locale) {
@@ -37,13 +27,13 @@ const LocaleSettings = ({ ip }) => {
     chrome.storage.sync.set({ locale: e.target.value })
     setValue(e.target.value)
     if (matchIP) {
-      chrome.storage.sync.set({ localeMathIP: !matchIP })
+      chrome.storage.sync.set({ localeMatchIP: !matchIP })
       setMatchIP(!matchIP)
     }
   }
 
   const toggleMatchIP = (e) => {
-    chrome.storage.sync.set({ localeMathIP: !matchIP })
+    chrome.storage.sync.set({ localeMatchIP: !matchIP })
     !matchIP && setValue(locale.current)
     setMatchIP(e.target.value)
   }

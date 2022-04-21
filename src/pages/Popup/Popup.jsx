@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import IpSettings from './IpSettings'
 import DebugSettings from './DebugSettings'
 import LocaleSettings from './LocaleSettings'
+import UserAgentSettings from './UserAgentSettings'
 
 const getIP = () =>
   fetch('http://ip-api.com/json/')
@@ -38,6 +39,7 @@ const Popup = () => {
         <DebugSettings type="lat" title="Latitude" ip={ip} />
         <DebugSettings type="lon" title="Longitude" ip={ip} />
         <LocaleSettings ip={ip} />
+        <UserAgentSettings ip={ip} type="lat" title="Latitude" />
       </div>
     </div>
   )
