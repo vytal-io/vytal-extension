@@ -40,6 +40,14 @@ const Popup = () => {
         <DebugSettings type="lon" title="Longitude" ip={ip} />
         <LocaleSettings ip={ip} />
         <UserAgentSettings ip={ip} type="lat" title="Latitude" />
+        <div
+          style={{
+            margin: '12px 0 0 0',
+            fontSize: '10px',
+          }}
+        >
+          Leave field blank to use real value.
+        </div>
       </div>
     </div>
   )

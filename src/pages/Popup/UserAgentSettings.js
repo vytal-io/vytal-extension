@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import userAgents from '../../utils/userAgents'
 
 const UserAgentSettings = () => {
-  const [value, setUserAgent] = useState('')
+  const [userAgent, setUserAgent] = useState('')
 
   useEffect(() => {
     chrome.storage.sync.get(['userAgent'], (result) => {
@@ -16,27 +17,52 @@ const UserAgentSettings = () => {
     setUserAgent(e.target.value)
   }
 
+  const randomize = (e) => {
+    const randomUserAgent =
+      userAgents[Math.floor(Math.random() * userAgents.length)]
+    chrome.storage.sync.set({ [randomize]: randomUserAgent })
+    setUserAgent(randomUserAgent)
+  }
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        margin: '12px 0 0 0',
-      }}
-    >
+    <>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          margin: '12px 0 0 0',
+        }}
+      >
+        <label>
+          <input
+            type="text"
+            value={userAgent}
+            onChange={changeTextValue}
+            style={{
+              width: '218px',
+              margin: '0 5px 0 0',
+            }}
+          />
+          User Agent
+        </label>
+      </div>
+      <label>
+        <input type="checkbox" checked={false} onChange={randomize} />
+        Randomize every
+      </label>
       <label>
         <input
           type="text"
-          value={value}
-          onChange={changeTextValue}
+          // value={value}
+          // onChange={changeTextValue}
           style={{
-            width: '218px',
+            width: '24px',
             margin: '0 5px 0 0',
           }}
         />
-        User Agent
+        minutes
       </label>
-    </div>
+    </>
   )
 }
 
