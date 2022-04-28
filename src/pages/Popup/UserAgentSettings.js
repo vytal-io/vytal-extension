@@ -3,16 +3,20 @@ import userAgents from '../../utils/userAgents'
 
 const UserAgentSettings = () => {
   const [userAgent, setUserAgent] = useState('')
+  const [randomUA, setRandomUA] = useState(false)
+  const [interval, setInterval] = useState(60)
 
   useEffect(() => {
-    chrome.storage.sync.get(['userAgent'], (result) => {
+    chrome.storage.sync.get(['userAgent', 'randomUA'], (result) => {
+      result.randomUA && setRandomUA(true)
+
       if (result.userAgent) {
         setUserAgent(result.userAgent)
       }
     })
   }, [])
 
-  const changeTextValue = (e) => {
+  const changeUserAgent = (e) => {
     chrome.storage.sync.set({ userAgent: e.target.value })
     setUserAgent(e.target.value)
   }
@@ -20,8 +24,17 @@ const UserAgentSettings = () => {
   const randomize = (e) => {
     const randomUserAgent =
       userAgents[Math.floor(Math.random() * userAgents.length)]
-    chrome.storage.sync.set({ [randomize]: randomUserAgent })
-    setUserAgent(randomUserAgent)
+    chrome.storage.sync.set({
+      [randomize]: randomUserAgent,
+      [randomUA]: e.target.checked,
+    })
+    e.target.checked ? setUserAgent(randomUserAgent) : setUserAgent('')
+    setRandomUA(e.target.checked)
+  }
+
+  const changeInterval = (e) => {
+    chrome.storage.sync.set({ [interval]: e.target.value })
+    setInterval(e.target.value)
   }
 
   return (
@@ -37,7 +50,7 @@ const UserAgentSettings = () => {
           <input
             type="text"
             value={userAgent}
-            onChange={changeTextValue}
+            onChange={changeUserAgent}
             style={{
               width: '218px',
               margin: '0 5px 0 0',
@@ -47,14 +60,14 @@ const UserAgentSettings = () => {
         </label>
       </div>
       <label>
-        <input type="checkbox" checked={false} onChange={randomize} />
+        <input type="checkbox" checked={randomUA} onChange={randomize} />
         Randomize every
       </label>
       <label>
         <input
           type="text"
-          // value={value}
-          // onChange={changeTextValue}
+          value={interval}
+          onChange={changeInterval}
           style={{
             width: '24px',
             margin: '0 5px 0 0',
