@@ -7,7 +7,11 @@ const UserAgentSettings = () => {
   const [interval, setInterval] = useState(60)
 
   useEffect(() => {
-    chrome.storage.sync.get(['userAgent', 'randomUA'], (result) => {
+    chrome.storage.sync.get(['userAgent', 'randomUA', 'interval'], (result) => {
+      console.log(result.interval)
+
+      setInterval(result.interval)
+
       result.randomUA && setRandomUA(true)
 
       if (result.userAgent) {
@@ -25,15 +29,16 @@ const UserAgentSettings = () => {
     const randomUserAgent =
       userAgents[Math.floor(Math.random() * userAgents.length)]
     chrome.storage.sync.set({
-      [randomize]: randomUserAgent,
-      [randomUA]: e.target.checked,
+      randomize: randomUserAgent,
+      randomUA: e.target.checked,
     })
     e.target.checked ? setUserAgent(randomUserAgent) : setUserAgent('')
     setRandomUA(e.target.checked)
   }
 
   const changeInterval = (e) => {
-    chrome.storage.sync.set({ [interval]: e.target.value })
+    console.log(e.target.value)
+    chrome.storage.sync.set({ interval: e.target.value })
     setInterval(e.target.value)
   }
 
