@@ -30,7 +30,10 @@ const DebugSettings = ({ type, title, ip }) => {
   }
 
   const toggleMatchIP = (e) => {
-    chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
+    chrome.storage.sync.set({
+      [type]: ip[type],
+      [matchIPStorage]: !matchIP,
+    })
     !matchIP && setValue(ip[type])
     setMatchIP(e.target.checked)
   }

@@ -27,15 +27,15 @@ const attachTab = (tabId, ipData) => {
           //   'Emulation.clearIdleOverride'
           // )
 
-          chrome.debugger.sendCommand(
-            { tabId: tabId },
-            'Emulation.setTimezoneOverride',
-            {
-              timezoneId: result.timezoneMatchIP
-                ? result.ipData.timezone
-                : result.timezone,
-            }
-          )
+          if (result.timezone) {
+            chrome.debugger.sendCommand(
+              { tabId: tabId },
+              'Emulation.setTimezoneOverride',
+              {
+                timezoneId: result.timezone,
+              }
+            )
+          }
 
           console.log(
             result.localeMatchIP,
@@ -48,15 +48,15 @@ const attachTab = (tabId, ipData) => {
               : result.locale
           )
 
-          chrome.debugger.sendCommand(
-            { tabId: tabId },
-            'Emulation.setLocaleOverride',
-            {
-              locale: result.localeMatchIP
-                ? countryLocales[result.ipData.countryCode].locale
-                : result.locale,
-            }
-          )
+          if (result.locale) {
+            chrome.debugger.sendCommand(
+              { tabId: tabId },
+              'Emulation.setLocaleOverride',
+              {
+                locale: result.locale,
+              }
+            )
+          }
 
           const latitude = result.latMatchIP
             ? result.ipData.lat
