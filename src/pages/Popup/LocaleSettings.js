@@ -33,7 +33,7 @@ const LocaleSettings = ({ ip }) => {
   }
 
   const toggleMatchIP = (e) => {
-    chrome.storage.sync.set({ localeMatchIP: !matchIP })
+    chrome.storage.sync.set({ locale: locale.current, localeMatchIP: !matchIP })
     !matchIP && setValue(locale.current)
     setMatchIP(e.target.value)
   }
