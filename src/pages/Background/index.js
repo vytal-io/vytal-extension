@@ -1,5 +1,3 @@
-import countryLocales from '../../utils/countryLocales'
-
 const attachTab = (tabId, ipData) => {
   chrome.storage.sync.get(
     [
@@ -15,86 +13,76 @@ const attachTab = (tabId, ipData) => {
       'userAgent',
     ],
     (result) => {
-      chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
-        if (!chrome.runtime.lastError) {
-          // chrome.debugger.sendCommand(
-          //   { tabId: tabId },
-          //   'Emulation.clearGeolocationOverride'
-          // )
+      if (
+        result.timezone ||
+        result.lat ||
+        result.lon ||
+        result.locale ||
+        result.userAgent
+      ) {
+        chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
+          if (!chrome.runtime.lastError) {
+            // chrome.debugger.sendCommand(
+            //   { tabId: tabId },
+            //   'Emulation.clearGeolocationOverride'
+            // )
 
-          // chrome.debugger.sendCommand(
-          //   { tabId: tabId },
-          //   'Emulation.clearIdleOverride'
-          // )
+            // chrome.debugger.sendCommand(
+            //   { tabId: tabId },
+            //   'Emulation.clearIdleOverride'
+            // )
 
-          if (result.timezone) {
-            chrome.debugger.sendCommand(
-              { tabId: tabId },
-              'Emulation.setTimezoneOverride',
-              {
-                timezoneId: result.timezone,
-              }
-            )
-          }
-
-          console.log(
-            result.localeMatchIP,
-            countryLocales[result.ipData.countryCode].locale,
-            result.locale
-          )
-          console.log(
-            result.localeMatchIP
-              ? countryLocales[result.ipData.countryCode].locale
-              : result.locale
-          )
-
-          if (result.locale) {
-            chrome.debugger.sendCommand(
-              { tabId: tabId },
-              'Emulation.setLocaleOverride',
-              {
-                locale: result.locale,
-              }
-            )
-          }
-
-          const latitude = result.latMatchIP
-            ? result.ipData.lat
-            : parseFloat(result.lat)
-          const longitude = result.lonMatchIP
-            ? result.ipData.lon
-            : parseFloat(result.lon)
-
-          console.log(
-            result.latMatchIP,
-            result.ipData.lat,
-            parseFloat(result.lat)
-          )
-
-          chrome.debugger.sendCommand(
-            { tabId: tabId },
-            'Emulation.setGeolocationOverride',
-            {
-              latitude,
-              longitude,
-              accuracy: 1,
+            if (result.timezone) {
+              chrome.debugger.sendCommand(
+                { tabId: tabId },
+                'Emulation.setTimezoneOverride',
+                {
+                  timezoneId: result.timezone,
+                }
+              )
             }
-          )
 
-          if (result.userAgent) {
-            chrome.debugger.sendCommand(
-              { tabId: tabId },
-              'Emulation.setUserAgentOverride',
-              {
-                userAgent: result.userAgent,
-              }
-              // { acceptLanguage: "en-CA" },
-              // { platform: "WebTV OS" }
-            )
-            // 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.69',
+            if (result.locale) {
+              chrome.debugger.sendCommand(
+                { tabId: tabId },
+                'Emulation.setLocaleOverride',
+                {
+                  locale: result.locale,
+                }
+              )
+            }
+
+            if (result.lat || result.lon) {
+              chrome.debugger.sendCommand(
+                { tabId: tabId },
+                'Emulation.setGeolocationOverride',
+                {
+                  latitude: result.lat
+                    ? parseFloat(result.lat)
+                    : result.ipData.lat,
+                  longitude: result.lon
+                    ? parseFloat(result.lon)
+                    : result.ipData.lon,
+                  accuracy: 1,
+                }
+              )
+            }
+
+            if (result.userAgent) {
+              chrome.debugger.sendCommand(
+                { tabId: tabId },
+                'Emulation.setUserAgentOverride',
+                {
+                  userAgent: result.userAgent,
+                }
+                // { acceptLanguage: "en-CA" },
+                // { platform: "WebTV OS" }
+              )
+              // 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.69',
+            }
           }
-        }
-      })
+        })
+      }
     }
   )
 }
