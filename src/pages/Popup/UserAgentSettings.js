@@ -29,7 +29,7 @@ const UserAgentSettings = () => {
     const randomUserAgent =
       userAgents[Math.floor(Math.random() * userAgents.length)]
     chrome.storage.sync.set({
-      randomize: randomUserAgent,
+      userAgent: randomUserAgent,
       randomUA: e.target.checked,
     })
     e.target.checked ? setUserAgent(randomUserAgent) : setUserAgent('')
