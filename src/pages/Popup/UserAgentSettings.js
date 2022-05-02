@@ -8,9 +8,7 @@ const UserAgentSettings = () => {
 
   useEffect(() => {
     chrome.storage.sync.get(['userAgent', 'randomUA', 'interval'], (result) => {
-      console.log(result.interval)
-
-      setInterval(result.interval)
+      result.interval && setInterval(result.interval)
 
       result.randomUA && setRandomUA(true)
 
