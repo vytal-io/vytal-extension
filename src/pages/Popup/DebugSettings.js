@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import detachDebugger from '../../utils/detachDebugger'
 
 const DebugSettings = ({ type, title, ip }) => {
   const [value, setValue] = useState('')
@@ -27,6 +28,7 @@ const DebugSettings = ({ type, title, ip }) => {
       chrome.storage.sync.set({ [matchIPStorage]: !matchIP })
       setMatchIP(!matchIP)
     }
+    // detachDebugger()
   }
 
   const toggleMatchIP = (e) => {

@@ -27,11 +27,6 @@ const attachTab = (tabId, ipData) => {
             //   'Emulation.clearGeolocationOverride'
             // )
 
-            // chrome.debugger.sendCommand(
-            //   { tabId: tabId },
-            //   'Emulation.clearIdleOverride'
-            // )
-
             if (result.timezone) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },
@@ -88,7 +83,12 @@ const attachTab = (tabId, ipData) => {
 }
 
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
-  attachTab(tabId)
+  chrome.debugger.getTargets((tabs) => {
+    const currentTab = tabs.find((obj) => obj.tabId === tabId)
+    if (!currentTab.attached) {
+      attachTab(tabId)
+    }
+  })
 })
 
 // const attachTabs = (ipData) => {
