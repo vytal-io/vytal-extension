@@ -35,7 +35,6 @@ const UserAgentSettings = () => {
   }
 
   const changeInterval = (e) => {
-    console.log(e.target.value)
     chrome.storage.sync.set({ interval: e.target.value })
     setInterval(e.target.value)
   }
