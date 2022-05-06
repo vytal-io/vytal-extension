@@ -4,17 +4,17 @@ var webpack = require('webpack'),
   env = require('./utils/env'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  TerserPlugin = require('terser-webpack-plugin');
-var { CleanWebpackPlugin } = require('clean-webpack-plugin');
+  TerserPlugin = require('terser-webpack-plugin')
+var { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const ASSET_PATH = process.env.ASSET_PATH || '/';
+const ASSET_PATH = process.env.ASSET_PATH || '/'
 
 var alias = {
   'react-dom': '@hot-loader/react-dom',
-};
+}
 
 // load the secrets
-var secretsPath = path.join(__dirname, 'secrets.' + env.NODE_ENV + '.js');
+var secretsPath = path.join(__dirname, 'secrets.' + env.NODE_ENV + '.js')
 
 var fileExtensions = [
   'jpg',
@@ -27,10 +27,10 @@ var fileExtensions = [
   'ttf',
   'woff',
   'woff2',
-];
+]
 
 if (fileSystem.existsSync(secretsPath)) {
-  alias['secrets'] = secretsPath;
+  alias['secrets'] = secretsPath
 }
 
 var options = {
@@ -126,7 +126,7 @@ var options = {
                 version: process.env.npm_package_version,
                 ...JSON.parse(content.toString()),
               })
-            );
+            )
           },
         },
       ],
@@ -180,10 +180,10 @@ var options = {
   infrastructureLogging: {
     level: 'info',
   },
-};
+}
 
 if (env.NODE_ENV === 'development') {
-  options.devtool = 'cheap-module-source-map';
+  options.devtool = 'cheap-module-source-map'
 } else {
   options.optimization = {
     minimize: true,
@@ -192,7 +192,7 @@ if (env.NODE_ENV === 'development') {
         extractComments: false,
       }),
     ],
-  };
+  }
 }
 
-module.exports = options;
+module.exports = options
