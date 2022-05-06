@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import countryLocales from '../../utils/countryLocales'
+import detachDebugger from '../../utils/detachDebugger'
 
 const LocaleSettings = ({ ip }) => {
   const [value, setValue] = useState('')
@@ -30,6 +31,7 @@ const LocaleSettings = ({ ip }) => {
       chrome.storage.sync.set({ localeMatchIP: !matchIP })
       setMatchIP(!matchIP)
     }
+    detachDebugger()
   }
 
   const toggleMatchIP = (e) => {

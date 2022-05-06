@@ -1,4 +1,4 @@
-const attachTab = (tabId, ipData) => {
+const attachTab = (tabId) => {
   chrome.storage.sync.get(
     [
       'ipData',
@@ -20,11 +20,11 @@ const attachTab = (tabId, ipData) => {
         result.locale ||
         result.userAgent
       ) {
-        chrome.debugger.attach({ tabId: tabId }, '1.3', function () {
+        chrome.debugger.attach({ tabId: tabId }, '1.3', () => {
           if (!chrome.runtime.lastError) {
             // chrome.debugger.sendCommand(
             //   { tabId: tabId },
-            //   'Emulation.clearGeolocationOverride'
+            //   'Emulation.clearTimezoneOverride'
             // )
 
             if (result.timezone) {
@@ -33,6 +33,17 @@ const attachTab = (tabId, ipData) => {
                 'Emulation.setTimezoneOverride',
                 {
                   timezoneId: result.timezone,
+                },
+                () => {
+                  if (
+                    chrome.runtime.lastError &&
+                    chrome.runtime.lastError.message.includes(
+                      'Timezone override is already in effect'
+                    )
+                  ) {
+                    chrome.debugger.detach({ tabId })
+                    attachTab(tabId)
+                  }
                 }
               )
             }

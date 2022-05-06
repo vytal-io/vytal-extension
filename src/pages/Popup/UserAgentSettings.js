@@ -49,18 +49,15 @@ const UserAgentSettings = () => {
           margin: '12px 0 0 0',
         }}
       >
-        <label>
-          <input
-            type="text"
-            value={userAgent}
-            onChange={changeUserAgent}
-            style={{
-              width: '218px',
-              margin: '0 5px 0 0',
-            }}
-          />
-          User Agent
-        </label>
+        <input
+          type="text"
+          value={userAgent}
+          onChange={changeUserAgent}
+          style={{
+            width: '168px',
+          }}
+        />
+        <label>User Agent</label>
       </div>
       <label>
         <input type="checkbox" checked={randomUA} onChange={randomize} />
