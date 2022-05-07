@@ -128,7 +128,8 @@ const Popup = () => {
             fontSize: '10px',
           }}
         >
-          Leave field blank to use real value.
+          Tabs need to be initialized for full protection.
+          {/* <a href="/">Read more</a> */}
         </div>
       </div>
     </div>
