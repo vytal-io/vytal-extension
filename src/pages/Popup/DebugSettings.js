@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import profiles from '../../utils/profiles'
+import countryLocales from '../../utils/countryLocales'
 
 const DebugSettings = ({ type, title, ip, profile, setProfile }) => {
   const [value, setValue] = useState('')
 
   useEffect(() => {
     if (profile === 'match') {
-      console.log(1)
-
       if (ip) {
-        setValue(ip[type])
-        chrome.storage.sync.set({ [type]: ip[type] })
+        const ipTypeValue =
+          type === 'locale' ? countryLocales[ip.countryCode].locale : ip[type]
+        setValue(ipTypeValue)
+        chrome.storage.sync.set({ [type]: ipTypeValue })
       }
     } else if (profile === 'custom') {
       console.log(2)

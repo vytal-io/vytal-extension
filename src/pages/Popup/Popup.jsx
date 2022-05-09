@@ -107,6 +107,13 @@ const Popup = () => {
           setProfile={setProfile}
         />
         <DebugSettings
+          type="locale"
+          title="Locale"
+          ip={ip}
+          profile={profile}
+          setProfile={setProfile}
+        />
+        <DebugSettings
           type="lat"
           title="Latitude"
           ip={ip}
@@ -120,7 +127,6 @@ const Popup = () => {
           profile={profile}
           setProfile={setProfile}
         />
-        {/* <LocaleSettings ip={ip} /> */}
         <UserAgentSettings ip={ip} type="lat" title="Latitude" />
         <div
           style={{
