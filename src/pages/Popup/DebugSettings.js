@@ -14,7 +14,6 @@ const DebugSettings = ({ type, title, ip, profile, setProfile }) => {
         chrome.storage.sync.set({ [type]: ipTypeValue })
       }
     } else if (profile === 'custom') {
-      console.log(2)
       chrome.storage.sync.get([type], (result) => {
         console.log(type)
         console.log(result)

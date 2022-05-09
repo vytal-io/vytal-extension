@@ -18,3 +18,10 @@ body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, sans-serif;
 }
+
+input[type=checkbox] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+  margin: 0 4px 0 0
+}

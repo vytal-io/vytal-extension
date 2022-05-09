@@ -58,22 +58,32 @@ const UserAgentSettings = () => {
         />
         <label>User Agent</label>
       </div>
-      <label>
-        <input type="checkbox" checked={randomUA} onChange={randomize} />
-        Randomize every
-      </label>
-      <label>
-        <input
-          type="text"
-          value={interval}
-          onChange={changeInterval}
+      <div
+        style={{
+          margin: '6px 0 0 0',
+        }}
+      >
+        <label
           style={{
-            width: '24px',
-            margin: '0 5px 0 0',
+            margin: '0 6px 0 0',
           }}
-        />
-        minutes
-      </label>
+        >
+          <input type="checkbox" checked={randomUA} onChange={randomize} />
+          Randomize every
+        </label>
+        <label>
+          <input
+            type="text"
+            value={interval}
+            onChange={changeInterval}
+            style={{
+              width: '24px',
+              margin: '0 4px 0 0',
+            }}
+          />
+          minutes
+        </label>
+      </div>
     </>
   )
 }

@@ -130,7 +130,7 @@ const Popup = () => {
         <UserAgentSettings ip={ip} type="lat" title="Latitude" />
         <div
           style={{
-            margin: '12px 0 0 0',
+            margin: '8px 0 0 0',
             fontSize: '10px',
           }}
         >
