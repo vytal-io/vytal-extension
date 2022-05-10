@@ -24,11 +24,6 @@ const attachTab = (tabId) => {
       ) {
         chrome.debugger.attach({ tabId: tabId }, '1.3', () => {
           if (!chrome.runtime.lastError) {
-            // chrome.debugger.sendCommand(
-            //   { tabId: tabId },
-            //   'Emulation.clearTimezoneOverride'
-            // )
-
             if (result.timezone) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },

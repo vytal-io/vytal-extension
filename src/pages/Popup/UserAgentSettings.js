@@ -85,11 +85,11 @@ const UserAgentSettings = () => {
         </label>
         <label>
           <input
-            type="text"
+            type="number"
             value={interval}
             onChange={changeInterval}
             style={{
-              width: '24px',
+              width: '30px',
               margin: '0 4px 0 0',
             }}
           />
