@@ -58,7 +58,7 @@ const Popup = () => {
             value={profile}
             onChange={changeProfile}
             style={{
-              width: '176px',
+              width: '208px',
             }}
           >
             <option value="none">None</option>
@@ -134,8 +134,8 @@ const Popup = () => {
             fontSize: '10px',
           }}
         >
-          Tabs need to be initialized for full protection.
-          {/* <a href="/">Read more</a> */}
+          Tabs need to be initialized for full protection.{' '}
+          <a href="/">Read more</a>
         </div>
       </div>
     </div>

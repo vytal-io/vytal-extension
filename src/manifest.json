@@ -3,7 +3,7 @@
   "name": "Vytal",
   "description": "Vytal",
   "options_page": "options.html",
-  "permissions": ["storage", "debugger", "activeTab"],
+  "permissions": ["storage", "debugger", "activeTab", "alarms"],
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",

@@ -45,7 +45,7 @@ const DebugSettings = ({ type, title, ip, profile, setProfile }) => {
         value={value}
         onChange={changeTextValue}
         style={{
-          width: '168px',
+          width: '200px',
         }}
       />
       <label>{title}</label>
