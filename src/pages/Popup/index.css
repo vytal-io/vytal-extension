@@ -13,8 +13,7 @@ body {
   background-color: var(--background);
   font-size: 13px;
   line-height: 22px;
-  width: 270px;
-  height: 300px;
+  width: 305px;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, sans-serif;
 }

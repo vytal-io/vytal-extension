@@ -32,11 +32,20 @@ const UserAgentSettings = () => {
     })
     e.target.checked ? setUserAgent(randomUserAgent) : setUserAgent('')
     setRandomUA(e.target.checked)
+
+    chrome.alarms.create('userAgentAlarm', {
+      delayInMinutes: parseInt(interval),
+      periodInMinutes: parseInt(interval),
+    })
   }
 
   const changeInterval = (e) => {
     chrome.storage.sync.set({ interval: e.target.value })
     setInterval(e.target.value)
+    chrome.alarms.create('userAgentAlarm', {
+      delayInMinutes: parseInt(e.target.value),
+      periodInMinutes: parseInt(e.target.value),
+    })
   }
 
   return (
@@ -53,7 +62,7 @@ const UserAgentSettings = () => {
           value={userAgent}
           onChange={changeUserAgent}
           style={{
-            width: '168px',
+            width: '200px',
           }}
         />
         <label>User Agent</label>
