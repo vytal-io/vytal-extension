@@ -45,14 +45,10 @@ const DebugSettings = ({ type, title, ip, profile, setProfile }) => {
         value={value}
         onChange={changeTextValue}
         style={{
-          width: '200px',
+          width: '206px',
         }}
       />
       <label>{title}</label>
-      {/* <label>
-        <input type="checkbox" checked={matchIP} onChange={toggleMatchIP} />
-        Match IP
-      </label> */}
     </div>
   )
 }
