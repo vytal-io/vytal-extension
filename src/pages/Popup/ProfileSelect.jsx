@@ -25,7 +25,7 @@ const ProfileSelect = ({ profile, setProfile }) => {
         value={profile}
         onChange={changeProfile}
         style={{
-          width: '208px',
+          width: '214px',
         }}
       >
         <option value="none">None</option>
