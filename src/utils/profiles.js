@@ -1,5 +1,4 @@
 const profiles = {
-  none: { timezone: '', locale: '', lat: '', lon: '' },
   baghdad: {
     name: 'Baghdad',
     timezone: 'Asia/Baghdad',

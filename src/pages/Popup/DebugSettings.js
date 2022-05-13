@@ -6,7 +6,10 @@ const DebugSettings = ({ type, title, ip, profile, setProfile }) => {
   const [value, setValue] = useState('')
 
   useEffect(() => {
-    if (profile === 'match') {
+    if (profile === 'none') {
+      setValue('')
+      chrome.storage.sync.set({ [type]: '' })
+    } else if (profile === 'match') {
       if (ip) {
         const ipTypeValue =
           type === 'locale' ? countryLocales[ip.countryCode].locale : ip[type]
