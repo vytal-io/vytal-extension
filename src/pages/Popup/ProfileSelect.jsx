@@ -33,7 +33,9 @@ const ProfileSelect = ({ profile, setProfile }) => {
         <option value="custom">Custom</option>
         <optgroup label="Locations">
           {Object.keys(profiles).map((key) => (
-            <option value={key}>{profiles[key].name}</option>
+            <option value={key} key={key}>
+              {profiles[key].name}
+            </option>
           ))}
         </optgroup>
       </select>
