@@ -65,7 +65,7 @@ const UserAgentSettings = () => {
           value={userAgent}
           onChange={changeUserAgent}
           style={{
-            width: '200px',
+            width: '206px',
           }}
         />
         <label>User Agent</label>
