@@ -1,0 +1,23 @@
+.contentBlock {
+  color: var(--text);
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin: 0 0 24px 0;
+  min-width: 500px;
+}
+
+.loadBlock {
+  margin: 0 12px 12px 12px !important;
+}
+
+@media screen and (max-width: 575px) {
+  .contentBlock {
+    padding: 18px;
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 12px 0;
+  }
+}

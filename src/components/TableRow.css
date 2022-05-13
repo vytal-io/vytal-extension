@@ -1,0 +1,36 @@
+.circleButton {
+  display: flex;
+  width: 20px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 6px 0;
+  height: 20px;
+}
+
+.modalTitle {
+  font-weight: 600;
+}
+
+.closeButton {
+  fill: var(--border);
+  display: flex;
+  width: 12px;
+  cursor: pointer;
+  margin: 0 0 0 12px;
+}
+
+.closeButton:hover {
+  fill: var(--grey);
+}
+
+.issue {
+  cursor: pointer;
+}
+
+.issue:hover {
+  background-color: var(--issueBackground);
+  color: var(--issueText);
+}

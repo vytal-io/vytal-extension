@@ -1,8 +1,0 @@
-{
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "requirePragma": false,
-  "arrowParens": "always",
-  "semi": false,
-  "editor.formatOnSave": true
-}

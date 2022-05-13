@@ -1,0 +1,166 @@
+:root {
+  --main: #943ec5;
+  --text: rgb(0, 0, 0, 0.8);
+  --border: #ddd;
+  --grey: #c4c4c4;
+  --lightGrey: #f8f8f8;
+  --issueBackground: #f8d7da;
+  --issueText: #721c24;
+  --fill: #9fa6b2;
+  --link: #943ec5;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 24px;
+  font-size: 14px;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: var(--main);
+  background: linear-gradient(
+    165deg,
+    rgba(87, 35, 117, 1) 0%,
+    rgba(148, 62, 197, 1) 40%,
+    rgba(169, 100, 208, 1) 100%
+  );
+  z-index: -1;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  font-size: 16px;
+  word-break: break-all;
+}
+
+p {
+  margin: 10px 0 0 0;
+}
+
+b {
+  font-weight: 600;
+}
+
+.tableWrap {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+tr:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 10px;
+  word-break: break-all;
+}
+
+td:first-child {
+  width: 100px;
+  font-weight: 600;
+  word-break: normal;
+}
+
+td:nth-child(3) {
+  width: 40px;
+  font-weight: 600;
+  word-break: normal;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 0px;
+}
+
+.link {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.checkBox {
+  margin: 0 0 10px 0;
+  display: block;
+}
+
+input[type="checkbox"] {
+  margin: 0 6px 0 0;
+}
+
+.button {
+  display: block;
+  background-color: var(--main);
+  color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  height: 46px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.boxWrap {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.hash {
+  text-align: center;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 575px) {
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 15px;
+  }
+
+  .contentIcon {
+    flex: none;
+    margin: 0 18px 0 0;
+    width: 28px !important;
+  }
+
+  td:first-child {
+    width: 70px;
+  }
+}

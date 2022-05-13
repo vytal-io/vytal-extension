@@ -1,0 +1,16 @@
+.mapImg {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+  display: block;
+  margin: 0 0 10px 0;
+  background-color: var(--lightGrey);
+  aspect-ratio: 2 / 1;
+}
+
+@media screen and (max-width: 575px) {
+  .mapImg {
+    height: auto;
+  }
+}
