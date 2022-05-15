@@ -1,14 +1,21 @@
 import './MainColumn.css';
-import Logo from './Logo';
+import HeaderBar from './HeaderBar';
 import Blocks from './Blocks';
 
 const MainColumn = () => (
-  <>
-    <Logo />
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      width: '100%',
+    }}
+  >
+    <HeaderBar />
     <div className="centerBlockOuter">
       <Blocks />
     </div>
-  </>
+  </div>
 );
 
 export default MainColumn;

@@ -11,6 +11,8 @@
 
 .loadBlock {
   margin: 0 12px 12px 12px !important;
+  min-width: 1024px;
+  
 }
 
 @media screen and (max-width: 575px) {

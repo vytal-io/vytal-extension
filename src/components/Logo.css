@@ -4,11 +4,6 @@
   justify-content: center;
 }
 
-.logo {
-  width: 225px;
-  margin: 24px 0 18px 0;
-}
-
 @media screen and (max-width: 575px) {
   .logo {
     width: 160px;
