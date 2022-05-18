@@ -4,7 +4,18 @@ import Block from './Block';
 import TableRow from './TableRow';
 
 const DataBlock = ({ title, type }) => {
-  const { initialData, delayedData, frameData, workerData } = useContext(DataContext);
+  const { initialData, delayedData, frameData, workerData } =
+    useContext(DataContext);
+
+  // const test = !workerData || !window.Worker.length;
+
+  const isWorkerValid = workerData && window.Worker.length;
+
+  // if(workerData && window.Worker.length) {
+  //   isWorkerValid = true
+  // }
+
+  // console.log(isWorkerValid);
 
   return (
     <Block>
@@ -12,17 +23,33 @@ const DataBlock = ({ title, type }) => {
       <div className="tableWrap">
         <table>
           <tbody>
-            <TableRow title="Initial" value={initialData[type].value} issues={initialData[type].issues} />
-            <TableRow title="Delayed" value={delayedData[type].value} issues={delayedData[type].issues} />
-            <TableRow title="Frame" value={frameData[type].value} issues={frameData[type].issues} />
-            <TableRow title="Web worker" value={window.Worker.length ? workerData[type].value : null} issues={window.Worker.length ? workerData[type].issues : ['Web workers blocked']} />
+            <TableRow
+              title="Initial"
+              value={initialData ? initialData[type].value : ''}
+              issues={initialData ? initialData[type].issues : []}
+            />
+            <TableRow
+              title="Delayed"
+              value={delayedData ? delayedData[type].value : ''}
+              issues={delayedData ? delayedData[type].issues : []}
+            />
+            <TableRow
+              title="Frame"
+              value={frameData ? frameData[type].value : ''}
+              issues={frameData ? frameData[type].issues : []}
+            />
+            <TableRow
+              title="Web worker"
+              value={isWorkerValid ? workerData[type].value : ''}
+              issues={
+                isWorkerValid
+                  ? workerData[type].issues
+                  : ['Web workers blocked']
+              }
+            />
           </tbody>
         </table>
       </div>
-      <p>
-        Date and language data can be used to identify your
-        location. Changing the settings on your computer can prevent this.
-      </p>
     </Block>
   );
 };

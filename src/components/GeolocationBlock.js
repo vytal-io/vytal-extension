@@ -17,9 +17,6 @@ const GeolocationBlock = () => {
             </div>
           ) : (
             <>
-              <p style={{ marginBottom: '10px' }}>
-                This data is not included in location prediction
-              </p>
               <div className="tableWrap">
                 <table>
                   <tbody>
@@ -48,11 +45,6 @@ const GeolocationBlock = () => {
           value={buttonValue}
         />
       )}
-      <p>
-        HTML Geolocation API is used to get the geographical position of a user.
-        Since this can compromise privacy, its not available unless the user
-        approves it.
-      </p>
     </Block>
   );
 };

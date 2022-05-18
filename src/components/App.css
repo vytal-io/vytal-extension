@@ -26,12 +26,6 @@ body {
   width: 100%;
   height: 100%;
   background: var(--main);
-  background: linear-gradient(
-    165deg,
-    rgba(87, 35, 117, 1) 0%,
-    rgba(148, 62, 197, 1) 40%,
-    rgba(169, 100, 208, 1) 100%
-  );
   z-index: -1;
 }
 
@@ -58,7 +52,7 @@ b {
 
 .tableWrap {
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 table {
@@ -118,7 +112,7 @@ input[type="checkbox"] {
   display: block;
   background-color: var(--main);
   color: #fff;
-  border-radius: 6px;
+  border-radius: 4px;
   box-sizing: border-box;
   text-align: center;
   width: 100%;
@@ -136,7 +130,7 @@ input[type="checkbox"] {
 
 .boxWrap {
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 10px;
 }
 

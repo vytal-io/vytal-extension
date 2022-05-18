@@ -40,6 +40,7 @@ module.exports = {
     'no-bitwise': 'off',
     'react/no-array-index-key': 'off',
     'nonblock-statement-body-position': 'off',
-    'react/button-has-type': 'off'
+    'react/button-has-type': 'off',
+    'no-unused-vars': 'warn',
   },
 };

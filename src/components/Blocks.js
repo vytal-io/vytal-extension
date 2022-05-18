@@ -43,59 +43,53 @@ const Blocks = () => {
 
   return (
     <>
-      {initialData && delayedData && frameData && workerData ? (
-        <DataContext.Provider
-          value={{
-            initialData,
-            delayedData,
-            frameData,
-            workerData,
-          }}
-        >
-          <div className="centerBlockInner">
-            <DataBlock
-              title="Intl.DateTimeFormat().resolvedOptions().timeZone"
-              type="timeZone"
-            />
-            <DataBlock
-              title="Intl.DateTimeFormat().resolvedOptions().locale"
-              type="locale"
-            />
-            <DataBlock title="navigator.userAgent" type="userAgent" />
-          </div>
-          <div className="centerBlockInner">
-            <DataBlock title="new Date().toString()" type="dateString" />
-            <DataBlock title="new Date().toLocaleString()" type="dateLocale" />
-            <DataBlock
-              title="new Date().getTimezoneOffset()"
-              type="timezoneOffset"
-            />
-            <GeolocationBlock />
-          </div>
-          <div className="centerBlockMobile">
-            <DataBlock
-              title="Intl.DateTimeFormat().resolvedOptions().timeZone"
-              type="timeZone"
-            />
-            <DataBlock
-              title="Intl.DateTimeFormat().resolvedOptions().locale"
-              type="locale"
-            />
-            <DataBlock title="new Date().toString()" type="dateString" />
-            <DataBlock title="new Date().toLocaleString()" type="dateLocale" />
-            <DataBlock
-              title="new Date().getTimezoneOffset()"
-              type="timezoneOffset"
-            />
-            <DataBlock title="navigator.userAgent" type="userAgent" />
-            <GeolocationBlock />
-          </div>
-        </DataContext.Provider>
-      ) : (
-        <div className="contentBlock loadBlock">
-          <center>Loading...</center>
+      <DataContext.Provider
+        value={{
+          initialData,
+          delayedData,
+          frameData,
+          workerData,
+        }}
+      >
+        <div className="centerBlockInner">
+          <DataBlock
+            title="Intl.DateTimeFormat().resolvedOptions().timeZone"
+            type="timeZone"
+          />
+          <DataBlock
+            title="Intl.DateTimeFormat().resolvedOptions().locale"
+            type="locale"
+          />
+          <DataBlock title="navigator.userAgent" type="userAgent" />
         </div>
-      )}
+        <div className="centerBlockInner">
+          <DataBlock
+            title="new Date().getTimezoneOffset()"
+            type="timezoneOffset"
+          />
+          <DataBlock title="new Date().toLocaleString()" type="dateLocale" />
+          <DataBlock title="new Date().toString()" type="dateString" />
+          <GeolocationBlock />
+        </div>
+        <div className="centerBlockMobile">
+          <DataBlock
+            title="Intl.DateTimeFormat().resolvedOptions().timeZone"
+            type="timeZone"
+          />
+          <DataBlock
+            title="Intl.DateTimeFormat().resolvedOptions().locale"
+            type="locale"
+          />
+          <DataBlock title="new Date().toString()" type="dateString" />
+          <DataBlock title="new Date().toLocaleString()" type="dateLocale" />
+          <DataBlock
+            title="new Date().getTimezoneOffset()"
+            type="timezoneOffset"
+          />
+          <DataBlock title="navigator.userAgent" type="userAgent" />
+          <GeolocationBlock />
+        </div>
+      </DataContext.Provider>
     </>
   );
 };

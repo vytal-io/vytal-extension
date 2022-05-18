@@ -1,7 +1,7 @@
 .contentBlock {
   color: var(--text);
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: 4px;
   box-sizing: border-box;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
