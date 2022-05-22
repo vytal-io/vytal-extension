@@ -11,8 +11,6 @@ const getGeolocation = (setGeolocationData) => {
       );
 
       const issues = checkIssues();
-      console.log(issues);
-      console.log(navigator.geolocation.getCurrentPosition);
 
       setGeolocationData([
         getObj('Latitude', position.coords.latitude, issues),
@@ -29,7 +27,6 @@ const getGeolocation = (setGeolocationData) => {
 };
 
 const checkIssues = () => {
-  console.log(navigator.geolocation.getCurrentPosition.toString());
   if (
     !navigator.geolocation.getCurrentPosition
       .toString()
