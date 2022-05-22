@@ -20,7 +20,10 @@ module.exports = {
     'operator-linebreak': 'off',
     'no-use-before-define': 'off',
     'linebreak-style': 'off',
-    'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.js'] }],
+    'react/jsx-filename-extension': [
+      1,
+      { extensions: ['.jsx', '.js', '.ts', 'tsx'] },
+    ],
     'jsx-a11y/label-has-associated-control': 'off',
     'one-var': 'off',
     'one-var-declaration-per-line': 'off',

@@ -1,6 +1,7 @@
 import './Blocks.css';
 import { useState, useEffect } from 'react';
 import DataContext from './Context';
+import InfoBlock from './InfoBlock';
 import DataBlock from './DataBlock';
 import GeolocationBlock from './GeolocationBlock';
 import delayedData from '../utils/data';
@@ -52,6 +53,7 @@ const Blocks = () => {
         }}
       >
         <div className="centerBlockInner">
+          <InfoBlock />
           <DataBlock
             title="Intl.DateTimeFormat().resolvedOptions().timeZone"
             type="timeZone"
@@ -72,6 +74,7 @@ const Blocks = () => {
           <GeolocationBlock />
         </div>
         <div className="centerBlockMobile">
+          <InfoBlock />
           <DataBlock
             title="Intl.DateTimeFormat().resolvedOptions().timeZone"
             type="timeZone"

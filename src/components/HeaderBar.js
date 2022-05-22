@@ -1,12 +1,15 @@
-// import './HeaderBar.css';
+/** @jsxImportSource theme-ui */
+
+import './HeaderBar.css';
 import { ReactComponent as LogoImg } from '../images/logo.svg';
+import HeaderButton from './HeaderButton';
 import chromeImage from '../images/chrome.png';
 import githubImage from '../images/github.png';
 
 const HeaderBar = () => (
   <div
-    style={{
-      display: 'flex',
+    sx={{
+      display: ['block', 'block', 'flex'],
       alignItems: 'center',
       justifyContent: 'space-between',
       width: '1024px',
@@ -17,6 +20,7 @@ const HeaderBar = () => (
       href="."
       style={{
         width: '206px',
+        height: '50px',
       }}
       alt="LocateJS logo"
     >
@@ -28,55 +32,21 @@ const HeaderBar = () => (
         display: 'flex',
         alignItems: 'center',
         height: '50px',
+        gap: '24px',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          backgroundColor: '#fff',
-          height: '50px',
-          borderRadius: '4px',
-          padding: '0 18px',
-          boxShadow: 'rgb(0 0 0 / 10%) 0px 4px 12px',
-          margin: '0 24px 0 0',
-          fontSize: '15px',
-        }}
-      >
-        <img
-          src={chromeImage}
-          alt="Chrome logo"
-          height="28"
-          width="28"
-          style={{
-            marginRight: '8px',
-          }}
-        />
-        Download Extension
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          backgroundColor: '#fff',
-          height: '50px',
-          borderRadius: '4px',
-          padding: '0 18px',
-          boxShadow: 'rgb(0 0 0 / 10%) 0px 4px 12px',
-          fontSize: '15px',
-        }}
-      >
-        <img
-          src={githubImage}
-          alt="Github logo"
-          height="28"
-          width="28"
-          style={{
-            marginRight: '8px',
-          }}
-        />
-        Source Code
-      </div>
+      <HeaderButton
+        url="/"
+        image={chromeImage}
+        text="Download Extension"
+        alt="Chrome logo"
+      />
+      <HeaderButton
+        url="https://github.com/z0ccc/Vytal"
+        image={githubImage}
+        text="Source Code"
+        alt="Github logo"
+      />
     </div>
   </div>
 );
