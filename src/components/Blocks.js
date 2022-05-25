@@ -1,4 +1,5 @@
-import './Blocks.css';
+/** @jsxImportSource theme-ui */
+
 import { useState, useEffect } from 'react';
 import DataContext from './Context';
 import InfoBlock from './InfoBlock';
@@ -52,7 +53,7 @@ const Blocks = () => {
           workerData,
         }}
       >
-        <div className="centerBlockInner">
+        <div sx={{ display: ['none', 'none', 'block'], maxWidth: '500px' }}>
           <InfoBlock />
           <DataBlock
             title="Intl.DateTimeFormat().resolvedOptions().timeZone"
@@ -64,7 +65,7 @@ const Blocks = () => {
           />
           <DataBlock title="navigator.userAgent" type="userAgent" />
         </div>
-        <div className="centerBlockInner">
+        <div sx={{ display: ['none', 'none', 'block'], maxWidth: '500px' }}>
           <DataBlock
             title="new Date().getTimezoneOffset()"
             type="timezoneOffset"
@@ -73,7 +74,13 @@ const Blocks = () => {
           <DataBlock title="new Date().toString()" type="dateString" />
           <GeolocationBlock />
         </div>
-        <div className="centerBlockMobile">
+        <div
+          sx={{
+            display: ['block', 'block', 'none'],
+            maxWidth: '500px',
+            margin: '0 12px',
+          }}
+        >
           <InfoBlock />
           <DataBlock
             title="Intl.DateTimeFormat().resolvedOptions().timeZone"

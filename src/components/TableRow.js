@@ -1,4 +1,5 @@
-import './TableRow.css';
+/** @jsxImportSource theme-ui */
+
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { ReactComponent as XCircle } from '../images/xCircle.svg';
@@ -35,16 +36,33 @@ const TableRow = ({ title, value, issues }) => {
   };
   return (
     <>
-      <tr className={issuesExist ? 'issue' : ''} onClick={openModal}>
+      <tr
+        sx={
+          issuesExist
+            ? {
+                cursor: 'pointer',
+                ':hover': {
+                  backgroundColor: 'var(--issueBackground)',
+                  color: 'var(--issueText)',
+                },
+              }
+            : null
+        }
+        onClick={openModal}
+      >
         <td>{title}</td>
-        <td>{Array.isArray(value) ? JSON.stringify(value) : dataValue}</td>
-        <td>
-          {issuesExist ? (
-            <XCircle className="circleButton" />
-          ) : (
-            <CheckCircle className="circleButton" />
-          )}
-        </td>
+        {value ? (
+          <>
+            <td>{Array.isArray(value) ? JSON.stringify(value) : dataValue}</td>
+            <td>
+              {issuesExist ? (
+                <XCircle sx={{ display: 'flex', width: '20px' }} />
+              ) : (
+                <CheckCircle sx={{ display: 'flex', width: '20px' }} />
+              )}
+            </td>
+          </>
+        ) : null}
       </tr>
       <Modal
         isOpen={modalIsOpen}
@@ -52,9 +70,28 @@ const TableRow = ({ title, value, issues }) => {
         style={modalStyles}
         contentLabel="Issues Modal"
       >
-        <div className="modalHeader">
-          <div className="modalTitle">{title} issues</div>
-          <X className="closeButton" onClick={closeModal} />
+        <div
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            margin: '0 0 6px 0',
+            height: '20px',
+          }}
+        >
+          <div sx={{ fontWeight: '600' }}>{title} issues</div>
+          <X
+            sx={{
+              fill: 'var(--border)',
+              display: 'flex',
+              width: '12px',
+              cursor: 'pointer',
+              margin: '0 0 0 12px',
+              ':hover': {
+                fill: 'var(--grey)',
+              },
+            }}
+            onClick={closeModal}
+          />
         </div>
         <ul>
           {issues.filter(Boolean).map((ele, index) => (

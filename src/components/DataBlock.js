@@ -7,15 +7,13 @@ const DataBlock = ({ title, type }) => {
   const { initialData, delayedData, frameData, workerData } =
     useContext(DataContext);
 
-  // const test = !workerData || !window.Worker.length;
-
   const isWorkerValid = workerData && window.Worker.length;
 
-  // if(workerData && window.Worker.length) {
-  //   isWorkerValid = true
-  // }
-
-  // console.log(isWorkerValid);
+  const getWorkerValue = () => {
+    if (isWorkerValid) return workerData[type].value;
+    if (!window.Worker.length) return 'null';
+    return null;
+  };
 
   return (
     <Block>
@@ -40,7 +38,7 @@ const DataBlock = ({ title, type }) => {
             />
             <TableRow
               title="Web worker"
-              value={isWorkerValid ? workerData[type].value : ''}
+              value={getWorkerValue()}
               issues={
                 isWorkerValid
                   ? workerData[type].issues

@@ -1,3 +1,5 @@
+/** @jsxImportSource theme-ui */
+
 import { useState } from 'react';
 import Block from './Block';
 import getGeolocation from '../utils/geolocation';
@@ -5,15 +7,23 @@ import TableRow from './TableRow';
 
 const GeolocationBlock = () => {
   const [geolocationData, setGeolocationData] = useState();
-  const [buttonValue, setbuttonValue] = useState('Allow Geolocation API');
+  const [buttonValue, setButtonValue] = useState('Allow Geolocation API');
   return (
     <Block>
       <h1>HTML Geolocation API</h1>
       {geolocationData ? (
         <>
           {typeof geolocationData === 'string' ? (
-            <div className="boxWrap">
-              <div className="hash">{`${geolocationData}`}</div>
+            <div
+              sx={{
+                border: '1px solid var(--border)',
+                borderRadius: '4px',
+                padding: '10px',
+              }}
+            >
+              <div sx={{ textAlign: 'center', fontWeight: '600' }}>
+                {`${geolocationData}`}
+              </div>
             </div>
           ) : (
             <>
@@ -39,9 +49,26 @@ const GeolocationBlock = () => {
           type="submit"
           onClick={() => {
             getGeolocation(setGeolocationData);
-            setbuttonValue('Loading...');
+            setButtonValue('Loading...');
           }}
-          className="button"
+          sx={{
+            display: 'block',
+            backgroundColor: 'var(--main)',
+            color: '#fff',
+            borderRadius: '4px',
+            boxSizing: 'border-box',
+            textAlign: 'center',
+            width: '100%',
+            height: '46px',
+            border: 'none',
+            cursor: 'pointer',
+            fontFamily: 'inherit',
+            fontSize: 'inherit',
+            WebkitAppearance: 'none',
+            ':hover': {
+              opacity: '0.7',
+            },
+          }}
           value={buttonValue}
         />
       )}

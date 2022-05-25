@@ -1,10 +1,11 @@
-import './MainColumn.css';
+/** @jsxImportSource theme-ui */
+
 import HeaderBar from './HeaderBar';
 import Blocks from './Blocks';
 
 const MainColumn = () => (
   <div
-    style={{
+    sx={{
       display: 'flex',
       justifyContent: 'center',
       flexWrap: 'wrap',
@@ -12,7 +13,7 @@ const MainColumn = () => (
     }}
   >
     <HeaderBar />
-    <div className="centerBlockOuter">
+    <div sx={{ display: 'flex', justifyContent: 'center', gap: '24px' }}>
       <Blocks />
     </div>
   </div>

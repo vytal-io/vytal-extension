@@ -45,5 +45,6 @@ module.exports = {
     'nonblock-statement-body-position': 'off',
     'react/button-has-type': 'off',
     'no-unused-vars': 'warn',
+    indent: 'off',
   },
 };

@@ -10,11 +10,11 @@ const HeaderButton = ({ url, image, text, alt }) => (
       display: 'flex',
       alignItems: 'center',
       backgroundColor: '#fff',
-      height: '50px',
+      height: ['36px', '50px', '50px'],
       borderRadius: '4px',
-      padding: '0 18px',
+      px: ['10px', '18px', '18px'],
       boxShadow: 'rgb(0 0 0 / 10%) 0px 4px 12px',
-      fontSize: '15px',
+      fontSize: ['13px', '15px', '15px'],
       textDecoration: 'none',
       color: '#000',
       ':hover': {
@@ -25,10 +25,10 @@ const HeaderButton = ({ url, image, text, alt }) => (
     <img
       src={image}
       alt={alt}
-      height="28"
-      width="28"
-      style={{
-        marginRight: '8px',
+      sx={{
+        marginRight: ['5px', '8px', '8px'],
+        height: ['22px', '28px', '28px'],
+        width: ['22px', '28px', '28px'],
       }}
     />
     {text}
