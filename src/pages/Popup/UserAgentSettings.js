@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import userAgents from '../../utils/userAgents'
+import detachDebugger from '../../utils/detachDebugger'
 
 const UserAgentSettings = () => {
   const [userAgent, setUserAgent] = useState('')
@@ -19,15 +20,17 @@ const UserAgentSettings = () => {
   }, [])
 
   const changeUserAgent = (e) => {
+    detachDebugger()
     chrome.storage.sync.set({ userAgent: e.target.value })
     setUserAgent(e.target.value)
   }
 
   const randomize = (e) => {
+    detachDebugger()
     const randomUserAgent =
       userAgents[Math.floor(Math.random() * userAgents.length)]
     chrome.storage.sync.set({
-      userAgent: randomUserAgent,
+      userAgent: e.target.checked ? randomUserAgent : null,
       randomUA: e.target.checked,
     })
     e.target.checked ? setUserAgent(randomUserAgent) : setUserAgent('')
