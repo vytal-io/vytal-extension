@@ -1,6 +1,4 @@
 import * as React from 'react'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faExternalLinkAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../../assets/img/logo.svg'
 import Link from '../../assets/img/link.svg'
 
@@ -25,7 +23,7 @@ const Navbar = () => (
       alt="Vytal logo"
     />
     <a
-      href="https://locatejs.com"
+      href="http://localhost:3000/scan.html"
       target="_blank"
       rel="noreferrer"
       style={{
