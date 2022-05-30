@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Vytal",
-  "description": "Vytal",
+  "version": "1.0.2",
+  "description": "Protect your privacy by mocking your personal data.",
   "permissions": ["storage", "debugger", "activeTab", "alarms"],
   "background": { "service_worker": "background.bundle.js" },
   "action": {
