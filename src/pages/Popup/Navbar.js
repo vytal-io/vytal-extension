@@ -9,7 +9,7 @@ const Navbar = () => (
       boxSizing: 'border-box',
       display: 'flex',
       justifyContent: 'space-between',
-      padding: '8px 10px',
+      padding: '8px 12px',
       backgroundColor: 'var(--navbar)',
       alignItems: 'center',
     }}
@@ -23,7 +23,7 @@ const Navbar = () => (
       alt="Vytal logo"
     />
     <a
-      href="http://localhost:3000/scan.html"
+      href="https://vytal.io/scan.html"
       target="_blank"
       rel="noreferrer"
       style={{

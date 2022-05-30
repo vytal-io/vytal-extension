@@ -73,8 +73,7 @@ const Popup = () => {
             fontSize: '10px',
           }}
         >
-          Tabs need to be initialized for full protection.{' '}
-          <a href="/">Read more</a>
+          Tabs need to be initialized for full protection.
         </div>
       </div>
     </div>
