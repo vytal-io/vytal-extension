@@ -40,18 +40,6 @@ Data spoofed with Vytal can not be detected. Although other extensions which spo
 
 `Object.getOwnPropertyDescriptor(Navigator.prototype, [DataType]).value` returns an error if the data object was tampered with. Otherwise returns ‘undefined’.
 
-### Did not match web worker (\_\_\_)
-
-Value does not match the value found in a [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers). The web worker value is in the brackets.
-
-### Location data doesn't match system data
-
-Occurs when the location data from ip address does not match your location data from your system (such as your timezone).
-
-### VPN/proxy has been detected
-
-Your ip address is known to be used by proxies or VPNs.
-
 ### Failed Date.prototype.setDate.toString()
 
 `Failed Date.prototype.setDate.toString()` returns 'function setDate() { [native code] }' if the data object was NOT tampered with.
@@ -60,28 +48,20 @@ Your ip address is known to be used by proxies or VPNs.
 
 `Screen.prototype[DataType]` returns a value if the data object was tampered with. Otherwise returns an error.
 
-### Avail width is greater than width
-
-Happens when the avail width is greater than the normal width (which is impossible).
-
-### Avail height is greater than height
-
-Happens when the height width is greater than the normal height (which is impossible).
-
 ## Dev
 
-This application uses a React frontend and a Django backend that communicates using the Django REST framework.
+This application is built with Javascript and React.
 
-Backend Django setup:
-
-```
-cd backend
-python manage.py runserver
-```
-
-Frontend React setup:
+Clone this repo and run these commands to start the development server.
 
 ```
-cd frontend
-yarn run start
+yarn
+yarn start
 ```
+
+Load your extension on Chrome following:
+
+- Access chrome://extensions/
+- Check Developer mode
+- Click on Load unpacked extension
+- Select the build folder.
