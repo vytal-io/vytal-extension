@@ -75,6 +75,42 @@ return false;
   return false;
 ```
 
+### Failed object.getOwnPropertyDescriptor(Navigator.prototype, key).value
+
+```
+  if (
+    Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
+    undefined
+  ) {
+    return true;
+  }
+  return false;
+```
+
+### Failed Failed Navigator.prototype[key]
+
+```
+  try {
+    const check = Navigator.prototype[key];
+    return true;
+  } catch (err) {
+    return false;
+  }
+```
+
+### Failed navigator.geolocation.getCurrentPosition.toString().includes('[native code]')
+
+```
+  if (
+    !navigator.geolocation.getCurrentPosition
+      .toString()
+      .includes('[native code]')
+  ) {
+    return true;
+  }
+  return false;
+```
+
 ## Screenshots
 
 ![Screenshot of extension popup](https://raw.githubusercontent.com/z0ccc/Vytal/extension/promo/screenshot-1.png)
