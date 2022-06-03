@@ -31,25 +31,49 @@ been detected. Clicking on the table row of the tampered data will bring up a mo
 
 ## Types of Tampering
 
-### Failed Navigator.prototype
-
-`Navigator.prototype[DataType]` returns a value if the data object was tampered with. Otherwise returns an error.
-
-### Failed undefined properties
-
-`Object.getOwnPropertyDescriptor(navigator, [DataType])` returns an object if the data object was tampered with. Otherwise returns ‘undefined’.
-
-### Failed Navigator property value
-
-`Object.getOwnPropertyDescriptor(Navigator.prototype, [DataType]).value` returns an error if the data object was tampered with. Otherwise returns ‘undefined’.
-
 ### Failed Date.prototype.setDate.toString()
 
-`Failed Date.prototype.setDate.toString()` returns 'function setDate() { [native code] }' if the data object was NOT tampered with.
+```
+if (!Date.prototype.setDate.toString().includes('[native code]')) {
+  return true;
+}
+return false;
+```
 
-### Failed Screen.prototype
+### Failed Object.getPrototypeOf(Intl.DateTimeFormat.prototype).constructor.toString()
 
-`Screen.prototype[DataType]` returns a value if the data object was tampered with. Otherwise returns an error.
+```
+  if (
+    !Object.getPrototypeOf(Intl.DateTimeFormat.prototype)
+      .constructor.toString()
+      .includes('Object')
+  ) {
+    return true;
+  }
+  return false;
+```
+
+### Failed Intl.DateTimeFormat.prototype.resolvedOptions.toString()
+
+```
+  if (
+    !Intl.DateTimeFormat.prototype.resolvedOptions
+      .toString()
+      .includes('[native code]')
+  ) {
+    return true;
+  }
+  return false;
+```
+
+### Failed Object.getOwnPropertyDescriptor(navigator, key)
+
+```
+  if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
+    return true;
+  }
+  return false;
+```
 
 ## Screenshots
 
