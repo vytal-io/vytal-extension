@@ -1,3 +1,4 @@
+<img src="https://raw.githubusercontent.com/z0ccc/Vytal/extension/promo/icon-128.png" height="38" width="38">
 # Vytal
 
 <a href="https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb"><img src="https://raw.githubusercontent.com/z0ccc/Upvote-Anywhere/master/promo/chrome.png" alt="Get Vytal for Chromium"></a>
