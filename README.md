@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/z0ccc/Vytal/extension/promo/icon-128.png" height="38" width="38">
+<img src="https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/logo-128.png" height="38" width="38">
 # Vytal
 
 <a href="https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb"><img src="https://raw.githubusercontent.com/z0ccc/Upvote-Anywhere/master/promo/chrome.png" alt="Get Vytal for Chromium"></a>
@@ -114,9 +114,9 @@ return false;
 
 ## Screenshots
 
-![Screenshot of extension popup](https://raw.githubusercontent.com/z0ccc/Vytal/extension/promo/screenshot-1.png)
+![Screenshot of extension popup](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-1.png)
 
-![Screenshot of extension popup and vytal.io](https://raw.githubusercontent.com/z0ccc/Vytal/extension/promo/screenshot-2.png)
+![Screenshot of extension popup and vytal.io](https://raw.githubusercontent.com/z0ccc/master/extension/promo/screenshot-2.png)
 
 ## Dev
 
