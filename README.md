@@ -26,7 +26,8 @@ Unlike the Chrome devtools location sensor, overriding the locale does not chang
 
 ## Data Tampering
 
-Data spoofed with Vytal can not be detected. Although other extensions which spoof's data can be detected. have If data tampering is detected then a red circle with an ‘x’ will be displayed next to the data value. If the legitimate value cannot be identified then the data will be discarded and will not be used to generate a fingerprint. Clicking on the table row of the tampered value will bring up a dialog box showing the types of tampering.
+Data spoofed with Vytal can not be detected. Although other extensions which spoof data can be detected. https://vytal.io allows you to compare and test these various tools. A red x signifies that the scanner has detected tampered data. A green check means that no tampering has
+been detected. Clicking on the table row of the tampered data will bring up a modal box showing the type of detected tampering.
 
 ## Types of Tampering
 
@@ -67,7 +68,7 @@ yarn
 yarn start
 ```
 
-Load your extension on Chrome following:
+Load the extension on Chrome:
 
 - Access chrome://extensions/
 - Check Developer mode
