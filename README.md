@@ -115,7 +115,7 @@ return false;
 
 ![Screenshot of extension popup](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-1.png)
 
-![Screenshot of extension popup and vytal.io](https://raw.githubusercontent.com/z0ccc/Vytal/master/extension/promo/screenshot-2.png)
+![Screenshot of extension popup and vytal.io](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-2.png)
 
 ## Dev
 
