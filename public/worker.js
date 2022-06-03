@@ -74,6 +74,10 @@ const data = {
     value: navigator.userAgent,
     issues: getNavigatorValue('userAgent'),
   },
+  appVersion: {
+    value: navigator.appVersion,
+    issues: getNavigatorValue('appVersion'),
+  },
 };
 
 postMessage(data);

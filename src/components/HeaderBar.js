@@ -45,7 +45,7 @@ const HeaderBar = () => (
       }}
     >
       <HeaderButton
-        url="/"
+        url="https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb"
         image={chromeImage}
         text="Download Extension"
         alt="Chrome logo"

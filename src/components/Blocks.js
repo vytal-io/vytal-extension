@@ -59,13 +59,15 @@ const Blocks = () => {
             title="Intl.DateTimeFormat().resolvedOptions().timeZone"
             type="timeZone"
           />
+
+          <DataBlock title="navigator.userAgent" type="userAgent" />
+          <DataBlock title="navigator.appVersion" type="appVersion" />
+        </div>
+        <div sx={{ display: ['none', 'none', 'block'], maxWidth: '500px' }}>
           <DataBlock
             title="Intl.DateTimeFormat().resolvedOptions().locale"
             type="locale"
           />
-          <DataBlock title="navigator.userAgent" type="userAgent" />
-        </div>
-        <div sx={{ display: ['none', 'none', 'block'], maxWidth: '500px' }}>
           <DataBlock
             title="new Date().getTimezoneOffset()"
             type="timezoneOffset"
@@ -97,6 +99,8 @@ const Blocks = () => {
             type="timezoneOffset"
           />
           <DataBlock title="navigator.userAgent" type="userAgent" />
+          <DataBlock title="navigator.appVersion" type="appVersion" />
+
           <GeolocationBlock />
         </div>
       </DataContext.Provider>

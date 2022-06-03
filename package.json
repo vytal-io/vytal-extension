@@ -24,7 +24,7 @@
   },
   "scripts": {
     "predeploy": "yarn run build",
-    "deploy": "echo 'locatejs.com' > ./build/CNAME && gh-pages -d build",
+    "deploy": "echo 'vytal.io' > ./build/CNAME && gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
