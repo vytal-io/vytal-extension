@@ -1,5 +1,5 @@
-<h1>
-<img src="https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/logo-128.png" height="38" width="38">
+<h1 style="display: flex">
+<img src="https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/logo-128.png" height="38" width="38" style="margin-right: 10px">
 Vytal
 </h1>
 
