@@ -1,6 +1,6 @@
 # Vytal
 
-<a href="https://chrome.google.com/webstore/detail/upvote-anywhere/amlfbbehleledmbphnielafhieceggal"><img src="https://raw.githubusercontent.com/z0ccc/Upvote-Anywhere/master/promo/chrome.png" alt="Get Vytal for Chromium"></a>
+<a href="https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb"><img src="https://raw.githubusercontent.com/z0ccc/Upvote-Anywhere/master/promo/chrome.png" alt="Get Vytal for Chromium"></a>
 
 Protect your privacy by mocking your personal data.
 
@@ -49,6 +49,12 @@ Data spoofed with Vytal can not be detected. Although other extensions which spo
 ### Failed Screen.prototype
 
 `Screen.prototype[DataType]` returns a value if the data object was tampered with. Otherwise returns an error.
+
+## Screenshots
+
+![Screenshot of extension popup](https://raw.githubusercontent.com/z0ccc/Vytal/extension/promo/screenshot-1.png)
+
+![Screenshot of extension popup and vytal.io](https://raw.githubusercontent.com/z0ccc/Vytal/extension/promo/screenshot-2.png)
 
 ## Dev
 
