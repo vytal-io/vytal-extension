@@ -1,5 +1,7 @@
 # Vytal
 
+<a href="https://chrome.google.com/webstore/detail/upvote-anywhere/amlfbbehleledmbphnielafhieceggal"><img src="https://raw.githubusercontent.com/z0ccc/Upvote-Anywhere/master/promo/chrome.png" alt="Get Vytal for Chromium"></a>
+
 Protect your privacy by mocking your personal data.
 
 ## About
