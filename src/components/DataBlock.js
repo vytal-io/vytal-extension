@@ -22,7 +22,7 @@ const DataBlock = ({ title, type }) => {
         <table>
           <tbody>
             <TableRow
-              title="Main Window"
+              title="Top Window"
               value={windowData ? windowData[type].value : ''}
               issues={windowData ? windowData[type].issues : []}
             />
