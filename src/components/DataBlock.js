@@ -22,14 +22,14 @@ const DataBlock = ({ title, type }) => {
         <table>
           <tbody>
             <TableRow
-              title="Initial"
-              value={initialData ? initialData[type].value : ''}
-              issues={initialData ? initialData[type].issues : []}
-            />
-            <TableRow
               title="Delayed"
               value={delayedData ? delayedData[type].value : ''}
               issues={delayedData ? delayedData[type].issues : []}
+            />
+            <TableRow
+              title="Initial"
+              value={initialData ? initialData[type].value : ''}
+              issues={initialData ? initialData[type].issues : []}
             />
             <TableRow
               title="Frame"
