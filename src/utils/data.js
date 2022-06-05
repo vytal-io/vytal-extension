@@ -61,7 +61,7 @@ const getNavigatorValue = (type) =>
     checkNavigatorPrototype(type),
   ].filter(Boolean);
 
-const delayedData = {
+const windowData = {
   locale: {
     value: Intl.DateTimeFormat().resolvedOptions().locale,
     issues: [checkIntlPrototype(), checkIntlConstructor()].filter(Boolean),
@@ -92,4 +92,4 @@ const delayedData = {
   },
 };
 
-export default delayedData;
+export default windowData;

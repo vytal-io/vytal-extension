@@ -4,7 +4,7 @@ import Block from './Block';
 import TableRow from './TableRow';
 
 const DataBlock = ({ title, type }) => {
-  const { initialData, delayedData, frameData, workerData } =
+  const { initialData, windowData, frameData, workerData } =
     useContext(DataContext);
 
   const isWorkerValid = workerData && window.Worker.length;
@@ -22,12 +22,12 @@ const DataBlock = ({ title, type }) => {
         <table>
           <tbody>
             <TableRow
-              title="Delayed"
-              value={delayedData ? delayedData[type].value : ''}
-              issues={delayedData ? delayedData[type].issues : []}
+              title="Main Window"
+              value={windowData ? windowData[type].value : ''}
+              issues={windowData ? windowData[type].issues : []}
             />
             <TableRow
-              title="Initial"
+              title="Initial Load"
               value={initialData ? initialData[type].value : ''}
               issues={initialData ? initialData[type].issues : []}
             />

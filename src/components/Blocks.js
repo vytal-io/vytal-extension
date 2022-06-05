@@ -5,7 +5,7 @@ import DataContext from './Context';
 import InfoBlock from './InfoBlock';
 import DataBlock from './DataBlock';
 import GeolocationBlock from './GeolocationBlock';
-import delayedData from '../utils/data';
+import windowData from '../utils/data';
 
 const getWebWorker = () => {
   let w;
@@ -48,7 +48,7 @@ const Blocks = () => {
       <DataContext.Provider
         value={{
           initialData,
-          delayedData,
+          windowData,
           frameData,
           workerData,
         }}
