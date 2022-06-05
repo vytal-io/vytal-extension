@@ -33,11 +33,11 @@ been detected. Clicking on the table row of the tampered data will bring up a mo
 
 ### Top Window
 
-The top window returns the topmost window in the hierarchy of window objects.
+The top window is the topmost window in the hierarchy of window objects.
 
 ### Initial Load
 
-Data spoofing methods can have slight delays between the loading of a webpage and the data being spoofed. Data can be retrieved at the very start of a webpage loading before the data can be spoofed.
+Data spoofing methods can have slight delays between the loading of a webpage and the data being spoofed. Data can be retrieved at the very start of loading before the data can be spoofed.
 
 ### Frame
 
