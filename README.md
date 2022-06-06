@@ -30,7 +30,7 @@ While the chrome.debugger API is active, a bar under the address bar is displaye
 
 ### Locale override does not mock language data
 
-Unlike the Chrome devtools location sensor, overriding the locale does not change language data (such as navigator.language or navigator.languages). There is an open ticket about this here: https://bugs.chromium.org/p/chromium/issues/detail?id=1320419
+Unlike the Chrome devtools location sensor, overriding the locale does not change language data (such as navigator.language or navigator.languages). There is an open ticket about this here: https://bugs.chromium.org/p/chromium/issues/detail?id=1306254
 
 ## Data Tampering
 
