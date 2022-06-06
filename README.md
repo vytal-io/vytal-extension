@@ -16,7 +16,7 @@ Vytal contains no ads and signup is not required.
 
 ## Advantages of chrome.debugger API
 
-Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. Code injected with the script is used to spoof data points. There are many limitations to script tag injection method which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/
+Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. Code injected with this method is used to spoof data points. There are many limitations to script tag injection method which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/
 
 The chrome.debugger API allows data points to be spoofed without the limitations of script tag injection's.
 
