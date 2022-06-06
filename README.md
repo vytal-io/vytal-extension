@@ -26,7 +26,7 @@ There is a slight delay between when a new tab is opened and the debugger starts
 
 ### Debugging bar
 
-While the chrome.debugger API is active, a bar under the address bar is displayed. The only way to hide the ba
+While the chrome.debugger API is active, a bar under the address bar is displayed. Hiding the bar is only possible when the --silent-debugger-extension-api command-line switch is used.
 
 ### Locale override does not mock language data
 
