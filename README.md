@@ -10,7 +10,7 @@ Vytal can mock your timezone, locale, geolocation and user agent. This data can 
 
 Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. There are many limitations to script tag injections which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/
 
-Vytal is utilizes the chrome.debugger API to spoof this data. This allows the data to be spoofed in frames, web workers and during the initial loading of a website. It also makes the spoofing completely undetectable.
+Vytal utilizes the chrome.debugger API to spoof this data. This allows the data to be spoofed in frames, web workers and during the initial loading of a website. It also makes the spoofing completely undetectable.
 
 You can test and compare Vytal and other extensions on https://vytal.io
 
