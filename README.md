@@ -2,15 +2,15 @@
 
 <a href="https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb"><img src="https://raw.githubusercontent.com/z0ccc/Upvote-Anywhere/master/promo/chrome.png" alt="Get Vytal for Chromium"></a>
 
-Protect your privacy by mocking your personal data.
+Protect your privacy by spoofing your personal data.
 
 ## About
 
-Vytal can mock your timezone, locale, geolocation and user agent. This data can be used to track you online or reveal your location.
+Vytal can mock your timezone, locale, geolocation and user agent. This data can be used to track you or reveal your location.
 
-Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. There are many limitations to script tag injection method which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/
+Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. There are many limitations to script tag injections which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/
 
-Vytal is utilizes the chrome.debugger API to mock this data. This allows the data to be changed in frames, web workers and during the initial loading of a website. It also makes the spoofing completely undetectable.
+Vytal is utilizes the chrome.debugger API to spoof this data. This allows the data to be spoofed in frames, web workers and during the initial loading of a website. It also makes the spoofing completely undetectable.
 
 You can test and compare Vytal and other extensions on https://vytal.io
 
