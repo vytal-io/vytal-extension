@@ -30,11 +30,6 @@ While the chrome.debugger API is active, a bar under the address bar is displaye
 
 Unlike the Chrome devtools location sensor, overriding the locale does not change language data (such as navigator.language or navigator.languages). There is an open ticket about this here: https://bugs.chromium.org/p/chromium/issues/detail?id=1306254
 
-## Data Tampering
-
-Data spoofed with Vytal can not be detected. Although other extensions which spoof data can be detected. https://vytal.io allows you to compare and test these various tools. A red x signifies that the scanner has detected tampered data. A green check means that no tampering has
-been detected. Clicking on the table row of the tampered data will bring up a modal box showing the type of detected tampering.
-
 ## Data Retrieval Methods
 
 ### Top Window
@@ -52,6 +47,11 @@ A frame is a part of a web page which displays content independent of its contai
 ### Web worker
 
 Web Workers are a simple means for web content to run scripts in background threads. The worker thread can perform tasks without interfering with the user interface. Once created, a worker can send messages to the JavaScript code that created it by posting messages to an event handler specified by that code (and vice versa). Extension content scripts cannot be injected into workers
+
+## Data Tampering
+
+Data spoofed with Vytal can not be detected. Although other extensions which spoof data can be detected. https://vytal.io allows you to compare and test these various tools. A red x signifies that the scanner has detected tampered data. A green check means that no tampering has
+been detected. Clicking on the table row of the tampered data will bring up a modal box showing the type of detected tampering.
 
 ## Types of Tampering
 
