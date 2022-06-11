@@ -149,7 +149,7 @@ Clone this repo and run these commands to start the development server.
 
 ```
 yarn
-yarn start
+yarn run start
 ```
 
 Load the extension on Chrome:

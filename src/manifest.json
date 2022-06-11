@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Vytal",
-  "version": "1.0.2",
-  "description": "Protect your privacy by mocking your personal data.",
+  "version": "1.0.3",
+  "description": "Spoof your location data and user agent.",
   "permissions": ["storage", "debugger", "activeTab", "alarms"],
   "background": { "service_worker": "background.bundle.js" },
   "action": {
