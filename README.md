@@ -6,7 +6,7 @@ Spoof your location data and user agent
 
 ## About
 
-Vytal can mock your timezone, locale, geolocation and user agent. This data can be used to track you or reveal your location.
+Vytal can spoof your timezone, locale, geolocation and user agent. This data can be used to track you or reveal your location.
 
 Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. There are many limitations to script tag injections which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/
 
