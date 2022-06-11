@@ -2,7 +2,7 @@
 
 <a href="https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb"><img src="https://raw.githubusercontent.com/z0ccc/Upvote-Anywhere/master/promo/chrome.png" alt="Get Vytal for Chromium"></a>
 
-Protect your privacy by spoofing your personal data.
+Spoof your location data and user agent
 
 ## About
 
