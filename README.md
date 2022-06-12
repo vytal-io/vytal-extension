@@ -28,7 +28,7 @@ While the chrome.debugger API is active, a bar under the address bar is displaye
 
 ### FireFox
 
-Unfortunately it doesn't work on Firefox since Firefox doesn't support the debugger API for extensions. https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#browser_compatibility
+Unfortunately Vytal doesn't work on Firefox since Firefox doesn't support the debugger API for extensions. https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#browser_compatibility
 
 ### Locale override does not mock language data
 
