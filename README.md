@@ -36,11 +36,11 @@ Unlike the Chrome devtools location sensor, overriding the locale does not chang
 
 ## Data Retrieval Methods
 
-### Top Window
+### Top window
 
 The top window is the topmost window in the hierarchy of window objects.
 
-### Initial Load
+### Initial load
 
 Data spoofing methods can have slight delays between the loading of a webpage and the data being spoofed. Data can be retrieved at the very start of loading before the data can be spoofed.
 
