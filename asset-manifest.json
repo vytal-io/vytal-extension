@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.330f7440.chunk.css",
-    "main.js": "/static/js/main.b8ffff38.chunk.js",
-    "main.js.map": "/static/js/main.b8ffff38.chunk.js.map",
+    "main.js": "/static/js/main.d894143b.chunk.js",
+    "main.js.map": "/static/js/main.d894143b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a683ee9e.js",
     "runtime-main.js.map": "/static/js/runtime-main.a683ee9e.js.map",
-    "static/js/2.045ed297.chunk.js": "/static/js/2.045ed297.chunk.js",
-    "static/js/2.045ed297.chunk.js.map": "/static/js/2.045ed297.chunk.js.map",
+    "static/js/2.bc086216.chunk.js": "/static/js/2.bc086216.chunk.js",
+    "static/js/2.bc086216.chunk.js.map": "/static/js/2.bc086216.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.330f7440.chunk.css.map": "/static/css/main.330f7440.chunk.css.map",
-    "static/js/2.045ed297.chunk.js.LICENSE.txt": "/static/js/2.045ed297.chunk.js.LICENSE.txt",
+    "static/js/2.bc086216.chunk.js.LICENSE.txt": "/static/js/2.bc086216.chunk.js.LICENSE.txt",
     "static/media/checkCircle.d97551f1.svg": "/static/media/checkCircle.d97551f1.svg",
     "static/media/chrome.fabafafa.png": "/static/media/chrome.fabafafa.png",
     "static/media/github.f69bf80e.png": "/static/media/github.f69bf80e.png",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a683ee9e.js",
-    "static/js/2.045ed297.chunk.js",
+    "static/js/2.bc086216.chunk.js",
     "static/css/main.330f7440.chunk.css",
-    "static/js/main.b8ffff38.chunk.js"
+    "static/js/main.d894143b.chunk.js"
   ]
 }
