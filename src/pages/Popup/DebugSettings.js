@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import profiles from '../../utils/profiles'
 import countryLocales from '../../utils/countryLocales'
+import detachDebugger from '../../utils/detachDebugger'
 
 const DebugSettings = ({ type, title, ip, profile, setProfile }) => {
   const [value, setValue] = useState('')
@@ -27,6 +28,7 @@ const DebugSettings = ({ type, title, ip, profile, setProfile }) => {
   }, [ip, profile, type, value])
 
   const changeTextValue = (e) => {
+    detachDebugger()
     chrome.storage.sync.set({ [type]: e.target.value })
     setValue(e.target.value)
     chrome.storage.sync.set({ profile: 'custom' })
