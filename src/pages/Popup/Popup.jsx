@@ -73,7 +73,7 @@ const Popup = () => {
             fontSize: '10px',
           }}
         >
-          Tabs need to be initialized for full protection.
+          Current tabs won't be fully spoofed until after first or second reload.
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-const detachDebugger = () => {
+const detachDebugger = (attach) => {
   chrome.debugger.getTargets((tabs) => {
     for (const tab in tabs) {
       if (tabs[tab].attached && tabs[tab].tabId) {

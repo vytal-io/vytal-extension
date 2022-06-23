@@ -23,7 +23,7 @@ const Navbar = () => (
       alt="Vytal logo"
     />
     <a
-      href="https://vytal.io/scan.html"
+      href="https://vytal.io"
       target="_blank"
       rel="noreferrer"
       style={{
