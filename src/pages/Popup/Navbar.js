@@ -32,7 +32,7 @@ const Navbar = () => (
     >
       <img
         src={Link}
-        alt="Test Vytal"
+        alt="Test on vytal.io"
         style={{
           width: '18px',
           height: '18px',

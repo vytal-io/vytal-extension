@@ -1,26 +1,25 @@
 import attachDebugger from '../../utils/attachDebugger'
 import userAgents from '../../utils/userAgents'
 
-chrome.tabs.onCreated.addListener((tab) => {
-  attachDebugger(tab.id)
-})
-
-chrome.tabs.onActivated.addListener((tab) => {
-  chrome.debugger.getTargets((tabs) => {
-    const currentTab = tabs.find((obj) => obj.tabId === tab.tabId)
-    if (!currentTab.attached) {
-      attachDebugger(tab.tabId)
-    }
-  })
-})
-
-chrome.tabs.onUpdated.addListener((tabId) => {
+const attachTab = (tabId) => {
   chrome.debugger.getTargets((tabs) => {
     const currentTab = tabs.find((obj) => obj.tabId === tabId)
     if (!currentTab.attached) {
       attachDebugger(tabId)
     }
   })
+}
+
+chrome.tabs.onCreated.addListener((tab) => {
+  attachDebugger(tab.id)
+})
+
+chrome.tabs.onActivated.addListener((tab) => {
+  attachTab(tab.tabId)
+})
+
+chrome.tabs.onUpdated.addListener((tabId) => {
+  attachTab(tabId)
 })
 
 chrome.alarms.onAlarm.addListener((alarm) => {
