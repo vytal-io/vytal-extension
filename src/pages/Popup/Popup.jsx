@@ -73,7 +73,7 @@ const Popup = () => {
             fontSize: '10px',
           }}
         >
-          Current tabs won't be fully spoofed until after first or second reload.
+          Current tab won't be fully spoofed until after first or second reload.
         </div>
       </div>
     </div>
