@@ -18,10 +18,6 @@ Vytal contains no ads and signup is not required.
 
 ## Limitations
 
-### Tab initialization
-
-There is a slight delay between when a new tab is opened and the debugger starts mocking the data. This allows for websites to get the original value of the data before it is changed. After the initial loading of a tab, this will no longer be an issue.
-
 ### Debugging bar
 
 While the chrome.debugger API is active, a bar under the address bar is displayed. Hiding the bar is only possible when the --silent-debugger-extension-api command-line switch is used.
@@ -29,6 +25,11 @@ While the chrome.debugger API is active, a bar under the address bar is displaye
 ### FireFox
 
 Unfortunately Vytal doesn't work on Firefox since Firefox doesn't support the debugger API for extensions. https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#browser_compatibility
+
+### New tab
+
+The chrome debugger cannot attach itself to chrome://newtab. This can result in data leakage to the first non  chrome:// page you navigate to.
+
 
 ### Locale override does not mock language data
 
