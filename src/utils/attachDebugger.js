@@ -22,6 +22,24 @@ const attachDebugger = (tabId) => {
       ) {
         chrome.debugger.attach({ tabId: tabId }, '1.3', () => {
           if (!chrome.runtime.lastError) {
+            chrome.debugger.sendCommand(
+              { tabId: tabId },
+              'Page.setAdBlockingEnabled',
+              { enabled: true },
+              (res) => {
+                console.log(res)
+              }
+            )
+
+            // chrome.debugger.sendCommand(
+            //   { tabId: tabId },
+            //   'Target.autoAttachRelated',
+            //   { targetId: tabId, waitForDebuggerOnStart: false },
+            //   (res) => {
+            //     console.log(res)
+            //   }
+            // )
+
             if (result.timezone) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },

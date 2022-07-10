@@ -13,7 +13,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": false,
-    "jsx": "react"
+    "jsx": "react-jsx",
+    "jsxImportSource": "theme-ui"
   },
   "include": ["src"],
   "exclude": ["build", "node_modules"]

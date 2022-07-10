@@ -1,9 +1,9 @@
 :root {
-  --main: #943ec5;
+  --main: #A965D1;
   --text: #212121;
   --background: #fff;
   --scrollbar: #ccc;
-  --navbar: #943ec5;
+  --navbar: #A965D1;
   --icon: #aab7b8;
   --border: #f0f3f4;
 }
@@ -13,7 +13,8 @@ body {
   background-color: var(--background);
   font-size: 13px;
   line-height: 22px;
-  width: 325px;
+  width: 350px;
+  height: 350px;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, sans-serif;
 }
