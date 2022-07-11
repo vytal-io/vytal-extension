@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-const Icon = ({ icon }: any) => {
+interface IconProps {
+  icon: React.ReactNode
+}
+
+const Icon = ({ icon }: IconProps) => {
   return (
     <div
       sx={{
