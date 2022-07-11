@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { ThemeProvider } from 'theme-ui'
+import { ThemeProvider, Flex } from 'theme-ui'
 import { theme } from '../../theme'
-import { Home, MapPin, Globe, Command, Users, List } from 'react-feather'
+import { Home, MapPin, Globe, Users, List } from 'react-feather'
 import Icon from './Icon'
+import LocationPage from './LocationPage'
 // import Navbar from './Navbar'
 // import IpSettings from './IpSettings'
 // import ProfileSelect from './ProfileSelect'
@@ -17,33 +18,28 @@ const Popup = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <div
+      <Flex
+        sx={{
+          width: '350px',
+          height: '350px',
+        }}
+      >
+        <Flex
           sx={{
-            display: 'flex',
-            height: '350px',
-            width: '100%',
+            minWidth: '36px',
+            backgroundColor: 'primary',
+            alignItems: 'center',
+            flexDirection: 'column',
           }}
         >
-          <div
-            sx={{
-              width: '36px',
-              backgroundColor: 'var(--main)',
-              display: 'flex',
-              alignItems: 'center',
-              flexDirection: 'column',
-            }}
-          >
-            <Icon icon={<Home size={20} />} />
-            <Icon icon={<MapPin size={20} />} />
-            <Icon icon={<Globe size={20} />} />
-            <Icon icon={<Command size={20} />} />
-            <Icon icon={<List size={20} />} />
-            <Icon icon={<Users size={20} />} />
-          </div>
-          <div style={{}}></div>
-        </div>
-      </div>
+          <Icon icon={<Home size={20} />} />
+          <Icon icon={<MapPin size={20} />} />
+          <Icon icon={<Globe size={20} />} />
+          <Icon icon={<List size={20} />} />
+          <Icon icon={<Users size={20} />} />
+        </Flex>
+        <LocationPage />
+      </Flex>
     </ThemeProvider>
   )
 }

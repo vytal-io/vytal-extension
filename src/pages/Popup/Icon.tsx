@@ -10,9 +10,9 @@ const Icon = ({ icon }: any) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'white',
+        color: 'background',
         ':hover': {
-          backgroundColor: '#8750A7',
+          backgroundColor: 'primaryDark',
         },
       }}
     >
