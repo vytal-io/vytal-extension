@@ -1,4 +1,4 @@
-const countryLocales = {
+const countryLocales: any = {
   AD: { locale: 'ca-AD' },
   AE: { locale: 'ar-AE' },
   AF: { locale: 'fa-AF' },

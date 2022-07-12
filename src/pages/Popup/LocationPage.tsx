@@ -1,27 +1,68 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Label, Input, Select } from 'theme-ui'
+import { Box } from 'theme-ui'
 import DataInput from './DataInput'
+import ConfigurationSelect from './ConfigurationSelect'
+import IPData from './IPData'
+import getIP from '../../utils/getIP'
 
 const LocationPage = () => {
+  const [ip, setIP] = useState(null)
+  const [configuration, setConfiguration] = useState('default')
+
+  useEffect(() => {
+    chrome.storage.sync.get(['configuration', 'ipData'], (result) => {
+      console.log(result.configuration)
+      result.configuration && setConfiguration(result.configuration)
+      if (result.ipData) {
+        setIP(result.ipData)
+      } else {
+        Promise.resolve(getIP()).then((ipData) => setIP(ipData))
+      }
+    })
+  }, [])
+
   return (
-    <div
+    <Box
       sx={{
         m: '12px',
         width: '100%',
       }}
     >
       <Box sx={{ fontSize: '20px', mb: '8px' }}>Location</Box>
-      <Label htmlFor="configuration">Configuration</Label>
-      <Select name="configuration" id="configuration" mb={'8px'}>
-        <option>None</option>
-        <option>Custom</option>
-        <option>Match IP</option>
-      </Select>
-      <DataInput type="timezone" title="Timezone" />
-      <DataInput type="locale" title="Locale" />
-      <DataInput type="lat" title="Latitude" />
-      <DataInput type="lon" title="Longitude" />
-    </div>
+      <ConfigurationSelect
+        configuration={configuration}
+        setConfiguration={setConfiguration}
+      />
+      {configuration === 'match' && <IPData ip={ip} setIP={setIP} />}
+      <DataInput
+        type="timezone"
+        title="Timezone"
+        ip={ip}
+        configuration={configuration}
+        setConfiguration={setConfiguration}
+      />
+      <DataInput
+        type="locale"
+        title="Locale"
+        ip={ip}
+        configuration={configuration}
+        setConfiguration={setConfiguration}
+      />
+      <DataInput
+        type="lat"
+        title="Latitude"
+        ip={ip}
+        configuration={configuration}
+        setConfiguration={setConfiguration}
+      />
+      <DataInput
+        type="lon"
+        title="Longitude"
+        ip={ip}
+        configuration={configuration}
+        setConfiguration={setConfiguration}
+      />
+    </Box>
   )
 }
 

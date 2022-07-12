@@ -1,4 +1,4 @@
-const profiles = {
+const configurations: any = {
   baghdad: {
     name: 'Baghdad',
     timezone: 'Asia/Baghdad',
@@ -233,4 +233,4 @@ const profiles = {
   },
 }
 
-export default profiles
+export default configurations

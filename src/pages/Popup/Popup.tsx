@@ -5,23 +5,23 @@ import { Home, MapPin, Globe, Users, List } from 'react-feather'
 import Icon from './Icon'
 import LocationPage from './LocationPage'
 // import Navbar from './Navbar'
-// import IpSettings from './IpSettings'
+// import IPData from './IPData'
 // import ProfileSelect from './ProfileSelect'
 // import DebugSettings from './DebugSettings'
 // import UserAgentSettings from './UserAgentSettings'
 
 const Popup = () => {
-  const [ip, setIP] = useState(null)
-  const [profile, setProfile] = useState('default')
+  // const [ip, setIP] = useState(null)
+  // const [profile, setProfile] = useState('default')
 
-  useEffect(() => {}, [])
+  // useEffect(() => {}, [])
 
   return (
     <ThemeProvider theme={theme}>
       <Flex
         sx={{
           width: '350px',
-          height: '350px',
+          height: '365px',
         }}
       >
         <Flex

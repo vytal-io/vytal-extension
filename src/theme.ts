@@ -37,4 +37,16 @@ export const theme: Theme = {
       },
     },
   },
+  buttons: {
+    primary: {
+      color: 'background',
+      bg: 'primary',
+      py: '3px',
+      px: '8px',
+      cursor: 'pointer',
+      '&:hover': {
+        bg: 'primaryDark',
+      },
+    },
+  },
 }

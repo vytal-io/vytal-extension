@@ -1,59 +1,59 @@
-import React, { useState, useEffect } from 'react'
-// import profiles from '../../utils/profiles'
-// import countryLocales from '../../utils/countryLocales'
-// import detachDebugger from '../../utils/detachDebugger'
-import { Box, Label, Input, Select } from 'theme-ui'
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import configurations from '../../utils/configurations'
+import countryLocales from '../../utils/countryLocales'
+import detachDebugger from '../../utils/detachDebugger'
+import { Label, Input } from 'theme-ui'
 
 interface DataInputProps {
   type: string
   title: string
-  ip?: string
-  profile?: string
-  setProfile?: string
+  ip: any
+  configuration: string
+  setConfiguration: Dispatch<SetStateAction<string>>
 }
 
 const DataInput = ({
   type,
   title,
   ip,
-  profile,
-  setProfile,
+  configuration,
+  setConfiguration,
 }: DataInputProps) => {
-  // const [value, setValue] = useState('')
+  const [value, setValue] = useState('')
 
-  // useEffect(() => {
-  //   if (profile === 'none') {
-  //     setValue('')
-  //     chrome.storage.sync.set({ [type]: '' })
-  //   } else if (profile === 'match') {
-  //     if (ip) {
-  //       const ipTypeValue =
-  //         type === 'locale' ? countryLocales[ip.countryCode].locale : ip[type]
-  //       setValue(ipTypeValue)
-  //       chrome.storage.sync.set({ [type]: ipTypeValue })
-  //     }
-  //   } else if (profile === 'custom') {
-  //     chrome.storage.sync.get([type], (result) => {
-  //       result[type] && setValue(result[type])
-  //     })
-  //   } else if (profile !== 'default') {
-  //     setValue(profiles[profile][type])
-  //     chrome.storage.sync.set({ [type]: profiles[profile][type] })
-  //   }
-  // }, [ip, profile, type, value])
+  useEffect(() => {
+    if (configuration === 'none') {
+      setValue('')
+      chrome.storage.sync.set({ [type]: '' })
+    } else if (configuration === 'match') {
+      if (ip) {
+        const ipTypeValue =
+          type === 'locale' ? countryLocales[ip.countryCode].locale : ip[type]
+        setValue(ipTypeValue)
+        chrome.storage.sync.set({ [type]: ipTypeValue })
+      }
+    } else if (configuration === 'custom') {
+      chrome.storage.sync.get([type], (result) => {
+        result[type] && setValue(result[type])
+      })
+    } else if (configuration !== 'default') {
+      setValue(configurations[configuration][type])
+      chrome.storage.sync.set({ [type]: configurations[configuration][type] })
+    }
+  }, [ip, configuration, type, value])
 
-  // const changeTextValue = (e) => {
-  //   detachDebugger()
-  //   chrome.storage.sync.set({ [type]: e.target.value })
-  //   setValue(e.target.value)
-  //   chrome.storage.sync.set({ profile: 'custom' })
-  //   setProfile('custom')
-  // }
+  const changeTextValue = (e: any) => {
+    detachDebugger()
+    chrome.storage.sync.set({ [type]: e.target.value })
+    setValue(e.target.value)
+    chrome.storage.sync.set({ configuration: 'custom' })
+    setConfiguration('custom')
+  }
 
   return (
     <>
       <Label htmlFor={type}>{title}</Label>
-      <Input name={type} />
+      <Input name={type} value={value} onChange={changeTextValue} />
     </>
   )
 }

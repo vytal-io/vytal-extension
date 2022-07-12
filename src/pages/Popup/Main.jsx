@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
-import IpSettings from './IpSettings'
-import ProfileSelect from './ProfileSelect'
+import IPData from './IPData'
+import ProfileSelect from './ConfigurationSelect'
 import DebugSettings from './DataInput'
 import UserAgentSettings from './UserAgentSettings'
 
@@ -36,7 +36,7 @@ const Popup = () => {
           padding: '12px',
         }}
       >
-        <IpSettings ip={ip} getIP={getIP} setIP={setIP} />
+        <IPData ip={ip} getIP={getIP} setIP={setIP} />
         <ProfileSelect profile={profile} setProfile={setProfile} />
         <DebugSettings
           type="timezone"
