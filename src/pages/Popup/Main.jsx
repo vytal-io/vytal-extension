@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import IpSettings from './IpSettings'
 import ProfileSelect from './ProfileSelect'
-import DebugSettings from './DebugSettings'
+import DebugSettings from './DataInput'
 import UserAgentSettings from './UserAgentSettings'
 
 const getIP = () =>

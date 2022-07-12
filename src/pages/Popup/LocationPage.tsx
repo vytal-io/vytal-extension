@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Label, Input, Select } from 'theme-ui'
+import DataInput from './DataInput'
 
 const LocationPage = () => {
   return (
@@ -16,14 +17,10 @@ const LocationPage = () => {
         <option>Custom</option>
         <option>Match IP</option>
       </Select>
-      <Label htmlFor="timezone">Timezone</Label>
-      <Input name="timezone" id="username" />
-      <Label htmlFor="locale">Locale</Label>
-      <Input name="locale" id="locale" />
-      <Label htmlFor="latitude">Latitude</Label>
-      <Input name="latitude" id="latitude" />
-      <Label htmlFor="longitude">Longitude</Label>
-      <Input name="longitude" id="longitude" />
+      <DataInput type="timezone" title="Timezone" />
+      <DataInput type="locale" title="Locale" />
+      <DataInput type="lat" title="Latitude" />
+      <DataInput type="lon" title="Longitude" />
     </div>
   )
 }
