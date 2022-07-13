@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 interface IconProps {
-  icon: React.ReactNode
+  Icon: React.ElementType
+  onClick: () => void
 }
 
-const Icon = ({ icon }: IconProps) => {
+const TabItem = ({ Icon, onClick }: IconProps) => {
   return (
     <div
       sx={{
@@ -19,10 +20,11 @@ const Icon = ({ icon }: IconProps) => {
           backgroundColor: 'primaryDark',
         },
       }}
+      onClick={onClick}
     >
-      {icon}
+      <Icon size={20} />
     </div>
   )
 }
 
-export default Icon
+export default TabItem

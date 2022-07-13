@@ -11,7 +11,7 @@ export const theme: Theme = {
     root: {
       backgroundColor: 'body',
       color: 'text',
-      fontSize: '16px',
+      fontSize: '18px',
       lineHeight: '22px',
       margin: '0',
       fontFamily: "'Segoe UI', Tahoma, sans-serif",

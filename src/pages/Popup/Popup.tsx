@@ -2,20 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { ThemeProvider, Flex } from 'theme-ui'
 import { theme } from '../../theme'
 import { Home, MapPin, Globe, Users, List } from 'react-feather'
-import Icon from './Icon'
-import LocationPage from './LocationPage'
-// import Navbar from './Navbar'
-// import IPData from './IPData'
-// import ProfileSelect from './ProfileSelect'
-// import DebugSettings from './DebugSettings'
-// import UserAgentSettings from './UserAgentSettings'
+import TabItem from './TabItem'
+import Page from './Page'
 
 const Popup = () => {
-  // const [ip, setIP] = useState(null)
-  // const [profile, setProfile] = useState('default')
-
-  // useEffect(() => {}, [])
-
+  const [tab, setTab] = useState(0)
+  useEffect(() => {
+    console.log(tab)
+  }, [tab])
   return (
     <ThemeProvider theme={theme}>
       <Flex
@@ -32,13 +26,13 @@ const Popup = () => {
             flexDirection: 'column',
           }}
         >
-          <Icon icon={<Home size={20} />} />
-          <Icon icon={<MapPin size={20} />} />
-          <Icon icon={<Globe size={20} />} />
-          <Icon icon={<List size={20} />} />
-          <Icon icon={<Users size={20} />} />
+          <TabItem Icon={Home} onClick={() => setTab(0)} />
+          <TabItem Icon={MapPin} onClick={() => setTab(1)} />
+          <TabItem Icon={Globe} onClick={() => setTab(2)} />
+          <TabItem Icon={List} onClick={() => setTab(3)} />
+          <TabItem Icon={Users} onClick={() => setTab(4)} />
         </Flex>
-        <LocationPage />
+        <Page tab={tab} />
       </Flex>
     </ThemeProvider>
   )

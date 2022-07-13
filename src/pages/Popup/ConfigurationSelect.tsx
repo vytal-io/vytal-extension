@@ -14,7 +14,6 @@ const ConfigurationSelect = ({
 }: ConfigurationSelectProps) => {
   const changeConfiguration = (e: any) => {
     detachDebugger()
-    console.log(e.target.value)
     chrome.storage.sync.set({
       configuration: e.target.value,
     })
