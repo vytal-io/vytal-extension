@@ -1,23 +1,33 @@
 import React, { useState, useEffect } from 'react'
-import { Box } from 'theme-ui'
-import DataInput from './DataInput'
-import ConfigurationSelect from './ConfigurationSelect'
-import getIP from '../../utils/getIP'
+import { Box, Label, Radio, Flex, Input } from 'theme-ui'
+import userAgents from '../../utils/userAgents'
+import detachDebugger from '../../utils/detachDebugger'
 
 const LocationPage = () => {
-  const [ip, setIP] = useState(null)
-  const [configuration, setConfiguration] = useState('default')
+  const [type, setType] = useState('desktop')
+  const [userAgent, setUserAgent] = useState('')
+  // const [configuration, setConfiguration] = useState('default')
 
   useEffect(() => {
-    chrome.storage.sync.get(['configuration', 'ipData'], (result) => {
-      result.configuration && setConfiguration(result.configuration)
-      if (result.ipData) {
-        setIP(result.ipData)
-      } else {
-        Promise.resolve(getIP()).then((ipData) => setIP(ipData))
-      }
+    chrome.storage.sync.get(['type', 'userAgent'], (result) => {
+      result.type && setType(result.type)
+      result.userAgent && setUserAgent(result.userAgent)
     })
   }, [])
+
+  const changeType = (e: any) => {
+    detachDebugger()
+    chrome.storage.sync.set({ type: e.target.value })
+    setType(e.target.value)
+  }
+
+  const changeUserAgent = (e: any) => {
+    detachDebugger()
+    chrome.storage.sync.set({ userAgent: e.target.value })
+    chrome.storage.sync.set({ type: 'custom' })
+    setUserAgent(e.target.value)
+    setType('custom')
+  }
 
   return (
     <Box
@@ -27,38 +37,54 @@ const LocationPage = () => {
       }}
     >
       <Box sx={{ fontSize: '20px', mb: '8px' }}>User Agent</Box>
-      <ConfigurationSelect
+      <Flex mt={'12px'} mb={'8px'}>
+        <Label>
+          <Radio
+            name="type"
+            value="desktop"
+            onChange={changeType}
+            checked={type === 'desktop'}
+          />{' '}
+          Desktop
+        </Label>
+        <Label>
+          <Radio
+            name="type"
+            value="mobile"
+            onChange={changeType}
+            checked={type === 'mobile'}
+          />{' '}
+          Mobile
+        </Label>
+        <Label>
+          <Radio
+            name="type"
+            value="custom"
+            onChange={changeType}
+            checked={type === 'custom'}
+          />{' '}
+          Custom
+        </Label>
+      </Flex>
+      {/* <UserAgentSelect
+        title="Operating System"
         configuration={configuration}
         setConfiguration={setConfiguration}
       />
-      <DataInput
-        type="timezone"
-        title="Timezone"
+      <UserAgentSelect
+        title="Browser"
+        configuration={configuration}
+        setConfiguration={setConfiguration}
+      /> */}
+      {/* <LocationInput
+        type="userAgent"
+        title="User Agent"
         ip={ip}
         configuration={configuration}
         setConfiguration={setConfiguration}
-      />
-      <DataInput
-        type="locale"
-        title="Locale"
-        ip={ip}
-        configuration={configuration}
-        setConfiguration={setConfiguration}
-      />
-      <DataInput
-        type="lat"
-        title="Latitude"
-        ip={ip}
-        configuration={configuration}
-        setConfiguration={setConfiguration}
-      />
-      <DataInput
-        type="lon"
-        title="Longitude"
-        ip={ip}
-        configuration={configuration}
-        setConfiguration={setConfiguration}
-      />
+      /> */}
+      <Label htmlFor="userAgent">User Agent</Label>
+      <Input name="userAgent" value={userAgent} onChange={changeUserAgent} />
     </Box>
   )
 }

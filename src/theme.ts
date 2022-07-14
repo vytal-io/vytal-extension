@@ -36,6 +36,9 @@ export const theme: Theme = {
         outline: 'none',
       },
     },
+    // radio: {
+    //   userSelect: 'none',
+    // },
   },
   buttons: {
     primary: {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box } from 'theme-ui'
-import DataInput from './DataInput'
+import LocationInput from './LocationInput'
 import ConfigurationSelect from './ConfigurationSelect'
 import IPData from './IPData'
 import getIP from '../../utils/getIP'
@@ -33,28 +33,28 @@ const LocationPage = () => {
         setConfiguration={setConfiguration}
       />
       {configuration === 'match' && <IPData ip={ip} setIP={setIP} />}
-      <DataInput
+      <LocationInput
         type="timezone"
         title="Timezone"
         ip={ip}
         configuration={configuration}
         setConfiguration={setConfiguration}
       />
-      <DataInput
+      <LocationInput
         type="locale"
         title="Locale"
         ip={ip}
         configuration={configuration}
         setConfiguration={setConfiguration}
       />
-      <DataInput
+      <LocationInput
         type="lat"
         title="Latitude"
         ip={ip}
         configuration={configuration}
         setConfiguration={setConfiguration}
       />
-      <DataInput
+      <LocationInput
         type="lon"
         title="Longitude"
         ip={ip}

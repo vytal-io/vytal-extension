@@ -4,7 +4,7 @@ import countryLocales from '../../utils/countryLocales'
 import detachDebugger from '../../utils/detachDebugger'
 import { Label, Input } from 'theme-ui'
 
-interface DataInputProps {
+interface LocationInputProps {
   type: string
   title: string
   ip: any
@@ -12,13 +12,13 @@ interface DataInputProps {
   setConfiguration: Dispatch<SetStateAction<string>>
 }
 
-const DataInput = ({
+const LocationInput = ({
   type,
   title,
   ip,
   configuration,
   setConfiguration,
-}: DataInputProps) => {
+}: LocationInputProps) => {
   const [value, setValue] = useState('')
 
   useEffect(() => {
@@ -58,4 +58,4 @@ const DataInput = ({
   )
 }
 
-export default DataInput
+export default LocationInput
