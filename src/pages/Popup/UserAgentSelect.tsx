@@ -9,7 +9,7 @@ interface ConfigurationSelectProps {
   setConfiguration: Dispatch<SetStateAction<string>>
 }
 
-const ConfigurationSelect = ({
+const UserAgentSelect = ({
   title,
   configuration,
   setConfiguration,
@@ -47,4 +47,4 @@ const ConfigurationSelect = ({
   )
 }
 
-export default ConfigurationSelect
+export default UserAgentSelect
