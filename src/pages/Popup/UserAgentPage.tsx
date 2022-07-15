@@ -6,33 +6,57 @@ import UserAgentSelect from './UserAgentSelect'
 
 const LocationPage = () => {
   const [type, setType] = useState('desktop')
-  const [operatingSystem, setOperatingSystem] = useState('linux')
-  const [browser, setBrowser] = useState('')
+  const [operatingSystem, setOperatingSystem] = useState('Windows')
+  const [browser, setBrowser] = useState('Chrome')
   const [userAgent, setUserAgent] = useState('')
 
   useEffect(() => {
-    chrome.storage.sync.get(['type', 'userAgent'], (result) => {
-      result.type && setType(result.type)
-      result.userAgent && setUserAgent(result.userAgent)
-    })
+    chrome.storage.sync.get(
+      ['type', 'operatingSystem', 'browser', 'userAgent'],
+      (result) => {
+        result.type && setType(result.type)
+        result.operatingSystem && setOperatingSystem(result.operatingSystem)
+        result.browser && setBrowser(result.browser)
+        result.userAgent && setUserAgent(result.userAgent)
+      }
+    )
   }, [])
 
+  useEffect(() => {
+    detachDebugger()
+    chrome.storage.sync.set({ userAgent })
+  }, [userAgent])
+
+  useEffect(() => {
+    type !== 'custom' &&
+      setUserAgent(userAgents[type][operatingSystem][browser])
+  }, [operatingSystem, browser, type])
+
   const changeType = (e: any) => {
+    if (e.target.value === 'mobile') {
+      setOperatingSystem('Android')
+    } else if (e.target.value === 'desktop') {
+      setOperatingSystem('Windows')
+    }
     detachDebugger()
     chrome.storage.sync.set({ type: e.target.value })
     setType(e.target.value)
   }
 
   const changeOperatingSystem = (e: any) => {
-    // detachDebugger()
-    // chrome.storage.sync.set({ userAgent: e.target.value })
-    // chrome.storage.sync.set({ type: 'custom' })
-    // setUserAgent(e.target.value)
-    // setType('custom')
+    console.log(e.target.value)
+    chrome.storage.sync.set({ operatingSystem: e.target.value })
+    setOperatingSystem(e.target.value)
+  }
+
+  const changeBrowser = (e: any) => {
+    chrome.storage.sync.set({ browser: e.target.value })
+    setBrowser(e.target.value)
   }
 
   const changeUserAgent = (e: any) => {
     detachDebugger()
+    console.log(e.target.value)
     chrome.storage.sync.set({ userAgent: e.target.value })
     chrome.storage.sync.set({ type: 'custom' })
     setUserAgent(e.target.value)
@@ -96,8 +120,8 @@ const LocationPage = () => {
           <Select
             name="browser"
             id="browser"
-            // value={operatingSystem}
-            // onChange={changeOperatingSystem}
+            value={browser}
+            onChange={changeBrowser}
             mb={'8px'}
           >
             {Object.keys(userAgents[type][operatingSystem]).map((key) => (
@@ -106,16 +130,6 @@ const LocationPage = () => {
               </option>
             ))}
           </Select>
-          {/* <UserAgentSelect
-            title="Operating System"
-            configuration={operatingSystem}
-            setConfiguration={setOperatingSystem}
-          />
-          <UserAgentSelect
-            title="Browser"
-            configuration={browser}
-            setConfiguration={setBrowser}
-          /> */}
         </>
       )}
       <Label htmlFor="userAgent">User Agent</Label>
