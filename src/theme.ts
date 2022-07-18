@@ -18,7 +18,7 @@ export const theme: Theme = {
     },
   },
   forms: {
-    label: {},
+    label: { width: 'auto' },
     input: {
       p: '2px 8px',
       mb: '8px',
@@ -36,9 +36,6 @@ export const theme: Theme = {
         outline: 'none',
       },
     },
-    // radio: {
-    //   userSelect: 'none',
-    // },
   },
   buttons: {
     primary: {

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Box, Label, Radio, Flex, Input, Select } from 'theme-ui'
 import userAgents from '../../utils/userAgents'
 import detachDebugger from '../../utils/detachDebugger'
-import UserAgentSelect from './UserAgentSelect'
 
 const LocationPage = () => {
-  const [type, setType] = useState('desktop')
+  const [type, setType] = useState('None')
   const [operatingSystem, setOperatingSystem] = useState('Windows')
   const [browser, setBrowser] = useState('Chrome')
   const [userAgent, setUserAgent] = useState('')
@@ -28,17 +27,12 @@ const LocationPage = () => {
   }, [userAgent])
 
   useEffect(() => {
-    type !== 'custom' &&
-      setUserAgent(userAgents[type][operatingSystem][browser])
+    type === 'preloaded' && setUserAgent(userAgents[operatingSystem][browser])
   }, [operatingSystem, browser, type])
 
   const changeType = (e: any) => {
-    if (e.target.value === 'mobile') {
-      setOperatingSystem('Android')
-    } else if (e.target.value === 'desktop') {
-      setOperatingSystem('Windows')
-    }
     detachDebugger()
+    e.target.value === 'none' && setUserAgent('')
     chrome.storage.sync.set({ type: e.target.value })
     setType(e.target.value)
   }
@@ -71,24 +65,30 @@ const LocationPage = () => {
       }}
     >
       <Box sx={{ fontSize: '20px', mb: '8px' }}>User Agent</Box>
-      <Flex mt={'12px'} mb={'8px'}>
+      <Flex
+        sx={{
+          justifyContent: 'space-between',
+          mt: '12px',
+          mb: '8px',
+        }}
+      >
         <Label>
           <Radio
             name="type"
-            value="desktop"
+            value="none"
             onChange={changeType}
-            checked={type === 'desktop'}
+            checked={type === 'none'}
           />{' '}
-          Desktop
+          None
         </Label>
         <Label>
           <Radio
             name="type"
-            value="mobile"
+            value="preloaded"
             onChange={changeType}
-            checked={type === 'mobile'}
+            checked={type === 'preloaded'}
           />{' '}
-          Mobile
+          Preloaded
         </Label>
         <Label>
           <Radio
@@ -100,7 +100,7 @@ const LocationPage = () => {
           Custom
         </Label>
       </Flex>
-      {(type === 'desktop' || type === 'mobile') && (
+      {type === 'preloaded' && (
         <>
           <Label htmlFor="operatingSystem">Operating System</Label>
           <Select
@@ -108,9 +108,11 @@ const LocationPage = () => {
             id="operatingSystem"
             value={operatingSystem}
             onChange={changeOperatingSystem}
+            defaultValue=""
             mb={'8px'}
           >
-            {Object.keys(userAgents[type]).map((key) => (
+            <option sx={{ display: 'none' }}></option>
+            {Object.keys(userAgents).map((key) => (
               <option value={key} key={key}>
                 {key}
               </option>
@@ -122,9 +124,10 @@ const LocationPage = () => {
             id="browser"
             value={browser}
             onChange={changeBrowser}
+            defaultValue=""
             mb={'8px'}
           >
-            {Object.keys(userAgents[type][operatingSystem]).map((key) => (
+            {Object.keys(userAgents[operatingSystem]).map((key) => (
               <option value={key} key={key}>
                 {key}
               </option>
