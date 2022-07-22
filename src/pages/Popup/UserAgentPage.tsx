@@ -3,7 +3,7 @@ import { Box, Label, Radio, Flex, Input, Select } from 'theme-ui'
 import userAgents from '../../utils/userAgents'
 import detachDebugger from '../../utils/detachDebugger'
 
-const LocationPage = () => {
+const UserAgentPage = ({ tab }: any) => {
   const [type, setType] = useState('None')
   const [operatingSystem, setOperatingSystem] = useState('Windows')
   const [browser, setBrowser] = useState('Chrome')
@@ -62,6 +62,7 @@ const LocationPage = () => {
       sx={{
         m: '12px',
         width: '100%',
+        display: tab === 'useragent' ? 'block' : 'none',
       }}
     >
       <Box sx={{ fontSize: '20px', mb: '8px' }}>User Agent</Box>
@@ -141,4 +142,4 @@ const LocationPage = () => {
   )
 }
 
-export default LocationPage
+export default UserAgentPage

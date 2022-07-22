@@ -5,7 +5,7 @@ import ConfigurationSelect from './ConfigurationSelect'
 import IPData from './IPData'
 import getIP from '../../utils/getIP'
 
-const LocationPage = ({ tab }: any) => {
+const WhitelistPage = ({ tab }: any) => {
   const [ip, setIP] = useState(null)
   const [configuration, setConfiguration] = useState('default')
 
@@ -25,10 +25,10 @@ const LocationPage = ({ tab }: any) => {
       sx={{
         m: '12px',
         width: '100%',
-        display: tab === 'location' ? 'block' : 'none',
+        display: tab === 'whitelist' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>Location</Box>
+      <Box sx={{ fontSize: '20px', mb: '8px' }}>Whitelist</Box>
       <ConfigurationSelect
         configuration={configuration}
         setConfiguration={setConfiguration}
@@ -66,4 +66,4 @@ const LocationPage = ({ tab }: any) => {
   )
 }
 
-export default LocationPage
+export default WhitelistPage

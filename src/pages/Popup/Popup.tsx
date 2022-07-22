@@ -3,10 +3,12 @@ import { ThemeProvider, Flex } from 'theme-ui'
 import { theme } from '../../theme'
 import { Home, MapPin, Globe, Command, List, ExternalLink } from 'react-feather'
 import TabItem from './TabItem'
-import Page from './Page'
+import LocationPage from './LocationPage'
+import UserAgentPage from './UserAgentPage'
+import WhitelistPage from './WhitelistPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState(1)
+  const [tab, setTab] = useState('location')
 
   return (
     <ThemeProvider theme={theme}>
@@ -25,16 +27,18 @@ const Popup = () => {
           }}
         >
           {/* <TabItem Icon={Home} onClick={() => setTab(0)} /> */}
-          <TabItem Icon={MapPin} onClick={() => setTab(1)} />
-          <TabItem Icon={Globe} onClick={() => setTab(2)} />
+          <TabItem Icon={MapPin} onClick={() => setTab('location')} />
+          <TabItem Icon={Globe} onClick={() => setTab('useragent')} />
           {/* <TabItem Icon={Command} onClick={() => setTab(3)} /> */}
-          <TabItem Icon={List} onClick={() => setTab(3)} />
+          <TabItem Icon={List} onClick={() => setTab('whitelist')} />
           <TabItem
             Icon={ExternalLink}
             onClick={() => window.open('https://vytal.io')}
           />
         </Flex>
-        <Page tab={tab} />
+        <LocationPage tab={tab} />
+        <UserAgentPage tab={tab} />
+        <WhitelistPage tab={tab} />
       </Flex>
     </ThemeProvider>
   )
