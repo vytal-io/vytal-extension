@@ -4,8 +4,13 @@ export const theme: Theme = {
   colors: {
     text: '#333333',
     background: '#FDFDFD',
-    primary: '#a965d1',
-    primaryDark: '#8750A7',
+    primary: '#a55eea',
+    primaryDark: '#9454d2',
+    red: '#fc5c65',
+    redDark: '#e2525a',
+    green: '#26de81',
+    greenDark: '#22c774',
+    grey: '#BCC2C9',
   },
   styles: {
     root: {
@@ -47,6 +52,19 @@ export const theme: Theme = {
       '&:hover': {
         bg: 'primaryDark',
       },
+    },
+    power: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      py: '12px',
+      px: '16px',
+      color: 'background',
+      borderRadius: '50%',
+      cursor: 'pointer',
+      // '&:hover': {
+      //   bg: 'primaryDark',
+      // },
     },
   },
 }
