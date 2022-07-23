@@ -2,10 +2,11 @@ import React from 'react'
 
 interface IconProps {
   Icon: React.ElementType
+  active?: boolean
   onClick: () => void
 }
 
-const TabItem = ({ Icon, onClick }: IconProps) => {
+const TabItem = ({ Icon, onClick, active }: IconProps) => {
   return (
     <div
       sx={{
@@ -16,6 +17,7 @@ const TabItem = ({ Icon, onClick }: IconProps) => {
         alignItems: 'center',
         justifyContent: 'center',
         color: 'background',
+        backgroundColor: active ? 'primaryDark' : 'primary',
         ':hover': {
           backgroundColor: 'primaryDark',
         },

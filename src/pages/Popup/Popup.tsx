@@ -8,7 +8,7 @@ import UserAgentPage from './UserAgentPage'
 import WhitelistPage from './WhitelistPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState('location')
+  const [tab, setTab] = useState('whitelist')
 
   return (
     <ThemeProvider theme={theme}>
@@ -27,10 +27,22 @@ const Popup = () => {
           }}
         >
           {/* <TabItem Icon={Home} onClick={() => setTab(0)} /> */}
-          <TabItem Icon={MapPin} onClick={() => setTab('location')} />
-          <TabItem Icon={Globe} onClick={() => setTab('useragent')} />
+          <TabItem
+            Icon={MapPin}
+            active={tab === 'location'}
+            onClick={() => setTab('location')}
+          />
+          <TabItem
+            Icon={Globe}
+            active={tab === 'useragent'}
+            onClick={() => setTab('useragent')}
+          />
           {/* <TabItem Icon={Command} onClick={() => setTab(3)} /> */}
-          <TabItem Icon={List} onClick={() => setTab('whitelist')} />
+          <TabItem
+            Icon={List}
+            active={tab === 'whitelist'}
+            onClick={() => setTab('whitelist')}
+          />
           <TabItem
             Icon={ExternalLink}
             onClick={() => window.open('https://vytal.io')}
