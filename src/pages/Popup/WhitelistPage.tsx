@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Label, Input, Flex, Button } from 'theme-ui'
+import { Box, Label, Input, Flex, Button, Close } from 'theme-ui'
 import LocationInput from './LocationInput'
 import ConfigurationSelect from './ConfigurationSelect'
 import IPData from './IPData'
@@ -42,7 +42,7 @@ const WhitelistPage = ({ tab }: any) => {
         display: tab === 'whitelist' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>Whitelist</Box>
+      <Box sx={{ fontSize: '20px', mb: '12px' }}>Whitelist</Box>
       <Flex>
         <Input name="url" value={currentUrl} spellCheck="false" />
         <Button
@@ -55,13 +55,38 @@ const WhitelistPage = ({ tab }: any) => {
           Add
         </Button>
       </Flex>
-      {whitelist.map((element, index) => {
-        return (
-          <div key={index}>
-            <h2>{element}</h2>
-          </div>
-        )
-      })}
+      {whitelist.length ? (
+        <Box
+          sx={{
+            border: '1px solid ',
+            borderRadius: '4px',
+            borderColor: 'grey',
+            p: '2px 8px',
+            my: '8px',
+          }}
+        >
+          {whitelist.map((element, index) => {
+            return (
+              <Flex
+                key={index}
+                sx={{
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  my: '8px',
+                }}
+              >
+                {element}{' '}
+                <Close
+                  sx={{ width: '24px', height: '24px' }}
+                  onClick={() =>
+                    setWhitelist(whitelist.filter((item) => item !== element))
+                  }
+                />
+              </Flex>
+            )
+          })}
+        </Box>
+      ) : null}
     </Box>
   )
 }

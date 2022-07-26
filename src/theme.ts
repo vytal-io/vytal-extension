@@ -10,7 +10,7 @@ export const theme: Theme = {
     redDark: '#e2525a',
     green: '#26de81',
     greenDark: '#22c774',
-    grey: '#BCC2C9',
+    grey: '#989898',
   },
   styles: {
     root: {
@@ -27,7 +27,7 @@ export const theme: Theme = {
     input: {
       p: '2px 8px',
       mb: '8px',
-      borderColor: 'gray',
+      borderColor: 'grey',
       '&:focus': {
         borderColor: 'primaryDark',
         outline: 'none',
@@ -35,7 +35,7 @@ export const theme: Theme = {
     },
     select: {
       p: '2px 8px',
-      borderColor: 'gray',
+      borderColor: 'grey',
       '&:focus': {
         borderColor: 'primaryDark',
         outline: 'none',
@@ -65,6 +65,12 @@ export const theme: Theme = {
       // '&:hover': {
       //   bg: 'primaryDark',
       // },
+    },
+    close: {
+      cursor: 'pointer',
+      color: 'text',
+      p: 0,
+      m: 0,
     },
   },
 }
