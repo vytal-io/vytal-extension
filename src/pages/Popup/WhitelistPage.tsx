@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Label, Input, Flex, Button, Close } from 'theme-ui'
+import { Box, Label, Input, Flex, Button, Close, Field } from 'theme-ui'
 import LocationInput from './LocationInput'
 import ConfigurationSelect from './ConfigurationSelect'
 import IPData from './IPData'
@@ -34,6 +34,17 @@ const WhitelistPage = ({ tab }: any) => {
     chrome.storage.sync.set({ whitelist })
   }, [whitelist])
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    !whitelist.includes(e.target.url.value) &&
+      setWhitelist((prevWhitelist) => [...prevWhitelist, e.target.url.value])
+    // detachDebugger()
+    // chrome.storage.sync.set({ [type]: e.target.value })
+    // setCurrentUrl(e.target.value)
+    // chrome.storage.sync.set({ configuration: 'custom' })
+    // setConfiguration('custom')
+  }
+
   return (
     <Box
       sx={{
@@ -43,13 +54,18 @@ const WhitelistPage = ({ tab }: any) => {
       }}
     >
       <Box sx={{ fontSize: '20px', mb: '12px' }}>Whitelist</Box>
-      <Flex>
-        <Input name="url" value={currentUrl} spellCheck="false" />
+      <Flex as="form" onSubmit={(e) => handleSubmit(e)}>
+        <Input
+          name="url"
+          defaultValue={currentUrl}
+          // onChange={changeTextValue}
+          spellCheck="false"
+        />
         <Button
-          onClick={() => {
-            setWhitelist((prevWhitelist) => [...prevWhitelist, currentUrl])
-            // detachDebugger()
-          }}
+          // onClick={() => {
+          //   // setWhitelist((prevWhitelist) => [...prevWhitelist, currentUrl])
+          //   // detachDebugger()
+          // }}
           sx={{ height: '28px', flexShrink: 0, ml: '8px' }}
         >
           Add
