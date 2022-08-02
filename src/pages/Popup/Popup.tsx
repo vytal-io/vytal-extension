@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ThemeProvider, Flex, Box } from 'theme-ui'
+import { ThemeProvider, Flex, Box, Text } from 'theme-ui'
 import { theme } from '../../theme'
 import { MapPin, Globe, ExternalLink } from 'react-feather'
 import TabItem from './TabItem'
@@ -40,17 +40,19 @@ const Popup = () => {
             onClick={() => window.open('https://vytal.io')}
           />
         </Flex>
-        <Box>
+        <Box sx={{ m: '12px', width: '100%' }}>
           <LocationPage tab={tab} />
           <UserAgentPage tab={tab} />
-          <div
-            style={{
-              margin: '8px 0 0 0',
+          <Text
+            sx={{
+              mb: '8px',
               fontSize: '11px',
+              position: 'fixed',
+              bottom: '0',
             }}
           >
-            Current tab won't be fully spoofed until after reload
-          </div>
+            Current tab won't be fully spoofed until after reload.
+          </Text>
         </Box>
       </Flex>
     </ThemeProvider>

@@ -23,8 +23,6 @@ const LocationPage = ({ tab }: any) => {
   return (
     <Box
       sx={{
-        m: '12px',
-        width: '100%',
         display: tab === 'location' ? 'block' : 'none',
       }}
     >

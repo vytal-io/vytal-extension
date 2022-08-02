@@ -60,8 +60,6 @@ const UserAgentPage = ({ tab }: any) => {
   return (
     <Box
       sx={{
-        m: '12px',
-        width: '100%',
         display: tab === 'useragent' ? 'block' : 'none',
       }}
     >

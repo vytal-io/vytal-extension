@@ -18,7 +18,7 @@ interface IPDataProps {
 
 const IPData = ({ ip, setIP }: IPDataProps) => {
   return (
-    <Flex style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+    <Flex sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <Text>{ip && `${ip.query} ${getFlagEmoji(ip.countryCode)}`}</Text>
       <Button
         onClick={() => {

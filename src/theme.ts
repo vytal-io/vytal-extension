@@ -53,19 +53,6 @@ export const theme: Theme = {
         bg: 'primaryDark',
       },
     },
-    power: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      py: '12px',
-      px: '16px',
-      color: 'background',
-      borderRadius: '50%',
-      cursor: 'pointer',
-      // '&:hover': {
-      //   bg: 'primaryDark',
-      // },
-    },
     close: {
       cursor: 'pointer',
       color: 'text',
