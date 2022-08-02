@@ -1,4 +1,4 @@
-const attachDebugger = (tabId) => {
+const attachDebugger = (tabId: number) => {
   chrome.storage.sync.get(
     [
       'ipData',
@@ -41,7 +41,7 @@ const attachDebugger = (tabId) => {
                 () => {
                   if (
                     chrome.runtime.lastError &&
-                    chrome.runtime.lastError.message.includes(
+                    chrome.runtime.lastError.message?.includes(
                       'Timezone override is already in effect'
                     )
                   ) {
