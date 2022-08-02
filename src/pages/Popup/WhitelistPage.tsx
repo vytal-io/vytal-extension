@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Label, Input, Flex, Button, Close, Field } from 'theme-ui'
-import LocationInput from './LocationInput'
-import ConfigurationSelect from './ConfigurationSelect'
-import IPData from './IPData'
-import getIP from '../../utils/getIP'
+import { Box, Input, Flex, Button, Close } from 'theme-ui'
 
 const WhitelistPage = ({ tab }: any) => {
-  const [ip, setIP] = useState(null)
-  const [configuration, setConfiguration] = useState('default')
   const [currentUrl, setCurrentUrl] = useState('')
   const [whitelist, setWhitelist] = useState<string[]>([])
 
@@ -39,10 +33,6 @@ const WhitelistPage = ({ tab }: any) => {
     !whitelist.includes(e.target.url.value) &&
       setWhitelist((prevWhitelist) => [...prevWhitelist, e.target.url.value])
     // detachDebugger()
-    // chrome.storage.sync.set({ [type]: e.target.value })
-    // setCurrentUrl(e.target.value)
-    // chrome.storage.sync.set({ configuration: 'custom' })
-    // setConfiguration('custom')
   }
 
   return (
@@ -55,21 +45,8 @@ const WhitelistPage = ({ tab }: any) => {
     >
       <Box sx={{ fontSize: '20px', mb: '12px' }}>Whitelist</Box>
       <Flex as="form" onSubmit={(e) => handleSubmit(e)}>
-        <Input
-          name="url"
-          defaultValue={currentUrl}
-          // onChange={changeTextValue}
-          spellCheck="false"
-        />
-        <Button
-          // onClick={() => {
-          //   // setWhitelist((prevWhitelist) => [...prevWhitelist, currentUrl])
-          //   // detachDebugger()
-          // }}
-          sx={{ height: '28px', flexShrink: 0, ml: '8px' }}
-        >
-          Add
-        </Button>
+        <Input name="url" defaultValue={currentUrl} spellCheck="false" />
+        <Button sx={{ height: '28px', flexShrink: 0, ml: '8px' }}>Add</Button>
       </Flex>
       {whitelist.length ? (
         <Box
@@ -79,6 +56,8 @@ const WhitelistPage = ({ tab }: any) => {
             borderColor: 'grey',
             p: '2px 8px',
             my: '8px',
+            maxHeight: '260px',
+            overflow: 'auto',
           }}
         >
           {whitelist.map((element, index) => {
