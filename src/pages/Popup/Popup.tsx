@@ -1,21 +1,20 @@
 import React, { useState } from 'react'
-import { ThemeProvider, Flex } from 'theme-ui'
+import { ThemeProvider, Flex, Box } from 'theme-ui'
 import { theme } from '../../theme'
-import { Home, MapPin, Globe, Command, List, ExternalLink } from 'react-feather'
+import { MapPin, Globe, ExternalLink } from 'react-feather'
 import TabItem from './TabItem'
 import LocationPage from './LocationPage'
 import UserAgentPage from './UserAgentPage'
-import WhitelistPage from './WhitelistPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState('whitelist')
+  const [tab, setTab] = useState('location')
 
   return (
     <ThemeProvider theme={theme}>
       <Flex
         sx={{
           width: '350px',
-          height: '368px',
+          height: '390px',
         }}
       >
         <Flex
@@ -26,7 +25,6 @@ const Popup = () => {
             flexDirection: 'column',
           }}
         >
-          {/* <TabItem Icon={Home} onClick={() => setTab(0)} /> */}
           <TabItem
             Icon={MapPin}
             active={tab === 'location'}
@@ -37,20 +35,23 @@ const Popup = () => {
             active={tab === 'useragent'}
             onClick={() => setTab('useragent')}
           />
-          {/* <TabItem Icon={Command} onClick={() => setTab(3)} /> */}
-          <TabItem
-            Icon={List}
-            active={tab === 'whitelist'}
-            onClick={() => setTab('whitelist')}
-          />
           <TabItem
             Icon={ExternalLink}
             onClick={() => window.open('https://vytal.io')}
           />
         </Flex>
-        <LocationPage tab={tab} />
-        <UserAgentPage tab={tab} />
-        <WhitelistPage tab={tab} />
+        <Box>
+          <LocationPage tab={tab} />
+          <UserAgentPage tab={tab} />
+          <div
+            style={{
+              margin: '8px 0 0 0',
+              fontSize: '11px',
+            }}
+          >
+            Current tab won't be fully spoofed until after reload
+          </div>
+        </Box>
       </Flex>
     </ThemeProvider>
   )
