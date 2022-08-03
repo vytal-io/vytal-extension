@@ -3,7 +3,7 @@
   "name": "Vytal",
   "version": "2.0.0",
   "description": "Spoof your location data and user agent.",
-  "permissions": ["storage", "debugger", "activeTab", "alarms"],
+  "permissions": ["storage", "debugger", "activeTab"],
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",

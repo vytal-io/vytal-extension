@@ -1,5 +1,4 @@
 import attachDebugger from '../../utils/attachDebugger'
-import userAgents from '../../utils/userAgents'
 
 const attachTab = (tabId) => {
   chrome.debugger.getTargets((tabs) => {
@@ -20,18 +19,4 @@ chrome.tabs.onActivated.addListener((tab) => {
 
 chrome.tabs.onUpdated.addListener((tabId) => {
   attachTab(tabId)
-})
-
-chrome.alarms.onAlarm.addListener((alarm) => {
-  if (alarm.name === 'userAgentAlarm') {
-    chrome.storage.sync.get(['randomUA'], (result) => {
-      if (result.randomUA) {
-        const randomUserAgent =
-          userAgents[Math.floor(Math.random() * userAgents.length)]
-        chrome.storage.sync.set({
-          userAgent: randomUserAgent,
-        })
-      }
-    })
-  }
 })
