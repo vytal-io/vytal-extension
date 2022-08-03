@@ -46,12 +46,12 @@ const Popup = () => {
           <Text
             sx={{
               mb: '8px',
-              fontSize: '11px',
+              fontSize: '10px',
               position: 'fixed',
               bottom: '0',
             }}
           >
-            Current tab won't be fully spoofed until after reload.
+            Current tab won't be fully spoofed until after 1st or 2nd reload.
           </Text>
         </Box>
       </Flex>

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction, ChangeEvent } from 'react'
 import { Label, Select } from 'theme-ui'
 import configurations from '../../utils/configurations'
 import detachDebugger from '../../utils/detachDebugger'
@@ -12,7 +12,7 @@ const ConfigurationSelect = ({
   configuration,
   setConfiguration,
 }: ConfigurationSelectProps) => {
-  const changeConfiguration = (e: any) => {
+  const changeConfiguration = (e: ChangeEvent<HTMLSelectElement>) => {
     detachDebugger()
     chrome.storage.sync.set({
       configuration: e.target.value,

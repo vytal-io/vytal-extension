@@ -5,7 +5,11 @@ import ConfigurationSelect from './ConfigurationSelect'
 import IPData from './IPData'
 import getIP from '../../utils/getIP'
 
-const LocationPage = ({ tab }: any) => {
+interface LocationPageProps {
+  tab: string
+}
+
+const LocationPage = ({ tab }: LocationPageProps) => {
   const [ip, setIP] = useState(null)
   const [configuration, setConfiguration] = useState('default')
 

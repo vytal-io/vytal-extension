@@ -1,4 +1,10 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import React, {
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  ChangeEvent,
+} from 'react'
 import configurations from '../../utils/configurations'
 import countryLocales from '../../utils/countryLocales'
 import detachDebugger from '../../utils/detachDebugger'
@@ -42,7 +48,7 @@ const LocationInput = ({
     }
   }, [ip, configuration, type, value])
 
-  const changeTextValue = (e: any) => {
+  const changeTextValue = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
     chrome.storage.sync.set({ [type]: e.target.value })
     setValue(e.target.value)

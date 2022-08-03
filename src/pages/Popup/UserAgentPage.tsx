@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, ChangeEvent } from 'react'
 import { Box, Label, Radio, Flex, Input, Select } from 'theme-ui'
 import userAgents from '../../utils/userAgents'
 import detachDebugger from '../../utils/detachDebugger'
 
-const UserAgentPage = ({ tab }: any) => {
-  const [type, setType] = useState('None')
+interface UserAgentPageProps {
+  tab: string
+}
+
+const UserAgentPage = ({ tab }: UserAgentPageProps) => {
+  const [type, setType] = useState('none')
   const [operatingSystem, setOperatingSystem] = useState('Windows')
   const [browser, setBrowser] = useState('Chrome')
   const [userAgent, setUserAgent] = useState('')
@@ -30,27 +34,25 @@ const UserAgentPage = ({ tab }: any) => {
     type === 'preloaded' && setUserAgent(userAgents[operatingSystem][browser])
   }, [operatingSystem, browser, type])
 
-  const changeType = (e: any) => {
+  const changeType = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
     e.target.value === 'none' && setUserAgent('')
     chrome.storage.sync.set({ type: e.target.value })
     setType(e.target.value)
   }
 
-  const changeOperatingSystem = (e: any) => {
-    console.log(e.target.value)
+  const changeOperatingSystem = (e: ChangeEvent<HTMLSelectElement>) => {
     chrome.storage.sync.set({ operatingSystem: e.target.value })
     setOperatingSystem(e.target.value)
   }
 
-  const changeBrowser = (e: any) => {
+  const changeBrowser = (e: ChangeEvent<HTMLSelectElement>) => {
     chrome.storage.sync.set({ browser: e.target.value })
     setBrowser(e.target.value)
   }
 
-  const changeUserAgent = (e: any) => {
+  const changeUserAgent = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
-    console.log(e.target.value)
     chrome.storage.sync.set({ userAgent: e.target.value })
     chrome.storage.sync.set({ type: 'custom' })
     setUserAgent(e.target.value)
@@ -107,7 +109,6 @@ const UserAgentPage = ({ tab }: any) => {
             id="operatingSystem"
             value={operatingSystem}
             onChange={changeOperatingSystem}
-            defaultValue=""
             mb={'8px'}
           >
             <option sx={{ display: 'none' }}></option>
@@ -123,7 +124,6 @@ const UserAgentPage = ({ tab }: any) => {
             id="browser"
             value={browser}
             onChange={changeBrowser}
-            defaultValue=""
             mb={'8px'}
           >
             {Object.keys(userAgents[operatingSystem]).map((key) => (
