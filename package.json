@@ -1,6 +1,6 @@
 {
-  "name": "ytal",
-  "version": "1.0.4",
+  "name": "vytal",
+  "version": "2.0.0",
   "description": "Spoof your location data and user agent.",
   "license": "MIT",
   "repository": {
