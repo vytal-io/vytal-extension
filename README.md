@@ -146,6 +146,9 @@ return false;
 
 ![Screenshot of extension popup and vytal.io](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-2.png)
 
+![Close up of extension popup](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-3.png)
+
+
 ## Dev
 
 This application is built with Javascript and React.
