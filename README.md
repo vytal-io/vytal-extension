@@ -20,7 +20,9 @@ Vytal contains no ads and signup is not required.
 
 ### Debugging bar
 
-While the chrome.debugger API is active, a bar under the address bar is displayed. Hiding the bar is only possible when the --silent-debugger-extension-api command-line switch is used.
+While the chrome.debugger API is active, a bar under the address bar is displayed. Hiding the bar is only possible when the --silent-debugger-extension-api command-line switch is used. 
+
+Instructions on how to run chromium with flags: https://www.chromium.org/developers/how-tos/run-chromium-with-flags
 
 ### FireFox
 
