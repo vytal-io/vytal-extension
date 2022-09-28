@@ -19,15 +19,10 @@ const SettingsPage = ({ tab }: LocationPageProps) => {
     >
       <Box sx={{ fontSize: '20px', mb: '12px' }}>Settings</Box>
       <SettingsCheckBox title={'Block WebRTC'} />
-      <SettingsCheckBox title={'Block Address Autofill Address'} />
+      <SettingsCheckBox title={'Block Address Autofill'} />
       <SettingsCheckBox title={'Dark Mode'} />
       <Label htmlFor="configuration">Language</Label>
-      <Select
-        name="Language"
-        id="Language"
-        // value={configuration}
-        // onChange={changeConfiguration}
-      >
+      <Select name="Language" id="Language">
         <option>English</option>
         <option>French</option>
         <option>Chinese</option>
