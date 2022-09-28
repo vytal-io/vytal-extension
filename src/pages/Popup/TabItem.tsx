@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Button } from 'theme-ui'
 interface IconProps {
   Icon: React.ElementType
   active?: boolean
@@ -8,10 +8,10 @@ interface IconProps {
 
 const TabItem = ({ Icon, onClick, active }: IconProps) => {
   return (
-    <div
+    <Button
       sx={{
         cursor: 'pointer',
-        width: '36px',
+        width: '36px',      
         height: '36px',
         display: 'flex',
         alignItems: 'center',
@@ -25,7 +25,7 @@ const TabItem = ({ Icon, onClick, active }: IconProps) => {
       onClick={onClick}
     >
       <Icon size={20} />
-    </div>
+    </Button>
   )
 }
 

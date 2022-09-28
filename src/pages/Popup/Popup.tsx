@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { ThemeProvider, Flex, Box, Text } from 'theme-ui'
 import { theme } from '../../theme'
-import { MapPin, Globe, ExternalLink } from 'react-feather'
+import { MapPin, Globe, Settings, ExternalLink } from 'react-feather'
 import TabItem from './TabItem'
 import LocationPage from './LocationPage'
 import UserAgentPage from './UserAgentPage'
+import SettingsPage from './SettingsPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState('location')
+  const [tab, setTab] = useState('settings')
 
   return (
     <ThemeProvider theme={theme}>
@@ -36,6 +37,11 @@ const Popup = () => {
             onClick={() => setTab('useragent')}
           />
           <TabItem
+            Icon={Settings}
+            active={tab === 'settings'}
+            onClick={() => setTab('settings')}
+          />
+          <TabItem
             Icon={ExternalLink}
             onClick={() => window.open('https://vytal.io')}
           />
@@ -43,6 +49,7 @@ const Popup = () => {
         <Box sx={{ m: '12px', width: '100%' }}>
           <LocationPage tab={tab} />
           <UserAgentPage tab={tab} />
+          <SettingsPage tab={tab} />
           <Text
             sx={{
               mb: '8px',
