@@ -39,8 +39,8 @@ const LocationInput = ({
         chrome.storage.sync.set({ [type]: ipTypeValue })
       }
     } else if (configuration === 'custom') {
-      chrome.storage.sync.get([type], (result) => {
-        result[type] && setValue(result[type])
+      chrome.storage.sync.get([type], (storage) => {
+        storage[type] && setValue(storage[type])
       })
     } else if (configuration !== 'default') {
       setValue(configurations[configuration][type])

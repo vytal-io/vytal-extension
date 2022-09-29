@@ -14,10 +14,10 @@ const LocationPage = ({ tab }: LocationPageProps) => {
   const [configuration, setConfiguration] = useState('default')
 
   useEffect(() => {
-    chrome.storage.sync.get(['configuration', 'ipData'], (result) => {
-      result.configuration && setConfiguration(result.configuration)
-      if (result.ipData) {
-        setIP(result.ipData)
+    chrome.storage.sync.get(['configuration', 'ipData'], (storage) => {
+      storage.configuration && setConfiguration(storage.configuration)
+      if (storage.ipData) {
+        setIP(storage.ipData)
       } else {
         Promise.resolve(getIP()).then((ipData) => setIP(ipData))
       }

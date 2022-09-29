@@ -12,13 +12,13 @@ const attachDebugger = (tabId: number) => {
       'localeMatchIP',
       'userAgent',
     ],
-    (result) => {
+    (storage) => {
       if (
-        result.timezone ||
-        result.lat ||
-        result.lon ||
-        result.locale ||
-        result.userAgent
+        storage.timezone ||
+        storage.lat ||
+        storage.lon ||
+        storage.locale ||
+        storage.userAgent
       ) {
         chrome.debugger.attach({ tabId: tabId }, '1.3', () => {
           if (!chrome.runtime.lastError) {
@@ -31,12 +31,12 @@ const attachDebugger = (tabId: number) => {
             //   }
             // )
 
-            if (result.timezone) {
+            if (storage.timezone) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },
                 'Emulation.setTimezoneOverride',
                 {
-                  timezoneId: result.timezone,
+                  timezoneId: storage.timezone,
                 },
                 () => {
                   if (
@@ -51,38 +51,38 @@ const attachDebugger = (tabId: number) => {
               )
             }
 
-            if (result.locale) {
+            if (storage.locale) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },
                 'Emulation.setLocaleOverride',
                 {
-                  locale: result.locale,
+                  locale: storage.locale,
                 }
               )
             }
 
-            if (result.lat || result.lon) {
+            if (storage.lat || storage.lon) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },
                 'Emulation.setGeolocationOverride',
                 {
-                  latitude: result.lat
-                    ? parseFloat(result.lat)
-                    : result.ipData.lat,
-                  longitude: result.lon
-                    ? parseFloat(result.lon)
-                    : result.ipData.lon,
+                  latitude: storage.lat
+                    ? parseFloat(storage.lat)
+                    : storage.ipData.lat,
+                  longitude: storage.lon
+                    ? parseFloat(storage.lon)
+                    : storage.ipData.lon,
                   accuracy: 1,
                 }
               )
             }
 
-            if (result.userAgent) {
+            if (storage.userAgent) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },
                 'Emulation.setUserAgentOverride',
                 {
-                  userAgent: result.userAgent,
+                  userAgent: storage.userAgent,
                 }
                 // { acceptLanguage: "en-CA" },
                 // { platform: "WebTV OS" }

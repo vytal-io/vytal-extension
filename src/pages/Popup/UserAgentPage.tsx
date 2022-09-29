@@ -16,11 +16,11 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   useEffect(() => {
     chrome.storage.sync.get(
       ['type', 'operatingSystem', 'browser', 'userAgent'],
-      (result) => {
-        result.type && setType(result.type)
-        result.operatingSystem && setOperatingSystem(result.operatingSystem)
-        result.browser && setBrowser(result.browser)
-        result.userAgent && setUserAgent(result.userAgent)
+      (storage) => {
+        storage.type && setType(storage.type)
+        storage.operatingSystem && setOperatingSystem(storage.operatingSystem)
+        storage.browser && setBrowser(storage.browser)
+        storage.userAgent && setUserAgent(storage.userAgent)
       }
     )
   }, [])
