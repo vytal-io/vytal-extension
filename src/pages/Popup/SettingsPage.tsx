@@ -16,6 +16,16 @@ const SettingsPage = ({ tab }: LocationPageProps) => {
     })
   }, [])
 
+  chrome.privacy.network.webRTCIPHandlingPolicy.onChange.addListener(function (
+    details
+  ) {
+    if (details.value === 'disable_non_proxied_udp') {
+      setIsWebRtcDisabled(true)
+    } else {
+      setIsWebRtcDisabled(false)
+    }
+  })
+
   return (
     <Box
       sx={{
@@ -24,14 +34,11 @@ const SettingsPage = ({ tab }: LocationPageProps) => {
     >
       <Box sx={{ fontSize: '20px', mb: '12px' }}>Settings</Box>
       <SettingsCheckBox
-        title={'Block WebRTC'}
-        onChange={() => {
-          setWebRtcPolicy()
-          setIsWebRtcDisabled(!isWebRtcDisabled)
-        }}
+        title={'Disable WebRTC'}
+        onChange={setWebRtcPolicy}
         checked={isWebRtcDisabled}
       />
-      <SettingsCheckBox title={'Block Address Autofill'} />
+      <SettingsCheckBox title={'Disable Address Autofill'} />
       <SettingsCheckBox title={'Dark Mode'} />
       <Label htmlFor="configuration">Language</Label>
       <Select name="Language" id="Language">
