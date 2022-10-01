@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Box, Label, Select } from 'theme-ui'
-import setWebRtcPolicy from '../../utils/setWebRtcPolicy'
+import setWebRtcPolicy from '../../../utils/setWebRtcPolicy'
 import SettingsCheckBox from './SettingsCheckBox'
 
 interface LocationPageProps {

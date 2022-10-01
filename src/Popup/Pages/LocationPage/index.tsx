@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Box } from 'theme-ui'
 import LocationInput from './LocationInput'
 import ConfigurationSelect from './ConfigurationSelect'
 import IPData from './IPData'
-import getIP from '../../utils/getIP'
+import getIP from '../../../utils/getIP'
 
 interface LocationPageProps {
   tab: string

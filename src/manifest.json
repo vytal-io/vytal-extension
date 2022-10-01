@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Vytal - Spoof Timezone, Geolocation, Locale and User Agent",
+  "name": "Vytal - VPN Companion",
   "version": "2.0.0",
   "description": "Spoof Timezone, Geolocation, Locale and User Agent.",
   "permissions": ["storage", "debugger", "activeTab", "privacy"],

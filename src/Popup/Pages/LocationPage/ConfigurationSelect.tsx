@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction, ChangeEvent } from 'react'
+import { Dispatch, SetStateAction, ChangeEvent } from 'react'
 import { Label, Select } from 'theme-ui'
-import configurations from '../../utils/configurations'
-import detachDebugger from '../../utils/detachDebugger'
+import configurations from '../../../utils/configurations'
+import detachDebugger from '../../../utils/detachDebugger'
 
 interface ConfigurationSelectProps {
   configuration: string

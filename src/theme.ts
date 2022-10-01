@@ -22,6 +22,7 @@ export const theme: Theme = {
       fontFamily: "'Segoe UI', Tahoma, sans-serif",
     },
   },
+
   forms: {
     label: { width: 'auto' },
     input: {

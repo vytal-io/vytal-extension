@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { Flex, Button, Text } from 'theme-ui'
-import detachDebugger from '../../utils/detachDebugger'
-import getIP from '../../utils/getIP'
+import detachDebugger from '../../../utils/detachDebugger'
+import getIP from '../../../utils/getIP'
 
 const getFlagEmoji = (countryCode: string) => {
   const codePoints = countryCode

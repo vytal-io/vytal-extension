@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 import { ThemeProvider, Flex, Box, Text } from 'theme-ui'
-import { theme } from '../../theme'
-import { MapPin, Globe, Settings, ExternalLink } from 'react-feather'
+import { theme } from '../theme'
+import {
+  MapPin,
+  Home,
+  MessageSquare,
+  Globe,
+  Sliders,
+  Settings,
+  ExternalLink,
+} from 'react-feather'
 import TabItem from './TabItem'
-import LocationPage from './LocationPage'
-import UserAgentPage from './UserAgentPage'
-import SettingsPage from './SettingsPage'
+import LocationPage from './Pages/LocationPage'
+import UserAgentPage from './Pages/UserAgentPage'
+import SettingsPage from './Pages/SettingsPage'
 
 const Popup = () => {
   const [tab, setTab] = useState('settings')
@@ -32,7 +40,17 @@ const Popup = () => {
             onClick={() => setTab('location')}
           />
           <TabItem
-            Icon={Globe}
+            Icon={Home}
+            active={tab === 'AdressAutofill'}
+            onClick={() => setTab('AdressAutofill')}
+          />
+          <TabItem
+            Icon={MessageSquare}
+            active={tab === 'WebRTC'}
+            onClick={() => setTab('WebRTC')}
+          />
+          <TabItem
+            Icon={Sliders}
             active={tab === 'useragent'}
             onClick={() => setTab('useragent')}
           />
@@ -50,7 +68,7 @@ const Popup = () => {
           <LocationPage tab={tab} />
           <UserAgentPage tab={tab} />
           <SettingsPage tab={tab} />
-          <Text
+          {/* <Text
             sx={{
               mb: '8px',
               fontSize: '10px',
@@ -59,7 +77,7 @@ const Popup = () => {
             }}
           >
             Current tab won't be fully spoofed until after 1st or 2nd reload.
-          </Text>
+          </Text> */}
         </Box>
       </Flex>
     </ThemeProvider>

@@ -1,16 +1,16 @@
-import attachDebugger from '../../utils/attachDebugger'
+import attachDebugger from '../utils/attachDebugger'
 
-const attachTab = (tabId) => {
+const attachTab = (tabId: number) => {
   chrome.debugger.getTargets((tabs) => {
     const currentTab = tabs.find((obj) => obj.tabId === tabId)
-    if (!currentTab.attached) {
+    if (!currentTab?.attached) {
       attachDebugger(tabId)
     }
   })
 }
 
 chrome.tabs.onCreated.addListener((tab) => {
-  attachDebugger(tab.id)
+  tab.id && attachDebugger(tab.id)
 })
 
 chrome.tabs.onActivated.addListener((tab) => {
