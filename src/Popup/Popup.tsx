@@ -14,9 +14,11 @@ import TabItem from './TabItem'
 import LocationPage from './Pages/LocationPage'
 import UserAgentPage from './Pages/UserAgentPage'
 import SettingsPage from './Pages/SettingsPage'
+import AddressAutofillPage from './Pages/AddressAutofillPage'
+import WebRtcPage from './Pages/WebRtcPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState('settings')
+  const [tab, setTab] = useState('webRtc')
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,13 +43,13 @@ const Popup = () => {
           />
           <TabItem
             Icon={Home}
-            active={tab === 'AdressAutofill'}
-            onClick={() => setTab('AdressAutofill')}
+            active={tab === 'addressAutofill'}
+            onClick={() => setTab('addressAutofill')}
           />
           <TabItem
             Icon={MessageSquare}
-            active={tab === 'WebRTC'}
-            onClick={() => setTab('WebRTC')}
+            active={tab === 'webRtc'}
+            onClick={() => setTab('webRtc')}
           />
           <TabItem
             Icon={Sliders}
@@ -66,6 +68,8 @@ const Popup = () => {
         </Flex>
         <Box sx={{ m: '12px', width: '100%' }}>
           <LocationPage tab={tab} />
+          <AddressAutofillPage tab={tab} />
+          <WebRtcPage tab={tab} />
           <UserAgentPage tab={tab} />
           <SettingsPage tab={tab} />
           {/* <Text

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": true,
@@ -15,7 +15,6 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "jsxImportSource": "theme-ui"
-    
   },
   "include": ["src"],
   "exclude": ["build", "node_modules"]

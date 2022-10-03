@@ -30,7 +30,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
         display: tab === 'location' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>Location</Box>
+      <Box sx={{ fontSize: '20px', mb: '8px' }}>Location Data</Box>
       <ConfigurationSelect
         configuration={configuration}
         setConfiguration={setConfiguration}

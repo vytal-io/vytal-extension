@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Box, Label, Select } from 'theme-ui'
-import setWebRtcPolicy from '../../../utils/setWebRtcPolicy'
+import setWebRtcPolicy from '../WebRtcPage/handleWebRtcPolicy'
 import SettingsCheckBox from './SettingsCheckBox'
 
 interface LocationPageProps {
@@ -33,11 +33,11 @@ const SettingsPage = ({ tab }: LocationPageProps) => {
       }}
     >
       <Box sx={{ fontSize: '20px', mb: '12px' }}>Settings</Box>
-      <SettingsCheckBox
+      {/* <SettingsCheckBox
         title={'Disable WebRTC'}
         onChange={setWebRtcPolicy}
         checked={isWebRtcDisabled}
-      />
+      /> */}
       <SettingsCheckBox title={'Disable Address Autofill'} />
       <SettingsCheckBox title={'Dark Mode'} />
       <Label htmlFor="configuration">Language</Label>
