@@ -3,11 +3,11 @@ import { Box, Label, Select } from 'theme-ui'
 import setWebRtcPolicy from '../WebRtcPage/handleWebRtcPolicy'
 import SettingsCheckBox from './SettingsCheckBox'
 
-interface LocationPageProps {
+interface SystemPageProps {
   tab: string
 }
 
-const SettingsPage = ({ tab }: LocationPageProps) => {
+const SettingsPage = ({ tab }: SystemPageProps) => {
   const [isWebRtcDisabled, setIsWebRtcDisabled] = useState(false)
 
   useEffect(() => {

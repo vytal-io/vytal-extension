@@ -19,16 +19,29 @@ interface IPDataProps {
 
 const IpData = ({ ip, setIp }: IPDataProps) => {
   return (
-    <Flex sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-      <Text>{ip && `${ip.query} ${getFlagEmoji(ip.countryCode)}`}</Text>
-      <Button
-        onClick={() => {
-          Promise.resolve(getIp()).then((ipData) => setIp(ipData))
-          detachDebugger()
+    <Flex sx={{}}>
+      <Flex
+        sx={{
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          borderColor: 'grey',
+          borderRadius: '4px',
+          pl: '8px',
+          width: '100%',
         }}
       >
-        Reload
-      </Button>
+        <Text>{ip && `${ip.query} ${getFlagEmoji(ip.countryCode)}`}</Text>
+        {/* <Button
+          onClick={() => {
+            Promise.resolve(getIp()).then((ipData) => setIp(ipData))
+            detachDebugger()
+          }}
+        >
+          Reload
+        </Button> */}
+      </Flex>
     </Flex>
   )
 }

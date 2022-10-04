@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { ThemeProvider, Flex, Box, Text } from 'theme-ui'
 import { theme } from '../theme'
 import {
-  Home,
   MapPin,
+  HardDrive,
   FileText,
   MessageSquare,
   Sliders,
@@ -11,14 +11,15 @@ import {
   ExternalLink,
 } from 'react-feather'
 import TabItem from './TabItem'
-import LocationPage from './Pages/LocationPage'
+import SystemPage from './Pages/SystemPage'
 import UserAgentPage from './Pages/UserAgentPage'
 import SettingsPage from './Pages/SettingsPage'
 import AutofillPage from './Pages/AutofillPage'
 import WebRtcPage from './Pages/WebRtcPage'
+import CurrentPage from './Pages/CurrentPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState('location')
+  const [tab, setTab] = useState('system')
 
   return (
     <ThemeProvider theme={theme}>
@@ -38,8 +39,13 @@ const Popup = () => {
         >
           <TabItem
             Icon={MapPin}
-            active={tab === 'location'}
-            onClick={() => setTab('location')}
+            active={tab === 'current'}
+            onClick={() => setTab('current')}
+          />
+          <TabItem
+            Icon={HardDrive}
+            active={tab === 'system'}
+            onClick={() => setTab('system')}
           />
           <TabItem
             Icon={FileText}
@@ -67,7 +73,8 @@ const Popup = () => {
           />
         </Flex>
         <Box sx={{ m: '12px', width: '100%' }}>
-          <LocationPage tab={tab} />
+          <CurrentPage tab={tab} />
+          <SystemPage tab={tab} />
           <AutofillPage tab={tab} />
           <WebRtcPage tab={tab} />
           <UserAgentPage tab={tab} />

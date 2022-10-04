@@ -25,10 +25,10 @@ const AutofillPage = ({ tab }: SystemPageProps) => {
   return (
     <Box
       sx={{
-        display: tab === 'autofill' ? 'block' : 'none',
+        display: tab === 'current' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>Autofill Values</Box>
+      <Box sx={{ fontSize: '20px', mb: '8px' }}>Current Info</Box>
     </Box>
   )
 }

@@ -9,11 +9,11 @@ import countryLocales from '../../../utils/countryLocales'
 import { ipData } from '../../../types'
 import configurations from '../../../utils/configurations'
 
-interface LocationPageProps {
+interface SystemPageProps {
   tab: string
 }
 
-const LocationPage = ({ tab }: LocationPageProps) => {
+const SystemPage = ({ tab }: SystemPageProps) => {
   const [type, setType] = useState('default')
   const [timezone, setTimezone] = useState('')
   const [locale, setLocale] = useState('')
@@ -64,15 +64,6 @@ const LocationPage = ({ tab }: LocationPageProps) => {
           longitude: configurations[configuration].lon,
         })
       }
-      // setLocale(countryLocales[ip.countryCode].locale)
-      // setLatitude(`${ip.lat}`)
-      // setLongitude(`${ip.lon}`)
-      // chrome.storage.local.set({
-      //   timezone: ip.timezone,
-      //   locale: countryLocales[ip.countryCode].locale,
-      //   latitude: ip.lat,
-      //   longitude: ip.lon,
-      // })
     }
   }, [configuration, ip, type])
 
@@ -86,10 +77,10 @@ const LocationPage = ({ tab }: LocationPageProps) => {
   return (
     <Box
       sx={{
-        display: tab === 'location' ? 'block' : 'none',
+        display: tab === 'system' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '12px' }}>Location Data</Box>
+      <Box sx={{ fontSize: '20px', mb: '12px' }}>System Data</Box>
       <Flex
         sx={{
           justifyContent: 'space-between',
@@ -98,7 +89,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
       >
         <Label>
           <Radio
-            name="locationType"
+            name="systemType"
             value="default"
             onChange={changeType}
             checked={type === 'default'}
@@ -107,7 +98,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
         </Label>
         <Label>
           <Radio
-            name="locationType"
+            name="systemType"
             value="matchIp"
             onChange={changeType}
             checked={type === 'matchIp'}
@@ -116,7 +107,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
         </Label>
         <Label>
           <Radio
-            name="locationType"
+            name="systemType"
             value="custom"
             onChange={changeType}
             checked={type === 'custom'}
@@ -124,7 +115,6 @@ const LocationPage = ({ tab }: LocationPageProps) => {
           Custom
         </Label>
       </Flex>
-      {type === 'matchIp' && <IpData ip={ip} setIp={setIp} />}
       {type === 'custom' && (
         <ConfigurationSelect
           configuration={configuration}
@@ -159,4 +149,4 @@ const LocationPage = ({ tab }: LocationPageProps) => {
   )
 }
 
-export default LocationPage
+export default SystemPage

@@ -3,11 +3,11 @@ import { Box, Button, Select } from 'theme-ui'
 import getWebRTCData from './getWebRTCData'
 import handleWebRtcPolicy from './handleWebRtcPolicy'
 
-interface LocationPageProps {
+interface SystemPageProps {
   tab: string
 }
 
-const WebRtcPage = ({ tab }: LocationPageProps) => {
+const WebRtcPage = ({ tab }: SystemPageProps) => {
   const [webRtcPolicy, setWebRtcPolicy] = useState('default')
   const [webRtcIp, setWebRtcIp] = useState([])
 
