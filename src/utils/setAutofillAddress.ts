@@ -1,16 +1,16 @@
 const setAutofillAddress = () => {
-  chrome.storage.sync.get(['isWebRtcDisabled'], (storage) => {
+  chrome.storage.local.get(['isWebRtcDisabled'], (storage) => {
     const value = storage.isWebRtcDisabled
       ? 'default'
       : 'disable_non_proxied_udp'
 
-      chrome.privacy.services.autofillAddressEnabled.clear({}, () => {
+    chrome.privacy.services.autofillAddressEnabled.clear({}, () => {
       chrome.privacy.network.webRTCIPHandlingPolicy.set(
         {
           value,
         },
         () => {
-          chrome.storage.sync.set({
+          chrome.storage.local.set({
             isWebRtcDisabled: !storage.isWebRtcDisabled,
           })
           //   chrome.privacy.network.webRTCIPHandlingPolicy.get({}, (s) => {

@@ -14,7 +14,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   const [userAgent, setUserAgent] = useState('')
 
   useEffect(() => {
-    chrome.storage.sync.get(
+    chrome.storage.local.get(
       ['type', 'operatingSystem', 'browser', 'userAgent'],
       (storage) => {
         storage.type && setType(storage.type)
@@ -27,7 +27,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
 
   useEffect(() => {
     detachDebugger()
-    chrome.storage.sync.set({ userAgent })
+    chrome.storage.local.set({ userAgent })
   }, [userAgent])
 
   useEffect(() => {
@@ -37,24 +37,24 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   const changeType = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
     e.target.value === 'none' && setUserAgent('')
-    chrome.storage.sync.set({ type: e.target.value })
+    chrome.storage.local.set({ type: e.target.value })
     setType(e.target.value)
   }
 
   const changeOperatingSystem = (e: ChangeEvent<HTMLSelectElement>) => {
-    chrome.storage.sync.set({ operatingSystem: e.target.value })
+    chrome.storage.local.set({ operatingSystem: e.target.value })
     setOperatingSystem(e.target.value)
   }
 
   const changeBrowser = (e: ChangeEvent<HTMLSelectElement>) => {
-    chrome.storage.sync.set({ browser: e.target.value })
+    chrome.storage.local.set({ browser: e.target.value })
     setBrowser(e.target.value)
   }
 
   const changeUserAgent = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
-    chrome.storage.sync.set({ userAgent: e.target.value })
-    chrome.storage.sync.set({ type: 'custom' })
+    chrome.storage.local.set({ userAgent: e.target.value })
+    chrome.storage.local.set({ type: 'custom' })
     setUserAgent(e.target.value)
     setType('custom')
   }
@@ -78,7 +78,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
             value="none"
             onChange={changeType}
             checked={type === 'none'}
-          />{' '}
+          />
           None
         </Label>
         <Label>
@@ -87,7 +87,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
             value="preloaded"
             onChange={changeType}
             checked={type === 'preloaded'}
-          />{' '}
+          />
           Preloaded
         </Label>
         <Label>
@@ -96,7 +96,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
             value="custom"
             onChange={changeType}
             checked={type === 'custom'}
-          />{' '}
+          />
           Custom
         </Label>
       </Flex>

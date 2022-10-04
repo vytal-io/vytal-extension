@@ -16,7 +16,7 @@ const UserAgentSelect = ({
 }: ConfigurationSelectProps) => {
   const changeConfiguration = (e: ChangeEvent<HTMLSelectElement>) => {
     detachDebugger()
-    chrome.storage.sync.set({
+    chrome.storage.local.set({
       configuration: e.target.value,
     })
     setConfiguration(e.target.value)

@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction } from 'react'
 import { Flex, Button, Text } from 'theme-ui'
 import detachDebugger from '../../../utils/detachDebugger'
-import getIP from '../../../utils/getIP'
+import getIp from '../../../utils/getIp'
+import { ipData } from '../../../types'
 
 const getFlagEmoji = (countryCode: string) => {
   const codePoints = countryCode
@@ -13,16 +14,16 @@ const getFlagEmoji = (countryCode: string) => {
 
 interface IPDataProps {
   ip: any
-  setIP: Dispatch<SetStateAction<null>>
+  setIp: Dispatch<SetStateAction<ipData | undefined>>
 }
 
-const IPData = ({ ip, setIP }: IPDataProps) => {
+const IpData = ({ ip, setIp }: IPDataProps) => {
   return (
     <Flex sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <Text>{ip && `${ip.query} ${getFlagEmoji(ip.countryCode)}`}</Text>
       <Button
         onClick={() => {
-          Promise.resolve(getIP()).then((ipData) => setIP(ipData))
+          Promise.resolve(getIp()).then((ipData) => setIp(ipData))
           detachDebugger()
         }}
       >
@@ -32,4 +33,4 @@ const IPData = ({ ip, setIP }: IPDataProps) => {
   )
 }
 
-export default IPData
+export default IpData

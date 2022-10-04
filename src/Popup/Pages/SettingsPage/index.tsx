@@ -11,7 +11,7 @@ const SettingsPage = ({ tab }: LocationPageProps) => {
   const [isWebRtcDisabled, setIsWebRtcDisabled] = useState(false)
 
   useEffect(() => {
-    chrome.storage.sync.get(['isWebRtcDisabled'], (storage) => {
+    chrome.storage.local.get(['isWebRtcDisabled'], (storage) => {
       storage.isWebRtcDisabled && setIsWebRtcDisabled(storage.isWebRtcDisabled)
     })
   }, [])

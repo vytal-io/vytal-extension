@@ -1,28 +1,87 @@
-import { useState, useEffect } from 'react'
-import { Box } from 'theme-ui'
+import { useState, useEffect, ChangeEvent } from 'react'
+import { Box, Flex, Label, Radio } from 'theme-ui'
 import LocationInput from './LocationInput'
 import ConfigurationSelect from './ConfigurationSelect'
-import IPData from './IPData'
-import getIP from '../../../utils/getIP'
+import IpData from './IpData'
+import getIp from '../../../utils/getIp'
+import detachDebugger from '../../../utils/detachDebugger'
+import countryLocales from '../../../utils/countryLocales'
+import { ipData } from '../../../types'
+import configurations from '../../../utils/configurations'
 
 interface LocationPageProps {
   tab: string
 }
 
 const LocationPage = ({ tab }: LocationPageProps) => {
-  const [ip, setIP] = useState(null)
-  const [configuration, setConfiguration] = useState('default')
+  const [type, setType] = useState('default')
+  const [timezone, setTimezone] = useState('')
+  const [locale, setLocale] = useState('')
+  const [latitude, setLatitude] = useState('')
+  const [longitude, setLongitude] = useState('')
+  const [ip, setIp] = useState<ipData | undefined>(undefined)
+  const [configuration, setConfiguration] = useState('custom')
 
   useEffect(() => {
-    chrome.storage.sync.get(['configuration', 'ipData'], (storage) => {
-      storage.configuration && setConfiguration(storage.configuration)
-      if (storage.ipData) {
-        setIP(storage.ipData)
-      } else {
-        Promise.resolve(getIP()).then((ipData) => setIP(ipData))
-      }
-    })
+    Promise.resolve(getIp()).then((ipData) => setIp(ipData))
   }, [])
+
+  useEffect(() => {
+    if (type === 'default') {
+      setTimezone('')
+      setLocale('')
+      setLatitude('')
+      setLongitude('')
+      chrome.storage.local.set({
+        timezone: '',
+        locale: '',
+        latitude: '',
+        longitude: '',
+      })
+    } else if (type === 'matchIp') {
+      if (ip) {
+        setTimezone(ip.timezone)
+        setLocale(countryLocales[ip.countryCode].locale)
+        setLatitude(`${ip.lat}`)
+        setLongitude(`${ip.lon}`)
+        chrome.storage.local.set({
+          timezone: ip.timezone,
+          locale: countryLocales[ip.countryCode].locale,
+          latitude: ip.lat,
+          longitude: ip.lon,
+        })
+      }
+    } else if (type === 'custom') {
+      if (configuration !== 'custom') {
+        setTimezone(configurations[configuration].timezone)
+        setLocale(configurations[configuration].locale)
+        setLatitude(configurations[configuration].lat)
+        setLongitude(configurations[configuration].lon)
+        chrome.storage.local.set({
+          timezone: configurations[configuration].timezone,
+          locale: configurations[configuration].locale,
+          latitude: configurations[configuration].lat,
+          longitude: configurations[configuration].lon,
+        })
+      }
+      // setLocale(countryLocales[ip.countryCode].locale)
+      // setLatitude(`${ip.lat}`)
+      // setLongitude(`${ip.lon}`)
+      // chrome.storage.local.set({
+      //   timezone: ip.timezone,
+      //   locale: countryLocales[ip.countryCode].locale,
+      //   latitude: ip.lat,
+      //   longitude: ip.lon,
+      // })
+    }
+  }, [configuration, ip, type])
+
+  const changeType = (e: ChangeEvent<HTMLInputElement>) => {
+    // detachDebugger()
+    // e.target.value === 'none' && setUserAgent('')
+    // chrome.storage.local.set({ type: e.target.value })
+    setType(e.target.value)
+  }
 
   return (
     <Box
@@ -30,39 +89,71 @@ const LocationPage = ({ tab }: LocationPageProps) => {
         display: tab === 'location' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>Location Data</Box>
-      <ConfigurationSelect
-        configuration={configuration}
-        setConfiguration={setConfiguration}
-      />
-      {configuration === 'match' && <IPData ip={ip} setIP={setIP} />}
+      <Box sx={{ fontSize: '20px', mb: '12px' }}>Location Data</Box>
+      <Flex
+        sx={{
+          justifyContent: 'space-between',
+          mb: '8px',
+        }}
+      >
+        <Label>
+          <Radio
+            name="locationType"
+            value="default"
+            onChange={changeType}
+            checked={type === 'default'}
+          />
+          Default
+        </Label>
+        <Label>
+          <Radio
+            name="locationType"
+            value="matchIp"
+            onChange={changeType}
+            checked={type === 'matchIp'}
+          />
+          Match IP
+        </Label>
+        <Label>
+          <Radio
+            name="locationType"
+            value="custom"
+            onChange={changeType}
+            checked={type === 'custom'}
+          />
+          Custom
+        </Label>
+      </Flex>
+      {type === 'matchIp' && <IpData ip={ip} setIp={setIp} />}
+      {type === 'custom' && (
+        <ConfigurationSelect
+          configuration={configuration}
+          setConfiguration={setConfiguration}
+        />
+      )}
       <LocationInput
-        type="timezone"
+        name="timezone"
         title="Timezone"
-        ip={ip}
-        configuration={configuration}
-        setConfiguration={setConfiguration}
+        value={timezone}
+        setValue={setTimezone}
       />
       <LocationInput
-        type="locale"
+        name="locale"
         title="Locale"
-        ip={ip}
-        configuration={configuration}
-        setConfiguration={setConfiguration}
+        value={locale}
+        setValue={setLocale}
       />
       <LocationInput
-        type="lat"
+        name="lat"
         title="Latitude"
-        ip={ip}
-        configuration={configuration}
-        setConfiguration={setConfiguration}
+        value={latitude}
+        setValue={setLatitude}
       />
       <LocationInput
-        type="lon"
+        name="lon"
         title="Longitude"
-        ip={ip}
-        configuration={configuration}
-        setConfiguration={setConfiguration}
+        value={longitude}
+        setValue={setLongitude}
       />
     </Box>
   )

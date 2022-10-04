@@ -15,7 +15,6 @@ const configurations: any = {
   },
   berlin: {
     name: 'Berlin',
-
     timezone: 'Europe/Berlin',
     locale: 'de-DE',
     lat: 52.520007,

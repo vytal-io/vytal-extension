@@ -11,55 +11,55 @@ import detachDebugger from '../../../utils/detachDebugger'
 import { Label, Input } from 'theme-ui'
 
 interface LocationInputProps {
-  type: string
+  name: string
   title: string
-  ip: any
-  configuration: string
-  setConfiguration: Dispatch<SetStateAction<string>>
+  // ip: any
+  value: string
+  setValue: Dispatch<SetStateAction<string>>
 }
 
 const LocationInput = ({
-  type,
+  name,
   title,
-  ip,
-  configuration,
-  setConfiguration,
+  // ip,
+  value,
+  setValue,
 }: LocationInputProps) => {
-  const [value, setValue] = useState('')
+  // const [value, setValue] = useState('')
 
-  useEffect(() => {
-    if (configuration === 'none') {
-      setValue('')
-      chrome.storage.sync.set({ [type]: '' })
-    } else if (configuration === 'match') {
-      if (ip) {
-        const ipTypeValue =
-          type === 'locale' ? countryLocales[ip.countryCode].locale : ip[type]
-        setValue(ipTypeValue)
-        chrome.storage.sync.set({ [type]: ipTypeValue })
-      }
-    } else if (configuration === 'custom') {
-      chrome.storage.sync.get([type], (storage) => {
-        storage[type] && setValue(storage[type])
-      })
-    } else if (configuration !== 'default') {
-      setValue(configurations[configuration][type])
-      chrome.storage.sync.set({ [type]: configurations[configuration][type] })
-    }
-  }, [ip, configuration, type, value])
+  // useEffect(() => {
+  //   if (configuration === 'none') {
+  //     setValue('')
+  //     chrome.storage.local.set({ [type]: '' })
+  //   } else if (configuration === 'match') {
+  //     if (ip) {
+  //       const ipTypeValue =
+  //         type === 'locale' ? countryLocales[ip.countryCode].locale : ip[type]
+  //       setValue(ipTypeValue)
+  //       chrome.storage.local.set({ [type]: ipTypeValue })
+  //     }
+  //   } else if (configuration === 'custom') {
+  //     chrome.storage.local.get([type], (storage) => {
+  //       storage[type] && setValue(storage[type])
+  //     })
+  //   } else if (configuration !== 'default') {
+  //     setValue(configurations[configuration][type])
+  //     chrome.storage.local.set({ [type]: configurations[configuration][type] })
+  //   }
+  // }, [name, value])
 
   const changeTextValue = (e: ChangeEvent<HTMLInputElement>) => {
-    detachDebugger()
-    chrome.storage.sync.set({ [type]: e.target.value })
+    // detachDebugger()
+    // chrome.storage.local.set({ [type]: e.target.value })
     setValue(e.target.value)
-    chrome.storage.sync.set({ configuration: 'custom' })
-    setConfiguration('custom')
+    // chrome.storage.local.set({ configuration: 'custom' })
+    // setConfiguration('custom')
   }
 
   return (
     <>
-      <Label htmlFor={type}>{title}</Label>
-      <Input name={type} value={value} onChange={changeTextValue} />
+      <Label htmlFor={name}>{title}</Label>
+      <Input name={name} value={value} onChange={changeTextValue} />
     </>
   )
 }

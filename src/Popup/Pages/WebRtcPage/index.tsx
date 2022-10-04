@@ -12,7 +12,7 @@ const WebRtcPage = ({ tab }: LocationPageProps) => {
   const [webRtcIp, setWebRtcIp] = useState([])
 
   useEffect(() => {
-    chrome.storage.sync.get(['webRtcPolicy'], (storage) => {
+    chrome.storage.local.get(['webRtcPolicy'], (storage) => {
       storage.webRtcPolicy && setWebRtcPolicy(storage.webRtcPolicy)
     })
   }, [])
@@ -30,7 +30,7 @@ const WebRtcPage = ({ tab }: LocationPageProps) => {
         display: tab === 'webRtc' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>WebRTC</Box>
+      <Box sx={{ fontSize: '20px', mb: '8px' }}>WebRTC Policy</Box>
       <Select
         name="webRtcPolicy"
         id="webRtcPolicy"

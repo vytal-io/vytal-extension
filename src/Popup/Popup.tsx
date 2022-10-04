@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { ThemeProvider, Flex, Box, Text } from 'theme-ui'
 import { theme } from '../theme'
 import {
-  MapPin,
   Home,
+  MapPin,
+  FileText,
   MessageSquare,
-  Globe,
   Sliders,
   Settings,
   ExternalLink,
@@ -14,11 +14,11 @@ import TabItem from './TabItem'
 import LocationPage from './Pages/LocationPage'
 import UserAgentPage from './Pages/UserAgentPage'
 import SettingsPage from './Pages/SettingsPage'
-import AddressAutofillPage from './Pages/AddressAutofillPage'
+import AutofillPage from './Pages/AutofillPage'
 import WebRtcPage from './Pages/WebRtcPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState('webRtc')
+  const [tab, setTab] = useState('location')
 
   return (
     <ThemeProvider theme={theme}>
@@ -42,9 +42,9 @@ const Popup = () => {
             onClick={() => setTab('location')}
           />
           <TabItem
-            Icon={Home}
-            active={tab === 'addressAutofill'}
-            onClick={() => setTab('addressAutofill')}
+            Icon={FileText}
+            active={tab === 'autofill'}
+            onClick={() => setTab('autofill')}
           />
           <TabItem
             Icon={MessageSquare}
@@ -68,7 +68,7 @@ const Popup = () => {
         </Flex>
         <Box sx={{ m: '12px', width: '100%' }}>
           <LocationPage tab={tab} />
-          <AddressAutofillPage tab={tab} />
+          <AutofillPage tab={tab} />
           <WebRtcPage tab={tab} />
           <UserAgentPage tab={tab} />
           <SettingsPage tab={tab} />

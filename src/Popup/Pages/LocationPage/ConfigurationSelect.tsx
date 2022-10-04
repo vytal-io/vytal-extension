@@ -14,7 +14,7 @@ const ConfigurationSelect = ({
 }: ConfigurationSelectProps) => {
   const changeConfiguration = (e: ChangeEvent<HTMLSelectElement>) => {
     detachDebugger()
-    chrome.storage.sync.set({
+    chrome.storage.local.set({
       configuration: e.target.value,
     })
     setConfiguration(e.target.value)
@@ -30,16 +30,12 @@ const ConfigurationSelect = ({
         onChange={changeConfiguration}
         mb={'8px'}
       >
-        <option value="none">None</option>
-        <option value="match">Match IP</option>
         <option value="custom">Custom</option>
-        <optgroup label="Locations">
-          {Object.keys(configurations).map((key) => (
-            <option value={key} key={key}>
-              {configurations[key].name}
-            </option>
-          ))}
-        </optgroup>
+        {Object.keys(configurations).map((key) => (
+          <option value={key} key={key}>
+            {configurations[key].name}
+          </option>
+        ))}
       </Select>
     </>
   )

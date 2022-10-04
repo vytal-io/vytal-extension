@@ -1,5 +1,5 @@
 const attachDebugger = (tabId: number) => {
-  chrome.storage.sync.get(
+  chrome.storage.local.get(
     [
       'ipData',
       'timezone',

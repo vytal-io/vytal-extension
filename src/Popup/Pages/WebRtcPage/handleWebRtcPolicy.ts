@@ -6,7 +6,7 @@ const handleWebRtcPolicy = (value: string) => {
         value,
       },
       () => {
-        chrome.storage.sync.set({
+        chrome.storage.local.set({
           webRtcPolicy: value,
         })
       }
