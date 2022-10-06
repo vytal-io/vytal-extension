@@ -7,9 +7,9 @@
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "icon-32.png"
+    "default_icon": "icon32.png"
   },
   "icons": {
-    "128": "icon-128.png"
+    "128": "icon128.png"
   }
 }

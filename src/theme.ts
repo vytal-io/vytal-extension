@@ -4,8 +4,8 @@ export const theme: Theme = {
   colors: {
     text: '#333333',
     background: '#FDFDFD',
-    primary: '#a55eea',
-    primaryDark: '#9454d2',
+    primary: '#B77EEE',
+    primaryDark: '#a55eea',
     red: '#fc5c65',
     redDark: '#e2525a',
     green: '#26de81',
@@ -49,6 +49,7 @@ export const theme: Theme = {
   },
   buttons: {
     primary: {
+      borderRadius: 0,
       color: 'background',
       bg: 'primary',
       py: '3px',
