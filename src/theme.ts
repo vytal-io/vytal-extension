@@ -35,12 +35,16 @@ export const theme: Theme = {
       },
     },
     select: {
+      cursor: 'pointer',
       p: '2px 8px',
       borderColor: 'grey',
       '&:focus': {
         borderColor: 'primaryDark',
         outline: 'none',
       },
+    },
+    radio: {
+      cursor: 'pointer',
     },
   },
   buttons: {

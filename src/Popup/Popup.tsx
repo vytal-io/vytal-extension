@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { ThemeProvider, Flex, Box, Text } from 'theme-ui'
+import { useState, useEffect } from 'react'
+import { ThemeProvider, Flex, Box } from 'theme-ui'
 import { theme } from '../theme'
 import {
   MapPin,
@@ -17,9 +17,18 @@ import SettingsPage from './Pages/SettingsPage'
 import AutofillPage from './Pages/AutofillPage'
 import WebRtcPage from './Pages/WebRtcPage'
 import CurrentPage from './Pages/CurrentPage'
+import { ipData } from '../types'
+import getIp from '../utils/getIp'
 
 const Popup = () => {
-  const [tab, setTab] = useState('system')
+  const [tab, setTab] = useState('current')
+  const [ipData, setIpData] = useState<ipData | undefined>(undefined)
+
+  useEffect(() => {
+    Promise.resolve(getIp()).then((data) => {
+      setIpData(data)
+    })
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -74,7 +83,7 @@ const Popup = () => {
         </Flex>
         <Box sx={{ m: '12px', width: '100%' }}>
           <CurrentPage tab={tab} />
-          <SystemPage tab={tab} />
+          <SystemPage tab={tab} ipData={ipData} />
           <AutofillPage tab={tab} />
           <WebRtcPage tab={tab} />
           <UserAgentPage tab={tab} />

@@ -1,9 +1,6 @@
 import { useState, useEffect, ChangeEvent } from 'react'
-import { Box, Flex, Label, Radio } from 'theme-ui'
+import { Box, Flex, Label, Radio, Select } from 'theme-ui'
 import LocationInput from './LocationInput'
-import ConfigurationSelect from './ConfigurationSelect'
-import IpData from './IpData'
-import getIp from '../../../utils/getIp'
 import detachDebugger from '../../../utils/detachDebugger'
 import countryLocales from '../../../utils/countryLocales'
 import { ipData } from '../../../types'
@@ -11,23 +8,42 @@ import configurations from '../../../utils/configurations'
 
 interface SystemPageProps {
   tab: string
+  ipData?: ipData
 }
 
-const SystemPage = ({ tab }: SystemPageProps) => {
-  const [type, setType] = useState('default')
+const SystemPage = ({ tab, ipData }: SystemPageProps) => {
+  const [systemType, setSystemType] = useState('')
   const [timezone, setTimezone] = useState('')
   const [locale, setLocale] = useState('')
-  const [latitude, setLatitude] = useState('')
-  const [longitude, setLongitude] = useState('')
-  const [ip, setIp] = useState<ipData | undefined>(undefined)
+  const [lat, setLatitude] = useState('')
+  const [lon, setLongitude] = useState('')
   const [configuration, setConfiguration] = useState('custom')
 
   useEffect(() => {
-    Promise.resolve(getIp()).then((ipData) => setIp(ipData))
+    chrome.storage.local.get(
+      ['systemType', 'configuration', 'timezone', 'locale', 'lat', 'lon'],
+      (storage) => {
+        if (storage.systemType === 'custom') {
+          console.log(storage.configuration)
+          storage.configuration && setConfiguration(storage.configuration)
+          storage.timezone && setTimezone(storage.timezone)
+          storage.locale && setLocale(storage.locale)
+          storage.lat && setLatitude(storage.lat)
+          storage.lon && setLongitude(storage.lon)
+        }
+        storage.systemType
+          ? setSystemType(storage.systemType)
+          : setSystemType('default')
+      }
+    )
   }, [])
 
-  useEffect(() => {
-    if (type === 'default') {
+  const changeType = (e: ChangeEvent<HTMLInputElement>) => {
+    detachDebugger()
+    setSystemType(e.target.value)
+    chrome.storage.local.set({ systemType: e.target.value })
+
+    if (e.target.value === 'default') {
       setTimezone('')
       setLocale('')
       setLatitude('')
@@ -35,23 +51,23 @@ const SystemPage = ({ tab }: SystemPageProps) => {
       chrome.storage.local.set({
         timezone: '',
         locale: '',
-        latitude: '',
-        longitude: '',
+        lat: '',
+        lon: '',
       })
-    } else if (type === 'matchIp') {
-      if (ip) {
-        setTimezone(ip.timezone)
-        setLocale(countryLocales[ip.countryCode].locale)
-        setLatitude(`${ip.lat}`)
-        setLongitude(`${ip.lon}`)
+    } else if (e.target.value === 'matchIp') {
+      if (ipData) {
+        setTimezone(ipData.timezone)
+        setLocale(countryLocales[ipData.countryCode].locale)
+        setLatitude(`${ipData.lat}`)
+        setLongitude(`${ipData.lon}`)
         chrome.storage.local.set({
-          timezone: ip.timezone,
-          locale: countryLocales[ip.countryCode].locale,
-          latitude: ip.lat,
-          longitude: ip.lon,
+          timezone: ipData.timezone,
+          locale: countryLocales[ipData.countryCode].locale,
+          lat: ipData.lat,
+          lon: ipData.lon,
         })
       }
-    } else if (type === 'custom') {
+    } else if (e.target.value === 'custom')
       if (configuration !== 'custom') {
         setTimezone(configurations[configuration].timezone)
         setLocale(configurations[configuration].locale)
@@ -60,18 +76,42 @@ const SystemPage = ({ tab }: SystemPageProps) => {
         chrome.storage.local.set({
           timezone: configurations[configuration].timezone,
           locale: configurations[configuration].locale,
-          latitude: configurations[configuration].lat,
-          longitude: configurations[configuration].lon,
+          lat: configurations[configuration].lat,
+          lon: configurations[configuration].lon,
         })
       }
-    }
-  }, [configuration, ip, type])
+  }
 
-  const changeType = (e: ChangeEvent<HTMLInputElement>) => {
-    // detachDebugger()
-    // e.target.value === 'none' && setUserAgent('')
-    // chrome.storage.local.set({ type: e.target.value })
-    setType(e.target.value)
+  const changeConfiguration = (e: ChangeEvent<HTMLSelectElement>) => {
+    detachDebugger()
+    setConfiguration(e.target.value)
+    chrome.storage.local.set({
+      configuration: e.target.value,
+    })
+    if (e.target.value !== 'custom') {
+      setTimezone(configurations[e.target.value].timezone)
+      setLocale(configurations[e.target.value].locale)
+      setLatitude(configurations[e.target.value].lat)
+      setLongitude(configurations[e.target.value].lon)
+      chrome.storage.local.set({
+        timezone: configurations[e.target.value].timezone,
+        locale: configurations[e.target.value].locale,
+        lat: configurations[e.target.value].lat,
+        lon: configurations[e.target.value].lon,
+      })
+    }
+  }
+
+  const changeInputText = () => {
+    if (systemType !== 'custom' || configuration !== 'custom') {
+      console.log(2)
+      setConfiguration('custom')
+      setSystemType('custom')
+      chrome.storage.local.set({
+        configuration: 'custom',
+        systemType: 'custom',
+      })
+    }
   }
 
   return (
@@ -92,7 +132,7 @@ const SystemPage = ({ tab }: SystemPageProps) => {
             name="systemType"
             value="default"
             onChange={changeType}
-            checked={type === 'default'}
+            checked={systemType === 'default'}
           />
           Default
         </Label>
@@ -101,7 +141,7 @@ const SystemPage = ({ tab }: SystemPageProps) => {
             name="systemType"
             value="matchIp"
             onChange={changeType}
-            checked={type === 'matchIp'}
+            checked={systemType === 'matchIp'}
           />
           Match IP
         </Label>
@@ -110,40 +150,56 @@ const SystemPage = ({ tab }: SystemPageProps) => {
             name="systemType"
             value="custom"
             onChange={changeType}
-            checked={type === 'custom'}
+            checked={systemType === 'custom'}
           />
           Custom
         </Label>
       </Flex>
-      {type === 'custom' && (
-        <ConfigurationSelect
-          configuration={configuration}
-          setConfiguration={setConfiguration}
-        />
+      {systemType === 'custom' && (
+        <>
+          <Label htmlFor="configuration">Configuration</Label>
+          <Select
+            name="configuration"
+            value={configuration}
+            onChange={changeConfiguration}
+            mb={'8px'}
+          >
+            <option value="custom">Custom</option>
+            {Object.keys(configurations).map((key) => (
+              <option value={key} key={key}>
+                {configurations[key].name}
+              </option>
+            ))}
+          </Select>
+        </>
       )}
       <LocationInput
         name="timezone"
         title="Timezone"
         value={timezone}
         setValue={setTimezone}
+        onChange={changeInputText}
       />
       <LocationInput
         name="locale"
         title="Locale"
         value={locale}
         setValue={setLocale}
+        onChange={changeInputText}
       />
       <LocationInput
         name="lat"
         title="Latitude"
-        value={latitude}
+        value={lat}
         setValue={setLatitude}
+        onChange={changeInputText}
       />
       <LocationInput
         name="lon"
         title="Longitude"
-        value={longitude}
+        value={lon}
         setValue={setLongitude}
+        onChange={changeInputText}
       />
     </Box>
   )

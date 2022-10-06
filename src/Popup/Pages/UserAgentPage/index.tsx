@@ -101,37 +101,41 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         </Label>
       </Flex>
       {type === 'preloaded' && (
-        <>
-          <Label htmlFor="operatingSystem">Operating System</Label>
-          <Select
-            name="operatingSystem"
-            id="operatingSystem"
-            value={operatingSystem}
-            onChange={changeOperatingSystem}
-            mb={'8px'}
-          >
-            <option sx={{ display: 'none' }}></option>
-            {Object.keys(userAgents).map((key) => (
-              <option value={key} key={key}>
-                {key}
-              </option>
-            ))}
-          </Select>
-          <Label htmlFor="browser">Browser</Label>
-          <Select
-            name="browser"
-            id="browser"
-            value={browser}
-            onChange={changeBrowser}
-            mb={'8px'}
-          >
-            {Object.keys(userAgents[operatingSystem]).map((key) => (
-              <option value={key} key={key}>
-                {key}
-              </option>
-            ))}
-          </Select>
-        </>
+        <Flex sx={{ gap: '16px' }}>
+          <Box sx={{ width: '100%' }}>
+            <Label htmlFor="operatingSystem">Operating System</Label>
+            <Select
+              name="operatingSystem"
+              id="operatingSystem"
+              value={operatingSystem}
+              onChange={changeOperatingSystem}
+              mb={'8px'}
+            >
+              <option sx={{ display: 'none' }}></option>
+              {Object.keys(userAgents).map((key) => (
+                <option value={key} key={key}>
+                  {key}
+                </option>
+              ))}
+            </Select>
+          </Box>
+          <Box sx={{ width: '100%' }}>
+            <Label htmlFor="browser">Browser</Label>
+            <Select
+              name="browser"
+              id="browser"
+              value={browser}
+              onChange={changeBrowser}
+              mb={'8px'}
+            >
+              {Object.keys(userAgents[operatingSystem]).map((key) => (
+                <option value={key} key={key}>
+                  {key}
+                </option>
+              ))}
+            </Select>
+          </Box>
+        </Flex>
       )}
       <Label htmlFor="userAgent">User Agent</Label>
       <Input name="userAgent" value={userAgent} onChange={changeUserAgent} />

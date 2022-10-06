@@ -1,36 +1,19 @@
-import { useState, useEffect } from 'react'
 import { Box } from 'theme-ui'
 
-import getIP from '../../../utils/getIp'
-
-interface SystemPageProps {
+interface CurrentPageProps {
   tab: string
 }
 
-const AutofillPage = ({ tab }: SystemPageProps) => {
-  const [ip, setIP] = useState(null)
-  const [configuration, setConfiguration] = useState('default')
-
-  useEffect(() => {
-    chrome.storage.local.get(['configuration', 'ipData'], (storage) => {
-      storage.configuration && setConfiguration(storage.configuration)
-      if (storage.ipData) {
-        setIP(storage.ipData)
-      } else {
-        Promise.resolve(getIP()).then((ipData) => setIP(ipData))
-      }
-    })
-  }, [])
-
+const CurrentPage = ({ tab }: CurrentPageProps) => {
   return (
     <Box
       sx={{
         display: tab === 'current' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>Current Info</Box>
+      <Box sx={{ fontSize: '20px', mb: '12px' }}>Current Info</Box>
     </Box>
   )
 }
 
-export default AutofillPage
+export default CurrentPage
