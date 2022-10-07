@@ -14,12 +14,11 @@ export const theme: Theme = {
   },
   styles: {
     root: {
-      backgroundColor: 'body',
+      backgroundColor: 'background',
       color: 'text',
       fontSize: '18px',
       lineHeight: '22px',
       margin: '0',
-      fontFamily: "'Segoe UI', Tahoma, sans-serif",
     },
   },
 

@@ -65,7 +65,9 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         display: tab === 'useragent' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '12px' }}>Other Options</Box>
+      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
+        Other Options
+      </Box>
       <Flex
         sx={{
           justifyContent: 'space-between',

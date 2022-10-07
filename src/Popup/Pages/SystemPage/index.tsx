@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from 'react'
 import { Box, Flex, Label, Radio, Select } from 'theme-ui'
-import LocationInput from './LocationInput'
+import SystemInput from './SystemInput'
 import detachDebugger from '../../../utils/detachDebugger'
 import countryLocales from '../../../utils/countryLocales'
 import { ipData } from '../../../types'
@@ -120,7 +120,9 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
         display: tab === 'system' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '12px' }}>System Data</Box>
+      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
+        System Data
+      </Box>
       <Flex
         sx={{
           justifyContent: 'space-between',
@@ -173,28 +175,28 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
           </Select>
         </>
       )}
-      <LocationInput
+      <SystemInput
         name="timezone"
         title="Timezone"
         value={timezone}
         setValue={setTimezone}
         onChange={changeInputText}
       />
-      <LocationInput
+      <SystemInput
         name="locale"
         title="Locale"
         value={locale}
         setValue={setLocale}
         onChange={changeInputText}
       />
-      <LocationInput
+      <SystemInput
         name="lat"
         title="Latitude"
         value={lat}
         setValue={setLatitude}
         onChange={changeInputText}
       />
-      <LocationInput
+      <SystemInput
         name="lon"
         title="Longitude"
         value={lon}

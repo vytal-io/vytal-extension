@@ -3,7 +3,7 @@ import { Label, Input } from 'theme-ui'
 import detachDebugger from '../../../utils/detachDebugger'
 import debounce from 'lodash.debounce'
 
-interface LocationInputProps {
+interface SystemInputProps {
   name: string
   title: string
   value: string
@@ -11,13 +11,13 @@ interface LocationInputProps {
   onChange: () => void
 }
 
-const LocationInput = ({
+const SystemInput = ({
   name,
   title,
   value,
   setValue,
   onChange,
-}: LocationInputProps) => {
+}: SystemInputProps) => {
   const debouncedChangeHandler = useMemo(
     () =>
       debounce((e) => {
@@ -41,4 +41,4 @@ const LocationInput = ({
   )
 }
 
-export default LocationInput
+export default SystemInput

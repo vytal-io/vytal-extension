@@ -19,9 +19,10 @@ import WebRtcPage from './Pages/WebRtcPage'
 import CurrentPage from './Pages/CurrentPage'
 import { ipData } from '../types'
 import getIp from '../utils/getIp'
+import '../assets/global.css'
 
 const Popup = () => {
-  const [tab, setTab] = useState('current')
+  const [tab, setTab] = useState('webRtc')
   const [ipData, setIpData] = useState<ipData | undefined>(undefined)
 
   useEffect(() => {

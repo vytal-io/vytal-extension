@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, Button, Select } from 'theme-ui'
+import { Box, Button, Label, Radio, Select, Text } from 'theme-ui'
 import getWebRTCData from './getWebRTCData'
 import handleWebRtcPolicy from './handleWebRtcPolicy'
 
@@ -30,8 +30,76 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
         display: tab === 'webRtc' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>WebRTC Policy</Box>
-      <Select
+      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
+        WebRTC Policy
+      </Box>
+      <Label>
+        <Radio
+          name="webRtcPolicy"
+          value="default"
+          onChange={(e) => handleWebRtcPolicy(e.target.value)}
+          checked={webRtcPolicy === 'default'}
+        />
+        <Box>
+          <Text sx={{ fontWeight: '700' }}>Default</Text>
+          <Box sx={{ mb: '12px', fontSize: '12px' }}>
+            Same as above, except allow WebRTC traffic through the default
+            private
+          </Box>
+        </Box>
+      </Label>
+
+      <Label>
+        <Radio
+          name="webRtcPolicy"
+          value="default_public_and_private_interfaces"
+          onChange={(e) => handleWebRtcPolicy(e.target.value)}
+          checked={webRtcPolicy === 'default_public_and_private_interfaces'}
+        />
+        <Box>
+          <Text sx={{ fontWeight: '700' }}>
+            Default public and private interfaces
+          </Text>
+          <Box sx={{ mb: '12px', fontSize: '12px' }}>
+            Send WebRTC traffic via the default public network adapter to the
+            Internet. This will be.
+          </Box>
+        </Box>
+      </Label>
+
+      <Label>
+        <Radio
+          name="webRtcPolicy"
+          value="default_public_interface_only"
+          onChange={(e) => handleWebRtcPolicy(e.target.value)}
+          checked={webRtcPolicy === 'default_public_interface_only'}
+        />
+        <Box>
+          <Text sx={{ fontWeight: '700' }}>Default public interface only</Text>
+          <Box sx={{ mb: '12px', fontSize: '12px' }}>
+            Same as above, except allow WebRTC traffic through the default
+            private interface to your.
+          </Box>
+        </Box>
+      </Label>
+
+      <Label>
+        <Radio
+          name="webRtcPolicy"
+          value="disable_non_proxied_udp"
+          onChange={(e) => handleWebRtcPolicy(e.target.value)}
+          checked={webRtcPolicy === 'disable_non_proxied_udp'}
+        />
+        <Box>
+          <Text sx={{ fontWeight: '700' }}>Disable non proxied udp</Text>
+          <Box sx={{ mb: '12px', fontSize: '12px' }}>
+            Force the use of a proxy, and only allow WebRTC traffic over UDP
+            proxies.
+          </Box>
+        </Box>
+      </Label>
+
+      {/* <Select
         name="webRtcPolicy"
         id="webRtcPolicy"
         value={webRtcPolicy}
@@ -45,8 +113,8 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
           Default public interface only
         </option>
         <option value="disable_non_proxied_udp">Disable non proxied udp</option>
-      </Select>
-      <Box sx={{ fontSize: '12px', mb: '8px' }}>
+      </Select> */}
+      {/* <Box sx={{ fontSize: '12px', mb: '8px' }}>
         IP: {JSON.stringify(webRtcIp)}
       </Box>
       <Button
@@ -59,7 +127,7 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
         }}
       >
         Reload
-      </Button>
+      </Button> */}
     </Box>
   )
 }

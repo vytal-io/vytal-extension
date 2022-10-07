@@ -32,7 +32,9 @@ const SettingsPage = ({ tab }: SystemPageProps) => {
         display: tab === 'settings' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '12px' }}>Settings</Box>
+      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
+        Settings
+      </Box>
       {/* <SettingsCheckBox
         title={'Disable WebRTC'}
         onChange={setWebRtcPolicy}

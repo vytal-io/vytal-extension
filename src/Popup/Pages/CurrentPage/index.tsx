@@ -11,7 +11,9 @@ const CurrentPage = ({ tab }: CurrentPageProps) => {
         display: tab === 'current' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '12px' }}>Current Info</Box>
+      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
+        Current Info
+      </Box>
     </Box>
   )
 }

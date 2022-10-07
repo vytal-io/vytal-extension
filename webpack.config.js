@@ -131,7 +131,7 @@ var options = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'src/assets/img/icon128.png',
+          from: 'src/assets/icon128.png',
           to: path.join(__dirname, 'build'),
           force: true,
         },
@@ -140,7 +140,16 @@ var options = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'src/assets/img/icon32.png',
+          from: 'src/assets/icon32.png',
+          to: path.join(__dirname, 'build'),
+          force: true,
+        },
+      ],
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/assets/Nunito-VariableFont_wght.ttf',
           to: path.join(__dirname, 'build'),
           force: true,
         },

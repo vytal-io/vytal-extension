@@ -26,7 +26,9 @@ const AutofillPage = ({ tab }: SystemPageProps) => {
         display: tab === 'autofill' ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '20px', mb: '8px' }}>Autofill Options</Box>
+      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
+        Autofill Options
+      </Box>
     </Box>
   )
 }
