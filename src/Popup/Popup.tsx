@@ -6,6 +6,7 @@ import {
   HardDrive,
   FileText,
   MessageSquare,
+  Globe,
   Sliders,
   Settings,
   ExternalLink,
@@ -20,6 +21,7 @@ import CurrentPage from './Pages/CurrentPage'
 import { ipData } from '../types'
 import getIp from '../utils/getIp'
 import '../assets/global.css'
+import OtherOptionsPage from './Pages/OtherOptionsPage'
 
 const Popup = () => {
   const [tab, setTab] = useState('webRtc')
@@ -36,7 +38,7 @@ const Popup = () => {
       <Flex
         sx={{
           width: '350px',
-          height: '390px',
+          height: '400px',
         }}
       >
         <Flex
@@ -68,19 +70,24 @@ const Popup = () => {
             onClick={() => setTab('webRtc')}
           />
           <TabItem
-            Icon={Sliders}
+            Icon={Globe}
             active={tab === 'useragent'}
             onClick={() => setTab('useragent')}
+          />
+          <TabItem
+            Icon={Sliders}
+            active={tab === 'otherOptions'}
+            onClick={() => setTab('otherOptions')}
           />
           <TabItem
             Icon={Settings}
             active={tab === 'settings'}
             onClick={() => setTab('settings')}
           />
-          <TabItem
+          {/* <TabItem
             Icon={ExternalLink}
             onClick={() => window.open('https://vytal.io')}
-          />
+          /> */}
         </Flex>
         <Box sx={{ m: '12px', width: '100%' }}>
           <CurrentPage tab={tab} />
@@ -88,6 +95,7 @@ const Popup = () => {
           <AutofillPage tab={tab} />
           <WebRtcPage tab={tab} />
           <UserAgentPage tab={tab} />
+          <OtherOptionsPage tab={tab} />
           <SettingsPage tab={tab} />
           {/* <Text
             sx={{

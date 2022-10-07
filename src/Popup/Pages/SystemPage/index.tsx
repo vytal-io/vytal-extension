@@ -24,7 +24,6 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
       ['systemType', 'configuration', 'timezone', 'locale', 'lat', 'lon'],
       (storage) => {
         if (storage.systemType === 'custom') {
-          console.log(storage.configuration)
           storage.configuration && setConfiguration(storage.configuration)
           storage.timezone && setTimezone(storage.timezone)
           storage.locale && setLocale(storage.locale)
@@ -104,7 +103,6 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
 
   const changeInputText = () => {
     if (systemType !== 'custom' || configuration !== 'custom') {
-      console.log(2)
       setConfiguration('custom')
       setSystemType('custom')
       chrome.storage.local.set({

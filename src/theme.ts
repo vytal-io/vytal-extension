@@ -21,9 +21,8 @@ export const theme: Theme = {
       margin: '0',
     },
   },
-
   forms: {
-    label: { width: 'auto' },
+    label: { width: 'auto', alignItems: 'center' },
     input: {
       p: '2px 8px',
       mb: '8px',

@@ -1,7 +1,8 @@
 import { useState, useEffect, ChangeEvent } from 'react'
-import { Box, Label, Radio, Flex, Input, Select } from 'theme-ui'
+import { Box, Label, Radio, Flex, Input, Select, Divider } from 'theme-ui'
 import userAgents from '../../../utils/userAgents'
 import detachDebugger from '../../../utils/detachDebugger'
+import SettingsCheckBox from '../SettingsPage/SettingsCheckBox'
 
 interface UserAgentPageProps {
   tab: string
@@ -66,7 +67,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
       }}
     >
       <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        Other Options
+        User Agent
       </Box>
       <Flex
         sx={{
