@@ -18,9 +18,9 @@ const OtherOptionsPage = ({ tab }: OtherOptionsPageProps) => {
       <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
         Other Options
       </Box>
-
       <SettingsCheckBox title={'Network Prediction Enabled'} />
       <SettingsCheckBox title={'Alternate Error Pages Enabled'} />
+      <SettingsCheckBox title={'Safe Browsing Reporting Enabled'} />
       <SettingsCheckBox title={'Search Suggest Enabled'} />
       <SettingsCheckBox title={'Spelling Service Enabled'} />
       <SettingsCheckBox title={'Translation Service Enabled'} />

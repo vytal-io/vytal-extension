@@ -23,7 +23,7 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
     chrome.storage.local.get(
       ['systemType', 'configuration', 'timezone', 'locale', 'lat', 'lon'],
       (storage) => {
-        if (storage.systemType === 'custom') {
+        if (storage.systemType !== 'default') {
           storage.configuration && setConfiguration(storage.configuration)
           storage.timezone && setTimezone(storage.timezone)
           storage.locale && setLocale(storage.locale)

@@ -16,13 +16,6 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
     })
   }, [])
 
-  // chrome.privacy.network.webRTCIPHandlingPolicy.onChange.addListener(function (
-  //   details
-  // ) {
-  //   console.log(details)
-  //   setWebRtcPolicy(details.value)
-  // })
-
   const changeRadioValue = (e: ChangeEvent<HTMLInputElement>) => {
     handleWebRtcPolicy(e.target.value)
     setWebRtcPolicy(e.target.value)
@@ -48,7 +41,7 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
       />
       <RadioButton
         value={'disable_non_proxied_udp'}
-        name={'Disable non-proxied UDP (force proxy)'}
+        name={'Disable Non-Proxied UDP (Force Proxy)'}
         description={
           'Same as above, except allow WebRTC traffic through the default private'
         }
@@ -57,7 +50,7 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
       />
       <RadioButton
         value={'default_public_and_private_interfaces'}
-        name={'Default public and private interfaces'}
+        name={'Default Public And Private Interfaces'}
         description={
           'Same as above, except allow WebRTC traffic through the default private'
         }
@@ -66,28 +59,13 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
       />
       <RadioButton
         value={'default_public_interface_only'}
-        name={'Default public interface only'}
+        name={'Default Public Interface Only'}
         description={
           'Same as above, except allow WebRTC traffic through the default private'
         }
         webRtcPolicy={webRtcPolicy}
         onChange={changeRadioValue}
       />
-      {/* <Label>
-        <Radio
-          name="webRtcPolicy"
-          value="disable_non_proxied_udp"
-          onChange={(e) => handleWebRtcPolicy(e.target.value)}
-          checked={webRtcPolicy === 'disable_non_proxied_udp'}
-        />
-        <Box>
-          <Text sx={{ fontWeight: '700' }}>Disable non proxied udp</Text>
-          <Box sx={{ mb: '12px', fontSize: '12px' }}>
-            Force the use of a proxy, and only allow WebRTC traffic over UDP
-            proxies.
-          </Box>
-        </Box>
-      </Label> */}
     </Box>
   )
 }
