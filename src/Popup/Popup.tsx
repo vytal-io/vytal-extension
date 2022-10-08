@@ -9,7 +9,6 @@ import {
   Globe,
   Sliders,
   Settings,
-  ExternalLink,
 } from 'react-feather'
 import TabItem from './TabItem'
 import SystemPage from './Pages/SystemPage'

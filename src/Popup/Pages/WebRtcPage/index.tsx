@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent } from 'react'
-import { Box, Label, Radio, Text } from 'theme-ui'
+import { Box } from 'theme-ui'
 import handleWebRtcPolicy from './handleWebRtcPolicy'
 import RadioButton from './RadioButton'
 

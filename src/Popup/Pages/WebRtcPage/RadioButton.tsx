@@ -1,6 +1,5 @@
-import { useState, useEffect, ChangeEvent } from 'react'
+import { ChangeEvent } from 'react'
 import { Box, Label, Radio, Text } from 'theme-ui'
-import handleWebRtcPolicy from './handleWebRtcPolicy'
 
 interface RadioButtonProps {
   value: string
@@ -17,21 +16,6 @@ const RadioButton = ({
   webRtcPolicy,
   onChange,
 }: RadioButtonProps) => {
-  //   const [webRtcPolicy, setWebRtcPolicy] = useState('default')
-
-  //   useEffect(() => {
-  //     chrome.storage.local.get(['webRtcPolicy'], (storage) => {
-  //       storage.webRtcPolicy && setWebRtcPolicy(storage.webRtcPolicy)
-  //     })
-  //   }, [])
-
-  //   chrome.privacy.network.webRTCIPHandlingPolicy.onChange.addListener(function (
-  //     details
-  //   ) {
-  //     console.log(details)
-  //     setWebRtcPolicy(details.value)
-  //   })
-
   return (
     <>
       <Label sx={{ cursor: 'pointer' }}>
