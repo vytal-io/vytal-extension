@@ -1,5 +1,6 @@
 // import { useState, useEffect } from 'react'
-import { Box } from 'theme-ui'
+// import { Box } from 'theme-ui'
+import Page from '../../Components/Page'
 
 interface SystemPageProps {
   tab: string
@@ -21,15 +22,9 @@ const AutofillPage = ({ tab }: SystemPageProps) => {
   // }, [])
 
   return (
-    <Box
-      sx={{
-        display: tab === 'autofill' ? 'block' : 'none',
-      }}
-    >
-      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        Autofill Options
-      </Box>
-    </Box>
+    <Page isCurrentTab={tab === 'autofill'} title={'Autofill Options'}>
+      hello
+    </Page>
   )
 }
 

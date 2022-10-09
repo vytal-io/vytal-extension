@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Box, Label, Select } from 'theme-ui'
-import setWebRtcPolicy from '../WebRtcPage/handleWebRtcPolicy'
+import { Label, Select } from 'theme-ui'
+import Page from '../../Components/Page'
 import SettingsCheckBox from './SettingsCheckBox'
 
 interface SystemPageProps {
@@ -8,38 +7,8 @@ interface SystemPageProps {
 }
 
 const SettingsPage = ({ tab }: SystemPageProps) => {
-  const [isWebRtcDisabled, setIsWebRtcDisabled] = useState(false)
-
-  useEffect(() => {
-    chrome.storage.local.get(['isWebRtcDisabled'], (storage) => {
-      storage.isWebRtcDisabled && setIsWebRtcDisabled(storage.isWebRtcDisabled)
-    })
-  }, [])
-
-  chrome.privacy.network.webRTCIPHandlingPolicy.onChange.addListener(function (
-    details
-  ) {
-    if (details.value === 'disable_non_proxied_udp') {
-      setIsWebRtcDisabled(true)
-    } else {
-      setIsWebRtcDisabled(false)
-    }
-  })
-
   return (
-    <Box
-      sx={{
-        display: tab === 'settings' ? 'block' : 'none',
-      }}
-    >
-      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        Settings
-      </Box>
-      {/* <SettingsCheckBox
-        title={'Disable WebRTC'}
-        onChange={setWebRtcPolicy}
-        checked={isWebRtcDisabled}
-      /> */}
+    <Page isCurrentTab={tab === 'settings'} title={'Settings'}>
       <SettingsCheckBox title={'Disable Address Autofill'} />
       <SettingsCheckBox title={'Dark Mode'} />
       <Label htmlFor="configuration">Language</Label>
@@ -63,7 +32,7 @@ const SettingsPage = ({ tab }: SystemPageProps) => {
             </option>
           ))} */}
       </Select>
-    </Box>
+    </Page>
   )
 }
 

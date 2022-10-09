@@ -3,6 +3,7 @@ import { Box, Label, Radio, Flex, Select } from 'theme-ui'
 import DebouncedInput from '../../Components/DebouncedInput'
 import userAgents from '../../../utils/userAgents'
 import detachDebugger from '../../../utils/detachDebugger'
+import Page from '../../Components/Page'
 
 interface UserAgentPageProps {
   tab: string
@@ -74,14 +75,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   }
 
   return (
-    <Box
-      sx={{
-        display: tab === 'userAgent' ? 'block' : 'none',
-      }}
-    >
-      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        User Agent
-      </Box>
+    <Page isCurrentTab={tab === 'userAgent'} title={'User Agent'}>
       <Flex
         sx={{
           justifyContent: 'space-between',
@@ -159,7 +153,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         setValue={setUserAgent}
         onChange={changeUserAgent}
       />
-    </Box>
+    </Page>
   )
 }
 

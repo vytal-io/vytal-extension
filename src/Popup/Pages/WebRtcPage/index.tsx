@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent } from 'react'
-import { Box } from 'theme-ui'
+import Page from '../../Components/Page'
 import handleWebRtcPolicy from './handleWebRtcPolicy'
 import RadioButton from './RadioButton'
 
@@ -22,14 +22,7 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
   }
 
   return (
-    <Box
-      sx={{
-        display: tab === 'webRtc' ? 'block' : 'none',
-      }}
-    >
-      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        WebRTC Policy
-      </Box>
+    <Page isCurrentTab={tab === 'webRtc'} title={'WebRTC Policy'}>
       <RadioButton
         value={'default'}
         name={'Default'}
@@ -66,7 +59,7 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
         webRtcPolicy={webRtcPolicy}
         onChange={changeRadioValue}
       />
-    </Box>
+    </Page>
   )
 }
 

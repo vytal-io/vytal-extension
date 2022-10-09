@@ -1,5 +1,6 @@
 import { useState, useEffect, ChangeEvent } from 'react'
-import { Box, Flex, Label, Radio, Select } from 'theme-ui'
+import { Flex, Label, Radio, Select } from 'theme-ui'
+import Page from '../../Components/Page'
 import DebouncedInput from '../../Components/DebouncedInput'
 import detachDebugger from '../../../utils/detachDebugger'
 import countryLocales from '../../../utils/countryLocales'
@@ -113,14 +114,7 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
   }
 
   return (
-    <Box
-      sx={{
-        display: tab === 'system' ? 'block' : 'none',
-      }}
-    >
-      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        System Data
-      </Box>
+    <Page isCurrentTab={tab === 'system'} title={'System Data'}>
       <Flex
         sx={{
           justifyContent: 'space-between',
@@ -201,7 +195,7 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
         setValue={setLongitude}
         onChange={changeInputText}
       />
-    </Box>
+    </Page>
   )
 }
 

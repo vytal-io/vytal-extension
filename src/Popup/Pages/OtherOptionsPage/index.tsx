@@ -1,8 +1,5 @@
-import { useState, useEffect, ChangeEvent } from 'react'
-import { Box, Label, Radio, Flex, Input, Select, Divider } from 'theme-ui'
-import userAgents from '../../../utils/userAgents'
-import detachDebugger from '../../../utils/detachDebugger'
 import SettingsCheckBox from '../SettingsPage/SettingsCheckBox'
+import Page from '../../Components/Page'
 
 interface OtherOptionsPageProps {
   tab: string
@@ -10,14 +7,7 @@ interface OtherOptionsPageProps {
 
 const OtherOptionsPage = ({ tab }: OtherOptionsPageProps) => {
   return (
-    <Box
-      sx={{
-        display: tab === 'otherOptions' ? 'block' : 'none',
-      }}
-    >
-      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        Other Options
-      </Box>
+    <Page isCurrentTab={tab === 'otherOptions'} title={'Other Options'}>
       <SettingsCheckBox title={'Network Prediction Enabled'} />
       <SettingsCheckBox title={'Alternate Error Pages Enabled'} />
       <SettingsCheckBox title={'Safe Browsing Reporting Enabled'} />
@@ -27,7 +17,7 @@ const OtherOptionsPage = ({ tab }: OtherOptionsPageProps) => {
       <SettingsCheckBox title={'Hyperlink Auditing Enabled'} />
       <SettingsCheckBox title={'Referrers Enabled'} />
       <SettingsCheckBox title={'Third Party Cookies Allowed'} />
-    </Box>
+    </Page>
   )
 }
 

@@ -1,4 +1,5 @@
-import { Box } from 'theme-ui'
+// import { Box } from 'theme-ui'
+import Page from '../../Components/Page'
 
 interface CurrentPageProps {
   tab: string
@@ -6,15 +7,9 @@ interface CurrentPageProps {
 
 const CurrentPage = ({ tab }: CurrentPageProps) => {
   return (
-    <Box
-      sx={{
-        display: tab === 'current' ? 'block' : 'none',
-      }}
-    >
-      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        Current Info
-      </Box>
-    </Box>
+    <Page isCurrentTab={tab === 'current'} title={'Current Info'}>
+      hello
+    </Page>
   )
 }
 
