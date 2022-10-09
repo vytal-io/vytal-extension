@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from 'react'
 import { Box, Flex, Label, Radio, Select } from 'theme-ui'
-import SystemInput from './SystemInput'
+import DebouncedInput from '../../Components/DebouncedInput'
 import detachDebugger from '../../../utils/detachDebugger'
 import countryLocales from '../../../utils/countryLocales'
 import { ipData } from '../../../types'
@@ -173,28 +173,28 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
           </Select>
         </>
       )}
-      <SystemInput
+      <DebouncedInput
         name="timezone"
         title="Timezone"
         value={timezone}
         setValue={setTimezone}
         onChange={changeInputText}
       />
-      <SystemInput
+      <DebouncedInput
         name="locale"
         title="Locale"
         value={locale}
         setValue={setLocale}
         onChange={changeInputText}
       />
-      <SystemInput
+      <DebouncedInput
         name="lat"
         title="Latitude"
         value={lat}
         setValue={setLatitude}
         onChange={changeInputText}
       />
-      <SystemInput
+      <DebouncedInput
         name="lon"
         title="Longitude"
         value={lon}

@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, ChangeEvent, useMemo } from 'react'
 import { Label, Input } from 'theme-ui'
-import detachDebugger from '../../../utils/detachDebugger'
+import detachDebugger from '../../utils/detachDebugger'
 import debounce from 'lodash.debounce'
 
-interface SystemInputProps {
+interface DebouncedInputProps {
   name: string
   title: string
   value: string
@@ -11,13 +11,13 @@ interface SystemInputProps {
   onChange: () => void
 }
 
-const SystemInput = ({
+const DebouncedInput = ({
   name,
   title,
   value,
   setValue,
   onChange,
-}: SystemInputProps) => {
+}: DebouncedInputProps) => {
   const debouncedChangeHandler = useMemo(
     () =>
       debounce((e) => {
@@ -41,4 +41,4 @@ const SystemInput = ({
   )
 }
 
-export default SystemInput
+export default DebouncedInput

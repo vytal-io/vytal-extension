@@ -23,7 +23,7 @@ import '../assets/global.css'
 import OtherOptionsPage from './Pages/OtherOptionsPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState('webRtc')
+  const [tab, setTab] = useState('userAgent')
   const [ipData, setIpData] = useState<ipData | undefined>(undefined)
 
   useEffect(() => {
@@ -70,8 +70,8 @@ const Popup = () => {
           />
           <TabItem
             Icon={Globe}
-            active={tab === 'useragent'}
-            onClick={() => setTab('useragent')}
+            active={tab === 'userAgent'}
+            onClick={() => setTab('userAgent')}
           />
           <TabItem
             Icon={Sliders}

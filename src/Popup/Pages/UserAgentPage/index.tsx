@@ -1,5 +1,6 @@
 import { useState, useEffect, ChangeEvent } from 'react'
-import { Box, Label, Radio, Flex, Input, Select } from 'theme-ui'
+import { Box, Label, Radio, Flex, Select } from 'theme-ui'
+import DebouncedInput from '../../Components/DebouncedInput'
 import userAgents from '../../../utils/userAgents'
 import detachDebugger from '../../../utils/detachDebugger'
 
@@ -8,16 +9,16 @@ interface UserAgentPageProps {
 }
 
 const UserAgentPage = ({ tab }: UserAgentPageProps) => {
-  const [type, setType] = useState('none')
+  const [userAgentType, setUserAgentType] = useState('none')
   const [operatingSystem, setOperatingSystem] = useState('Windows')
   const [browser, setBrowser] = useState('Chrome')
   const [userAgent, setUserAgent] = useState('')
 
   useEffect(() => {
     chrome.storage.local.get(
-      ['type', 'operatingSystem', 'browser', 'userAgent'],
+      ['userAgentType', 'operatingSystem', 'browser', 'userAgent'],
       (storage) => {
-        storage.type && setType(storage.type)
+        storage.userAgentType && setUserAgentType(storage.userAgentType)
         storage.operatingSystem && setOperatingSystem(storage.operatingSystem)
         storage.browser && setBrowser(storage.browser)
         storage.userAgent && setUserAgent(storage.userAgent)
@@ -25,44 +26,57 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
     )
   }, [])
 
-  useEffect(() => {
-    detachDebugger()
-    chrome.storage.local.set({ userAgent })
-  }, [userAgent])
-
-  useEffect(() => {
-    type === 'preloaded' && setUserAgent(userAgents[operatingSystem][browser])
-  }, [operatingSystem, browser, type])
-
   const changeType = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
-    e.target.value === 'none' && setUserAgent('')
-    chrome.storage.local.set({ type: e.target.value })
-    setType(e.target.value)
+    setUserAgentType(e.target.value)
+    chrome.storage.local.set({ userAgentType: e.target.value })
+
+    if (e.target.value === 'none') {
+      setUserAgent('')
+      chrome.storage.local.set({
+        userAgent: '',
+      })
+    } else if (e.target.value === 'preloaded') {
+      setUserAgent(userAgents[operatingSystem][browser])
+      chrome.storage.local.set({
+        userAgent: userAgents[operatingSystem][browser],
+      })
+    }
   }
 
   const changeOperatingSystem = (e: ChangeEvent<HTMLSelectElement>) => {
-    chrome.storage.local.set({ operatingSystem: e.target.value })
+    detachDebugger()
     setOperatingSystem(e.target.value)
+    setUserAgent(userAgents[e.target.value][browser])
+    chrome.storage.local.set({
+      userAgent: userAgents[e.target.value][browser],
+      operatingSystem: e.target.value,
+    })
   }
 
   const changeBrowser = (e: ChangeEvent<HTMLSelectElement>) => {
-    chrome.storage.local.set({ browser: e.target.value })
+    detachDebugger()
     setBrowser(e.target.value)
+    setUserAgent(userAgents[operatingSystem][e.target.value])
+    chrome.storage.local.set({
+      userAgent: userAgents[operatingSystem][e.target.value],
+      browser: e.target.value,
+    })
   }
 
-  const changeUserAgent = (e: ChangeEvent<HTMLInputElement>) => {
-    detachDebugger()
-    chrome.storage.local.set({ userAgent: e.target.value })
-    chrome.storage.local.set({ type: 'custom' })
-    setUserAgent(e.target.value)
-    setType('custom')
+  const changeUserAgent = () => {
+    if (userAgentType !== 'custom') {
+      setUserAgentType('custom')
+      chrome.storage.local.set({
+        userAgentType: 'custom',
+      })
+    }
   }
 
   return (
     <Box
       sx={{
-        display: tab === 'useragent' ? 'block' : 'none',
+        display: tab === 'userAgent' ? 'block' : 'none',
       }}
     >
       <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
@@ -76,33 +90,33 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
       >
         <Label>
           <Radio
-            name="type"
+            name="userAgentType"
             value="none"
             onChange={changeType}
-            checked={type === 'none'}
+            checked={userAgentType === 'none'}
           />
           None
         </Label>
         <Label>
           <Radio
-            name="type"
+            name="userAgentType"
             value="preloaded"
             onChange={changeType}
-            checked={type === 'preloaded'}
+            checked={userAgentType === 'preloaded'}
           />
           Preloaded
         </Label>
         <Label>
           <Radio
-            name="type"
+            name="userAgentType"
             value="custom"
             onChange={changeType}
-            checked={type === 'custom'}
+            checked={userAgentType === 'custom'}
           />
           Custom
         </Label>
       </Flex>
-      {type === 'preloaded' && (
+      {userAgentType === 'preloaded' && (
         <Flex sx={{ gap: '16px' }}>
           <Box sx={{ width: '100%' }}>
             <Label htmlFor="operatingSystem">Operating System</Label>
@@ -113,7 +127,6 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
               onChange={changeOperatingSystem}
               mb={'8px'}
             >
-              <option sx={{ display: 'none' }}></option>
               {Object.keys(userAgents).map((key) => (
                 <option value={key} key={key}>
                   {key}
@@ -139,8 +152,13 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
           </Box>
         </Flex>
       )}
-      <Label htmlFor="userAgent">User Agent</Label>
-      <Input name="userAgent" value={userAgent} onChange={changeUserAgent} />
+      <DebouncedInput
+        name="userAgent"
+        title="User Agent"
+        value={userAgent}
+        setValue={setUserAgent}
+        onChange={changeUserAgent}
+      />
     </Box>
   )
 }

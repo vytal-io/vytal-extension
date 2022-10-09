@@ -1,12 +1,12 @@
 import { Label, Checkbox } from 'theme-ui'
 
-interface SystemPageProps {
+interface CheckBoxProps {
   title: string
   onChange?: () => void
   checked?: boolean
 }
 
-const CheckBox = ({ title, onChange, checked }: SystemPageProps) => {
+const CheckBox = ({ title, onChange, checked }: CheckBoxProps) => {
   return (
     <Label sx={{ mb: '8px' }}>
       <Checkbox onChange={onChange} checked={checked} />
