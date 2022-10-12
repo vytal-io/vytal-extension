@@ -9,6 +9,7 @@ interface DebouncedInputProps {
   value: string
   setValue: Dispatch<SetStateAction<string>>
   onChange: () => void
+  mb?: string
 }
 
 const DebouncedInput = ({
@@ -17,6 +18,7 @@ const DebouncedInput = ({
   value,
   setValue,
   onChange,
+  mb,
 }: DebouncedInputProps) => {
   const debouncedChangeHandler = useMemo(
     () =>
@@ -36,7 +38,7 @@ const DebouncedInput = ({
   return (
     <>
       <Label htmlFor={name}>{title}</Label>
-      <Input name={name} value={value} onChange={changeInputText} />
+      <Input name={name} value={value} onChange={changeInputText} mb={mb} />
     </>
   )
 }

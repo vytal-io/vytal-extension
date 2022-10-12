@@ -1,6 +1,6 @@
 import { Label, Select } from 'theme-ui'
 import Page from '../../Components/Page'
-import SettingsCheckBox from './SettingsCheckBox'
+import CheckBox from '../../Components/CheckBox'  
 
 interface SystemPageProps {
   tab: string
@@ -9,8 +9,8 @@ interface SystemPageProps {
 const SettingsPage = ({ tab }: SystemPageProps) => {
   return (
     <Page isCurrentTab={tab === 'settings'} title={'Settings'}>
-      <SettingsCheckBox title={'Disable Address Autofill'} />
-      <SettingsCheckBox title={'Dark Mode'} />
+      <CheckBox title={'Disable Address Autofill'} />
+      <CheckBox title={'Dark Mode'} />
       <Label htmlFor="configuration">Language</Label>
       <Select name="Language" id="Language">
         <option>Arabic</option>

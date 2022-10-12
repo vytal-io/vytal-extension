@@ -6,6 +6,7 @@ import detachDebugger from '../../../utils/detachDebugger'
 import countryLocales from '../../../utils/countryLocales'
 import { ipData } from '../../../types'
 import configurations from '../../../utils/configurations'
+import CheckBox from '../../Components/CheckBox'
 
 interface SystemPageProps {
   tab: string
@@ -194,7 +195,9 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
         value={lon}
         setValue={setLongitude}
         onChange={changeInputText}
+        mb="12px"
       />
+      <CheckBox title={'Enable Debugger API Spoofing'} />
     </Page>
   )
 }

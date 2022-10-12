@@ -23,7 +23,7 @@ import '../assets/global.css'
 import OtherOptionsPage from './Pages/OtherOptionsPage'
 
 const Popup = () => {
-  const [tab, setTab] = useState('userAgent')
+  const [tab, setTab] = useState('autofill')
   const [ipData, setIpData] = useState<ipData | undefined>(undefined)
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Popup = () => {
       <Flex
         sx={{
           width: '350px',
-          height: '400px',
+          height: '410px',
         }}
       >
         <Flex
@@ -73,11 +73,11 @@ const Popup = () => {
             active={tab === 'userAgent'}
             onClick={() => setTab('userAgent')}
           />
-          <TabItem
+          {/* <TabItem
             Icon={Sliders}
             active={tab === 'otherOptions'}
             onClick={() => setTab('otherOptions')}
-          />
+          /> */}
           <TabItem
             Icon={Settings}
             active={tab === 'settings'}

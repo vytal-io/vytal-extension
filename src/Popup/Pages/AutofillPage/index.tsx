@@ -1,6 +1,9 @@
 // import { useState, useEffect } from 'react'
 // import { Box } from 'theme-ui'
 import Page from '../../Components/Page'
+import CheckBox from '../../Components/CheckBox'
+import DebouncedInput from '../../Components/DebouncedInput'
+import { Box, Label, Select } from 'theme-ui'
 
 interface SystemPageProps {
   tab: string
@@ -23,7 +26,30 @@ const AutofillPage = ({ tab }: SystemPageProps) => {
 
   return (
     <Page isCurrentTab={tab === 'autofill'} title={'Autofill Options'}>
-      hello
+      <CheckBox title={'Disable Built-In Address Autofill'} />
+      <Box sx={{ width: '100%' }}>
+        <Label htmlFor="country">Country</Label>
+        <Select
+          name="country"
+          id="browser"
+          // value={browser}
+          // onChange={changeBrowser}
+          mb={'8px'}
+        >
+          {/* {Object.keys(userAgents[operatingSystem]).map((key) => (
+            <option value={key} key={key}>
+              {key}
+            </option>
+          ))} */}
+        </Select>
+      </Box>
+      {/* <DebouncedInput
+        name="userAgent"
+        title="User Agent"
+        value={userAgent}
+        setValue={setUserAgent}
+        onChange={changeUserAgent}
+      /> */}
     </Page>
   )
 }
