@@ -19,16 +19,27 @@ import WebRtcPage from './Pages/WebRtcPage'
 import CurrentPage from './Pages/CurrentPage'
 import { ipData } from '../types'
 import getIp from '../utils/getIp'
+import getReverseGeocoding from '../utils/getReverseGeocoding'
 import '../assets/global.css'
 import OtherOptionsPage from './Pages/OtherOptionsPage'
 
 const Popup = () => {
   const [tab, setTab] = useState('autofill')
   const [ipData, setIpData] = useState<ipData | undefined>(undefined)
+  const [reverseGeocoding, setReverseGeocoding] = useState<any>(undefined)
 
   useEffect(() => {
-    Promise.resolve(getIp()).then((data) => {
-      setIpData(data)
+    getIp().then((ipDataRes) => {
+      
+      setIpData(ipDataRes)
+      if (ipDataRes.lat && ipDataRes.lon) {
+        getReverseGeocoding(ipDataRes.lat, ipDataRes.lon).then(
+          (reverseGeocodingRes) => {
+            setReverseGeocoding(reverseGeocodingRes)
+            console.log(reverseGeocodingRes)
+          }
+        )
+      }
     })
   }, [])
 
@@ -91,7 +102,7 @@ const Popup = () => {
         <Box sx={{ m: '12px', width: '100%' }}>
           <CurrentPage tab={tab} />
           <SystemPage tab={tab} ipData={ipData} />
-          <AutofillPage tab={tab} />
+          <AutofillPage tab={tab} reverseGeocoding={reverseGeocoding} />
           <WebRtcPage tab={tab} />
           <UserAgentPage tab={tab} />
           <OtherOptionsPage tab={tab} />

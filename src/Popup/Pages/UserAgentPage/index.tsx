@@ -4,6 +4,7 @@ import DebouncedInput from '../../Components/DebouncedInput'
 import userAgents from '../../../utils/userAgents'
 import detachDebugger from '../../../utils/detachDebugger'
 import Page from '../../Components/Page'
+import CheckBox from '../../Components/CheckBox'
 
 interface UserAgentPageProps {
   tab: string
@@ -152,7 +153,9 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         value={userAgent}
         setValue={setUserAgent}
         onChange={changeUserAgent}
+        mb="12px"
       />
+      <CheckBox title={'Enable Debugger API Spoofing'} />
     </Page>
   )
 }

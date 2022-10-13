@@ -24,6 +24,7 @@ export const theme: Theme = {
   forms: {
     label: { width: 'auto', alignItems: 'center' },
     input: {
+      // border: '2px solid',
       p: '2px 8px',
       mb: '8px',
       borderColor: 'grey',
@@ -33,6 +34,7 @@ export const theme: Theme = {
       },
     },
     select: {
+      // border: '2px solid',
       cursor: 'pointer',
       p: '2px 8px',
       borderColor: 'grey',

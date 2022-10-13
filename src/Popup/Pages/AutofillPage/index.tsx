@@ -1,4 +1,4 @@
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 // import { Box } from 'theme-ui'
 import Page from '../../Components/Page'
 import CheckBox from '../../Components/CheckBox'
@@ -7,10 +7,11 @@ import { Box, Label, Select } from 'theme-ui'
 
 interface SystemPageProps {
   tab: string
+  reverseGeocoding: any
 }
 
-const AutofillPage = ({ tab }: SystemPageProps) => {
-  // const [ip, setIP] = useState(null)
+const AutofillPage = ({ tab, reverseGeocoding }: SystemPageProps) => {
+  const [city, setCity] = useState('')
   // const [configuration, setConfiguration] = useState('default')
 
   // useEffect(() => {
@@ -23,6 +24,15 @@ const AutofillPage = ({ tab }: SystemPageProps) => {
   //     }
   //   })
   // }, [])
+
+  const changeUserAgent = () => {
+    // if (userAgentType !== 'custom') {
+    //   setUserAgentType('custom')
+    //   chrome.storage.local.set({
+    //     userAgentType: 'custom',
+    //   })
+    // }
+  }
 
   return (
     <Page isCurrentTab={tab === 'autofill'} title={'Autofill Options'}>
@@ -43,13 +53,13 @@ const AutofillPage = ({ tab }: SystemPageProps) => {
           ))} */}
         </Select>
       </Box>
-      {/* <DebouncedInput
-        name="userAgent"
-        title="User Agent"
-        value={userAgent}
-        setValue={setUserAgent}
+      <DebouncedInput
+        name="city"
+        title="City"
+        value={city}
+        setValue={setCity}
         onChange={changeUserAgent}
-      /> */}
+      />
     </Page>
   )
 }
