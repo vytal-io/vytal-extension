@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react'
 import { ThemeProvider, Flex, Box } from 'theme-ui'
 import { theme } from '../theme'
 import {
-  MapPin,
+  Wifi,
   HardDrive,
   FileText,
   MessageSquare,
   Globe,
-  Sliders,
   Settings,
 } from 'react-feather'
 import TabItem from './TabItem'
@@ -16,7 +15,7 @@ import UserAgentPage from './Pages/UserAgentPage'
 import SettingsPage from './Pages/SettingsPage'
 import AutofillPage from './Pages/AutofillPage'
 import WebRtcPage from './Pages/WebRtcPage'
-import CurrentPage from './Pages/CurrentPage'
+import ConnectionPage from './Pages/ConnectionPage'
 import { ipData } from '../types'
 import getIp from '../utils/getIp'
 import getReverseGeocoding from '../utils/getReverseGeocoding'
@@ -30,7 +29,6 @@ const Popup = () => {
 
   useEffect(() => {
     getIp().then((ipDataRes) => {
-      
       setIpData(ipDataRes)
       if (ipDataRes.lat && ipDataRes.lon) {
         getReverseGeocoding(ipDataRes.lat, ipDataRes.lon).then(
@@ -60,9 +58,9 @@ const Popup = () => {
           }}
         >
           <TabItem
-            Icon={MapPin}
-            active={tab === 'current'}
-            onClick={() => setTab('current')}
+            Icon={Wifi}
+            active={tab === 'connection'}
+            onClick={() => setTab('connection')}
           />
           <TabItem
             Icon={HardDrive}
@@ -100,9 +98,13 @@ const Popup = () => {
           /> */}
         </Flex>
         <Box sx={{ m: '12px', width: '100%' }}>
-          <CurrentPage tab={tab} />
+          <ConnectionPage tab={tab} ipData={ipData} />
           <SystemPage tab={tab} ipData={ipData} />
-          <AutofillPage tab={tab} reverseGeocoding={reverseGeocoding} />
+          <AutofillPage
+            tab={tab}
+            ipData={ipData}
+            reverseGeocoding={reverseGeocoding}
+          />
           <WebRtcPage tab={tab} />
           <UserAgentPage tab={tab} />
           <OtherOptionsPage tab={tab} />
@@ -115,7 +117,7 @@ const Popup = () => {
               bottom: '0',
             }}
           >
-            Current tab won't be fully spoofed until after 1st or 2nd reload.
+            Connection tab won't be fully spoofed until after 1st or 2nd reload.
           </Text> */}
         </Box>
       </Flex>

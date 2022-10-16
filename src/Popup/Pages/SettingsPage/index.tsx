@@ -1,6 +1,6 @@
 import { Label, Select } from 'theme-ui'
 import Page from '../../Components/Page'
-import CheckBox from '../../Components/CheckBox'  
+import CheckBox from '../../Components/CheckBox'
 
 interface SystemPageProps {
   tab: string

@@ -1,65 +1,113 @@
 import { useState, useEffect } from 'react'
-// import { Box } from 'theme-ui'
+
 import Page from '../../Components/Page'
 import CheckBox from '../../Components/CheckBox'
-import DebouncedInput from '../../Components/DebouncedInput'
-import { Box, Label, Select } from 'theme-ui'
+import { ipData } from '../../../types'
+import Table from '../../Components/Table'
+import TableRow from '../../Components/TableRow'
 
-interface SystemPageProps {
+interface AutofillPageProps {
   tab: string
+  ipData?: ipData
   reverseGeocoding: any
 }
 
-const AutofillPage = ({ tab, reverseGeocoding }: SystemPageProps) => {
+const AutofillPage = ({ tab, ipData, reverseGeocoding }: AutofillPageProps) => {
+  const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
+  const [region, setRegion] = useState('')
+  const [postCode, setPostCode] = useState('')
+  const [address, setAddress] = useState('')
+  const [phone, setPhone] = useState(
+    'fjkdskf fdkfksj 324324kk dj3223j4k3l jerwkjjekjjwrjrhwehrwjejhwreherwjrwhje'
+  )
   // const [configuration, setConfiguration] = useState('default')
 
-  // useEffect(() => {
-  //   chrome.storage.local.get(['configuration', 'ipData'], (storage) => {
-  //     storage.configuration && setConfiguration(storage.configuration)
-  //     if (storage.ipData) {
-  //       setIP(storage.ipData)
-  //     } else {
-  //       Promise.resolve(getIP()).then((ipData) => setIP(ipData))
-  //     }
-  //   })
-  // }, [])
+  useEffect(() => {
+    // chrome.storage.local.get(['configuration', 'ipData'], (storage) => {
+    //   storage.configuration && setConfiguration(storage.configuration)
+    //   if (storage.ipData) {
+    //     setIP(storage.ipData)
+    //   } else {
+    //     Promise.resolve(getIP()).then((ipData) => setIP(ipData))
+    //   }
+    // })
+    if (ipData?.country) {
+      setCountry(ipData.country)
+      chrome.storage.local.set({
+        country: ipData.country,
+      })
+    }
+    if (ipData?.city) {
+      setCity(ipData.city)
+      chrome.storage.local.set({
+        city: ipData.city,
+      })
+    }
+    if (ipData?.regionName) {
+      setRegion(ipData.regionName)
+      chrome.storage.local.set({
+        region: ipData.regionName,
+      })
+    }
+    if (ipData?.zip) {
+      setPostCode(ipData.zip)
+      chrome.storage.local.set({
+        postCode: ipData.zip,
+      })
+    }
+    // ipData?.city && setCity(ipData.city)
+    // ipData?.regionName && setRegion(ipData.regionName)
+    // ipData?.zip && setPostCode()
+    // chrome.storage.local.set({
+    //   country: ipData.country,
+    //   city: ipData.city,
+    //   regionName: ipData.regionName,
+    //   zip: ipData.zip,
+    // })
+  }, [ipData, setCity, setPostCode, setRegion])
 
-  const changeUserAgent = () => {
-    // if (userAgentType !== 'custom') {
-    //   setUserAgentType('custom')
-    //   chrome.storage.local.set({
-    //     userAgentType: 'custom',
-    //   })
-    // }
-  }
+  useEffect(() => {
+    if (!postCode && reverseGeocoding?.postcode) {
+      setPostCode(reverseGeocoding?.postcode)
+      chrome.storage.local.set({
+        postCode: reverseGeocoding?.postcode,
+      })
+    }
+    if (reverseGeocoding?.house_number && reverseGeocoding?.road) {
+      setAddress(`${reverseGeocoding.house_number} ${reverseGeocoding.road}`)
+      chrome.storage.local.set({
+        address: `${reverseGeocoding.house_number} ${reverseGeocoding.road}`,
+      })
+    } else if (reverseGeocoding?.road) {
+      setAddress(reverseGeocoding.road)
+      chrome.storage.local.set({
+        address: reverseGeocoding.road,
+      })
+    }
+  }, [postCode, reverseGeocoding, setAddress])
+
+  // const changeUserAgent = () => {
+  //   // if (userAgentType !== 'custom') {
+  //   //   setUserAgentType('custom')
+  //   //   chrome.storage.local.set({
+  //   //     userAgentType: 'custom',
+  //   //   })
+  //   // }
+  // }
 
   return (
-    <Page isCurrentTab={tab === 'autofill'} title={'Autofill Options'}>
+    <Page isCurrentTab={tab === 'autofill'} title={'Autofill'}>
       <CheckBox title={'Disable Built-In Address Autofill'} />
-      <Box sx={{ width: '100%' }}>
-        <Label htmlFor="country">Country</Label>
-        <Select
-          name="country"
-          id="browser"
-          // value={browser}
-          // onChange={changeBrowser}
-          mb={'8px'}
-        >
-          {/* {Object.keys(userAgents[operatingSystem]).map((key) => (
-            <option value={key} key={key}>
-              {key}
-            </option>
-          ))} */}
-        </Select>
-      </Box>
-      <DebouncedInput
-        name="city"
-        title="City"
-        value={city}
-        setValue={setCity}
-        onChange={changeUserAgent}
-      />
+      <CheckBox title={'Automatically Autofill'} />
+      <Table title="Autofill Data">
+        <TableRow title="Country" value={country} />
+        <TableRow title="Region" value={region} />
+        <TableRow title="City" value={city} />
+        <TableRow title="Postal Code" value={postCode} />
+        <TableRow title="Address" value={address} />
+        <TableRow title="Phone" value={phone} noBorder />
+      </Table>
     </Page>
   )
 }
