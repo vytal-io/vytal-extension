@@ -11,9 +11,10 @@ import CheckBox from '../../Components/CheckBox'
 interface SystemPageProps {
   tab: string
   ipData?: ipData
+  geolocation?: GeolocationCoordinates
 }
 
-const SystemPage = ({ tab, ipData }: SystemPageProps) => {
+const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
   const [systemType, setSystemType] = useState('')
   const [timezone, setTimezone] = useState('')
   const [locale, setLocale] = useState('')
@@ -21,22 +22,33 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
   const [lon, setLongitude] = useState('')
   const [configuration, setConfiguration] = useState('custom')
 
+  // console.log(geolocation)
+
   useEffect(() => {
     chrome.storage.local.get(
       ['systemType', 'configuration', 'timezone', 'locale', 'lat', 'lon'],
       (storage) => {
-        console.log(ipData)
-        if (storage.systemType === 'matchIp' && ipData) {
-          setTimezone(ipData.timezone)
-          setLocale(countryLocales[ipData.countryCode].locale)
-          setLatitude(`${ipData.lat}`)
-          setLongitude(`${ipData.lon}`)
+        if (ipData) {
           chrome.storage.local.set({
             timezone: ipData.timezone,
             locale: countryLocales[ipData.countryCode].locale,
             lat: ipData.lat,
             lon: ipData.lon,
           })
+        }
+        if (!storage.systemType || storage.systemType === 'default') {
+          setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+          setLocale(Intl.DateTimeFormat().resolvedOptions().locale)
+          if (geolocation) {
+            setLatitude(`${geolocation.latitude}`)
+            setLongitude(`${geolocation.longitude}`)
+          }
+        }
+        if (storage.systemType === 'matchIp' && ipData) {
+          setTimezone(ipData.timezone)
+          setLocale(countryLocales[ipData.countryCode].locale)
+          setLatitude(`${ipData.lat}`)
+          setLongitude(`${ipData.lon}`)
         } else if (storage.systemType === 'custom') {
           storage.configuration && setConfiguration(storage.configuration)
           storage.timezone && setTimezone(storage.timezone)
@@ -49,7 +61,7 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
           : setSystemType('default')
       }
     )
-  }, [ipData])
+  }, [geolocation, ipData])
 
   const changeType = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
@@ -57,10 +69,12 @@ const SystemPage = ({ tab, ipData }: SystemPageProps) => {
     chrome.storage.local.set({ systemType: e.target.value })
 
     if (e.target.value === 'default') {
-      setTimezone('')
-      setLocale('')
-      setLatitude('')
-      setLongitude('')
+      setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+      setLocale(Intl.DateTimeFormat().resolvedOptions().locale)
+      if (geolocation) {
+        setLatitude(`${geolocation.latitude}`)
+        setLongitude(`${geolocation.longitude}`)
+      }
       chrome.storage.local.set({
         timezone: '',
         locale: '',

@@ -18,27 +18,36 @@ import WebRtcPage from './Pages/WebRtcPage'
 import ConnectionPage from './Pages/ConnectionPage'
 import { ipData } from '../types'
 import getIp from '../utils/getIp'
-import getReverseGeocoding from '../utils/getReverseGeocoding'
+// import getReverseGeocoding from '../utils/getReverseGeocoding'
 import '../assets/global.css'
 import OtherOptionsPage from './Pages/OtherOptionsPage'
 
 const Popup = () => {
   const [tab, setTab] = useState('autofill')
-  const [ipData, setIpData] = useState<ipData | undefined>(undefined)
-  const [reverseGeocoding, setReverseGeocoding] = useState<any>(undefined)
+  const [ipData, setIpData] = useState<ipData>()
+  // const [reverseGeocoding, setReverseGeocoding] = useState<any>(undefined)
+  const [geolocation, setGeolocation] = useState<GeolocationCoordinates>()
 
   useEffect(() => {
     getIp().then((ipDataRes) => {
       setIpData(ipDataRes)
-      if (ipDataRes.lat && ipDataRes.lon) {
-        getReverseGeocoding(ipDataRes.lat, ipDataRes.lon).then(
-          (reverseGeocodingRes) => {
-            setReverseGeocoding(reverseGeocodingRes)
-            console.log(reverseGeocodingRes)
-          }
-        )
-      }
+      // if (ipDataRes.lat && ipDataRes.lon) {
+      //   getReverseGeocoding(ipDataRes.lat, ipDataRes.lon).then(
+      //     (reverseGeocodingRes) => {
+      //       setReverseGeocoding(reverseGeocodingRes)
+      //       console.log(reverseGeocodingRes)
+      //     }
+      //   )
+      // }
     })
+    navigator.geolocation.getCurrentPosition(
+      (pos) => setGeolocation(pos.coords),
+      (err) => console.warn(`ERROR(${err.code}): ${err.message}`),
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+      }
+    )
   }, [])
 
   return (
@@ -99,11 +108,11 @@ const Popup = () => {
         </Flex>
         <Box sx={{ m: '12px', width: '100%' }}>
           <ConnectionPage tab={tab} ipData={ipData} />
-          <SystemPage tab={tab} ipData={ipData} />
+          <SystemPage tab={tab} ipData={ipData} geolocation={geolocation} />
           <AutofillPage
             tab={tab}
             ipData={ipData}
-            reverseGeocoding={reverseGeocoding}
+            // reverseGeocoding={reverseGeocoding}
           />
           <WebRtcPage tab={tab} />
           <UserAgentPage tab={tab} />

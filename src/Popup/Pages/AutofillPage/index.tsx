@@ -9,10 +9,10 @@ import TableRow from '../../Components/TableRow'
 interface AutofillPageProps {
   tab: string
   ipData?: ipData
-  reverseGeocoding: any
+  // reverseGeocoding: any
 }
 
-const AutofillPage = ({ tab, ipData, reverseGeocoding }: AutofillPageProps) => {
+const AutofillPage = ({ tab, ipData }: AutofillPageProps) => {
   const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
   const [region, setRegion] = useState('')
@@ -67,25 +67,25 @@ const AutofillPage = ({ tab, ipData, reverseGeocoding }: AutofillPageProps) => {
     // })
   }, [ipData, setCity, setPostCode, setRegion])
 
-  useEffect(() => {
-    if (!postCode && reverseGeocoding?.postcode) {
-      setPostCode(reverseGeocoding?.postcode)
-      chrome.storage.local.set({
-        postCode: reverseGeocoding?.postcode,
-      })
-    }
-    if (reverseGeocoding?.house_number && reverseGeocoding?.road) {
-      setAddress(`${reverseGeocoding.house_number} ${reverseGeocoding.road}`)
-      chrome.storage.local.set({
-        address: `${reverseGeocoding.house_number} ${reverseGeocoding.road}`,
-      })
-    } else if (reverseGeocoding?.road) {
-      setAddress(reverseGeocoding.road)
-      chrome.storage.local.set({
-        address: reverseGeocoding.road,
-      })
-    }
-  }, [postCode, reverseGeocoding, setAddress])
+  // useEffect(() => {
+  //   if (!postCode && reverseGeocoding?.postcode) {
+  //     setPostCode(reverseGeocoding?.postcode)
+  //     chrome.storage.local.set({
+  //       postCode: reverseGeocoding?.postcode,
+  //     })
+  //   }
+  //   if (reverseGeocoding?.house_number && reverseGeocoding?.road) {
+  //     setAddress(`${reverseGeocoding.house_number} ${reverseGeocoding.road}`)
+  //     chrome.storage.local.set({
+  //       address: `${reverseGeocoding.house_number} ${reverseGeocoding.road}`,
+  //     })
+  //   } else if (reverseGeocoding?.road) {
+  //     setAddress(reverseGeocoding.road)
+  //     chrome.storage.local.set({
+  //       address: reverseGeocoding.road,
+  //     })
+  //   }
+  // }, [postCode, reverseGeocoding, setAddress])
 
   // const changeUserAgent = () => {
   //   // if (userAgentType !== 'custom') {
