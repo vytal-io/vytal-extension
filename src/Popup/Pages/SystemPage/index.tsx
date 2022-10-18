@@ -223,7 +223,9 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
         onChange={changeInputText}
         mb="12px"
       />
-      <CheckBox title={'Enable Debugger API Spoofing'} />
+      {systemType !== 'default' && (
+        <CheckBox title={'Enable Debugger API Spoofing'} />
+      )}
     </Page>
   )
 }
