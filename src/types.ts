@@ -10,5 +10,6 @@ export interface ipData {
   lat: number
   lon: number
   isp: string
+  org: string
   proxy: boolean
 }

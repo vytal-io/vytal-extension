@@ -109,11 +109,7 @@ const AutofillPage = ({ tab, ipData }: AutofillPageProps) => {
         <TableRow title="Address" value={address} />
         <TableRow title="Phone" value={phone} noBorder />
       </Table>
-      <Button
-        variant="primary"
-        sx={{ width: '100%' }}
-        onClick={() => console.log('click')}
-      >
+      <Button variant="primary" onClick={() => console.log('click')}>
         Autofill Current Page
       </Button>
     </Page>
