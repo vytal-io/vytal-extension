@@ -11,10 +11,10 @@ interface UserAgentPageProps {
 }
 
 const UserAgentPage = ({ tab }: UserAgentPageProps) => {
-  const [userAgentType, setUserAgentType] = useState('none')
+  const [userAgentType, setUserAgentType] = useState('default')
   const [operatingSystem, setOperatingSystem] = useState('Windows')
   const [browser, setBrowser] = useState('Chrome')
-  const [userAgent, setUserAgent] = useState('')
+  const [userAgent, setUserAgent] = useState(navigator.userAgent)
 
   useEffect(() => {
     chrome.storage.local.get(
@@ -33,8 +33,8 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
     setUserAgentType(e.target.value)
     chrome.storage.local.set({ userAgentType: e.target.value })
 
-    if (e.target.value === 'none') {
-      setUserAgent('')
+    if (e.target.value === 'default') {
+      setUserAgent(navigator.userAgent)
       chrome.storage.local.set({
         userAgent: '',
       })
@@ -86,11 +86,11 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         <Label>
           <Radio
             name="userAgentType"
-            value="none"
+            value="default"
             onChange={changeType}
-            checked={userAgentType === 'none'}
+            checked={userAgentType === 'default'}
           />
-          None
+          Default
         </Label>
         <Label>
           <Radio
@@ -155,7 +155,9 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         onChange={changeUserAgent}
         mb="12px"
       />
-      <CheckBox title={'Enable Debugger API Spoofing'} />
+      {userAgentType !== 'default' && (
+        <CheckBox title={'Enable Debugger API Spoofing'} />
+      )}
     </Page>
   )
 }

@@ -41,7 +41,7 @@ const ConnectionPage = ({ tab, ipData }: ConnectionPageProps) => {
         <TableRow title="Longitude" value={`${ipData?.lon}`} />
         <TableRow title="ISP" value={ipData?.isp} />
         <TableRow
-          title="Proxy"
+          title="Proxy/VPN"
           value={ipData?.proxy ? 'True' : 'False'}
           noBorder
         />
