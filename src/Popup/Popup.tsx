@@ -55,7 +55,7 @@ const Popup = () => {
       <Flex
         sx={{
           width: '350px',
-          height: '410px',
+          height: '428px',
         }}
       >
         <Flex

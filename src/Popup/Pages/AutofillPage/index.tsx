@@ -5,6 +5,7 @@ import CheckBox from '../../Components/CheckBox'
 import { ipData } from '../../../types'
 import Table from '../../Components/Table'
 import TableRow from '../../Components/TableRow'
+import { Button } from 'theme-ui'
 
 interface AutofillPageProps {
   tab: string
@@ -108,6 +109,13 @@ const AutofillPage = ({ tab, ipData }: AutofillPageProps) => {
         <TableRow title="Address" value={address} />
         <TableRow title="Phone" value={phone} noBorder />
       </Table>
+      <Button
+        variant="primary"
+        sx={{ width: '100%' }}
+        onClick={() => console.log('click')}
+      >
+        Autofill Current Page
+      </Button>
     </Page>
   )
 }

@@ -18,7 +18,7 @@ const Table = ({ title, children }: TableProps) => {
       <Box
         sx={{
           border: '1px solid',
-          mb: '8px',
+          mb: '12px',
           borderRadius: '4px',
           borderColor: 'grey',
         }}
