@@ -27,16 +27,7 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
         value={'default'}
         name={'Default'}
         description={
-          'Same as above, except allow WebRTC traffic through the default private'
-        }
-        webRtcPolicy={webRtcPolicy}
-        onChange={changeRadioValue}
-      />
-      <RadioButton
-        value={'disable_non_proxied_udp'}
-        name={'Disable Non-Proxied UDP (Force Proxy)'}
-        description={
-          'Same as above, except allow WebRTC traffic through the default private'
+          'Will use all available interfaces when searching for the best path.'
         }
         webRtcPolicy={webRtcPolicy}
         onChange={changeRadioValue}
@@ -45,7 +36,7 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
         value={'default_public_and_private_interfaces'}
         name={'Default Public And Private Interfaces'}
         description={
-          'Same as above, except allow WebRTC traffic through the default private'
+          'Will only use interface connecting to the public Internet, but may connect using private IP.'
         }
         webRtcPolicy={webRtcPolicy}
         onChange={changeRadioValue}
@@ -54,7 +45,16 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
         value={'default_public_interface_only'}
         name={'Default Public Interface Only'}
         description={
-          'Same as above, except allow WebRTC traffic through the default private'
+          'Will only use interface connecting to the public Internet, and will not connect using private IP.'
+        }
+        webRtcPolicy={webRtcPolicy}
+        onChange={changeRadioValue}
+      />
+      <RadioButton
+        value={'disable_non_proxied_udp'}
+        name={'Disable Non-Proxied UDP (Force Proxy)'}
+        description={
+          'Will use TCP on the public-facing interface, and will only use UDP if supported by a configured proxy.'
         }
         webRtcPolicy={webRtcPolicy}
         onChange={changeRadioValue}
