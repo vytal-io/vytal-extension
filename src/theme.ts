@@ -49,12 +49,12 @@ export const theme: Theme = {
   },
   buttons: {
     primary: {
-      borderRadius: '4px',
       color: 'background',
       bg: 'primary',
       py: '3px',
       px: '8px',
       cursor: 'pointer',
+      borderRadius: '0',
       width: '100%',
       '&:hover': {
         bg: 'primaryDark',

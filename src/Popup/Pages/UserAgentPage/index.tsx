@@ -155,6 +155,14 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         onChange={changeUserAgent}
         mb="12px"
       />
+      <DebouncedInput
+        name="platform"
+        title="Platform"
+        value={navigator.platform}
+        setValue={setUserAgent}
+        onChange={changeUserAgent}
+        mb="12px"
+      />
       {userAgentType !== 'default' && (
         <CheckBox title={'Enable Debugger API Spoofing'} />
       )}
