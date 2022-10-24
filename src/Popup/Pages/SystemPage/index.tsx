@@ -28,14 +28,6 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
     chrome.storage.local.get(
       ['systemType', 'configuration', 'timezone', 'locale', 'lat', 'lon'],
       (storage) => {
-        if (ipData) {
-          chrome.storage.local.set({
-            timezone: ipData.timezone,
-            locale: countryLocales[ipData.countryCode].locale,
-            lat: ipData.lat,
-            lon: ipData.lon,
-          })
-        }
         if (!storage.systemType || storage.systemType === 'default') {
           setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
           setLocale(Intl.DateTimeFormat().resolvedOptions().locale)
@@ -49,6 +41,12 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
           setLocale(countryLocales[ipData.countryCode].locale)
           setLatitude(`${ipData.lat}`)
           setLongitude(`${ipData.lon}`)
+          chrome.storage.local.set({
+            timezone: ipData.timezone,
+            locale: countryLocales[ipData.countryCode].locale,
+            lat: ipData.lat,
+            lon: ipData.lon,
+          })
         } else if (storage.systemType === 'custom') {
           storage.configuration && setConfiguration(storage.configuration)
           storage.timezone && setTimezone(storage.timezone)
