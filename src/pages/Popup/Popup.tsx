@@ -14,7 +14,7 @@ const Popup = () => {
       <Flex
         sx={{
           width: '350px',
-          height: '390px',
+          height: '410px',
         }}
       >
         <Flex
@@ -46,12 +46,19 @@ const Popup = () => {
           <Text
             sx={{
               mb: '8px',
-              fontSize: '10px',
+              fontSize: '11px',
               position: 'fixed',
               bottom: '0',
+              cursor: 'pointer',
             }}
+            onClick={() => window.open('https://vytal.io')}
           >
-            Current tab won't be fully spoofed until after 1st or 2nd reload.
+            Vytal does not change your IP address. To change your IP address you
+            will need to use a VPN such as
+            <Text sx={{ color: 'blue', textDecoration: 'underline' }}>
+              Proton VPN
+            </Text>
+            .
           </Text>
         </Box>
       </Flex>
