@@ -54,8 +54,8 @@ const Popup = () => {
             onClick={() => window.open('https://vytal.io')}
           >
             Vytal does not change your IP address. To change your IP address you
-            will need to use a VPN such as
-            <Text sx={{ color: 'blue', textDecoration: 'underline' }}>
+            will need to use a VPN such as{' '}
+            <Text sx={{ color: 'primaryDark', textDecoration: 'underline' }}>
               Proton VPN
             </Text>
             .
