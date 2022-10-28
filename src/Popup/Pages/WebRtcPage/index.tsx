@@ -1,4 +1,3 @@
-import { Text } from 'theme-ui'
 import { useState, useEffect, ChangeEvent } from 'react'
 import Page from '../../Components/Page'
 import handleWebRtcPolicy from './handleWebRtcPolicy'

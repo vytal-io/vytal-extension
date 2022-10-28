@@ -1,4 +1,3 @@
-import { Text } from 'theme-ui'
 import { ipData } from '../../../types'
 import FooterLink from '../../Components/FooterLink'
 import Page from '../../Components/Page'

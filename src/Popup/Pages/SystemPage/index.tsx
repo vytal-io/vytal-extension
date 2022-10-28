@@ -1,4 +1,3 @@
-import { Text } from 'theme-ui'
 import { useState, useEffect, ChangeEvent } from 'react'
 import { Flex, Label, Radio, Select } from 'theme-ui'
 import Page from '../../Components/Page'
@@ -226,7 +225,7 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
       {systemType !== 'default' && (
         <CheckBox title={'Enable Debugger API Spoofing'} />
       )}
-      <FooterLink link="test" text="Scan for" hoverText="system data leaks" />
+      <FooterLink link="test" text="Test with" hoverText="system data scan" />
     </Page>
   )
 }

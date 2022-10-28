@@ -25,7 +25,7 @@ export const theme: Theme = {
     label: { width: 'auto', alignItems: 'center' },
     input: {
       // border: '2px solid',
-      p: '2px 8px',
+      p: '4px 8px',
       mb: '8px',
       borderColor: 'grey',
       '&:focus': {
@@ -36,7 +36,7 @@ export const theme: Theme = {
     select: {
       // border: '2px solid',
       cursor: 'pointer',
-      p: '2px 8px',
+      p: '4px 8px',
       borderColor: 'grey',
       '&:focus': {
         borderColor: 'primaryDark',
@@ -51,7 +51,7 @@ export const theme: Theme = {
     primary: {
       color: 'background',
       bg: 'primary',
-      py: '3px',
+      py: '6px',
       px: '8px',
       cursor: 'pointer',
       borderRadius: '0',
