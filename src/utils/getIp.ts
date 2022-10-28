@@ -4,7 +4,6 @@ const getIp = () =>
   )
     .then((response) => response.json())
     .then((ipData) => {
-      console.log(ipData)
       chrome.storage.local.set({ ipData })
       return ipData
     })

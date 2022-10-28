@@ -21,24 +21,27 @@ import getIp from '../utils/getIp'
 // import getReverseGeocoding from '../utils/getReverseGeocoding'
 import '../assets/global.css'
 import OtherOptionsPage from './Pages/OtherOptionsPage'
+import addresses from '../utils/addresses'
 
 const Popup = () => {
   const [tab, setTab] = useState('autofill')
   const [ipData, setIpData] = useState<ipData>()
   // const [reverseGeocoding, setReverseGeocoding] = useState<any>(undefined)
   const [geolocation, setGeolocation] = useState<GeolocationCoordinates>()
+  const [autofillData, setAutofillData] = useState<any>()
 
   useEffect(() => {
     getIp().then((ipDataRes) => {
       setIpData(ipDataRes)
-      // if (ipDataRes.lat && ipDataRes.lon) {
-      //   getReverseGeocoding(ipDataRes.lat, ipDataRes.lon).then(
-      //     (reverseGeocodingRes) => {
-      //       setReverseGeocoding(reverseGeocodingRes)
-      //       console.log(reverseGeocodingRes)
-      //     }
-      //   )
-      // }
+      let geoIndex = (ipDataRes.lat + 90) * 180 + ipDataRes.lon
+      console.log(geoIndex)
+      let closest = addresses.reduce((prev: any, curr: any) => {
+        return Math.abs(curr.geoIndex - geoIndex) <
+          Math.abs(prev.geoIndex - geoIndex)
+          ? curr
+          : prev
+      })
+      setAutofillData(closest)
     })
     navigator.geolocation.getCurrentPosition(
       (pos) => setGeolocation(pos.coords),
@@ -55,7 +58,7 @@ const Popup = () => {
       <Flex
         sx={{
           width: '350px',
-          height: '428px',
+          height: '436px',
         }}
       >
         <Flex
@@ -111,7 +114,7 @@ const Popup = () => {
           <SystemPage tab={tab} ipData={ipData} geolocation={geolocation} />
           <AutofillPage
             tab={tab}
-            ipData={ipData}
+            autofillData={autofillData}
             // reverseGeocoding={reverseGeocoding}
           />
           <WebRtcPage tab={tab} />

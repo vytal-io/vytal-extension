@@ -56,6 +56,7 @@ export const theme: Theme = {
       cursor: 'pointer',
       borderRadius: '0',
       width: '100%',
+      display: 'block',
       '&:hover': {
         bg: 'primaryDark',
       },

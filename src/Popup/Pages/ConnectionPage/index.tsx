@@ -1,4 +1,6 @@
+import { Text } from 'theme-ui'
 import { ipData } from '../../../types'
+import FooterLink from '../../Components/FooterLink'
 import Page from '../../Components/Page'
 import Table from '../../Components/Table'
 import TableRow from '../../Components/TableRow'
@@ -47,6 +49,11 @@ const ConnectionPage = ({ tab, ipData }: ConnectionPageProps) => {
           noBorder
         />
       </Table>
+      <FooterLink
+        link="test"
+        text="Connection info can be changed by using a"
+        hoverText="VPN or proxy"
+      />
     </Page>
   )
 }

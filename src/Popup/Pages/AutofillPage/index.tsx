@@ -1,72 +1,78 @@
+import { Text } from 'theme-ui'
 import { useState, useEffect } from 'react'
-
 import Page from '../../Components/Page'
 import CheckBox from '../../Components/CheckBox'
-import { ipData } from '../../../types'
+// import { autofillData } from '../../../types'
 import Table from '../../Components/Table'
 import TableRow from '../../Components/TableRow'
 import { Button } from 'theme-ui'
+import addresses from '../../../utils/addresses'
+import FooterLink from '../../Components/FooterLink'
 
 interface AutofillPageProps {
   tab: string
-  ipData?: ipData
+  autofillData?: any
   // reverseGeocoding: any
 }
 
-const AutofillPage = ({ tab, ipData }: AutofillPageProps) => {
+const AutofillPage = ({ tab, autofillData }: AutofillPageProps) => {
   const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
   const [region, setRegion] = useState('')
   const [postCode, setPostCode] = useState('')
   const [address, setAddress] = useState('')
-  const [phone, setPhone] = useState(
-    'fjkdskf fdkfksj 324324kk dj3223j4k3l jerwkjjekjjwrjrhwehrwjejhwreherwjrwhje'
-  )
+  const [phone, setPhone] = useState('9057814565')
   // const [configuration, setConfiguration] = useState('default')
 
   useEffect(() => {
-    // chrome.storage.local.get(['configuration', 'ipData'], (storage) => {
+    // chrome.storage.local.get(['configuration', 'autofillData'], (storage) => {
     //   storage.configuration && setConfiguration(storage.configuration)
-    //   if (storage.ipData) {
-    //     setIP(storage.ipData)
+    //   if (storage.autofillData) {
+    //     setIP(storage.autofillData)
     //   } else {
-    //     Promise.resolve(getIP()).then((ipData) => setIP(ipData))
+    //     Promise.resolve(getIP()).then((autofillData) => setIP(autofillData))
     //   }
     // })
-    if (ipData?.country) {
-      setCountry(ipData.country)
-      chrome.storage.local.set({
-        country: ipData.country,
-      })
+    if (autofillData?.country) {
+      setCountry(autofillData.country)
+      // chrome.storage.local.set({
+      //   country: autofillData.country,
+      // })
     }
-    if (ipData?.city) {
-      setCity(ipData.city)
-      chrome.storage.local.set({
-        city: ipData.city,
-      })
+    if (autofillData?.locality) {
+      setCity(autofillData.locality)
+      // chrome.storage.local.set({
+      //   city: autofillData.city,
+      // })
     }
-    if (ipData?.regionName) {
-      setRegion(ipData.regionName)
-      chrome.storage.local.set({
-        region: ipData.regionName,
-      })
+    if (autofillData?.administrative_area_level_1) {
+      setRegion(autofillData.administrative_area_level_1)
+      // chrome.storage.local.set({
+      //   region: autofillData.regionName,
+      // })
     }
-    if (ipData?.zip) {
-      setPostCode(ipData.zip)
-      chrome.storage.local.set({
-        postCode: ipData.zip,
-      })
+    if (autofillData?.postal_code) {
+      setPostCode(autofillData.postal_code)
+      // chrome.storage.local.set({
+      //   postCode: autofillData.zip,
+      // })
     }
-    // ipData?.city && setCity(ipData.city)
-    // ipData?.regionName && setRegion(ipData.regionName)
-    // ipData?.zip && setPostCode()
+    if (autofillData?.street_number && autofillData?.route) {
+      setAddress(`${autofillData.street_number} ${autofillData.route}`)
+      // chrome.storage.local.set({
+      //   postCode: autofillData.zip,
+      // })
+    }
+    // autofillData?.city && setCity(autofillData.city)
+    // autofillData?.regionName && setRegion(autofillData.regionName)
+    // autofillData?.zip && setPostCode()
     // chrome.storage.local.set({
-    //   country: ipData.country,
-    //   city: ipData.city,
-    //   regionName: ipData.regionName,
-    //   zip: ipData.zip,
+    //   country: autofillData.country,
+    //   city: autofillData.city,
+    //   regionName: autofillData.regionName,
+    //   zip: autofillData.zip,
     // })
-  }, [ipData, setCity, setPostCode, setRegion])
+  }, [autofillData, setCity, setPostCode, setRegion])
 
   // useEffect(() => {
   //   if (!postCode && reverseGeocoding?.postcode) {
@@ -100,8 +106,8 @@ const AutofillPage = ({ tab, ipData }: AutofillPageProps) => {
   return (
     <Page isCurrentTab={tab === 'autofill'} title={'Autofill'}>
       <CheckBox title={'Disable Built-In Address Autofill'} />
-      <CheckBox title={'Automatically Autofill'} />
-      <Table title="Autofill Data">
+      {/* <CheckBox title={'Automatically Autofill'} /> */}
+      <Table>
         <TableRow title="Country" value={country} />
         <TableRow title="Region" value={region} />
         <TableRow title="City" value={city} />
@@ -116,6 +122,7 @@ const AutofillPage = ({ tab, ipData }: AutofillPageProps) => {
       >
         Autofill Current Page
       </Button>
+      <FooterLink link="test" text="Test" hoverText="autofill data" />
     </Page>
   )
 }

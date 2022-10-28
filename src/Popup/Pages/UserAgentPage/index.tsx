@@ -1,3 +1,4 @@
+import { Text } from 'theme-ui'
 import { useState, useEffect, ChangeEvent } from 'react'
 import { Box, Label, Radio, Flex, Select } from 'theme-ui'
 import DebouncedInput from '../../Components/DebouncedInput'
@@ -5,6 +6,7 @@ import userAgents from '../../../utils/userAgents'
 import detachDebugger from '../../../utils/detachDebugger'
 import Page from '../../Components/Page'
 import CheckBox from '../../Components/CheckBox'
+import FooterLink from '../../Components/FooterLink'
 
 interface UserAgentPageProps {
   tab: string
@@ -166,6 +168,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
       {userAgentType !== 'default' && (
         <CheckBox title={'Enable Debugger API Spoofing'} />
       )}
+      <FooterLink link="test" text="Scan for" hoverText="user agent leaks" />
     </Page>
   )
 }

@@ -1,7 +1,9 @@
+import { Text } from 'theme-ui'
 import { useState, useEffect, ChangeEvent } from 'react'
 import Page from '../../Components/Page'
 import handleWebRtcPolicy from './handleWebRtcPolicy'
 import RadioButton from './RadioButton'
+import FooterLink from '../../Components/FooterLink'
 
 interface SystemPageProps {
   tab: string
@@ -59,6 +61,7 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
         webRtcPolicy={webRtcPolicy}
         onChange={changeRadioValue}
       />
+      <FooterLink link="test" text="Scan for" hoverText="WebRTC leaks" />
     </Page>
   )
 }
