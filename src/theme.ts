@@ -4,8 +4,10 @@ export const theme: Theme = {
   colors: {
     text: '#333333',
     background: '#FDFDFD',
-    primary: '#B77EEE',
-    primaryDark: '#a55eea',
+    // primary: '#B77EEE',
+    // primaryDark: '#a55eea',
+    primary: '#a55eea',
+    primaryDark: '#9454d2',
     red: '#fc5c65',
     redDark: '#e2525a',
     green: '#26de81',
