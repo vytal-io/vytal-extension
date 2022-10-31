@@ -1,8 +1,9 @@
+import { ChangeEvent } from 'react'
 import { Label, Checkbox } from 'theme-ui'
 
 interface CheckBoxProps {
   title: string
-  onChange?: () => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   checked?: boolean
 }
 

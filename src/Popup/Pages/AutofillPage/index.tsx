@@ -1,5 +1,5 @@
 import { Text } from 'theme-ui'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ChangeEvent } from 'react'
 import Page from '../../Components/Page'
 import CheckBox from '../../Components/CheckBox'
 // import { autofillData } from '../../../types'
@@ -8,6 +8,7 @@ import TableRow from '../../Components/TableRow'
 import { Button } from 'theme-ui'
 import addresses from '../../../utils/addresses'
 import FooterLink from '../../Components/FooterLink'
+import handleAutofillAddress from './handleAutofillAddress'
 
 interface AutofillPageProps {
   tab: string
@@ -16,6 +17,7 @@ interface AutofillPageProps {
 }
 
 const AutofillPage = ({ tab, autofillData }: AutofillPageProps) => {
+  const [autofillAddress, setAutofillAddress] = useState(false)
   const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
   const [region, setRegion] = useState('')
@@ -23,6 +25,12 @@ const AutofillPage = ({ tab, autofillData }: AutofillPageProps) => {
   const [address, setAddress] = useState('')
   const [phone, setPhone] = useState('9057814565')
   // const [configuration, setConfiguration] = useState('default')
+
+  useEffect(() => {
+    chrome.storage.local.get(['autofillAddress'], (storage) => {
+      storage.autofillAddress && setAutofillAddress(storage.autofillAddress)
+    })
+  }, [])
 
   useEffect(() => {
     // chrome.storage.local.get(['configuration', 'autofillData'], (storage) => {
@@ -103,9 +111,19 @@ const AutofillPage = ({ tab, autofillData }: AutofillPageProps) => {
   //   // }
   // }
 
+  const changeCheckBoxValue = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.checked)
+    handleAutofillAddress(e.target.checked)
+    setAutofillAddress(e.target.checked)
+  }
+
   return (
     <Page isCurrentTab={tab === 'autofill'} title={'Autofill'}>
-      <CheckBox title={'Disable Built-In Address Autofill'} />
+      <CheckBox
+        title={'Disable Built-In Address Autofill'}
+        onChange={changeCheckBoxValue}
+        checked={autofillAddress}
+      />
       {/* <CheckBox title={'Automatically Autofill'} /> */}
       <Table>
         <TableRow title="Country" value={country} />
