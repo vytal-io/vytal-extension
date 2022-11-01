@@ -1,4 +1,4 @@
-import { Text } from 'theme-ui'
+import { Link, Text } from 'theme-ui'
 
 interface FooterLinkProps {
   link: string
@@ -8,16 +8,7 @@ interface FooterLinkProps {
 
 const FooterLink = ({ link, text, hoverText }: FooterLinkProps) => {
   return (
-    <Text
-      sx={{
-        mb: '8px',
-        fontSize: '11px',
-        position: 'fixed',
-        bottom: '0',
-        cursor: 'pointer',
-      }}
-      onClick={() => window.open(`https://vytal.io/${link}`)}
-    >
+    <Link variant="footer" href={`https://vytal.io/${link}`} target="_blank">
       {text}{' '}
       <Text
         sx={{
@@ -29,7 +20,7 @@ const FooterLink = ({ link, text, hoverText }: FooterLinkProps) => {
       >
         {hoverText}
       </Text>
-    </Text>
+    </Link>
   )
 }
 
