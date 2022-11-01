@@ -225,7 +225,7 @@ const configurations: any = {
     lon: -79.3832,
   },
   washington: {
-    name: 'Washington',
+    name: 'Washington D.C.',
     timezone: 'America/New_York',
     locale: 'en-US',
     lat: 38.9072,
