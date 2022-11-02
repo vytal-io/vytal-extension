@@ -3,7 +3,7 @@
   "name": "Vytal - VPN Companion",
   "version": "2.0.0",
   "description": "Spoof Timezone, Geolocation, Locale and User Agent.",
-  "permissions": ["storage", "debugger", "activeTab", "privacy", "geolocation"],
+  "permissions": ["storage", "debugger", "privacy", "geolocation"],
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",
