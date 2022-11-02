@@ -11,8 +11,10 @@ const attachDebugger = (tabId: number) => {
       'locale',
       'localeMatchIP',
       'userAgent',
+      'platform',
     ],
     (storage) => {
+      console.log(storage)
       if (
         storage.timezone ||
         storage.lat ||
@@ -77,15 +79,15 @@ const attachDebugger = (tabId: number) => {
               )
             }
 
-            if (storage.userAgent) {
+            if (storage.userAgent || storage.platform) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },
                 'Emulation.setUserAgentOverride',
                 {
                   userAgent: storage.userAgent,
+                  platform: storage.platform,
                 }
                 // { acceptLanguage: "en-CA" },
-                // { platform: "WebTV OS" }
               )
             }
           }

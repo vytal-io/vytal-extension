@@ -3,6 +3,7 @@ import { Box, Label, Radio, Flex, Select } from 'theme-ui'
 import DebouncedInput from '../../Components/DebouncedInput'
 import userAgents from '../../../utils/userAgents'
 import detachDebugger from '../../../utils/detachDebugger'
+import attachCurrentTab from '../../../utils/attachCurrentTab'
 import Page from '../../Components/Page'
 import CheckBox from '../../Components/CheckBox'
 import FooterLink from '../../Components/FooterLink'
@@ -16,15 +17,17 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   const [operatingSystem, setOperatingSystem] = useState('Windows')
   const [browser, setBrowser] = useState('Chrome')
   const [userAgent, setUserAgent] = useState(navigator.userAgent)
+  const [platform, setPlatform] = useState(navigator.platform)
 
   useEffect(() => {
     chrome.storage.local.get(
-      ['userAgentType', 'operatingSystem', 'browser', 'userAgent'],
+      ['userAgentType', 'operatingSystem', 'browser', 'userAgent', 'platform'],
       (storage) => {
         storage.userAgentType && setUserAgentType(storage.userAgentType)
         storage.operatingSystem && setOperatingSystem(storage.operatingSystem)
         storage.browser && setBrowser(storage.browser)
         storage.userAgent && setUserAgent(storage.userAgent)
+        storage.platform && setPlatform(storage.platform)
       }
     )
   }, [])
@@ -36,38 +39,45 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
 
     if (e.target.value === 'default') {
       setUserAgent(navigator.userAgent)
+      setPlatform(navigator.platform)
       chrome.storage.local.set({
         userAgent: '',
+        platform: '',
       })
     } else if (e.target.value === 'preloaded') {
-      setUserAgent(userAgents[operatingSystem][browser])
+      setUserAgent(userAgents[operatingSystem]['userAgents'][browser])
+      setPlatform(userAgents[operatingSystem]['platform'])
       chrome.storage.local.set({
-        userAgent: userAgents[operatingSystem][browser],
+        userAgent: userAgents[operatingSystem]['userAgents'][browser],
+        platform: userAgents[operatingSystem]['platform'],
       })
     }
   }
 
-  const changeOperatingSystem = (e: ChangeEvent<HTMLSelectElement>) => {
+  const changeOperatingSystem = async (e: ChangeEvent<HTMLSelectElement>) => {
     detachDebugger()
     setOperatingSystem(e.target.value)
-    setUserAgent(userAgents[e.target.value][browser])
+    setUserAgent(userAgents[e.target.value]['userAgents'][browser])
+    setPlatform(userAgents[e.target.value]['platform'])
     chrome.storage.local.set({
-      userAgent: userAgents[e.target.value][browser],
+      userAgent: userAgents[e.target.value]['userAgents'][browser],
+      platform: userAgents[e.target.value]['platform'],
       operatingSystem: e.target.value,
     })
+    await attachCurrentTab()
   }
 
   const changeBrowser = (e: ChangeEvent<HTMLSelectElement>) => {
     detachDebugger()
     setBrowser(e.target.value)
-    setUserAgent(userAgents[operatingSystem][e.target.value])
+    setUserAgent(userAgents[operatingSystem]['userAgents'][e.target.value])
     chrome.storage.local.set({
-      userAgent: userAgents[operatingSystem][e.target.value],
+      userAgent: userAgents[operatingSystem]['userAgents'][e.target.value],
       browser: e.target.value,
     })
   }
 
-  const changeUserAgent = () => {
+  const changeTextInput = () => {
     if (userAgentType !== 'custom') {
       setUserAgentType('custom')
       chrome.storage.local.set({
@@ -139,11 +149,13 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
               onChange={changeBrowser}
               mb={'8px'}
             >
-              {Object.keys(userAgents[operatingSystem]).map((key) => (
-                <option value={key} key={key}>
-                  {key}
-                </option>
-              ))}
+              {Object.keys(userAgents[operatingSystem]['userAgents']).map(
+                (key) => (
+                  <option value={key} key={key}>
+                    {key}
+                  </option>
+                )
+              )}
             </Select>
           </Box>
         </Flex>
@@ -153,15 +165,15 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         title="User Agent"
         value={userAgent}
         setValue={setUserAgent}
-        onChange={changeUserAgent}
+        onChange={changeTextInput}
         mb="12px"
       />
       <DebouncedInput
         name="platform"
         title="Platform"
-        value={navigator.platform}
-        setValue={setUserAgent}
-        onChange={changeUserAgent}
+        value={platform}
+        setValue={setPlatform}
+        onChange={changeTextInput}
         mb="12px"
       />
       {userAgentType !== 'default' && (
