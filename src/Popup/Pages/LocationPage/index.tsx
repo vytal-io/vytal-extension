@@ -6,17 +6,18 @@ import detachDebugger from '../../../utils/detachDebugger'
 import countryLocales from '../../../utils/countryLocales'
 import { ipData } from '../../../types'
 import configurations from '../../../utils/configurations'
-import CheckBox from '../../Components/CheckBox'
 import FooterLink from '../../Components/FooterLink'
+import Table from '../../Components/Table'
+import TableRow from '../../Components/TableRow'
 
-interface SystemPageProps {
+interface LocationPageProps {
   tab: string
   ipData?: ipData
   geolocation?: GeolocationCoordinates
 }
 
-const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
-  const [systemType, setSystemType] = useState('')
+const LocationPage = ({ tab, ipData, geolocation }: LocationPageProps) => {
+  const [locationType, setLocationType] = useState('')
   const [timezone, setTimezone] = useState('')
   const [locale, setLocale] = useState('')
   const [lat, setLatitude] = useState('')
@@ -27,9 +28,9 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
 
   useEffect(() => {
     chrome.storage.local.get(
-      ['systemType', 'configuration', 'timezone', 'locale', 'lat', 'lon'],
+      ['locationType', 'configuration', 'timezone', 'locale', 'lat', 'lon'],
       (storage) => {
-        if (!storage.systemType || storage.systemType === 'default') {
+        if (!storage.locationType || storage.locationType === 'default') {
           setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
           setLocale(Intl.DateTimeFormat().resolvedOptions().locale)
           if (geolocation) {
@@ -37,7 +38,7 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
             setLongitude(`${geolocation.longitude}`)
           }
         }
-        if (storage.systemType === 'matchIp' && ipData) {
+        if (storage.locationType === 'matchIp' && ipData) {
           setTimezone(ipData.timezone)
           setLocale(countryLocales[ipData.countryCode].locale)
           setLatitude(`${ipData.lat}`)
@@ -48,24 +49,24 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
             lat: ipData.lat,
             lon: ipData.lon,
           })
-        } else if (storage.systemType === 'custom') {
+        } else if (storage.locationType === 'custom') {
           storage.configuration && setConfiguration(storage.configuration)
           storage.timezone && setTimezone(storage.timezone)
           storage.locale && setLocale(storage.locale)
           storage.lat && setLatitude(storage.lat)
           storage.lon && setLongitude(storage.lon)
         }
-        storage.systemType
-          ? setSystemType(storage.systemType)
-          : setSystemType('default')
+        storage.locationType
+          ? setLocationType(storage.locationType)
+          : setLocationType('default')
       }
     )
   }, [geolocation, ipData])
 
   const changeType = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
-    setSystemType(e.target.value)
-    chrome.storage.local.set({ systemType: e.target.value })
+    setLocationType(e.target.value)
+    chrome.storage.local.set({ locationType: e.target.value })
 
     if (e.target.value === 'default') {
       setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
@@ -129,18 +130,26 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
   }
 
   const changeInputText = () => {
-    if (systemType !== 'custom' || configuration !== 'custom') {
+    if (locationType !== 'custom' || configuration !== 'custom') {
       setConfiguration('custom')
-      setSystemType('custom')
+      setLocationType('custom')
       chrome.storage.local.set({
         configuration: 'custom',
-        systemType: 'custom',
+        locationType: 'custom',
       })
     }
   }
 
+  const getFlagEmoji = (countryCode: string) => {
+    const codePoints = countryCode
+      .toUpperCase()
+      .split('')
+      .map((char) => 127397 + char.charCodeAt(0))
+    return String.fromCodePoint(...codePoints)
+  }
+
   return (
-    <Page isCurrentTab={tab === 'system'} title={'System Data'}>
+    <Page isCurrentTab={tab === 'location'} title={'Location Data'}>
       <Flex
         sx={{
           justifyContent: 'space-between',
@@ -149,33 +158,46 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
       >
         <Label>
           <Radio
-            name="systemType"
+            name="locationType"
             value="default"
             onChange={changeType}
-            checked={systemType === 'default'}
+            checked={locationType === 'default'}
           />
           Default
         </Label>
         <Label>
           <Radio
-            name="systemType"
+            name="locationType"
             value="matchIp"
             onChange={changeType}
-            checked={systemType === 'matchIp'}
+            checked={locationType === 'matchIp'}
           />
           Match IP
         </Label>
         <Label>
           <Radio
-            name="systemType"
+            name="locationType"
             value="custom"
             onChange={changeType}
-            checked={systemType === 'custom'}
+            checked={locationType === 'custom'}
           />
           Custom
         </Label>
       </Flex>
-      {systemType === 'custom' && (
+      {locationType === 'matchIp' && (
+        <Table>
+          <TableRow
+            title="IP Address"
+            value={
+              ipData
+                ? `${getFlagEmoji(ipData.countryCode)} ${ipData?.query}`
+                : 'loading...'
+            }
+            noBorder
+          />
+        </Table>
+      )}
+      {locationType === 'custom' && (
         <>
           <Label htmlFor="configuration">Configuration</Label>
           <Select
@@ -222,12 +244,9 @@ const SystemPage = ({ tab, ipData, geolocation }: SystemPageProps) => {
         onChange={changeInputText}
         mb="12px"
       />
-      {systemType !== 'default' && (
-        <CheckBox title={'Enable Debugger API Spoofing'} />
-      )}
-      <FooterLink link="test" text="Test with" hoverText="system data scan" />
+      <FooterLink />
     </Page>
   )
 }
 
-export default SystemPage
+export default LocationPage

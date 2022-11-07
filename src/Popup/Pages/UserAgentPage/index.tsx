@@ -3,9 +3,7 @@ import { Box, Label, Radio, Flex, Select } from 'theme-ui'
 import DebouncedInput from '../../Components/DebouncedInput'
 import userAgents from '../../../utils/userAgents'
 import detachDebugger from '../../../utils/detachDebugger'
-import attachCurrentTab from '../../../utils/attachCurrentTab'
 import Page from '../../Components/Page'
-import CheckBox from '../../Components/CheckBox'
 import FooterLink from '../../Components/FooterLink'
 
 interface UserAgentPageProps {
@@ -64,7 +62,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
       platform: userAgents[e.target.value]['platform'],
       operatingSystem: e.target.value,
     })
-    await attachCurrentTab()
+    // await attachCurrentTab()
   }
 
   const changeBrowser = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -176,10 +174,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         onChange={changeTextInput}
         mb="12px"
       />
-      {userAgentType !== 'default' && (
-        <CheckBox title={'Enable Debugger API Spoofing'} />
-      )}
-      <FooterLink link="test" text="Scan for" hoverText="user agent leaks" />
+      <FooterLink />
     </Page>
   )
 }

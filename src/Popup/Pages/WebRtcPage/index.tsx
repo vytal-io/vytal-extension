@@ -60,7 +60,6 @@ const WebRtcPage = ({ tab }: SystemPageProps) => {
         webRtcPolicy={webRtcPolicy}
         onChange={changeRadioValue}
       />
-      <FooterLink link="test" text="Scan for" hoverText="WebRTC leaks" />
     </Page>
   )
 }

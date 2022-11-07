@@ -14,7 +14,7 @@ const TableRow = ({ title, value, noBorder = false }: TableRowProps) => {
         borderBottomColor: 'grey',
       }}
     >
-      <td sx={{ fontWeight: '700', width: '100px', p: '8px' }}>{title}</td>
+      <td sx={{ fontWeight: '700', width: '100px', p: '5px 8px' }}>{title}</td>
       <td>
         <Box
           sx={{

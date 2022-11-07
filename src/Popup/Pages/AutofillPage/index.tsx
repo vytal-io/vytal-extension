@@ -140,7 +140,6 @@ const AutofillPage = ({ tab, autofillData }: AutofillPageProps) => {
       >
         Autofill Current Page
       </Button>
-      <FooterLink link="test" text="Test" hoverText="autofill data" />
     </Page>
   )
 }

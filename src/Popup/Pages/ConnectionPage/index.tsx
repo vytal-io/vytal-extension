@@ -48,11 +48,6 @@ const ConnectionPage = ({ tab, ipData }: ConnectionPageProps) => {
           noBorder
         />
       </Table>
-      <FooterLink
-        link="test"
-        text="Connection info can be changed by using a"
-        hoverText="VPN or proxy"
-      />
     </Page>
   )
 }

@@ -3,14 +3,14 @@ import { ThemeProvider, Flex, Box } from 'theme-ui'
 import { theme } from '../theme'
 import {
   Wifi,
-  HardDrive,
+  MapPin,
   FileText,
   MessageSquare,
   Globe,
   Settings,
 } from 'react-feather'
 import TabItem from './TabItem'
-import SystemPage from './Pages/SystemPage'
+import LocationPage from './Pages/LocationPage'
 import UserAgentPage from './Pages/UserAgentPage'
 import SettingsPage from './Pages/SettingsPage'
 import AutofillPage from './Pages/AutofillPage'
@@ -24,7 +24,7 @@ import OtherOptionsPage from './Pages/OtherOptionsPage'
 import addresses from '../utils/addresses'
 
 const Popup = () => {
-  const [tab, setTab] = useState('autofill')
+  const [tab, setTab] = useState('location')
   const [ipData, setIpData] = useState<ipData>()
   // const [reverseGeocoding, setReverseGeocoding] = useState<any>(undefined)
   const [geolocation, setGeolocation] = useState<GeolocationCoordinates>()
@@ -69,17 +69,17 @@ const Popup = () => {
             flexDirection: 'column',
           }}
         >
-          <TabItem
+          {/* <TabItem
             Icon={Wifi}
             active={tab === 'connection'}
             onClick={() => setTab('connection')}
-          />
+          /> */}
           <TabItem
-            Icon={HardDrive}
-            active={tab === 'system'}
-            onClick={() => setTab('system')}
+            Icon={MapPin}
+            active={tab === 'location'}
+            onClick={() => setTab('location')}
           />
-          <TabItem
+          {/* <TabItem
             Icon={FileText}
             active={tab === 'autofill'}
             onClick={() => setTab('autofill')}
@@ -88,7 +88,7 @@ const Popup = () => {
             Icon={MessageSquare}
             active={tab === 'webRtc'}
             onClick={() => setTab('webRtc')}
-          />
+          /> */}
           <TabItem
             Icon={Globe}
             active={tab === 'userAgent'}
@@ -111,7 +111,7 @@ const Popup = () => {
         </Flex>
         <Box sx={{ m: '12px', width: '100%' }}>
           <ConnectionPage tab={tab} ipData={ipData} />
-          <SystemPage tab={tab} ipData={ipData} geolocation={geolocation} />
+          <LocationPage tab={tab} ipData={ipData} geolocation={geolocation} />
           <AutofillPage
             tab={tab}
             autofillData={autofillData}
