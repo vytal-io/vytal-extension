@@ -5,10 +5,10 @@
 }
 
 body {
-  font-family: 'Nunito';
+  font-family: 'Nunito', Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
 
 input {
-  font-family: 'Nunito';
+  font-family: 'Nunito', Arial, Helvetica, sans-serif;
 }

@@ -4,8 +4,6 @@ export const theme: Theme = {
   colors: {
     text: '#333333',
     background: '#FDFDFD',
-    // primary: '#B77EEE',
-    // primaryDark: '#a55eea',
     primary: '#a55eea',
     primaryDark: '#9454d2',
     red: '#fc5c65',
@@ -73,10 +71,6 @@ export const theme: Theme = {
   links: {
     footer: {
       color: 'text',
-      mb: '8px',
-      fontSize: '11px',
-      position: 'fixed',
-      bottom: '0',
       textDecoration: 'none',
     },
     hover: {

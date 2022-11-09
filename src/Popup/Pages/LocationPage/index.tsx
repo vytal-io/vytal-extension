@@ -1,22 +1,21 @@
 import { useState, useEffect, ChangeEvent } from 'react'
-import { Flex, Label, Radio, Select } from 'theme-ui'
+import { Box, Flex, Label, Radio, Select } from 'theme-ui'
 import Page from '../../Components/Page'
 import DebouncedInput from '../../Components/DebouncedInput'
 import detachDebugger from '../../../utils/detachDebugger'
 import countryLocales from '../../../utils/countryLocales'
-import { ipData } from '../../../types'
 import configurations from '../../../utils/configurations'
 import FooterLink from '../../Components/FooterLink'
-import Table from '../../Components/Table'
-import TableRow from '../../Components/TableRow'
+import { ipData } from '../../../types'
+import getIp from '../../../utils/getIp'
+import { RotateCw } from 'react-feather'
 
 interface LocationPageProps {
   tab: string
-  ipData?: ipData
-  geolocation?: GeolocationCoordinates
 }
 
-const LocationPage = ({ tab, ipData, geolocation }: LocationPageProps) => {
+const LocationPage = ({ tab }: LocationPageProps) => {
+  const [ipData, setIpData] = useState<ipData>()
   const [locationType, setLocationType] = useState('')
   const [timezone, setTimezone] = useState('')
   const [locale, setLocale] = useState('')
@@ -24,20 +23,16 @@ const LocationPage = ({ tab, ipData, geolocation }: LocationPageProps) => {
   const [lon, setLongitude] = useState('')
   const [configuration, setConfiguration] = useState('custom')
 
-  // console.log(geolocation)
+  useEffect(() => {
+    getIp().then((ipDataRes) => {
+      setIpData(ipDataRes)
+    })
+  }, [])
 
   useEffect(() => {
     chrome.storage.local.get(
       ['locationType', 'configuration', 'timezone', 'locale', 'lat', 'lon'],
       (storage) => {
-        if (!storage.locationType || storage.locationType === 'default') {
-          setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
-          setLocale(Intl.DateTimeFormat().resolvedOptions().locale)
-          if (geolocation) {
-            setLatitude(`${geolocation.latitude}`)
-            setLongitude(`${geolocation.longitude}`)
-          }
-        }
         if (storage.locationType === 'matchIp' && ipData) {
           setTimezone(ipData.timezone)
           setLocale(countryLocales[ipData.countryCode].locale)
@@ -61,7 +56,7 @@ const LocationPage = ({ tab, ipData, geolocation }: LocationPageProps) => {
           : setLocationType('default')
       }
     )
-  }, [geolocation, ipData])
+  }, [ipData])
 
   const changeType = (e: ChangeEvent<HTMLInputElement>) => {
     detachDebugger()
@@ -69,12 +64,10 @@ const LocationPage = ({ tab, ipData, geolocation }: LocationPageProps) => {
     chrome.storage.local.set({ locationType: e.target.value })
 
     if (e.target.value === 'default') {
-      setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
-      setLocale(Intl.DateTimeFormat().resolvedOptions().locale)
-      if (geolocation) {
-        setLatitude(`${geolocation.latitude}`)
-        setLongitude(`${geolocation.longitude}`)
-      }
+      setTimezone('')
+      setLocale('')
+      setLatitude('')
+      setLongitude('')
       chrome.storage.local.set({
         timezone: '',
         locale: '',
@@ -94,7 +87,7 @@ const LocationPage = ({ tab, ipData, geolocation }: LocationPageProps) => {
           lon: ipData.lon,
         })
       }
-    } else if (e.target.value === 'custom')
+    } else if (e.target.value === 'custom') {
       if (configuration !== 'custom') {
         setTimezone(configurations[configuration].timezone)
         setLocale(configurations[configuration].locale)
@@ -107,6 +100,7 @@ const LocationPage = ({ tab, ipData, geolocation }: LocationPageProps) => {
           lon: configurations[configuration].lon,
         })
       }
+    }
   }
 
   const changeConfiguration = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -185,17 +179,46 @@ const LocationPage = ({ tab, ipData, geolocation }: LocationPageProps) => {
         </Label>
       </Flex>
       {locationType === 'matchIp' && (
-        <Table>
-          <TableRow
-            title="IP Address"
-            value={
-              ipData
-                ? `${getFlagEmoji(ipData.countryCode)} ${ipData?.query}`
-                : 'loading...'
-            }
-            noBorder
+        <Flex
+          sx={{
+            border: '1px solid',
+            mt: '12px',
+            mb: '8px',
+            borderRadius: '4px',
+            borderColor: 'grey',
+            alignItems: 'center',
+            p: '4px 8px',
+          }}
+        >
+          <Box sx={{ fontWeight: '700', width: '100px', pr: '8px' }}>
+            IP Address
+          </Box>
+          <Box
+            sx={{
+              width: '188px',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+            title={ipData?.query}
+          >
+            {ipData
+              ? `${getFlagEmoji(ipData.countryCode)} ${ipData?.query}`
+              : 'loading...'}
+          </Box>
+          <RotateCw
+            size={20}
+            sx={{
+              cursor: 'pointer',
+            }}
+            onClick={() => {
+              setIpData(undefined)
+              getIp().then((ipDataRes) => {
+                setIpData(ipDataRes)
+              })
+            }}
           />
-        </Table>
+        </Flex>
       )}
       {locationType === 'custom' && (
         <>

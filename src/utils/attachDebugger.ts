@@ -14,7 +14,6 @@ const attachDebugger = (tabId: number) => {
       'platform',
     ],
     (storage) => {
-      console.log(storage)
       if (
         storage.timezone ||
         storage.lat ||
@@ -24,15 +23,6 @@ const attachDebugger = (tabId: number) => {
       ) {
         chrome.debugger.attach({ tabId: tabId }, '1.3', () => {
           if (!chrome.runtime.lastError) {
-            // chrome.debugger.sendCommand(
-            //   { tabId: tabId },
-            //   'Target.autoAttachRelated',
-            //   { targetId: tabId, waitForDebuggerOnStart: false },
-            //   (res) => {
-            //     console.log(res)
-            //   }
-            // )
-
             if (storage.timezone) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },

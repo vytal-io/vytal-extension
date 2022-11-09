@@ -14,8 +14,8 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   const [userAgentType, setUserAgentType] = useState('default')
   const [operatingSystem, setOperatingSystem] = useState('Windows')
   const [browser, setBrowser] = useState('Chrome')
-  const [userAgent, setUserAgent] = useState(navigator.userAgent)
-  const [platform, setPlatform] = useState(navigator.platform)
+  const [userAgent, setUserAgent] = useState('')
+  const [platform, setPlatform] = useState('')
 
   useEffect(() => {
     chrome.storage.local.get(
@@ -36,8 +36,8 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
     chrome.storage.local.set({ userAgentType: e.target.value })
 
     if (e.target.value === 'default') {
-      setUserAgent(navigator.userAgent)
-      setPlatform(navigator.platform)
+      setUserAgent('')
+      setPlatform('')
       chrome.storage.local.set({
         userAgent: '',
         platform: '',
@@ -55,14 +55,18 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   const changeOperatingSystem = async (e: ChangeEvent<HTMLSelectElement>) => {
     detachDebugger()
     setOperatingSystem(e.target.value)
-    setUserAgent(userAgents[e.target.value]['userAgents'][browser])
+    let browserValue = browser
+    if (!userAgents[e.target.value]['userAgents'][browser]) {
+      browserValue = Object.keys(userAgents[e.target.value]['userAgents'])[0]
+      setBrowser(browserValue)
+    }
+    setUserAgent(userAgents[e.target.value]['userAgents'][browserValue])
     setPlatform(userAgents[e.target.value]['platform'])
     chrome.storage.local.set({
-      userAgent: userAgents[e.target.value]['userAgents'][browser],
+      userAgent: userAgents[e.target.value]['userAgents'][browserValue],
       platform: userAgents[e.target.value]['platform'],
       operatingSystem: e.target.value,
     })
-    // await attachCurrentTab()
   }
 
   const changeBrowser = (e: ChangeEvent<HTMLSelectElement>) => {
