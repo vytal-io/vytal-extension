@@ -178,7 +178,6 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         onChange={changeTextInput}
         mb="12px"
       />
-      <FooterLink />
     </Page>
   )
 }

@@ -45,7 +45,7 @@ const SettingsPage = ({ tab }: SystemPageProps) => {
         </Link>
         .
       </InfoItem>
-      <InfoItem title={'Vytal vs Similar Extensions'}>
+      {/* <InfoItem title={'Vytal vs Similar Extensions'}>
         Vytal utilizes the debugger API to spoof data which is completely
         undetectable. Other similar extensions rely on{' '}
         <Link
@@ -56,7 +56,7 @@ const SettingsPage = ({ tab }: SystemPageProps) => {
           inferior script tag injections
         </Link>
         .
-      </InfoItem>
+      </InfoItem> */}
       <InfoItem title={'Test Extension'}>
         You can test and compare Vytal and other spoofing extensions on{' '}
         <Link variant="hover" href={`https://vytal.io`} target="_blank">
