@@ -14,3 +14,7 @@ body {
 input {
   font-family: 'Nunito', Arial, Helvetica, sans-serif;
 }
+
+#app-container {
+  display: inline;
+}

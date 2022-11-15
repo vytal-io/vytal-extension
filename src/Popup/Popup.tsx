@@ -13,10 +13,9 @@ const Popup = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Flex>
+      <Flex sx={{ height: '100%' }}>
         <Flex
           sx={{
-            height: '100vh',
             minWidth: '36px',
             backgroundColor: 'primary',
             alignItems: 'center',
