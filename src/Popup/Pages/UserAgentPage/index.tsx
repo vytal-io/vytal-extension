@@ -4,7 +4,6 @@ import DebouncedInput from '../../Components/DebouncedInput'
 import userAgents from '../../../utils/userAgents'
 import detachDebugger from '../../../utils/detachDebugger'
 import Page from '../../Components/Page'
-import FooterLink from '../../Components/FooterLink'
 
 interface UserAgentPageProps {
   tab: string
