@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from 'react'
+import { useState, useEffect, ChangeEvent, useCallback } from 'react'
 import { Box, Flex, Label, Radio, Select } from 'theme-ui'
 import Page from '../../Components/Page'
 import DebouncedInput from '../../Components/DebouncedInput'
@@ -16,6 +16,7 @@ interface LocationPageProps {
 
 const LocationPage = ({ tab }: LocationPageProps) => {
   const [ipData, setIpData] = useState<ipData>()
+  const [ipInfo, setIpInfo] = useState('loading...')
   const [locationType, setLocationType] = useState('')
   const [timezone, setTimezone] = useState('')
   const [locale, setLocale] = useState('')
@@ -23,11 +24,21 @@ const LocationPage = ({ tab }: LocationPageProps) => {
   const [lon, setLongitude] = useState('')
   const [configuration, setConfiguration] = useState('custom')
 
-  useEffect(() => {
-    getIp().then((ipDataRes) => {
-      setIpData(ipDataRes)
-    })
+  const reloadIp = useCallback(() => {
+    setIpInfo('loading...')
+    getIp()
+      .then((ipDataRes) => {
+        setIpData(ipDataRes)
+        setIpInfo(`${getFlagEmoji(ipDataRes.countryCode)} ${ipDataRes.query}`)
+      })
+      .catch(() => {
+        setIpInfo('error')
+      })
   }, [])
+
+  useEffect(() => {
+    reloadIp()
+  }, [reloadIp])
 
   useEffect(() => {
     chrome.storage.local.get(
@@ -202,9 +213,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
             }}
             title={ipData?.query}
           >
-            {ipData
-              ? `${getFlagEmoji(ipData.countryCode)} ${ipData?.query}`
-              : 'loading...'}
+            {ipInfo}
           </Box>
           <RotateCw
             size={20}
@@ -212,10 +221,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
               cursor: 'pointer',
             }}
             onClick={() => {
-              setIpData(undefined)
-              getIp().then((ipDataRes) => {
-                setIpData(ipDataRes)
-              })
+              reloadIp()
             }}
           />
         </Flex>
