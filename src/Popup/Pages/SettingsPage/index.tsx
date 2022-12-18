@@ -26,24 +26,8 @@ const SettingsPage = ({ tab }: SystemPageProps) => {
         .
       </InfoItem>
       <InfoItem title={'Change IP Address'}>
-        Vytal does not change your IP address. To change your IP you will need a
-        VPN such as{' '}
-        <Link
-          variant="hover"
-          href={`https://go.nordvpn.net/aff_c?offer_id=15&aff_id=79520&url_id=902`}
-          target="_blank"
-        >
-          NordVPN
-        </Link>{' '}
-        or{' '}
-        <Link
-          variant="hover"
-          href={`https://go.getproton.me/aff_c?offer_id=26&aff_id=3825`}
-          target="_blank"
-        >
-          ProtonVPN
-        </Link>
-        .
+        Vytal does not change your IP address. To change your IP address you
+        will need a VPN or proxy.
       </InfoItem>
       {/* <InfoItem title={'Vytal vs Similar Extensions'}>
         Vytal utilizes the debugger API to spoof data which is completely
@@ -59,8 +43,27 @@ const SettingsPage = ({ tab }: SystemPageProps) => {
       </InfoItem> */}
       <InfoItem title={'Test Extension'}>
         You can test and compare Vytal and other spoofing extensions on{' '}
-        <Link variant="hover" href={`https://vytal.io`} target="_blank">
+        <Link variant="hover" href={`https://vytal.io/#/scan`} target="_blank">
           vytal.io
+        </Link>
+        .
+      </InfoItem>
+      <InfoItem title={'Support Us'}>
+        If you like this extension and wish to support us you can{' '}
+        <Link
+          variant="hover"
+          href={`https://chrome.google.com/webstore/detail/vytal-spoof-timezone-loca/ncbknoohfjmcfneopnfkapmkblaenokb?utm_source=rate`}
+          target="_blank"
+        >
+          rate the extension
+        </Link>{' '}
+        or{' '}
+        <Link
+          variant="hover"
+          href={`https://vytal.io/#/donate`}
+          target="_blank"
+        >
+          donate
         </Link>
         .
       </InfoItem>

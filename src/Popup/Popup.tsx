@@ -1,7 +1,17 @@
 import { useState } from 'react'
 import { ThemeProvider, Flex, Box } from 'theme-ui'
 import { theme } from '../theme'
-import { MapPin, Globe, Info } from 'react-feather'
+import {
+  Wifi,
+  MessageSquare,
+  FileText,
+  MapPin,
+  Globe,
+  Info,
+  Settings,
+  Sliders,
+} from 'react-feather'
+import VpnIcon from '../assets/vpnIcon.svg'
 import TabItem from './TabItem'
 import LocationPage from './Pages/LocationPage'
 import UserAgentPage from './Pages/UserAgentPage'
@@ -22,23 +32,48 @@ const Popup = () => {
             flexDirection: 'column',
           }}
         >
+          {/* <TabItem
+            Icon={<Wifi size={20} />}
+            active={tab === 'vpn'}
+            onClick={() => setTab('vpn')}
+          /> */}
           <TabItem
-            Icon={MapPin}
+            Icon={<MapPin size={20} />}
             active={tab === 'location'}
             onClick={() => setTab('location')}
           />
+          {/* <TabItem
+            Icon={<FileText size={20} />}
+            active={tab === 'vpn'}
+            onClick={() => setTab('vpn')}
+          /> */}
+          {/* <TabItem
+            Icon={<MessageSquare size={20} />}
+            active={tab === 'vpn'}
+            onClick={() => setTab('vpn')}
+          /> */}
           <TabItem
-            Icon={Globe}
+            Icon={<Globe size={20} />}
             active={tab === 'userAgent'}
             onClick={() => setTab('userAgent')}
           />
+          {/* <TabItem
+            Icon={<img src={VpnIcon} className="App-logo" alt="logo" />}
+            active={tab === 'vpn'}
+            onClick={() => setTab('vpn')}
+          /> */}
+          {/* <TabItem
+            Icon={<Sliders size={20} />}
+            active={tab === 'settings'}
+            onClick={() => setTab('settings')}
+          /> */}
           <TabItem
-            Icon={Info}
+            Icon={<Info size={20} />}
             active={tab === 'settings'}
             onClick={() => setTab('settings')}
           />
         </Flex>
-        <Box sx={{ m: '12px', width: '100%' }}>
+        <Box sx={{ m: '16px', width: '100%' }}>
           <LocationPage tab={tab} />
           <UserAgentPage tab={tab} />
           <SettingsPage tab={tab} />
