@@ -1,26 +1,32 @@
 # Vytal
 
-<a href="https://chrome.google.com/webstore/detail/vytal/ncbknoohfjmcfneopnfkapmkblaenokb"><img src="https://raw.githubusercontent.com/z0ccc/Upvote-Anywhere/master/promo/chrome.png" alt="Get Vytal for Chromium"></a>
+<p>
+<a href="https://chrome.google.com/webstore/detail/vytal-spoof-timezone-loca/ncbknoohfjmcfneopnfkapmkblaenokb?utm_source=github"><img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get Vytal for Chrome"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/vytal-spoof-timezone-l/nkaemodamjfefjgbefolnpnlccpdfpap"><img src="https://user-images.githubusercontent.com/585534/107280673-a5ece780-6a26-11eb-9cc7-9fa9f9f81180.png" alt="Get Vytal for Microsoft Edge"></a>
+<a href="https://addons.opera.com/en/extensions/details/vytal-spoof-timezone-location-user-agent/"><img src="https://user-images.githubusercontent.com/585534/107280692-ac7b5f00-6a26-11eb-85c7-088926504452.png" alt="Get Vytal for Opera"></a>
+</p>
 
-Spoof your location data and user agent.
+Browser extension to spoof your timezone, geolocation, locale and user agent.
 
 ## About
 
-Vytal can spoof your timezone, locale, geolocation and user agent. This data can be used to track you or reveal your location. Vytal is not a VPN or proxy and will not change your IP. 
+This extension allows you to customize your browser's settings to appear as if you are accessing the internet from a different location, locale, or device. This can be useful for testing websites, bypassing regional restrictions, or protecting your privacy online. With just a few clicks, you can change your time zone, locale, geolocation, and user agent to match your desired settings.
 
-Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. There are many limitations to script tag injections which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier/
+Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. There are many limitations to script tag injections which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier
 
 Vytal utilizes the chrome.debugger API to spoof this data. This allows the data to be spoofed in frames, web workers and during the initial loading of a website. It also makes the spoofing completely undetectable.
 
+Vytal is not a VPN or proxy and will not change your IP. Although it can be used in combination with a VPN to obscure your true location.
+
 You can test and compare Vytal and other extensions on https://vytal.io
 
-Vytal contains no ads and signup is not required.
+Vytal contains collects no data and signup is not required.
 
 ## Limitations
 
 ### Debugging bar
 
-While the chrome.debugger API is active, a bar under the address bar is displayed. Hiding the bar is only possible when the --silent-debugger-extension-api command-line switch is used. 
+While the chrome.debugger API is active, a bar under the address bar is displayed. Hiding the bar is only possible when the --silent-debugger-extension-api command-line switch is used.
 
 Instructions on how to run chromium with flags: https://www.chromium.org/developers/how-tos/run-chromium-with-flags
 
@@ -30,126 +36,19 @@ Unfortunately Vytal doesn't work on Firefox since Firefox doesn't support the de
 
 ### New tab
 
-The chrome debugger cannot attach itself to chrome://newtab. This can result in data leakage to the first non  chrome:// page you navigate to.
-
+The chrome debugger cannot attach itself to chrome://newtab. This can result in data leakage to the first non chrome:// page you navigate to.
 
 ### Locale override does not mock language data
 
 Unlike the Chrome devtools location sensor, overriding the locale does not change language data (such as navigator.language or navigator.languages). There is an open ticket about this here: https://bugs.chromium.org/p/chromium/issues/detail?id=1306254
 
-## Data Retrieval Methods
-
-### Top window
-
-The top window is the topmost window in the hierarchy of window objects.
-
-### Initial load
-
-Data spoofing methods can have slight delays between the loading of a webpage and the data being spoofed. Data can be retrieved at the very start of loading before the data can be spoofed.
-
-### Frame
-
-A frame is a part of a web page which displays content independent of its container, with the ability to load content independently. The HTML or media elements shown in a frame may come from a different web site as the other elements of content on display.
-
-### Web worker
-
-Web Workers are a simple means for web content to run scripts in background threads. The worker thread can perform tasks without interfering with the user interface. Once created, a worker can send messages to the JavaScript code that created it by posting messages to an event handler specified by that code (and vice versa). Extension content scripts cannot be injected into workers
-
-## Data Tampering
-
-Data spoofed with Vytal can not be detected. Although other extensions which spoof data can be detected. https://vytal.io allows you to compare and test these various tools. A red x signifies that the scanner has detected tampered data. A green check means that no tampering has
-been detected. Clicking on the table row of the tampered data will bring up a modal box showing the type of detected tampering.
-
-## Types of Tampering
-
-### Failed Date.prototype.setDate.toString()
-
-```
-if (!Date.prototype.setDate.toString().includes('[native code]')) {
-  return true;
-}
-return false;
-```
-
-### Failed Object.getPrototypeOf(Intl.DateTimeFormat.prototype).constructor.toString()
-
-```
-  if (
-    !Object.getPrototypeOf(Intl.DateTimeFormat.prototype)
-      .constructor.toString()
-      .includes('Object')
-  ) {
-    return true;
-  }
-  return false;
-```
-
-### Failed Intl.DateTimeFormat.prototype.resolvedOptions.toString()
-
-```
-  if (
-    !Intl.DateTimeFormat.prototype.resolvedOptions
-      .toString()
-      .includes('[native code]')
-  ) {
-    return true;
-  }
-  return false;
-```
-
-### Failed Object.getOwnPropertyDescriptor(navigator, key)
-
-```
-  if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
-    return true;
-  }
-  return false;
-```
-
-### Failed object.getOwnPropertyDescriptor(Navigator.prototype, key).value
-
-```
-  if (
-    Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
-    undefined
-  ) {
-    return true;
-  }
-  return false;
-```
-
-### Failed Failed Navigator.prototype[key]
-
-```
-  try {
-    const check = Navigator.prototype[key];
-    return true;
-  } catch (err) {
-    return false;
-  }
-```
-
-### Failed navigator.geolocation.getCurrentPosition.toString().includes('[native code]')
-
-```
-  if (
-    !navigator.geolocation.getCurrentPosition
-      .toString()
-      .includes('[native code]')
-  ) {
-    return true;
-  }
-  return false;
-```
-
 ## Screenshots
 
-![Screenshot of extension popup](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-1.png)
+![Screenshot of location data tab](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-1.png)
 
-![Screenshot of extension popup and vytal.io](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-2.png)
+![Screenshot of user agent tab](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-2.png)
 
-![Close up of extension popup](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-3.png)
-
+![Screenshot of info tab](https://raw.githubusercontent.com/z0ccc/Vytal/master/promo/screenshot-3.png)
 
 ## Dev
 
@@ -159,7 +58,7 @@ Clone this repo and run these commands to start the development server.
 
 ```
 yarn
-yarn run start
+yarn start
 ```
 
 Load the extension on Chrome:
