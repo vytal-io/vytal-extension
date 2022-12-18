@@ -12,9 +12,9 @@ Browser extension to spoof your timezone, geolocation, locale and user agent.
 
 This extension allows you to customize your browser's settings to appear as if you are accessing the internet from a different location, locale, or device. This can be useful for testing websites, bypassing regional restrictions, or protecting your privacy online. With just a few clicks, you can change your time zone, locale, geolocation, and user agent to match your desired settings.
 
-Most extensions that provide anti-fingerprinting features rely on content scripts to inject script tags into webpages. There are many limitations to script tag injections which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier
+Most extensions that provide these features rely on content scripts to inject script tags into web pages. There are many limitations to script tag injections which you can read about here: https://palant.info/2020/12/10/how-anti-fingerprinting-extensions-tend-to-make-fingerprinting-easier
 
-Vytal utilizes the chrome.debugger API to spoof this data. This allows the data to be spoofed in frames, web workers and during the initial loading of a website. It also makes the spoofing completely undetectable.
+Vytal utilizes the chrome.debugger API to spoof this data instead. This allows the data to be spoofed in frames, web workers and during the initial loading of a website. It also makes the spoofing completely undetectable.
 
 Vytal is not a VPN or proxy and will not change your IP. Although it can be used in combination with a VPN to obscure your true location.
 
