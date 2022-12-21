@@ -1,4 +1,11 @@
 const configurations: any = {
+  auckland: {
+    name: 'Auckland',
+    timezone: 'Pacific/Auckland',
+    locale: 'en-NZ',
+    lat: -36.8485,
+    lon: 174.7633,
+  },
   baghdad: {
     name: 'Baghdad',
     timezone: 'Asia/Baghdad',
@@ -12,6 +19,13 @@ const configurations: any = {
     locale: 'th-TH',
     lat: 13.7563,
     lon: 100.5018,
+  },
+  beijing: {
+    name: 'Beijing',
+    timezone: 'Asia/Shanghai',
+    locale: 'zh-CN',
+    lat: 39.9042,
+    lon: 116.4074,
   },
   berlin: {
     name: 'Berlin',
@@ -27,6 +41,13 @@ const configurations: any = {
     lat: 30.0444,
     lon: 31.2357,
   },
+  chicago: {
+    name: 'Chicago',
+    timezone: 'America/Chicago',
+    locale: 'en-US',
+    lat: 41.8781,
+    lon: -87.6298,
+  },
   delhi: {
     name: 'Delhi',
     timezone: 'Asia/Kolkata',
@@ -40,6 +61,13 @@ const configurations: any = {
     locale: 'ar-AE',
     lat: 25.2048,
     lon: 55.2708,
+  },
+  dublin: {
+    name: 'Dublin',
+    timezone: 'Europe/Dublin',
+    locale: 'en-IE',
+    lat: 53.3498,
+    lon: -6.2603,
   },
   hongKong: {
     name: 'Hong Kong',
@@ -62,12 +90,26 @@ const configurations: any = {
     lat: 41.0082,
     lon: 28.9784,
   },
+  jakarta: {
+    name: 'Jakarta',
+    timezone: 'Asia/Jakarta',
+    locale: 'id-ID',
+    lat: -6.2146,
+    lon: 106.8451,
+  },
   jerusalem: {
     name: 'Jerusalem',
     timezone: 'Asia/Jerusalem',
     locale: 'he-IL',
     lat: 31.7683,
     lon: 35.2137,
+  },
+  kinshasa: {
+    name: 'Kinshasa',
+    timezone: 'Africa/Lagos',
+    locale: 'fr-CD',
+    lat: -4.4419,
+    lon: 15.2663,
   },
   kyiv: {
     name: 'Kyiv',
@@ -82,6 +124,13 @@ const configurations: any = {
     locale: 'en-NG',
     lat: 6.5244,
     lon: 3.379,
+  },
+  lima: {
+    name: 'Lima',
+    timezone: 'America/Lima',
+    locale: 'es-PE',
+    lat: -12.0432,
+    lon: -77.0282,
   },
   london: {
     name: 'London',
@@ -117,6 +166,13 @@ const configurations: any = {
     locale: 'es-MX',
     lat: 19.4271,
     lon: -99.1276,
+  },
+  montreal: {
+    name: 'Montreal',
+    timezone: 'America/Toronto',
+    locale: 'fr-CA',
+    lat: 45.5017,
+    lon: -73.5673,
   },
   moscow: {
     name: 'Moscow',
@@ -160,6 +216,13 @@ const configurations: any = {
     lat: 41.9028,
     lon: 12.4964,
   },
+  saintPetersburg: {
+    name: 'Saint Petersburg',
+    timezone: 'Europe/Moscow',
+    locale: 'ru-RU',
+    lat: 59.9386,
+    lon: 30.3141,
+  },
   saoPaulo: {
     name: 'São Paulo',
     timezone: 'America/Sao_Paulo',
@@ -202,6 +265,13 @@ const configurations: any = {
     lat: -33.8688,
     lon: 151.2195,
   },
+  taipei: {
+    name: 'Taipei',
+    timezone: 'Asia/Taipei',
+    locale: 'zh-TW',
+    lat: 25.0329,
+    lon: 121.5654,
+  },
   tokyo: {
     name: 'Tokyo',
     timezone: 'Asia/Tokyo',
@@ -209,19 +279,26 @@ const configurations: any = {
     lat: 35.6895,
     lon: 139.6917,
   },
-  vienna: {
-    name: 'Vienna',
-    timezone: 'Europe/Vienna',
-    locale: 'de-DE',
-    lat: 48.2082,
-    lon: 16.3738,
-  },
   toronto: {
     name: 'Toronto',
     timezone: 'America/Toronto',
     locale: 'en-CA',
     lat: 43.6532,
     lon: -79.3832,
+  },
+  tehran: {
+    name: 'Tehran',
+    timezone: 'Asia/Tehran',
+    locale: 'fa-IR',
+    lat: 35.6892,
+    lon: 51.389,
+  },
+  vienna: {
+    name: 'Vienna',
+    timezone: 'Europe/Vienna',
+    locale: 'de-DE',
+    lat: 48.2082,
+    lon: 16.3738,
   },
   washington: {
     name: 'Washington',
