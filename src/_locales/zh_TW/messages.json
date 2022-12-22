@@ -1,6 +1,6 @@
 {
   "extName": { "message": "Vytal - Spoof Timezone, Geolocation & Locale" },
   "extDesc": {
-    "message": "Spoof time zone, geolocation, locale and user agent. Match your location data to your VPN's ip address."
+    "message": "欺騙時區、地理位置、區域設置和用戶代理。將您的位置數據與您的 VPN 的 IP 地址相匹配。"
   }
 }
