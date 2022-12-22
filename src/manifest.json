@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Vytal - Spoof Timezone, Geolocation & Locale",
   "version": "2.1.4",
-  "description": "Spoof time zone, geolocation, locale and user agent. Match location data to your VPN ip address and access region-restricted content",
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDesc__",
+  "author": "__MSG_extName__",
+  "default_locale": "en",
   "permissions": ["storage", "debugger"],
   "background": { "service_worker": "background.bundle.js" },
   "action": {
