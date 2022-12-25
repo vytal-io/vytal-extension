@@ -161,7 +161,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
           mb: '8px',
         }}
       >
-        <Label>
+        <Label sx={{ cursor: 'pointer' }}>
           <Radio
             name="locationType"
             value="default"
@@ -170,7 +170,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
           />
           Default
         </Label>
-        <Label>
+        <Label sx={{ cursor: 'pointer' }}>
           <Radio
             name="locationType"
             value="matchIp"
@@ -179,7 +179,7 @@ const LocationPage = ({ tab }: LocationPageProps) => {
           />
           Match IP
         </Label>
-        <Label>
+        <Label sx={{ cursor: 'pointer' }}>
           <Radio
             name="locationType"
             value="custom"
