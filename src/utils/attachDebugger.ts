@@ -12,6 +12,7 @@ const attachDebugger = (tabId: number) => {
       'localeMatchIP',
       'userAgent',
       'platform',
+      'userAgentBrowserDefault',
     ],
     (storage) => {
       if (
@@ -69,7 +70,10 @@ const attachDebugger = (tabId: number) => {
               )
             }
 
-            if (storage.userAgent || storage.platform) {
+            if (
+              !storage.userAgentBrowserDefault &&
+              (storage.userAgent || storage.platform)
+            ) {
               chrome.debugger.sendCommand(
                 { tabId: tabId },
                 'Emulation.setUserAgentOverride',

@@ -9,7 +9,7 @@ interface CheckBoxProps {
 
 const CheckBox = ({ title, onChange, checked }: CheckBoxProps) => {
   return (
-    <Label sx={{ mb: '8px' }}>
+    <Label sx={{ mb: '8px', cursor: 'pointer' }}>
       <Checkbox onChange={onChange} checked={checked} />
       {title}
     </Label>
