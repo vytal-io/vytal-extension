@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent, useCallback } from 'react'
-import { Box, Flex, Label, Radio, Select } from 'theme-ui'
+import { Box, Button, Flex, Label, Link, Radio, Select } from 'theme-ui'
 import Page from '../../Components/Page'
 import DebouncedInput from '../../Components/DebouncedInput'
 import detachDebugger from '../../../utils/detachDebugger'
@@ -12,9 +12,10 @@ import { RotateCw } from 'react-feather'
 
 interface LocationPageProps {
   tab: string
+  setTab: (tab: string) => void
 }
 
-const LocationPage = ({ tab }: LocationPageProps) => {
+const LocationPage = ({ tab, setTab }: LocationPageProps) => {
   const [ipData, setIpData] = useState<ipData>()
   const [ipInfo, setIpInfo] = useState('loading...')
   const [locationType, setLocationType] = useState('')
@@ -273,7 +274,22 @@ const LocationPage = ({ tab }: LocationPageProps) => {
         onChange={changeInputText}
         mb="12px"
       />
-      <FooterLink />
+      <Box
+        sx={{
+          color: 'text',
+          mb: '8px',
+          fontSize: '11px',
+          position: 'fixed',
+          bottom: '0',
+        }}
+      >
+        Vytal does not change your IP address. To change your IP address you
+        will need a{' '}
+        <Button variant="text" onClick={() => setTab('vpn')}>
+          VPN or proxy
+        </Button>
+        .
+      </Box>
     </Page>
   )
 }

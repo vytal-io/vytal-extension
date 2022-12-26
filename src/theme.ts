@@ -19,12 +19,14 @@ export const theme: Theme = {
       fontSize: '18px',
       lineHeight: '22px',
       margin: '0',
+      li: {
+        mb: '4px',
+      },
     },
   },
   forms: {
     label: { width: 'auto', alignItems: 'center' },
     input: {
-      // border: '2px solid',
       p: '4px 8px',
       mb: '8px',
       borderColor: 'grey',
@@ -34,7 +36,6 @@ export const theme: Theme = {
       },
     },
     select: {
-      // border: '2px solid',
       cursor: 'pointer',
       p: '4px 8px',
       borderColor: 'grey',
@@ -67,6 +68,15 @@ export const theme: Theme = {
       p: 0,
       m: 0,
     },
+    text: {
+      all: 'unset',
+      cursor: 'pointer',
+      color: 'primaryDark',
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
   },
   links: {
     footer: {
@@ -79,6 +89,13 @@ export const theme: Theme = {
       '&:hover': {
         textDecoration: 'underline',
       },
+    },
+  },
+  images: {
+    vpnLogo: {
+      height: '28px',
+      width: 'auto',
+      mb: '6px',
     },
   },
 }
