@@ -16,11 +16,12 @@ const attachDebugger = (tabId: number) => {
     ],
     (storage) => {
       if (
-        storage.timezone ||
-        storage.lat ||
-        storage.lon ||
-        storage.locale ||
-        storage.userAgent
+        (storage.timezone ||
+          storage.lat ||
+          storage.lon ||
+          storage.locale ||
+          storage.userAgent) &&
+        !storage.userAgentBrowserDefault
       ) {
         chrome.debugger.attach({ tabId: tabId }, '1.3', () => {
           if (!chrome.runtime.lastError) {
