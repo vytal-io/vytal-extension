@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent, useCallback } from 'react'
-import { Box, Button, Flex, Label, Radio, Select } from 'theme-ui'
+import { Box, Button, Flex, Label, Select } from 'theme-ui'
 import Page from '../../Components/Page'
 import Checkbox from '../../Components/CheckBox'
 import DebouncedInput from '../../Components/DebouncedInput'
@@ -231,6 +231,7 @@ const LocationPage = ({ tab, setTab }: LocationPageProps) => {
             value={lat}
             setValue={setLatitude}
             onChange={changeInputText}
+            type="number"
           />
           <DebouncedInput
             name="lon"
@@ -239,6 +240,7 @@ const LocationPage = ({ tab, setTab }: LocationPageProps) => {
             setValue={setLongitude}
             onChange={changeInputText}
             mb="12px"
+            type="number"
           />
         </Flex>
       </Box>
