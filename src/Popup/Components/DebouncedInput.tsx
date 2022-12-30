@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, ChangeEvent, useMemo } from 'react'
-import { Label, Input } from 'theme-ui'
+import { Label, Input, Box } from 'theme-ui'
 import detachDebugger from '../../utils/detachDebugger'
 import debounce from 'lodash.debounce'
 
@@ -36,10 +36,10 @@ const DebouncedInput = ({
   }
 
   return (
-    <>
+    <Box>
       <Label htmlFor={name}>{title}</Label>
       <Input name={name} value={value} onChange={changeInputText} mb={mb} />
-    </>
+    </Box>
   )
 }
 

@@ -30,10 +30,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   }, [])
 
   const changeBrowserDefault = () => {
-    if (!browserDefault) {
-      detachDebugger()
-    }
-
+    detachDebugger()
     chrome.storage.local.set({
       userAgentBrowserDefault: !browserDefault,
     })
@@ -74,7 +71,6 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
         onChange={changeBrowserDefault}
         checked={browserDefault}
       />
-
       <Box
         sx={{
           opacity: browserDefault ? '0.5' : '1',
