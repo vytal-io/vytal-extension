@@ -36,8 +36,8 @@ if (fileSystem.existsSync(secretsPath)) {
 var options = {
   mode: process.env.NODE_ENV || 'development',
   entry: {
-    popup: path.join(__dirname, 'src', 'Popup', 'index.tsx'),
-    background: path.join(__dirname, 'src', 'Background', 'index.ts'),
+    popup: path.join(__dirname, 'src', 'popup', 'index.tsx'),
+    background: path.join(__dirname, 'src', 'background', 'index.ts'),
   },
   chromeExtensionBoilerplate: {
     notHotReload: ['background'],
@@ -165,7 +165,7 @@ var options = {
       ],
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'Popup', 'index.html'),
+      template: path.join(__dirname, 'src', 'popup', 'index.html'),
       filename: 'popup.html',
       chunks: ['popup'],
       cache: false,

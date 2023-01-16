@@ -1,5 +1,5 @@
 import { Box, Image } from 'theme-ui'
-import Page from '../../Components/Page'
+import Page from '../../components/Page'
 import VpnItem from './VpnItem'
 import nordLogo from '../../../assets/nord.svg'
 import protonLogo from '../../../assets/proton.svg'

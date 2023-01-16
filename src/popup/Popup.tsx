@@ -13,10 +13,10 @@ import {
 } from 'react-feather'
 import VpnIcon from '../assets/vpnIcon.svg'
 import TabItem from './TabItem'
-import LocationPage from './Pages/LocationPage'
-import UserAgentPage from './Pages/UserAgentPage'
-import VpnPage from './Pages/VpnPage'
-import SettingsPage from './Pages/SettingsPage'
+import LocationPage from './pages/locationPage'
+import UserAgentPage from './pages/userAgentPage'
+import VpnPage from './pages/vpnPage'
+import SettingsPage from './pages/settingsPage'
 import '../assets/global.css'
 
 const Popup = () => {
