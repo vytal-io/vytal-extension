@@ -99,6 +99,7 @@ var options = {
     ],
   },
   resolve: {
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     alias: alias,
     extensions: fileExtensions
       .map((extension) => '.' + extension)

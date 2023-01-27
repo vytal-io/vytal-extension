@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ThemeProvider, Flex, Box } from 'theme-ui'
-import { theme } from '../theme'
+import { theme } from 'theme'
 import {
   Wifi,
   MessageSquare,

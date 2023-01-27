@@ -1,8 +1,8 @@
 import { Box, Image } from 'theme-ui'
-import Page from '../../components/Page'
+import Page from 'popup/components/Page'
 import VpnItem from './VpnItem'
-import nordLogo from '../../../assets/nord.svg'
-import protonLogo from '../../../assets/proton.svg'
+import nordLogo from 'assets/nord.svg'
+import protonLogo from 'assets/proton.svg'
 
 interface VpnPageProps {
   tab: string

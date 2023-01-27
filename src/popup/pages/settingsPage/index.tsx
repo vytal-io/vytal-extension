@@ -1,5 +1,5 @@
 import { Link, Text } from 'theme-ui'
-import Page from '../../components/Page'
+import Page from 'popup/components/Page'
 import InfoItem from './InfoItem'
 
 interface SettingsPageProps {

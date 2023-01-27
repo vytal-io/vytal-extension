@@ -1,10 +1,10 @@
 import { useState, useEffect, ChangeEvent } from 'react'
 import { Box, Label, Select } from 'theme-ui'
-import Checkbox from '../../components/CheckBox'
-import DebouncedInput from '../../components/DebouncedInput'
-import userAgents from '../../../utils/userAgents'
-import detachDebugger from '../../../utils/detachDebugger'
-import Page from '../../components/Page'
+import Checkbox from 'popup/components/CheckBox'
+import DebouncedInput from 'popup/components/DebouncedInput'
+import userAgents from 'utils/userAgents'
+import detachDebugger from 'utils/detachDebugger'
+import Page from 'popup/components/Page'
 
 interface UserAgentPageProps {
   tab: string
