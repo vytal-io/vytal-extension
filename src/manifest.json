@@ -9,7 +9,7 @@
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "icon32.png"
+    "default_icon": "icon48.png"
   },
   "icons": {
     "128": "icon128.png"
