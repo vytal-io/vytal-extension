@@ -5,7 +5,7 @@
   "description": "__MSG_extDesc__",
   "author": "__MSG_extName__",
   "default_locale": "en",
-  "permissions": ["storage", "debugger", "webNavigation"],
+  "permissions": ["storage", "debugger"],
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",

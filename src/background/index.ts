@@ -1,12 +1,22 @@
-import attachDebugger from '../utils/attachDebugger'
+import attachDebugger from './attachDebugger'
 
-const attachTab = (e: any) => {
+const attachTab = (tabId: number) => {
   chrome.debugger.getTargets((tabs) => {
-    const currentTab = tabs.find((obj) => obj.tabId === e.tabId)
+    const currentTab = tabs.find((obj) => obj.tabId === tabId)
     if (!currentTab?.attached) {
-      attachDebugger(e.tabId)
+      attachDebugger(tabId)
     }
   })
 }
 
-chrome.webNavigation.onBeforeNavigate.addListener(attachTab)
+chrome.tabs.onCreated.addListener((tab) => {
+  tab.id && attachDebugger(tab.id)
+})
+
+chrome.tabs.onActivated.addListener((tab) => {
+  attachTab(tab.tabId)
+})
+
+chrome.tabs.onUpdated.addListener((tabId) => {
+  attachTab(tabId)
+})
