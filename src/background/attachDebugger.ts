@@ -22,8 +22,9 @@ const attachDebugger = (tabId: number) => {
           storage.lon ||
           storage.locale ||
           storage.userAgent) &&
-        (!storage.locationBrowserDefault || !storage.userAgentBrowserDefault)
+        ((storage.locationBrowserDefault !== undefined && !storage.locationBrowserDefault) || (storage.userAgentBrowserDefault !== undefined && !storage.userAgentBrowserDefault))
       ) {
+
         chrome.debugger.attach({ tabId: tabId }, '1.3', () => {
           if (!chrome.runtime.lastError) {
             if (!storage.locationBrowserDefault) {
