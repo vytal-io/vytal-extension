@@ -9,6 +9,7 @@ import configurations from 'utils/configurations'
 import getIp from 'utils/getIp'
 import { ipData } from 'types'
 import { RotateCw } from 'react-feather'
+import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 
 interface LocationPageProps {
   tab: string
@@ -23,6 +24,8 @@ const LocationPage = ({ tab }: LocationPageProps) => {
   const [lat, setLatitude] = useState('')
   const [lon, setLongitude] = useState('')
   const [configuration, setConfiguration] = useState('custom')
+
+  polyfillCountryFlagEmojis();
 
   const reloadIp = useCallback(() => {
     setIpInfo('loading...')
