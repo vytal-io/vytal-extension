@@ -1,12 +1,13 @@
-import { Link, Text } from 'theme-ui'
+import { Button, Link, Text } from 'theme-ui'
 import Page from 'popup/components/Page'
 import InfoItem from './InfoItem'
 
 interface SettingsPageProps {
   tab: string
+  setTab: (tab: string) => void
 }
 
-const SettingsPage = ({ tab }: SettingsPageProps) => {
+const SettingsPage = ({ tab, setTab }: SettingsPageProps) => {
   return (
     <Page isCurrentTab={tab === 'settings'} title={'Info'}>
       <InfoItem title={'Hide Debugging Notification Bar'}>
@@ -27,7 +28,11 @@ const SettingsPage = ({ tab }: SettingsPageProps) => {
       </InfoItem>
       <InfoItem title={'Change IP Address'}>
         Vytal does not change your IP address. To change your IP address you
-        will need a VPN or proxy.
+        will need a{' '}
+        <Button variant="text" onClick={() => setTab('vpn')}>
+          VPN or proxy
+        </Button>
+        .
       </InfoItem>
       {/* <InfoItem title={'Vytal vs Similar Extensions'}>
         Vytal utilizes the debugger API to spoof data which is completely

@@ -58,11 +58,11 @@ const Popup = () => {
             active={tab === 'userAgent'}
             onClick={() => setTab('userAgent')}
           />
-          {/* <TabItem
+          <TabItem
             Icon={<img src={VpnIcon} className="App-logo" alt="logo" />}
             active={tab === 'vpn'}
             onClick={() => setTab('vpn')}
-          /> */}
+          />
           {/* <TabItem
             Icon={<Sliders size={20} />}
             active={tab === 'settings'}
@@ -75,10 +75,10 @@ const Popup = () => {
           />
         </Flex>
         <Box sx={{ m: '16px', width: '100%' }}>
-          <LocationPage tab={tab} />
+          <LocationPage tab={tab} setTab={setTab} />
           <UserAgentPage tab={tab} />
-          {/* <VpnPage tab={tab} /> */}
-          <SettingsPage tab={tab} />
+          <VpnPage tab={tab} />
+          <SettingsPage tab={tab} setTab={setTab} />
         </Box>
       </Flex>
     </ThemeProvider>

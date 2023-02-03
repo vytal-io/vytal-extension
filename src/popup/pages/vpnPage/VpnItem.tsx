@@ -2,10 +2,11 @@ import { Box, Link } from 'theme-ui'
 
 interface VpnItemProps {
   url: string
+  linkText: string
   children: React.ReactNode
 }
 
-const VpnItem = ({ url, children }: VpnItemProps) => {
+const VpnItem = ({ url, linkText, children }: VpnItemProps) => {
   return (
     <Link
       href={url}
@@ -34,7 +35,7 @@ const VpnItem = ({ url, children }: VpnItemProps) => {
           },
         }}
       >
-        Learn more
+        {linkText}
       </Box>
     </Link>
   )

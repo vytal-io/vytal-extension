@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent, useCallback } from 'react'
-import { Box, Flex, Label, Select } from 'theme-ui'
+import { Box, Button, Flex, Label, Select } from 'theme-ui'
 import Page from 'popup/components/Page'
 import Checkbox from 'popup/components/CheckBox'
 import DebouncedInput from 'popup/components/DebouncedInput'
@@ -13,9 +13,10 @@ import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 
 interface LocationPageProps {
   tab: string
+  setTab: (tab: string) => void
 }
 
-const LocationPage = ({ tab }: LocationPageProps) => {
+const LocationPage = ({ tab, setTab }: LocationPageProps) => {
   const [browserDefault, setBrowserDefault] = useState(true)
   const [ipData, setIpData] = useState<ipData>()
   const [ipInfo, setIpInfo] = useState('loading...')
@@ -256,7 +257,11 @@ const LocationPage = ({ tab }: LocationPageProps) => {
         }}
       >
         Vytal does not change your IP address. To change your IP address you
-        will need a VPN or proxy.
+        will need a{' '}
+        <Button variant="text" onClick={() => setTab('vpn')}>
+          VPN or proxy
+        </Button>
+        .
       </Box>
     </Page>
   )
