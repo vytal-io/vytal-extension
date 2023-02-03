@@ -20,3 +20,5 @@ chrome.tabs.onActivated.addListener((tab) => {
 chrome.tabs.onUpdated.addListener((tabId) => {
   attachTab(tabId)
 })
+
+chrome.runtime.setUninstallURL('https://vytal.io/#/vpns')
