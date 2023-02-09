@@ -9,7 +9,7 @@ import configurations from 'utils/configurations'
 import getIp from 'utils/getIp'
 import { ipData } from 'types'
 import { RotateCw } from 'react-feather'
-import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
+import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill'
 
 interface LocationPageProps {
   tab: string
@@ -26,7 +26,7 @@ const LocationPage = ({ tab, setTab }: LocationPageProps) => {
   const [lon, setLongitude] = useState('')
   const [configuration, setConfiguration] = useState('custom')
 
-  polyfillCountryFlagEmojis();
+  polyfillCountryFlagEmojis()
 
   const reloadIp = useCallback(() => {
     setIpInfo('loading...')
@@ -257,11 +257,11 @@ const LocationPage = ({ tab, setTab }: LocationPageProps) => {
         }}
       >
         Vytal does not change your IP address. To change your IP address you
-        will need a{' '}
-        <Button variant="text" onClick={() => setTab('vpn')}>
+        will need a VPN or proxy.
+        {/* <Button variant="text" onClick={() => setTab('vpn')}>
           VPN or proxy
         </Button>
-        .
+        . */}
       </Box>
     </Page>
   )

@@ -28,11 +28,11 @@ const SettingsPage = ({ tab, setTab }: SettingsPageProps) => {
       </InfoItem>
       <InfoItem title={'Change IP Address'}>
         Vytal does not change your IP address. To change your IP address you
-        will need a{' '}
-        <Button variant="text" onClick={() => setTab('vpn')}>
+        will need a VPN or proxy.
+        {/* <Button variant="text" onClick={() => setTab('vpn')}>
           VPN or proxy
         </Button>
-        .
+        . */}
       </InfoItem>
       {/* <InfoItem title={'Vytal vs Similar Extensions'}>
         Vytal utilizes the debugger API to spoof data which is completely
@@ -48,7 +48,7 @@ const SettingsPage = ({ tab, setTab }: SettingsPageProps) => {
       </InfoItem> */}
       <InfoItem title={'Test Extension'}>
         You can test and compare Vytal and other spoofing extensions on{' '}
-        <Link variant="hover" href={`https://vytal.io/#/scan`} target="_blank">
+        <Link variant="hover" href={`https://vytal.io/scan`} target="_blank">
           vytal.io
         </Link>
         .
@@ -63,11 +63,7 @@ const SettingsPage = ({ tab, setTab }: SettingsPageProps) => {
           rate the extension
         </Link>{' '}
         or{' '}
-        <Link
-          variant="hover"
-          href={`https://vytal.io/#/donate`}
-          target="_blank"
-        >
+        <Link variant="hover" href={`https://vytal.io/donate`} target="_blank">
           donate
         </Link>
         .
