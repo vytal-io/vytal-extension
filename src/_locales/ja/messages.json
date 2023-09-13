@@ -1,5 +1,5 @@
 {
-  "extName": { "message": "Vytal - Spoof Timezone, Geolocation & Locale" },
+  "extName": { "message": "Vytal - Privacy & VPN Companion" },
   "extDesc": {
     "message": "タイム ゾーン、位置情報、ロケール、およびユーザー エージェントを偽装します。位置データを VPN の IP アドレスと照合します。"
   }

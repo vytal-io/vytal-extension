@@ -67,7 +67,7 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
   return (
     <Page isCurrentTab={tab === 'userAgent'} title={'User Agent'}>
       <Checkbox
-        title="Use browser default"
+        title="Use Browser Defaults"
         onChange={changeBrowserDefault}
         checked={browserDefault}
       />
@@ -77,6 +77,11 @@ const UserAgentPage = ({ tab }: UserAgentPageProps) => {
           pointerEvents: browserDefault ? 'none' : 'auto',
         }}
       >
+        <Checkbox
+          title="Use Debugger API"
+          onChange={changeBrowserDefault}
+          checked={browserDefault}
+        />
         <Box sx={{ width: '100%' }}>
           <Label htmlFor="type">Type</Label>
           <Select

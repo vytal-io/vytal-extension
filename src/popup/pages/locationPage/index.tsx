@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent, useCallback } from 'react'
-import { Box, Button, Flex, Label, Select } from 'theme-ui'
+import { Box, Flex, Label, Select } from 'theme-ui'
 import Page from 'popup/components/Page'
 import Checkbox from 'popup/components/CheckBox'
 import DebouncedInput from 'popup/components/DebouncedInput'
@@ -151,7 +151,7 @@ const LocationPage = ({ tab, setTab }: LocationPageProps) => {
   return (
     <Page isCurrentTab={tab === 'location'} title={'Location Data'}>
       <Checkbox
-        title="Use browser default"
+        title="Use Browser Defaults"
         onChange={changeBrowserDefault}
         checked={browserDefault}
       />
@@ -161,6 +161,11 @@ const LocationPage = ({ tab, setTab }: LocationPageProps) => {
           pointerEvents: browserDefault ? 'none' : 'auto',
         }}
       >
+        <Checkbox
+          title="Use Debugger API"
+          onChange={changeBrowserDefault}
+          checked={browserDefault}
+        />
         <Flex
           sx={{
             border: '1px solid',

@@ -1,14 +1,16 @@
 import React from 'react'
 import { Button } from 'theme-ui'
 interface IconProps {
+  title: string
   Icon: React.ReactNode
   active?: boolean
   onClick: () => void
 }
 
-const TabItem = ({ Icon, onClick, active }: IconProps) => {
+const TabItem = ({ title, Icon, onClick, active }: IconProps) => {
   return (
     <Button
+      title={title}
       sx={{
         cursor: 'pointer',
         width: '36px',

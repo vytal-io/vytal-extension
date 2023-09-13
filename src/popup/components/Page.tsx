@@ -2,7 +2,7 @@ import { Box } from 'theme-ui'
 
 interface PageProps {
   isCurrentTab: boolean
-  title: string
+  title?: string
   children: React.ReactNode
 }
 
@@ -13,9 +13,11 @@ const Page = ({ isCurrentTab, title, children }: PageProps) => {
         display: isCurrentTab ? 'block' : 'none',
       }}
     >
-      <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
-        {title}
-      </Box>
+      {title && (
+        <Box sx={{ fontSize: '21px', mb: '12px', fontWeight: '600' }}>
+          {title}
+        </Box>
+      )}
       {children}
     </Box>
   )

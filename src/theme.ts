@@ -39,8 +39,10 @@ export const theme: Theme = {
       cursor: 'pointer',
       p: '4px 8px',
       borderColor: 'grey',
-      '&:focus': {
+      '&:hover': {
         borderColor: 'primaryDark',
+      },
+      '&:focus': {
         outline: 'none',
       },
     },
