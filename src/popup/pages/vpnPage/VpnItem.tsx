@@ -19,6 +19,7 @@ const VpnItem = ({ url, linkText, children }: VpnItemProps) => {
         display: 'block',
         textDecoration: 'none',
         color: 'text',
+        transition: '0.2s',
         '&:hover': {
           borderColor: 'primary',
         },

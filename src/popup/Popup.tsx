@@ -11,6 +11,7 @@ import {
   Info,
   Settings,
   Sliders,
+  UserCheck,
 } from 'react-feather'
 import VpnIcon from '../assets/vpnIcon.svg'
 import TabItem from './TabItem'
@@ -59,6 +60,12 @@ const Popup = () => {
             Icon={<MapPin size={20} />}
             active={tab === 'location'}
             onClick={() => setTab('location')}
+          />
+          <TabItem
+            title="Captcha Solver"
+            Icon={<UserCheck size={20} />}
+            active={tab === 'vpn'}
+            onClick={() => setTab('vpn')}
           />
           <TabItem
             title="Autofill Data"

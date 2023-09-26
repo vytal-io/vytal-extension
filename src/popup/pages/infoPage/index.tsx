@@ -46,10 +46,21 @@ const InfoPage = ({ tab, setTab }: InfoPageProps) => {
         </Link>
         .
       </InfoItem> */}
-      <InfoItem title={'Test Extension'}>
+      {/* <InfoItem title={'Test Extension'}>
         You can test and compare Vytal and other spoofing extensions on{' '}
         <Link variant="hover" href={`https://vytal.io/scan`} target="_blank">
           vytal.io
+        </Link>
+        .
+      </InfoItem> */}
+      <InfoItem title={'Open Source'}>
+        Vytal is open source and the code can be viewed on{' '}
+        <Link
+          variant="hover"
+          href={'https://github.com/vytal-io'}
+          target="_blank"
+        >
+          Github
         </Link>
         .
       </InfoItem>
@@ -65,7 +76,7 @@ const InfoPage = ({ tab, setTab }: InfoPageProps) => {
           rate the extension
         </Link>{' '}
         or{' '}
-        <Link variant="hover" href={`https://vytal.io/donate`} target="_blank">
+        <Link variant="hover" href={'https://vytal.io/donate'} target="_blank">
           donate
         </Link>
         .
@@ -74,6 +85,14 @@ const InfoPage = ({ tab, setTab }: InfoPageProps) => {
         You can reach us at{' '}
         <Link variant="hover" href={'mailto:contact@vytal.io'} target="_blank">
           contact@vytal.io
+        </Link>{' '}
+        or on{' '}
+        <Link
+          variant="hover"
+          href={'https://reddit.com/r/Vytal'}
+          target="_blank"
+        >
+          r/Vytal
         </Link>
         .
       </InfoItem>

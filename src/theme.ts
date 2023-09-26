@@ -39,6 +39,7 @@ export const theme: Theme = {
       cursor: 'pointer',
       p: '4px 8px',
       borderColor: 'grey',
+      transition: '0.2s',
       '&:hover': {
         borderColor: 'primaryDark',
       },
@@ -60,6 +61,7 @@ export const theme: Theme = {
       borderRadius: '0',
       width: '100%',
       display: 'block',
+      transition: '0.2s',
       '&:hover': {
         bg: 'primaryDark',
       },

@@ -20,6 +20,7 @@ const TabItem = ({ title, Icon, onClick, active }: IconProps) => {
         justifyContent: 'center',
         color: 'background',
         backgroundColor: active ? 'primaryDark' : 'primary',
+        transition: '0.2s',
         ':hover': {
           backgroundColor: 'primaryDark',
         },
